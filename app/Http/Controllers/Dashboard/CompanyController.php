@@ -21,7 +21,7 @@ class CompanyController extends Controller
 
 
         $curl = curl_init();
-
+$refrenceid="Merchant_".rand();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://taxes.like4app.com/online/create_order",
             CURLOPT_RETURNTRANSFER => true,
@@ -38,7 +38,7 @@ class CompanyController extends Controller
                 'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
                 'langId' => '1',
                 'productId' => '2948',
-                'referenceId' => 'Merchant_12467'
+                'referenceId' => $refrenceid
             ),
 
         ));
