@@ -51,12 +51,10 @@ class DubaiOrdersController extends Controller
         curl_close($curl);
         $dubiorders = json_decode($dubiorder, true);
       
-      foreach($dubiorders['data'] as $row){
-        return( $row);
-      }
-
+     
+      return( $dubiorders);
        
-      //  return view('dashboard.dubiorders.index', compact('dubiorders'));
+        return view('dashboard.dubiorders.index', compact('dubiorders'));
 
     }
 
