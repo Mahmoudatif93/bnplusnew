@@ -31,7 +31,7 @@ class CompanyController extends Controller
       
           
                  
- $this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
+ //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
 
 
         $Companies = Company::when($request->search, function ($q) use ($request) {
