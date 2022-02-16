@@ -30,7 +30,7 @@
 
                 <div class="box-body">
 
-                    @if ($dubiorders->count() > 0)
+                    @if (!empty($dubiorders))
 
                         <table class="table table-hover">
 
@@ -38,16 +38,12 @@
                             <tr>
                                 <th>#</th>
                                
-                                <th>@lang('site.Companies')</th>
-                                <th>@lang('site.name')</th>
-                                <th>@lang('site.kind')</th>
-                                <th>@lang('site.price')</th>
-                                <th>@lang('site.card_code')</th>
-                                <th>@lang('site.avaliable')</th>
-                                
-                                <th>@lang('site.image')</th>
-                            
-                                <th>@lang('site.action')</th>
+                                <th>@lang('site.orderNumber')</th>
+                                <th>@lang('site.orderFinalTotal')</th>
+                                <th>@lang('site.currencySymbol')</th>
+                                <th>@lang('site.orderCreateDate')</th>
+                                <th>@lang('site.orderCurrentStatus')</th>
+                                <th>@lang('site.orderPaymentMethod')</th>
                             </tr>
                             </thead>
 
@@ -56,19 +52,12 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     
-                                    <td>{{ $category->company->name }}</td>
-                                    <td>{{ $category->card_name }}</td>
-                                    <td>
-                                    @if($category->nationalcompany=='local')
-                                    @lang('site.local')
-                                    @elseif($category->nationalcompany=='national')
-                                    @lang('site.national')
-                                    @endif
-
-                                    </td>
-
-                                    <td>{{ $category->card_price }}</td>
-                                    <td>{{ $category->card_code }}</td>
+                                    <td>{{ $category->orderNumber }}</td>
+                                    <td>{{ $category->orderFinalTotal }}</td>
+                                    <td>{{ $category->currencySymbol }}</td>
+                                    <td>{{ $category->orderCreateDate }}</td>
+                                    <td>{{ $category->orderCurrentStatus }}</td>
+                                    <td>{{ $category->orderPaymentMethod }}</td>
                                  
 
 
@@ -98,34 +87,6 @@
 
     </div><!-- end of content wrapper -->
 
-
-
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="company_id"]').on('change', function() {
-            var company_id = $(this).val();
-            if(company_id) {
-                $.ajax({
-                    url: 'compcard/'+company_id,
-                    type: "GET",
-                    dataType: "json",
-                    success:function(data) {
-
-                        
-                        $('select[name="card_price"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="card_price"]').append('<option value="'+ value +'">'+ value +'</option>');
-                        });
-
-
-                    }
-                });
-            }else{
-                $('select[name="card_price"]').empty();
-            }
-        });
-    });
-</script>
 
 
 

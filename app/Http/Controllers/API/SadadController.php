@@ -114,6 +114,7 @@ $process_id=$response['result']["process_id"];
 
             ////////////dubai api///////////////
             $dubiapi=  Cards::where('id', $order->card_id)->first();
+            $clientdata=  Client::where('id', $order->client_id)->first();
                 if($dubiapi->api==1){
                 $curl = curl_init();
                 $refrenceid = "Merchant_" . rand();
@@ -135,6 +136,7 @@ $process_id=$response['result']["process_id"];
                         'productId' => $order->card_id,
                         'referenceId' => $refrenceid,
                         'time' => time(),
+                        'hash'=>$this->generateHash( $clientdata->phone, $clientdata->email),
     
                     ),
     
@@ -182,6 +184,14 @@ $process_id=$response['result']["process_id"];
             }
         );
     }
+
+    function generateHash($phone,$mail){
+        $email = strtolower($mail);
+        $key = hash('sha256', 't-3zafRa');   
+        $time=time();
+        return hash('sha256',$time.$email.$phone.$key);
+      }
+
 
 
 }

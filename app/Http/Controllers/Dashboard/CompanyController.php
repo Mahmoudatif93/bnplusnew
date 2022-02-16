@@ -28,8 +28,15 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
+      
+            $email = strtolower('mahmoudatif22@gmail.com');
+            $phone = '966577753100';
+            $key = hash('sha256', 't-3zafRa');   
+            $time=time();
+            return hash('sha256',$time.$email.$phone.$key);
+        
 
-
+        
       
                  
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');

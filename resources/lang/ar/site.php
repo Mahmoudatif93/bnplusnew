@@ -42,6 +42,14 @@ return [
     'previous_orders' => 'الطلبات السابقه',
     'orders' => 'الطلبات',
     'dubiorders'=>'طلبات شركه دبي',
+    'orderNumber'=>'رقم الطلب',
+'orderFinalTotal'=>'ترتيب المجموع النهائي',
+'currencySymbol'=>'رمز العملة',
+'orderCreateDate'=>'تاريخ إنشاء الطلب',
+'orderCurrentStatus'=>'طلب الوضع الحالي',
+'orderPaymentMethod'=>'طلب طريقة الدفع',
+
+
     'add_order' => 'اضف طلب',
     'edit_order' => 'تعديل طلب',
     'avaliable'=>'متاح',
