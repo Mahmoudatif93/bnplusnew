@@ -39,7 +39,9 @@ class CardsController extends Controller
         //dd($cards);
         $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->when($request->search, function ($q) use ($request) {
 
-            return $q->where('card_code', '%' . $request->search . '%');
+            return $q->where('card_code', '%' . $request->search . '%')
+            ->orWhere('card_name', 'like', '%' . $request->search . '%')
+            ->orWhere('card_price', 'like', '%' . $request->search . '%');
 
         })->latest()->paginate(5);
         $Companies = Company::all();
