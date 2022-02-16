@@ -145,7 +145,9 @@
 
                                 <p>
                                     {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
-                                    <small>Member since 2 days</small>
+                                    <small>
+                                      {{ auth()->user()->created_at }}
+                                    </small>
                                 </p>
                             </li>
 
