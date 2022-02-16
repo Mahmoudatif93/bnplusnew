@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Order;
 use App\Cards;
+use App\Client;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
 
 class SadadController extends Controller
 {
@@ -144,6 +149,12 @@ $process_id=$response['result']["process_id"];
                 if ($order->update()) {
                     $updatecard['purchase']=1;
                   Cards:: where('id', $order->card_id)->update( $updatecard);
+
+                  $cardemail=  Cards::where('id', $order->card_id)->first();
+                  $client=  Client::where('id', $order->client_id)->first();
+                  $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
+
+
                     return $this->apiResponse5(true, $response['message'], $response['status'], $response['result']);
                 } else {
                     return response()->json(['status' => 'error']);
@@ -156,4 +167,21 @@ $process_id=$response['result']["process_id"];
         return $this->apiResponse4(false, 'no Order for this order id',400);  
     }
     }
+
+
+    
+    public function sendResetEmail($user, $content, $subject)
+    {
+      
+        $send =   Mail::send(
+            'dashboard.Contacts.content',
+            ['user' => $user, 'content' => $content, 'subject' => $subject],
+            function ($message) use ($user, $subject) {
+                $message->to($user);
+                $message->subject("$subject");
+            }
+        );
+    }
+
+
 }

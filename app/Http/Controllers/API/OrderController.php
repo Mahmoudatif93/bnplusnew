@@ -5,8 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Company;
-use App\Cards;
 use App\Order;
+use App\Cards;
+use App\Client;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use PDF2;
@@ -124,9 +126,9 @@ class OrderController extends Controller
                 $updatecard['purchase'] = 1;
                 Cards::where('id', $order->card_id)->update($updatecard);
 
-
-               
-
+                $cardemail=  Cards::where('id', $order->card_id)->first();
+                $client=  Client::where('id', $order->client_id)->first();
+                $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
 
 
                 return response()->json(['status' => 'success']);
@@ -137,4 +139,21 @@ class OrderController extends Controller
             return response()->json(['status' => 'error']);
         }
     }
+
+
+    
+    public function sendResetEmail($user, $content, $subject)
+    {
+      
+        $send =   Mail::send(
+            'dashboard.Contacts.content',
+            ['user' => $user, 'content' => $content, 'subject' => $subject],
+            function ($message) use ($user, $subject) {
+                $message->to($user);
+                $message->subject("$subject");
+            }
+        );
+    }
+
+
 }

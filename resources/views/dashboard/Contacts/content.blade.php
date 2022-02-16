@@ -9,7 +9,7 @@
 							<div class="text-center mt-2 mb-4">
 								<a class="text-success"><span>
                               
-                                <label for="editor1"><?php echo strip_tags(preg_replace('/\s+/', '', $content));?></label>
+                                <label for="editor1">{{$content}}</label>
 										
 									</span>
 								</a>
