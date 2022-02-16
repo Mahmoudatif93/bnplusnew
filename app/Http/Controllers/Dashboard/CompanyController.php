@@ -37,7 +37,7 @@ class CompanyController extends Controller
                 'password' => '149e7a5dcc2b1946ebf09f6c7684ab2c',
                 'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
                 'langId' => '1',
-                'productId' => '987',
+                'productId' => '2948',
                 'referenceId' => 'Merchant_12467'
             ),
 
