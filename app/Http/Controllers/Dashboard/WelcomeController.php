@@ -19,7 +19,7 @@ class WelcomeController extends Controller
         $cards = Cards::count();
         $clients = Client::count();
         
-        return view('dashboard.welcome', compact('Companies','orders','cards','clients'));
+        return view('dashboard.welcome', compact('companies','orders','cards','clients'));
 
     }//end of index
 
