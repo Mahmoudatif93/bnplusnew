@@ -30,7 +30,8 @@ class CompanyController extends Controller
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
         $Companies = Company::when($request->search, function ($q) use ($request) {
 
-            return $q->where('name', '%' . $request->search . '%');
+            return $q->where('name', '%' . $request->search . '%')
+                ->orWhere('kind', 'like', '%' . $request->search . '%');
         })->latest()->paginate(5);
 
         return view('dashboard.Companies.index', compact('Companies'));
