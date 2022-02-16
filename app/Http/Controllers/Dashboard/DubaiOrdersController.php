@@ -47,8 +47,9 @@ class DubaiOrdersController extends Controller
 
         ));
 
-        $dubiorders = curl_exec($curl);
+        $dubiorder = curl_exec($curl);
         curl_close($curl);
+        $dubiorders = json_decode($dubiorder, true);
       dd($dubiorders['data']);
         return view('dashboard.dubiorders.index', compact('dubiorders'));
 
