@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Cards;
 use App\Order;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
+use PDF2;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
 class OrderController extends Controller
 {
 
@@ -80,6 +87,9 @@ class OrderController extends Controller
         if($order->update()){
             $updatecard['purchase']=1;
             Cards:: where('id', $order->card_id)->update( $updatecard);
+
+
+
             return response()->json(['status'=>'success']);
         }else{
             return response()->json(['status'=>'error']);
