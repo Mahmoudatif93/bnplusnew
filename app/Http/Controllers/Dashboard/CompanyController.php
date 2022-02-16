@@ -20,11 +20,8 @@ class CompanyController extends Controller
     {
 
 
-
-       
-       
-       
-       
+      
+                 
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
 
 
