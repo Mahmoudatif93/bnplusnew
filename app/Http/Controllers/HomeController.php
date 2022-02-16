@@ -29,7 +29,7 @@ class HomeController extends Controller
         
         $orders = Order::count();
         $companies = Company::count();
-        $cards = Cards::count();
+        $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->count();
         $clients = Client::count();
         
         return view('home', compact('Companies','orders','cards','clients'));
