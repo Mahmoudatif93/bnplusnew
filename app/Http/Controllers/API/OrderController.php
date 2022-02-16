@@ -23,12 +23,12 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
-    
+
+
     public function reserveorder(Request $request)
     {
 
-        
+
         $cardscount = Cards::where(array('card_price' => $request->card_price, 'avaliable' => 0, 'purchase' => 0))->count();
 
         if ($cardscount > 0) {
@@ -41,63 +41,100 @@ class OrderController extends Controller
             $request_data['client_number'] = $request->client_number;
             $order = Order::create($request_data);
 
-            if($order){
-               $dataa['avaliable']=1;
-               Cards:: where('id', $order->card_id)->update($dataa);
-            
-               $message="card reserved ";
-               return $this->apiResponse6($cardscount -1, $order->id,$message, 200);
-            }else{
-            
-              return $this->apiResponse6(null, null,'error to Reserve Order', 404);
-            }
+            if ($order) {
+                $dataa['avaliable'] = 1;
+                Cards::where('id', $order->card_id)->update($dataa);
 
+                $message = "card reserved ";
+                return $this->apiResponse6($cardscount - 1, $order->id, $message, 200);
+            } else {
+
+                return $this->apiResponse6(null, null, 'error to Reserve Order', 404);
+            }
         } else {
             $message = "No Cards Avaliable For this Price";
-            return $this->apiResponse6($cardscount, null,$message, 404);
-            
+            return $this->apiResponse6($cardscount, null, $message, 404);
         }
-
-        
     }
 
     public function clientorder(Request $request)
     {
-        
-        $order= Order::where('client_id', $request->clientid)->with('cards')->get();   
 
-        
-        if(count($order) >0){
-            return $this->apiResponse($order, 'You have orders',200);
-        }else{
-            return $this->apiResponse($order, 'No orders Avaliable',400);
+        $order = Order::where('client_id', $request->clientid)->with('cards')->get();
+
+
+        if (count($order) > 0) {
+            return $this->apiResponse($order, 'You have orders', 200);
+        } else {
+            return $this->apiResponse($order, 'No orders Avaliable', 400);
         }
     }
 
-    
+
     public function finalorder(Request $request)
     {
-        $id=$request->order_id;
-    $order=Order::find($id);
-    if(!empty($order)){
-        $order->transaction_id=$request->transaction_id;
-        $order->paid='true';
+        $id = $request->order_id;
+        $order = Order::find($id);
+        if (!empty($order)) {
+            $order->transaction_id = $request->transaction_id;
+            $order->paid = 'true';
 
-    //  dd($request->title);
-        if($order->update()){
-            $updatecard['purchase']=1;
-            Cards:: where('id', $order->card_id)->update( $updatecard);
+            //  dd($request->title);
 
 
+            ////////////dubai api///////////////
+          $dubiapi=  Cards::where('id', $order->card_id)->first();
+            if($dubiapi->api==1){
+            $curl = curl_init();
+            $refrenceid = "Merchant_" . rand();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://taxes.like4app.com/online/create_order",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => array(
+                    'deviceId' => '4d2ec47930a1fe0706836fdd1157a8c320dfc962aa6d0b0df2f4dda40a27b2ba',
+                    'email' => 'sales@bn-plus.ly',
+                    'password' => '149e7a5dcc2b1946ebf09f6c7684ab2c',
+                    'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
+                    'langId' => '1',
+                    'productId' => $order->card_id,
+                    'referenceId' => $refrenceid,
+                    'time' => time(),
 
-            return response()->json(['status'=>'success']);
-        }else{
-            return response()->json(['status'=>'error']);
+                ),
+
+            ));
+
+            $createorder = curl_exec($curl);
+            curl_close($curl);
         }
-    }else{
-        return response()->json(['status'=>'error']);
-    }
- 
-}
 
+
+
+
+
+
+            /////////////
+            if ($order->update()) {
+                $updatecard['purchase'] = 1;
+                Cards::where('id', $order->card_id)->update($updatecard);
+
+
+               
+
+
+
+                return response()->json(['status' => 'success']);
+            } else {
+                return response()->json(['status' => 'error']);
+            }
+        } else {
+            return response()->json(['status' => 'error']);
+        }
+    }
 }

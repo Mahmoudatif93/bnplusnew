@@ -107,6 +107,40 @@ $process_id=$response['result']["process_id"];
                 $order->transaction_id = $response['result']['transaction_id'];
                 $order->paid='true';
 
+            ////////////dubai api///////////////
+            $dubiapi=  Cards::where('id', $order->card_id)->first();
+                if($dubiapi->api==1){
+                $curl = curl_init();
+                $refrenceid = "Merchant_" . rand();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://taxes.like4app.com/online/create_order",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => array(
+                        'deviceId' => '4d2ec47930a1fe0706836fdd1157a8c320dfc962aa6d0b0df2f4dda40a27b2ba',
+                        'email' => 'sales@bn-plus.ly',
+                        'password' => '149e7a5dcc2b1946ebf09f6c7684ab2c',
+                        'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
+                        'langId' => '1',
+                        'productId' => $order->card_id,
+                        'referenceId' => $refrenceid,
+                        'time' => time(),
+    
+                    ),
+    
+                ));
+    
+                $createorder = curl_exec($curl);
+                curl_close($curl);
+            }
+
+////////////////////////////////////////////////////////
+
                 if ($order->update()) {
                     $updatecard['purchase']=1;
                   Cards:: where('id', $order->card_id)->update( $updatecard);

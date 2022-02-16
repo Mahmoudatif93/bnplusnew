@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 class CompanyController extends Controller
 {
+
+   /* function generateHash($time){
+        $email = strtolower('merchant-email@domain.com');
+        $phone = '966577753100';
+        $key = '******';
+        return hash('sha256',$time.$email.$phone.$key);
+      }*/
+
+
     public function index(Request $request)
     {
 
@@ -38,7 +47,9 @@ $refrenceid="Merchant_".rand();
                 'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
                 'langId' => '1',
                 'productId' => '2948',
-                'referenceId' => $refrenceid
+                'referenceId' => $refrenceid,
+                'time'=>time(),
+
             ),
 
         ));
