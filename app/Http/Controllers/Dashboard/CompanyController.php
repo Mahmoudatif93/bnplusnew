@@ -26,14 +26,8 @@ class CompanyController extends Controller
 
 
     public function index(Request $request)
-    {
-
-      
-          
-                 
+    {           
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
-
-
         $Companies = Company::when($request->search, function ($q) use ($request) {
 
             return $q->where('name', '%' . $request->search . '%');

@@ -14,7 +14,7 @@ class ClientController extends Controller
 
             return $q->where('name', 'like', '%' . $request->search . '%')
                 ->orWhere('phone', 'like', '%' . $request->search . '%')
-                ->orWhere('address', 'like', '%' . $request->search . '%');
+                ->orWhere('email', 'like', '%' . $request->search . '%');
 
         })->latest()->paginate(5);
 //dd($clients);
