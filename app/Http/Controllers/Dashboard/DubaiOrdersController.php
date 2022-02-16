@@ -56,7 +56,7 @@ class DubaiOrdersController extends Controller
       }
 
        
-        return view('dashboard.dubiorders.index', compact('dubiorders'));
+      //  return view('dashboard.dubiorders.index', compact('dubiorders'));
 
     }
 
