@@ -41,6 +41,7 @@ return [
     'address' => 'العنوان',
     'previous_orders' => 'الطلبات السابقه',
     'orders' => 'الطلبات',
+    'dubiorders'=>'طلبات شركه دبي',
     'add_order' => 'اضف طلب',
     'edit_order' => 'تعديل طلب',
     'avaliable'=>'متاح',

@@ -49,7 +49,7 @@ class DubaiOrdersController extends Controller
 
         $dubiorders = curl_exec($curl);
         curl_close($curl);
-        dd($dubiorders);
+      dd($dubiorders['data']);
         return view('dashboard.dubiorders.index', compact('dubiorders'));
 
     }

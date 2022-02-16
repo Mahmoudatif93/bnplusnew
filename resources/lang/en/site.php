@@ -46,7 +46,7 @@ return [
     'orders' => 'Orders',
     'add_order' => ' Add Order',
     'edit_order' => 'Edit Order',
-
+'dubiorders'=>'Dubai Orders ',
     'users' => 'Users',
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
