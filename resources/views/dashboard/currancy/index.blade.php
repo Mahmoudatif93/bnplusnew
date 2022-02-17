@@ -68,7 +68,7 @@
                             @foreach ($Companies as $index=>$category)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $category->amount }} Dollar</td>
+                                    <td>{{ $category->amount }} دينار ليبي </td>
                                  
 
 
