@@ -44,7 +44,7 @@ class NationalCampany extends Command
 
         ///////////////////currancy 
         
-      $curr=  Currency::first();
+   
                  /////////////dubi national api
                  $curl = curl_init();
 
@@ -158,6 +158,7 @@ class NationalCampany extends Command
                              $cardsave = new Cards;
                             // $allcardsid = array();
                              if (count($allcards) > 0) {
+                                $curr=  Currency::first();
                                  if (isset($allcards['data'])) {
                                      foreach ($allcards['data'] as $card) {
                                          if (count(Cards::where('id', $card['productId'])->get()) == 0) {
@@ -167,7 +168,7 @@ class NationalCampany extends Command
                                                  $cardsave->id =  $card['productId'];
                                                  $cardsave->company_id = $card['categoryId'];
                                                  $cardsave->card_name = $card['productName'];
-                                                 $cardsave->card_price = $card['productPrice'] /$curr->amount;
+                                                 $cardsave->card_price = $card['productPrice'];
                                                  $cardsave->card_code = $card['productName'];
                                                  $cardsave->card_image = $card['productImage'];
                                                  $cardsave->nationalcompany = 'national';
