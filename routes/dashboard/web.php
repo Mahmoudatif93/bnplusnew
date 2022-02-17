@@ -30,7 +30,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
              //dubiorders routes
              Route::resource('dubiorders', 'DubaiOrdersController');
            //  Route::get('/dubiorders/{order}/products', 'DubaiOrdersController@products')->name('dubiorders.products');
-
+            //currancy routes
+            Route::resource('currancy', 'currancyController');
+          
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
 
