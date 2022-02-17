@@ -36,7 +36,7 @@
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('site.search')</button>
-                                @if (auth()->user()->hasPermission('create_Companies'))
+                                @if (auth()->user()->hasPermission('create_Companiess'))
                                     <a href="{{ route('dashboard.currancy.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</a>
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('site.add')</a>
