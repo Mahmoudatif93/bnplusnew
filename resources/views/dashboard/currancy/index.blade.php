@@ -39,7 +39,7 @@
                                 @if (auth()->user()->hasPermission('create_Companiess'))
                                     <a href="{{ route('dashboard.currancy.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</a>
                                 @else
-                                    <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('site.add')</a>
+                                   
                                 @endif
                             </div>
 
