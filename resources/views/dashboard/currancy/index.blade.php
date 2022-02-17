@@ -58,7 +58,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('site.amounts')</th>
+                                <th>@lang('site.amountsinDinar')</th>
                                
                                 <th>@lang('site.action')</th>
                             </tr>

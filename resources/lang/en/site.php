@@ -59,7 +59,7 @@ return [
     'email' => 'Email',
     'image' => 'Image',
     'action' => 'Action',
-
+'amountsinDinar'=>'قيمه الواحد دولار',
     'permissions' => 'Permissions',
 'avaliable'=>'Avaliable',
     'Companies' => 'Companies',
