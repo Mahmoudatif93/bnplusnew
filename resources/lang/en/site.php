@@ -37,7 +37,7 @@ return [
 
     'no_data_found' => 'No Data Found',
     'no_records' => 'No Records',
-
+'currancy'=>'currancy',
     'clients' => 'Clients',
     'client_name' => 'Client Name',
     'phone' => 'Phone',
