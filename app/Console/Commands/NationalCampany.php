@@ -7,6 +7,7 @@ use App\Carbon\Carbon;
 use App\Cards;
 use App\Company;
 use Illuminate\Support\Facades\Http;
+use App\Currency;
 class NationalCampany extends Command
 {
     /**
@@ -40,7 +41,10 @@ class NationalCampany extends Command
      */
     public function handle()
     {
+
+        ///////////////////currancy 
         
+      $curr=  Currency::first();
                  /////////////dubi national api
                  $curl = curl_init();
 
@@ -120,16 +124,6 @@ class NationalCampany extends Command
          
          
          
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
                              /////////////////cards 
          
                              $curl3 = curl_init();
@@ -173,7 +167,7 @@ class NationalCampany extends Command
                                                  $cardsave->id =  $card['productId'];
                                                  $cardsave->company_id = $card['categoryId'];
                                                  $cardsave->card_name = $card['productName'];
-                                                 $cardsave->card_price = $card['productPrice'];
+                                                 $cardsave->card_price = $card['productPrice'] /$curr->amount;
                                                  $cardsave->card_code = $card['productName'];
                                                  $cardsave->card_image = $card['productImage'];
                                                  $cardsave->nationalcompany = 'national';
