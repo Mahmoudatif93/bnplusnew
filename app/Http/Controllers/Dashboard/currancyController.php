@@ -61,7 +61,6 @@ class currancyController extends Controller
     {
         $category = Currency::where('id', $id)->first();
 
-dd($category);
         $request_data = $request->except(['_token', '_method']);
     
 
@@ -69,8 +68,11 @@ dd($category);
         Currency::where('id', $id)->update($request_data);
         
         foreach(Cards::where('api',1)->get() as $cards ){
-            $newprice['card_price']=$cards->card_price /$request->amount;
+            $newprice['card_price']=$cards->card_price /$category->amount;
             Cards::where('api',1)->update($newprice);
+
+            $newprice2['card_price']=$cards->card_price *$request->amount;
+            Cards::where('api',1)->update($newprice2);
         }
       
         session()->flash('success', __('site.updated_successfully'));
