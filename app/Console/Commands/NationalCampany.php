@@ -168,7 +168,7 @@ class NationalCampany extends Command
                                                  $cardsave->id =  $card['productId'];
                                                  $cardsave->company_id = $card['categoryId'];
                                                  $cardsave->card_name = $card['productName'];
-                                                 $cardsave->card_price = $card['productPrice'];
+                                                 $cardsave->card_price = $card['productPrice'] * $curr->amount;
                                                  $cardsave->card_code = $card['productName'];
                                                  $cardsave->card_image = $card['productImage'];
                                                  $cardsave->nationalcompany = 'national';

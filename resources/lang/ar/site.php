@@ -31,7 +31,8 @@ return [
     'added_successfully' => 'تم اضافه البيانات بنجاح',
     'updated_successfully' => 'تم تعديل البيانات بنجاح',
     'deleted_successfully' => 'تم حذف البيانات بنجاح',
-    'amountsinDinar'=>'amount of one dollar',
+   
+    'amountsinDinar'=>'قيمه الواحد دولار',
     'no_data_found' => 'للاسف لا يوجد اي سجلات',
     'no_records' => 'للاسف لا يوجد اي سجلات',
     'currancy'=>'العمله',
