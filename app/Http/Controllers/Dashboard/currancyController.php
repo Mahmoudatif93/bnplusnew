@@ -61,7 +61,7 @@ class currancyController extends Controller
     {
         $category = Currency::where('id', $id)->first();
 
-
+dd($category);
         $request_data = $request->except(['_token', '_method']);
     
 
