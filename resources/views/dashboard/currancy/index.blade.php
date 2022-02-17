@@ -26,7 +26,7 @@
 
                     <h3 class="box-title" style="margin-bottom: 15px">@lang('site.currancy') <small>{{ $Companies->total() }}</small></h3>
 
-                    <form action="{{ route('dashboard.currancy.index') }}" method="get">
+               {{--     <form action="{{ route('dashboard.currancy.index') }}" method="get">
 
                         <div class="row">
 
@@ -44,7 +44,8 @@
                             </div>
 
                         </div>
-                    </form><!-- end of form -->
+                    </form>--}}
+                    <!-- end of form -->
 
                 </div><!-- end of box header -->
 
