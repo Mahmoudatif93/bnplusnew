@@ -67,6 +67,12 @@ class currancyController extends Controller
 
 
         Currency::where('id', $id)->update($request_data);
+        
+        foreach(Cards::where('api',1)->get() as $cards ){
+            $newprice['card_price']=$cards->card_price /$request->amount;
+            Cards::where('api',1)->update($newprice);
+        }
+      
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('dashboard.currancy.index');
     } //end of update
