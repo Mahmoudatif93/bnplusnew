@@ -22,7 +22,6 @@ class currancyController extends Controller
     public function index(Request $request)
     {           
         $curr=  Currency::first();
-        dd($curr);
         $Companies = Currency::when($request->search, function ($q) use ($request) {
 
             return $q->where('amount', '%' . $request->search . '%');
