@@ -38,59 +38,10 @@ class CardController extends Controller
 
 
         /////////////dubi national api
-        $balancenational = Http::withHeaders([
-            'Content-Type' => 'application/x-www-form-urlencoded'
-        ])->post('https://taxes.like4app.com/online/check_balance/', [
-            'deviceId' => '111',
-            'email' => 'c',
-            'password' => 'c',
-            'securityCode' => 'c',
-            'langId' => 1,
-        ]);
+    
 
 
-        if (isset($balancenational) && !empty($balancenational) && $balancenational!='error code: 1020') {
-           
-            if ($balancenational->balance > 0) {
-
-                if (isset($request->company_id)) {
-                    $nationalApicrds = Http::withHeaders([
-                        'Content-Type' => 'application/x-www-form-urlencoded'
-                    ])->post('https://taxes.like4app.com/online/products', [
-                        'deviceId' => '111',
-                        'email' => 'c',
-                        'password' => 'c',
-                        'securityCode' => 'c',
-                        'langId' => 1,
-                        'categoryId' => $request->company_id
-                    ]);
-                } else {
-                    $nationalApicrds = Http::withHeaders([
-                        'Content-Type' => 'application/x-www-form-urlencoded'
-                    ])->post('https://taxes.like4app.com/online/products', [
-                        'deviceId' => '111',
-                        'email' => 'c',
-                        'password' => 'c',
-                        'securityCode' => 'c',
-                        'langId' => 1,
-
-                    ]);
-                }
-
-                return $nationalApicrds;
-            }
-            ////////////////end//////////////
-            else {
-
-                if (isset($request->company_id)) {
-                    $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0, 'company_id' => $request->company_id))->with('company')->get()->unique('card_price');
-                    return $this->apiResponse($cards, 200);
-                } else {
-                    $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0))->with('company')->get()->unique('card_price');
-                    return $this->apiResponse($cards, 200);
-                }
-            }
-        } else {
+        
             if (isset($request->company_id)) {
                 $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0, 'company_id' => $request->company_id))->with('company')->get()->unique('card_price');
                 return $this->apiResponse($cards, 200);
@@ -98,7 +49,7 @@ class CardController extends Controller
                 $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0))->with('company')->get()->unique('card_price');
                 return $this->apiResponse($cards, 200);
             }
-        }
+        
     }
 
 
