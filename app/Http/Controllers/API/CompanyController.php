@@ -35,8 +35,8 @@ class CompanyController extends Controller
                     'securityCode' => 'c',
                     'langId' => 1,
                 ]);
-                if (isset($balancenational) && !empty($balancenational) && $balancenational!='error code: 1020') {
-                   // return $balancenational;
+                if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
+                    // return $balancenational;
                     if ($balancenational->balance > 0) {
                         $nationalApicompany = Http::withHeaders([
                             'Content-Type' => 'application/x-www-form-urlencoded'
@@ -141,7 +141,8 @@ class CompanyController extends Controller
         }
     }
 
-    public function check_balance(){
+    public function check_balance()
+    {
 
         $balancenational = Http::withHeaders([
             'Content-Type' => 'application/x-www-form-urlencoded'
@@ -153,8 +154,8 @@ class CompanyController extends Controller
             'langId' => 1,
         ]);
 
-        return $balancenational ;
+        return $balancenational;
         return $this->apiResponse($balancenational, 200);
-      //return $balancenational ;
+        //return $balancenational ;
     }
 }
