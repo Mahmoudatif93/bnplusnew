@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Company;
 class OrderController extends Controller
 {
     public function index(Request $request)
@@ -16,7 +16,7 @@ class OrderController extends Controller
             ->orWhere('card_price', 'like', '%' . $request->search . '%');
 
         })->orderBy('id','desc')->paginate(5);
-
+//dd($orders);
         return view('dashboard.orders.index', compact('orders'));
 
     }//end of index
@@ -24,8 +24,13 @@ class OrderController extends Controller
     public function products(Order $order)
     {
         $products = $order->cards;
-        dd($products);
-    
+     
+        /*foreach ($products as $product){
+            $company=  \App\Company::where(['id' => $product->company_id])->first();
+             }*/
+        
+  
+
         return view('dashboard.orders._products', compact('order', 'products'));
 
     }//end of products

@@ -56,6 +56,7 @@
                                         <th>@lang('site.phone')</th>
                                         <th>@lang('site.price')</th>
                                         <th>@lang('site.card_code')</th>
+                                        <th>@lang('site.card_code')</th>
                                        <th>@lang('site.status')</th>
                                         <th>@lang('site.created_at')</th>
                                         <th>@lang('site.action')</th>
@@ -66,6 +67,10 @@
                                             <td> @if(!empty($order->client)) {{ $order->client->name }} @endif</td>
                                             <td> @if(!empty($order->client)) {{ $order->client->phone }} @endif</td>
                                             <td>{{ number_format($order->card_price, 2) }}</td>
+                                            <td>@if(!empty($order->cards)) {{ $order->cards }}
+                                                
+                                            @endif</td>
+
                                             <td>@if(!empty($order->cards)) {{ $order->cards->card_code }}  @endif</td>
                                             <td>
                                                 @if($order->paid=="false")
