@@ -73,7 +73,7 @@ class currancyController extends Controller
           //  Cards::where('api',1)->update($newprice);
 
             $newprice2['card_price']=$cards->card_price *$request->amount;
-            echo $newprice2['card_price'];
+            echo $newprice2['card_price'];echo "<br>";
            // Cards::where('api',1)->update($newprice2);
         }
         dd();
