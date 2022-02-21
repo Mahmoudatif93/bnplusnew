@@ -76,7 +76,7 @@ class currancyController extends Controller
             //echo $newprice2['card_price'];echo "<br>";
             Cards::where('api',1)->update($newprice2);
         }
-        dd();
+     
         $request_data = $request->except(['_token', '_method']);
         Currency::where('id', $id)->update($request_data);
       
