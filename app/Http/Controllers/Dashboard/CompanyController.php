@@ -151,7 +151,8 @@ class CompanyController extends Controller
                                     if (count(Cards::where('id', $card['productId'])->get()) > 0) {
                                         //array_push($allcardsid, $card['productId']);
                                         $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
-                                        Cards::where('id', $card['productId'])->update($oldprice);
+                                    //    Cards::where('id', $card['productId'])->update($oldprice);
+                                    echo $oldprice;
                                     } else {
                                         if (count(Cards::where('id', $card['productId'])->get()) == 0) {
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
@@ -185,7 +186,7 @@ class CompanyController extends Controller
 
 
 
-
+dd();
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
