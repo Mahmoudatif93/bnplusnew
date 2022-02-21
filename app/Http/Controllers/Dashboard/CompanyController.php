@@ -148,6 +148,8 @@ class CompanyController extends Controller
                                 foreach ($allcards['data'] as $card) {
                                 //    Cards::where('id', $card['productId'])->delete();
 
+                                     array_push($allcardsid, $card['productId']);
+                                        Cards::whereIn('id',$allcardsid)->delete();
                                     if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
                                         $cardsave->id =  $card['productId'];
@@ -163,18 +165,14 @@ class CompanyController extends Controller
                                         $cardsave->card_image = $card['productImage'];
                                         $cardsave->nationalcompany = 'national';
                                         $cardsave->api = 1;
-
-                                       // $cardsave->save();
-
-
-
-                                       array_push($allcardsid, $card['productId']);
+                                        
+                                        $cardsave->save();
+                                     
                                     } else {
                                         // return count(Company::where('id', $cards['categoryId'])->get());
                                     }
                                 }
-                                dd($allcardsid);
-                               dd( Cards::whereIn('id',$allcardsid)->get());
+                               
                             }
                         }
                         //  return $allcardsid ;
