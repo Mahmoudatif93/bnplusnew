@@ -93,7 +93,7 @@ class CompanyController extends Controller
 
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
-                            return($companiesnational);
+                            dd($companiesnational);
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
@@ -153,7 +153,7 @@ class CompanyController extends Controller
                                         //array_push($allcardsid, $card['productId']);
                                         $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                        Cards::where('id', $card['productId'])->update($oldprice);
-                                    print_r( $oldprice);
+                                  //  print_r( $oldprice);
                                     } else {
                                         if (count(Cards::where('id', $card['productId'])->get()) == 0) {
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
