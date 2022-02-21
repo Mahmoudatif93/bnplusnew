@@ -147,9 +147,11 @@ class CompanyController extends Controller
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                 //    Cards::where('id', $card['productId'])->delete();
-
+                                if (count(Company::where('id', $card['productId'])->get()) == 0) {
                                      array_push($allcardsid, $card['productId']);
-                                        Cards::whereIn('id',$allcardsid)->delete();
+                                     $oldprice['card_price']=$card['sellPrice'] * $curr->amount;
+                                        Cards::whereIn('id',$allcardsid)->update($oldprice);
+                                }else{
                                     if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
                                         $cardsave->id =  $card['productId'];
@@ -171,6 +173,7 @@ class CompanyController extends Controller
                                     } else {
                                         // return count(Company::where('id', $cards['categoryId'])->get());
                                     }
+                                }
                                 }
                                
                             }
