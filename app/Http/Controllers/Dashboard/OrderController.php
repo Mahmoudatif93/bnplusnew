@@ -15,7 +15,7 @@ class OrderController extends Controller
             return $q->where('name', 'like', '%' . $request->search . '%')
             ->orWhere('card_price', 'like', '%' . $request->search . '%');
 
-        })->paginate(5);
+        })->orderBy('id','desc')->paginate(5);
 
         return view('dashboard.orders.index', compact('orders'));
 
