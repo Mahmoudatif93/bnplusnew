@@ -102,11 +102,12 @@ class NationalCampany extends Command
                          $companiesnational = curl_exec($curl2);
          
                          $national = json_decode($companiesnational, true);
+                         return $national['data']['childs'];
                          $compsave = new Company;
                          $allcompanyid = array();
-                         foreach ($national['data'] as $company) {
-                             if (count(Company::where('id', $company['id'])->get()) == 0) {
-         
+                         foreach ($national['data'] as $companys) {
+                             if (count(Company::where('id', $companys['id'])->get()) == 0) {
+                                 foreach( $companys->childs as $company ){
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
                                  $compsave->name = $company['categoryName'];
@@ -187,7 +188,7 @@ class NationalCampany extends Command
                                  }
                              }
                              //  return $allcardsid ;
-         
+                         }
                          }
                      }
                  }
