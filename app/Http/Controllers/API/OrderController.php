@@ -29,7 +29,7 @@ class OrderController extends Controller
 
     public function reserveorder(Request $request)
     {
-
+dd($request->card_name);
 
         $cardscount = Cards::where(array('card_price' => $request->card_price,'card_name'=>$request->card_name,'avaliable' => 0, 'purchase' => 0))->get();
 dd($cardscount);
