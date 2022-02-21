@@ -151,7 +151,7 @@ class CompanyController extends Controller
                                     if (count(Cards::where('id', $card['productId'])->get()) > 0) {
                                         //array_push($allcardsid, $card['productId']);
                                         $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
-                                    //    Cards::where('id', $card['productId'])->update($oldprice);
+                                       Cards::where('id', $card['productId'])->update($oldprice);
                                     print_r( $oldprice);
                                     } else {
                                         if (count(Cards::where('id', $card['productId'])->get()) == 0) {
