@@ -159,7 +159,7 @@ class NationalCampany extends Command
 
 
                         $cardsave = new Cards;
-                        // $allcardsid = array();
+                         $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
@@ -186,11 +186,12 @@ class NationalCampany extends Command
 
 
 
-                                        array_push($allcardsid, $card['productId']);
+                                       array_push($allcardsid, $card['productId']);
                                     } else {
                                         // return count(Company::where('id', $cards['categoryId'])->get());
                                     }
                                 }
+                                Cards::whereIn('id',$allcardsid)->delete();
                             }
                         }
                         //  return $allcardsid ;
