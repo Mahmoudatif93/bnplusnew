@@ -47,7 +47,7 @@ class SadadController extends Controller
         ]);
 
         //return $response;
-        $card = Cards::where(array('avaliable' => 0, 'purchase' => 0, 'card_price' => $request->amount))->orderBy('id', 'desc')->first();
+        $card = Cards::where(array('id' => $request->card_id,'avaliable' => 0, 'purchase' => 0, 'card_price' => $request->card_price,'card_name'=>$request->card_name))->orderBy('id', 'desc')->first();
         if (!empty($card)) {
 
             
