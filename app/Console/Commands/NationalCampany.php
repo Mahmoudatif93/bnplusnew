@@ -108,7 +108,7 @@ class NationalCampany extends Command
                 $allcompanyid = array();
                 foreach ($national['data'] as $companys) {
 
-                    foreach ($companys->childs as $company) {
+                    foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
