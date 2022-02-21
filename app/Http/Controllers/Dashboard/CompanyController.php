@@ -28,7 +28,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {      
         
-   /*    
+     
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -146,6 +146,8 @@ class CompanyController extends Controller
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
+                                    Cards::where('id', $card['productId'])->delete();
+
                                     if (count(Cards::where('id', $card['productId'])->get()) == 0) {
 
                                         if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
@@ -159,7 +161,7 @@ class CompanyController extends Controller
                                             $cardsave->nationalcompany = 'national';
                                             $cardsave->api = 1;
 
-                                            $cardsave->save();
+                                           // $cardsave->save();
 
 
 
@@ -178,7 +180,7 @@ class CompanyController extends Controller
         }
 
 
-*/
+
 
 
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
