@@ -166,31 +166,30 @@ class NationalCampany extends Command
                                 foreach ($allcards['data'] as $card) {
                                     Cards::where('id', $card['productId'])->delete();
 
-                                        if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                    if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
-                                            $cardsave->id =  $card['productId'];
-                                            $cardsave->company_id = $card['categoryId'];
-                                            $cardsave->card_name = $card['productName'];
-                                            if($card['productCurrency']=="SAR"){
-                                                $cardsave->card_price = $card['sellPrice'] * $curr->amount;
-                                            }else{
-                                                $cardsave->card_price = $card['sellPrice'] ;
-                                            }
-                                          
-                                            $cardsave->card_code = $card['productName'];
-                                            $cardsave->card_image = $card['productImage'];
-                                            $cardsave->nationalcompany = 'national';
-                                            $cardsave->api = 1;
-
-                                            $cardsave->save();
-
-
-
-                                            array_push($allcardsid, $card['productId']);
+                                        $cardsave->id =  $card['productId'];
+                                        $cardsave->company_id = $card['categoryId'];
+                                        $cardsave->card_name = $card['productName'];
+                                        if ($card['productCurrency'] == "SAR") {
+                                            $cardsave->card_price = $card['sellPrice'] * $curr->amount;
                                         } else {
-                                            // return count(Company::where('id', $cards['categoryId'])->get());
+                                            $cardsave->card_price = $card['sellPrice'];
                                         }
-                                    
+
+                                        $cardsave->card_code = $card['productName'];
+                                        $cardsave->card_image = $card['productImage'];
+                                        $cardsave->nationalcompany = 'national';
+                                        $cardsave->api = 1;
+
+                                       // $cardsave->save();
+
+
+
+                                        array_push($allcardsid, $card['productId']);
+                                    } else {
+                                        // return count(Company::where('id', $cards['categoryId'])->get());
+                                    }
                                 }
                             }
                         }
