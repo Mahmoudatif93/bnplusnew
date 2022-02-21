@@ -110,7 +110,7 @@ class NationalCampany extends Command
 
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
-                           // dd($companiesnational);
+                            // dd($companiesnational);
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
@@ -167,16 +167,15 @@ class NationalCampany extends Command
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
                                     if (count(Cards::where('id', $card['productId'])->get()) > 0) {
-                                        foreach(Cards::where('id', $card['productId'])->get() as $cardprice){
-                                            if($cardprice->card_price != $card['sellPrice'] * $curr->amount){
+                                        foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
+                                            if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
-                                            
                                         }
                                         //array_push($allcardsid, $card['productId']);
-                                       
-                                  //  print_r( $oldprice);
+
+                                        //  print_r( $oldprice);
                                     } else {
                                         if (count(Cards::where('id', $card['productId'])->get()) == 0) {
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
