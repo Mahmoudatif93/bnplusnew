@@ -29,7 +29,6 @@ class CompanyController extends Controller
     public function index(Request $request)
     {      
         
-     
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -86,7 +85,7 @@ class CompanyController extends Controller
                 $companiesnational = curl_exec($curl2);
 
                 $national = json_decode($companiesnational, true);
-               //   return $national['data']['childs'];
+                  return $national['data'];
                 $compsave = new Company;
                 $allcompanyid = array();
                 foreach ($national['data'] as $companys) {
@@ -105,7 +104,7 @@ class CompanyController extends Controller
                             array_push($allcompanyid, $company['id']);
                         }
 
-                        //return($companiesnational);
+                        // return($companiesnational);
                         //  return count($allcompanyid);
 
 
@@ -140,38 +139,41 @@ class CompanyController extends Controller
                         $allcards = json_decode($cardsnational, true);
 
 
-//return $allcards;
+
                         $cardsave = new Cards;
-                        // $allcardsid = array();
+                         $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     Cards::where('id', $card['productId'])->delete();
 
-                                    if (count(Cards::where('id', $card['productId'])->get()) == 0) {
+                                    if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
-                                        if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
-
-                                            $cardsave->id =  $card['productId'];
-                                            $cardsave->company_id = $card['categoryId'];
-                                            $cardsave->card_name = $card['productName'];
-                                            $cardsave->card_price = $card['productPrice'] * $curr->amount;
-                                            $cardsave->card_code = $card['productName'];
-                                            $cardsave->card_image = $card['productImage'];
-                                            $cardsave->nationalcompany = 'national';
-                                            $cardsave->api = 1;
-
-                                           // $cardsave->save();
-
-
-
-                                          //  array_push($allcardsid, $card['productId']);
+                                        $cardsave->id =  $card['productId'];
+                                        $cardsave->company_id = $card['categoryId'];
+                                        $cardsave->card_name = $card['productName'];
+                                        if ($card['productCurrency'] == "SAR") {
+                                            $cardsave->card_price = $card['sellPrice'] * $curr->amount;
                                         } else {
-                                            // return count(Company::where('id', $cards['categoryId'])->get());
+                                            $cardsave->card_price = $card['sellPrice'];
                                         }
+
+                                        $cardsave->card_code = $card['productName'];
+                                        $cardsave->card_image = $card['productImage'];
+                                        $cardsave->nationalcompany = 'national';
+                                        $cardsave->api = 1;
+
+                                       // $cardsave->save();
+
+
+
+                                       array_push($allcardsid, $card['productId']);
+                                    } else {
+                                        // return count(Company::where('id', $cards['categoryId'])->get());
                                     }
                                 }
+                                Cards::whereIn('id',$allcardsid)->delete();
                             }
                         }
                         //  return $allcardsid ;
@@ -179,6 +181,7 @@ class CompanyController extends Controller
                 }
             }
         }
+
 
 
 
