@@ -164,7 +164,7 @@ class NationalCampany extends Command
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
-                                    if (count(Cards::where('id', $card['productId'])->get()) == 0) {
+                                    Cards::where('id', $card['productId'])->delete();
 
                                         if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
@@ -190,7 +190,7 @@ class NationalCampany extends Command
                                         } else {
                                             // return count(Company::where('id', $cards['categoryId'])->get());
                                         }
-                                    }
+                                    
                                 }
                             }
                         }
