@@ -28,8 +28,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {      
         
-     
-
+       
 
 
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
