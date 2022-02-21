@@ -15,10 +15,11 @@ use App\Currency;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+
 class CompanyController extends Controller
 {
 
-   /* function generateHash($time){
+    /* function generateHash($time){
         $email = strtolower('merchant-email@domain.com');
         $phone = '966577753100';
         $key = '******';
@@ -27,8 +28,8 @@ class CompanyController extends Controller
 
 
     public function index(Request $request)
-    {      
-        
+    {
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -141,41 +142,39 @@ class CompanyController extends Controller
 
 
                         $cardsave = new Cards;
-                         $allcardsid = array();
+                        $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
-                                //    Cards::where('id', $card['productId'])->delete();
-                                if (count(Cards::where('id', $card['productId'])->get()) > 0) {
-                                     //array_push($allcardsid, $card['productId']);
-                                     $oldprice['card_price']=$card['sellPrice'] * $curr->amount;
-                                        Cards::where('id',$card['productId'])->update($oldprice);
-                                }else{
-                                    if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
-
-                                        $cardsave->id =  $card['productId'];
-                                        $cardsave->company_id = $card['categoryId'];
-                                        $cardsave->card_name = $card['productName'];
-                                        if ($card['productCurrency'] == "SAR") {
-                                            $cardsave->card_price = $card['sellPrice'] * $curr->amount;
-                                        } else {
-                                            $cardsave->card_price = $card['sellPrice'];
-                                        }
-
-                                        $cardsave->card_code = $card['productName'];
-                                        $cardsave->card_image = $card['productImage'];
-                                        $cardsave->nationalcompany = 'national';
-                                        $cardsave->api = 1;
-                                        
-                                        $cardsave->save();
-                                     
+                                    //    Cards::where('id', $card['productId'])->delete();
+                                    if (count(Cards::where('id', $card['productId'])->get()) > 0) {
+                                        //array_push($allcardsid, $card['productId']);
+                                        $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
+                                        Cards::where('id', $card['productId'])->update($oldprice);
                                     } else {
-                                        // return count(Company::where('id', $cards['categoryId'])->get());
+                                        if (count(Cards::where('id', $card['productId'])->get()) == 0) {
+                                            if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+
+                                                $cardsave->id =  $card['productId'];
+                                                $cardsave->company_id = $card['categoryId'];
+                                                $cardsave->card_name = $card['productName'];
+                                                if ($card['productCurrency'] == "SAR") {
+                                                    $cardsave->card_price = $card['sellPrice'] * $curr->amount;
+                                                } else {
+                                                    $cardsave->card_price = $card['sellPrice'];
+                                                }
+
+                                                $cardsave->card_code = $card['productName'];
+                                                $cardsave->card_image = $card['productImage'];
+                                                $cardsave->nationalcompany = 'national';
+                                                $cardsave->api = 1;
+
+                                                $cardsave->save();
+                                            }
+                                        }
                                     }
                                 }
-                                }
-                               
                             }
                         }
                         //  return $allcardsid ;
@@ -189,7 +188,7 @@ class CompanyController extends Controller
 
 
 
- //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
+        //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
         $Companies = Company::when($request->search, function ($q) use ($request) {
 
             return $q->where('name', '%' . $request->search . '%')
@@ -289,7 +288,7 @@ class CompanyController extends Controller
 
     public function sendResetEmail($user, $content, $subject)
     {
-      
+
         $send =   Mail::send(
             'dashboard.Contacts.content',
             ['user' => $user, 'content' => $content, 'subject' => $subject],
