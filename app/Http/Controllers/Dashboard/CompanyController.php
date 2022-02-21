@@ -28,7 +28,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {      
         
-       
+   /*    
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -139,7 +139,7 @@ class CompanyController extends Controller
                         $allcards = json_decode($cardsnational, true);
 
 
-return $allcards;
+//return $allcards;
                         $cardsave = new Cards;
                         // $allcardsid = array();
                         if (count($allcards) > 0) {
@@ -178,7 +178,7 @@ return $allcards;
         }
 
 
-
+*/
 
 
  //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
