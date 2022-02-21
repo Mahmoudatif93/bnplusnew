@@ -32,7 +32,7 @@ class OrderController extends Controller
 
 
         $cardscount = Cards::where(array('card_price' => $request->card_price))->where(array('avaliable' => 0, 'purchase' => 0))->get();
-dd($cardscount);
+dd($request->card_price);
         if ($cardscount > 0) {
             $card = Cards::where(array('avaliable' => 0, 'purchase' => 0, 'card_price' => $request->card_price))->orderBy('id', 'desc')->first();
 
