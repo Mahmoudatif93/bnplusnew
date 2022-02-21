@@ -85,7 +85,7 @@ class CompanyController extends Controller
                 $companiesnational = curl_exec($curl2);
 
                 $national = json_decode($companiesnational, true);
-                  return $national['data'];
+                //  return $national['data'];
                 $compsave = new Company;
                 $allcompanyid = array();
                 foreach ($national['data'] as $companys) {
@@ -146,7 +146,7 @@ class CompanyController extends Controller
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
-                                    Cards::where('id', $card['productId'])->delete();
+                                //    Cards::where('id', $card['productId'])->delete();
 
                                     if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
