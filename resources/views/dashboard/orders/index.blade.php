@@ -67,7 +67,7 @@
                                             <td> @if(!empty($order->client)) {{ $order->client->name }} @endif</td>
                                             <td> @if(!empty($order->client)) {{ $order->client->phone }} @endif</td>
                                             <td>{{ number_format($order->card_price, 2) }}</td>
-                                            <td>@if(!empty($order->cards)) {{ $order->cards }}
+                                            <td>@if(!empty($order->cards)) {{ $order->cards->company_id }}
                                                 
                                             @endif</td>
 
