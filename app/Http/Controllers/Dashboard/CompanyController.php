@@ -150,9 +150,15 @@ class CompanyController extends Controller
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
                                     if (count(Cards::where('id', $card['productId'])->get()) > 0) {
+                                        foreach(Cards::where('id', $card['productId'])->get() as $cardprice){
+                                            if($cardprice->card_price != $card['sellPrice'] * $curr->amount){
+                                                $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
+                                                Cards::where('id', $card['productId'])->update($oldprice);
+                                            }
+                                            
+                                        }
                                         //array_push($allcardsid, $card['productId']);
-                                        $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
-                                       Cards::where('id', $card['productId'])->update($oldprice);
+                                       
                                   //  print_r( $oldprice);
                                     } else {
                                         if (count(Cards::where('id', $card['productId'])->get()) == 0) {
