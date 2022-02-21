@@ -150,6 +150,7 @@ $process_id=$response['result']["process_id"];
 
                 if ($order->update()) {
                     $updatecard['purchase']=1;
+                    $updatecard['avaliable'] = 1;
                   Cards:: where('id', $order->card_id)->update( $updatecard);
 
                   $cardemail=  Cards::where('id', $order->card_id)->first();

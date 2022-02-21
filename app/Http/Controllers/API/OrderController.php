@@ -31,8 +31,8 @@ class OrderController extends Controller
     {
 
 
-        $cardscount = Cards::where(array('card_price' => $request->card_price))->where(array('avaliable' => 0, 'purchase' => 0))->get();
-dd($request->card_price);
+        $cardscount = Cards::where(array('card_price' => $request->card_price, 'avaliable' => 0, 'purchase' => 0))->get();
+
         if ($cardscount > 0) {
             $card = Cards::where(array('avaliable' => 0, 'purchase' => 0, 'card_price' => $request->card_price))->orderBy('id', 'desc')->first();
 
@@ -126,6 +126,7 @@ dd($request->card_price);
             /////////////
             if ($order->update()) {
                 $updatecard['purchase'] = 1;
+                $updatecard['avaliable'] = 1;
                 Cards::where('id', $order->card_id)->update($updatecard);
 
                 $cardemail=  Cards::where('id', $order->card_id)->first();
