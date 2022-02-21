@@ -148,9 +148,9 @@ class CompanyController extends Controller
                                 foreach ($allcards['data'] as $card) {
                                 //    Cards::where('id', $card['productId'])->delete();
                                 if (count(Company::where('id', $card['productId'])->get()) == 0) {
-                                     array_push($allcardsid, $card['productId']);
+                                     //array_push($allcardsid, $card['productId']);
                                      $oldprice['card_price']=$card['sellPrice'] * $curr->amount;
-                                        Cards::whereIn('id',$allcardsid)->update($oldprice);
+                                        Cards::where('id',$card['productId'])->update($oldprice);
                                 }else{
                                     if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
