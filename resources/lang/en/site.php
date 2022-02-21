@@ -64,6 +64,7 @@ return [
 'avaliable'=>'Avaliable',
     'Companies' => 'Companies',
     'companyname'=>'Company Name',
+    'paymenttype'=>'Payment company',
     'amounts' => 'amounts',
     'offer' => 'offer',
     'card_code' => 'card code',

@@ -21,6 +21,7 @@ return [
     'notnationalcompany'=>'من لوحة التحكم',
     'nationalcompany'=>'From International API ',
     'companyname'=>'أسم الشركه',
+    'paymenttype'=>'شركه الدفع',
     'no' => 'لا',
     'manual'=>'يدوي',
     'automatic'=>'أوتوماتيك',

@@ -111,6 +111,7 @@ $process_id=$response['result']["process_id"];
             if (!empty($order)) {
                 $order->transaction_id = $response['result']['transaction_id'];
                 $order->paid='true';
+                $order->paymenttype="سداد";
 
             ////////////dubai api///////////////
             $dubiapi=  Cards::where('id', $order->card_id)->first();

@@ -80,6 +80,7 @@ class OrderController extends Controller
         if (!empty($order)) {
             $order->transaction_id = $request->transaction_id;
             $order->paid = 'true';
+            $order->paymenttype="معاملات";
 
             //  dd($request->title);
 

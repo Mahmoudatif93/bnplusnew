@@ -58,6 +58,7 @@
                                         <th>@lang('site.companyname')</th>
                                         <th>@lang('site.card_code')</th>
                                        <th>@lang('site.status')</th>
+                                       <th>@lang('site.paymenttype')</th>
                                         <th>@lang('site.created_at')</th>
                                         <th>@lang('site.action')</th>
                                     </tr>
@@ -92,6 +93,7 @@
                                                     {{--@lang('site.' . $order->status)--}}
                                                 {{--</button>--}}
                                            </td>
+                                           <td>{{ $order->paymenttype }}</td>
                                             <td>{{ $order->created_at->toFormattedDateString() }}</td>
                                             <td>
                                                 <button class="btn btn-primary btn-sm order-products"
