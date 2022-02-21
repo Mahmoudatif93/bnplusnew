@@ -173,7 +173,7 @@ class CompanyController extends Controller
                                         // return count(Company::where('id', $cards['categoryId'])->get());
                                     }
                                 }
-                                Cards::whereIn('id',$allcardsid)->delete();
+                               dd( Cards::whereIn('id',$allcardsid)->get());
                             }
                         }
                         //  return $allcardsid ;
