@@ -55,7 +55,7 @@
                                         <th>@lang('site.client_name')</th>
                                         <th>@lang('site.phone')</th>
                                         <th>@lang('site.price')</th>
-                                        <th>@lang('site.card_code')</th>
+                                        <th>@lang('site.companyname')</th>
                                         <th>@lang('site.card_code')</th>
                                        <th>@lang('site.status')</th>
                                         <th>@lang('site.created_at')</th>
@@ -67,7 +67,11 @@
                                             <td> @if(!empty($order->client)) {{ $order->client->name }} @endif</td>
                                             <td> @if(!empty($order->client)) {{ $order->client->phone }} @endif</td>
                                             <td>{{ number_format($order->card_price, 2) }}</td>
-                                            <td>@if(!empty($order->cards)) {{ $order->cards->company_id }}
+                                            <td>@if(!empty($order->cards)) 
+                                                
+                                            
+                                            <?php  $company=  \App\Company::where(['id' =>  $order->cards->company_id])->first(); ?>
+                                            {{$company->name}}
                                                 
                                             @endif</td>
 

@@ -63,6 +63,7 @@ return [
     'permissions' => 'Permissions',
 'avaliable'=>'Avaliable',
     'Companies' => 'Companies',
+    'companyname'=>'Company Name',
     'amounts' => 'amounts',
     'offer' => 'offer',
     'card_code' => 'card code',

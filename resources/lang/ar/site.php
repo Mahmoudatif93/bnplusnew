@@ -20,6 +20,7 @@ return [
     'yes' => 'نعم',
     'notnationalcompany'=>'من لوحة التحكم',
     'nationalcompany'=>'From International API ',
+    'companyname'=>'أسم الشركه',
     'no' => 'لا',
     'manual'=>'يدوي',
     'automatic'=>'أوتوماتيك',
