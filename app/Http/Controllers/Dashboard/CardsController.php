@@ -263,6 +263,7 @@ class CardsController extends Controller
     public function destroy($id)
     {
         $category=Cards::where('id',$id)->first();
+        dd($category);
         if ($category->card_image != '') {
 
             Storage::disk('public_uploads')->delete('/cards/' . $category->card_image);
