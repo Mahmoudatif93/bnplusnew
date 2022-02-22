@@ -26,11 +26,12 @@
                 </h3>
 
                  
-<button class="btn btn-success btn-xs" onclick="printDocument()" >Print Report</button>
+
+<button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
                
                    
                 </div><!-- end of box header -->
-
+                <div id="print-area">
                 <div class="box-body" id="frame">
 
                     @if (!empty($dubiorders))
@@ -82,26 +83,13 @@
                     @endif
 
                 </div><!-- end of box body -->
-
+</div>
 
             </div><!-- end of box -->
 
         </section><!-- end of content -->
 
     </div><!-- end of content wrapper -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script>
-
-function printDocument() {
-    $("#frame").printElement();
-
-   // var frame = document.getElementById('frame');
-    //frame.print();
-  
-        //window.print();
-}
-
-</script>
 
 @endsection
