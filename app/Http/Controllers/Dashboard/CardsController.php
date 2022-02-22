@@ -263,16 +263,16 @@ class CardsController extends Controller
     public function destroy(Request $request) 
     {
        
-        dd($request);
-        $category=Cards::where('id',$request->id)->first();
-        dd($category);
+        
+        $category=Cards::where('id',$request->card_id)->first();
+    //    dd($category);
         if ($category->card_image != '') {
 
             Storage::disk('public_uploads')->delete('/cards/' . $category->card_image);
 
         }//end of if
 
-        Cards::where('id',$id)->delete();
+        Cards::where('id',$request->card_id)->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return redirect()->route('dashboard.Cards.index');
 

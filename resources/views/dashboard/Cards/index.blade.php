@@ -127,6 +127,7 @@
                                             <form action="{{ route('dashboard.Cards.destroy', $category->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
+                                                <input  type="hidden" name="card_id"value="{{$category->id}}">
                                                 <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('site.delete')</button>
                                             </form><!-- end of form -->
                                         @else
