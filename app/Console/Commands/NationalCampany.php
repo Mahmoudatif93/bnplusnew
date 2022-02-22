@@ -172,6 +172,8 @@ class NationalCampany extends Command
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
+
+                                            
                                         }
                                         //array_push($allcardsid, $card['productId']);
 
