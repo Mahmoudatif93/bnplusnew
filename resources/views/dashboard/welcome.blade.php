@@ -33,6 +33,23 @@
                 </div>
 
 
+                {{--clients--}}
+                <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>{{ $cards }}</h3>
+
+                            <p>@lang('site.Cards')</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <a href="{{ route('dashboard.Cards.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                
+
                 {{--users--}}
                 <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-blue">
@@ -48,7 +65,7 @@
                     </div>
                 </div>
 
-                
+
 
 
                 {{--products--}}
@@ -83,20 +100,7 @@
 
 
 
-                {{--clients--}}
-                <div class="col-lg-4 col-xs-6">
-                    <div class="small-box bg-red">
-                        <div class="inner">
-                            <h3>{{ $cards }}</h3>
-
-                            <p>@lang('site.Cards')</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <a href="{{ route('dashboard.Cards.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
+            
 
              
 
