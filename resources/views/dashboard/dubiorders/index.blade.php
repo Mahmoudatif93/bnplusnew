@@ -96,9 +96,9 @@
 function printDocument() {
 
     var frame = document.getElementById('frame');
-    frame.contentWindow.focus();
-        frame.contentWindow.print();
-   
+    frame.print();
+  
+        //window.print();
 }
 
 </script>
