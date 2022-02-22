@@ -56,13 +56,13 @@ class CardController extends Controller
     public function cardsbycompany(Request $request)
     {
         if (isset($request->company_id)) {
-            $cards = Cards::where(array('company_id' => $request->company_id, 'avaliable' => 0, 'purchase' => 0))->with('company')->get()->unique('card_price');
+            $cards = Cards::where(array('company_id' => $request->company_id, 'avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         } else if (isset($request->kind)) {
-            $cards = Cards::where(array('nationalcompany' => $request->kind, 'avaliable' => 0, 'purchase' => 0))->with('company')->get()->unique('card_price');
+            $cards = Cards::where(array('nationalcompany' => $request->kind, 'avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         } else if (isset($request->name)) {
             $companies = Company::where('name', $request->name)->get();
             foreach ($companies as $row) {
-                $cards = Cards::where(array('company_id' => $row->id, 'avaliable' => 0, 'purchase' => 0))->with('company')->get()->unique('card_price');
+                $cards = Cards::where(array('company_id' => $row->id, 'avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
             }
         } else {
 
