@@ -68,7 +68,7 @@ class OrderController extends Controller
         if (count($order) > 0) {
             return $this->apiResponse($order, 'You have orders', 200);
         } else {
-            return $this->apiResponse($order, 'No orders Avaliable', 400);
+            return $this->apiResponse($order, 'No orders Avaliable', 200);
         }
     }
 
