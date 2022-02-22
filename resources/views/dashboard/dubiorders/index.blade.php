@@ -94,9 +94,10 @@
 <script>
 
 function printDocument() {
+    $("#frame").printElement();
 
-    var frame = document.getElementById('frame');
-    frame.print();
+   // var frame = document.getElementById('frame');
+    //frame.print();
   
         //window.print();
 }
