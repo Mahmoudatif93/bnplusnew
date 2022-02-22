@@ -70,7 +70,7 @@
 
                         </table><!-- end of table -->
 
-                        {{ $dubiorders->appends(request()->query())->links() }}
+                       
 
                     @else
 
