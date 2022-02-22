@@ -47,6 +47,23 @@
                     </div>
                 </div>
 
+
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>{{ $dubiorders }}</h3>
+
+                            <p>@lang('site.dubiorders')</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a href="{{ route('dashboard.dubiorders.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+
+
                 {{--clients--}}
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-red">
