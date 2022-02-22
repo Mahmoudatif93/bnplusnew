@@ -22,7 +22,7 @@
 
                     <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiorders') <strong style="color: red;"> {{count(  $dubiorders)}}</strong> 
                 
-                    @lang('site.order')
+                    @lang('site.orders')
                 </h3>
 
                  
