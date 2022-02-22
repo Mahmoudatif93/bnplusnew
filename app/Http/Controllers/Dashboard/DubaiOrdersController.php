@@ -55,7 +55,7 @@ class DubaiOrdersController extends Controller
       
 if($dubiordersjson['response'] ==1){
     $dubiorders=  $dubiordersjson['data'] ;
-    dd($dubiorders );
+  //  dd($dubiorders );
 }else{
     $dubiorders= '';
 }
