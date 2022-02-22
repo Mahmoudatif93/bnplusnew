@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-
+/*
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -193,7 +193,7 @@ return $allcards;
                 }
             }
         }
-
+*/
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
