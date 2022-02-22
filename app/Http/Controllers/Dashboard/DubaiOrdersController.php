@@ -53,7 +53,7 @@ class DubaiOrdersController extends Controller
 
 
        // dd($dubiordersjson );
-if($dubiordersjson->errorCode !="loginUnsuccessful"){
+if($dubiordersjson['errorCode'] !="loginUnsuccessful"){
     $dubiorders=  $dubiordersjson['data'] ;
 }else{
     $dubiorders= '';
