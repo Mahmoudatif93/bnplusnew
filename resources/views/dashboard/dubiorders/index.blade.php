@@ -95,13 +95,8 @@
 
 function printDocument() {
     var doc = document.getElementById(documentId);
-
-    //Wait until PDF is ready to print    
-    if (typeof doc.print === 'undefined') {    
-        setTimeout(function(){printDocument(documentId);}, 1000);
-    } else {
-        doc.print();
-    }
+    doc.print();
+   
 }
 
 </script>
