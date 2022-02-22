@@ -52,7 +52,7 @@
 
                             <div class="form-group">
                                 <label>@lang('site.price')</label>
-                                <input type="number" name="card_price" class="form-control" value="{{ $category->card_price }}">
+                                <input type="text" name="card_price" class="form-control" value="{{ $category->card_price }}">
                             </div>
                             <div class="form-group">
                                 <label>@lang('site.card_code')</label>

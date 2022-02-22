@@ -87,7 +87,7 @@
 
                 <div class="form-group col-6">
                     <label>@lang('site.price')</label>
-                    <input type="number" name="card_price" class="form-control" value="{{ old('card_price') }}">
+                    <input type="text" name="card_price" class="form-control" value="{{ old('card_price') }}">
                 </div>
 
 
