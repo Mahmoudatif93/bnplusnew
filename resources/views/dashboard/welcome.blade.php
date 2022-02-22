@@ -18,7 +18,7 @@
             <div class="row">
 
                 {{-- categories--}}
-                <div class="col-lg-3 col-xs-6">
+                <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-aqua">
                         <div class="inner">
                             <h3>{{ $companies }}</h3>
@@ -33,7 +33,7 @@
                 </div>
 
                 {{--products--}}
-                <div class="col-lg-3 col-xs-6">
+                <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-green">
                         <div class="inner">
                             <h3>{{ $orders }}</h3>
@@ -48,7 +48,7 @@
                 </div>
 
 
-                <div class="col-lg-3 col-xs-6">
+                <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>{{ $dubiorders }}</h3>
@@ -65,7 +65,7 @@
 
 
                 {{--clients--}}
-                <div class="col-lg-3 col-xs-6">
+                <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-red">
                         <div class="inner">
                             <h3>{{ $cards }}</h3>
@@ -80,7 +80,7 @@
                 </div>
 
                 {{--users--}}
-                <div class="col-lg-3 col-xs-6">
+                <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>{{ $clients }}</h3>
