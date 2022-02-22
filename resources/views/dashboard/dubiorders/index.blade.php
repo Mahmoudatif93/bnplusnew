@@ -10,7 +10,7 @@
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
-                <li class="active">@lang('site.dubiorders')</li>
+                <li class="active">@lang('site.dubiorders') {{count(  $dubiorders)}}</li>
             </ol>
         </section>
 

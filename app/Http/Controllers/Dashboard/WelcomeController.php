@@ -18,6 +18,7 @@ class WelcomeController extends Controller
         $companies = Company::count();
         $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->count();
         $clients = Client::count();
+       // $dubaiorders = Order::count();
     
         return view('dashboard.welcome', compact('companies','orders','cards','clients'));
 
