@@ -166,7 +166,8 @@ class NationalCampany extends Command
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
-                                    if (count(Cards::where('id', $card['productId'])->get()) > 0) {
+                                    if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) > 0) {
+                                       
                                         foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
@@ -179,7 +180,7 @@ class NationalCampany extends Command
 
                                         //  print_r( $oldprice);
                                     } else {
-                                        if (count(Cards::where('id', $card['productId'])->get()) == 0) {
+                                        if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) == 0) {
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
                                                 $cardsave->id =  $card['productId'];
