@@ -50,6 +50,8 @@ class DubaiOrdersController extends Controller
         $dubiorder = curl_exec($curl);
         curl_close($curl);
         $dubiordersjson = json_decode($dubiorder, true);
+
+        dd($dubiordersjson );
       $dubiorders=  $dubiordersjson['data'] ;
       
       
