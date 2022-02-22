@@ -263,6 +263,7 @@ class CardsController extends Controller
     public function destroy(Request $request) 
     {
        
+        dd($request);
         $category=Cards::where('id',$request->id)->first();
         dd($category);
         if ($category->card_image != '') {
