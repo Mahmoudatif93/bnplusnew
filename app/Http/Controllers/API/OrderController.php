@@ -62,7 +62,7 @@ class OrderController extends Controller
     public function clientorder(Request $request)
     {
 
-        $order = Order::where(array('client_id'=>$request->clientid,'paid'=>true))->get();
+        $order = Order::where(array('client_id'=>$request->clientid))->with('cards')->get();
 
 
         if (count($order) > 0) {
