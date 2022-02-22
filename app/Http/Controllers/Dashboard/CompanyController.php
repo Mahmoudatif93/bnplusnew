@@ -42,11 +42,13 @@ class CompanyController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => array(
-                'deviceId' => '4d2ec47930a1fe0706836fdd1157a8c320dfc962aa6d0b0df2f4dda40a27b2ba',
-                'email' => 'sales@bn-plus.ly',
-                'password' => '149e7a5dcc2b1946ebf09f6c7684ab2c',
-                'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
-                'langId' => '1'
+
+        'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
+                    'email' => 'info@bn-plus.ly',
+                    'password' => 'db7d8028631f3351731cf7ca0302651d',
+                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                    'langId' => '1'
+
             ),
 
         ));
@@ -74,11 +76,11 @@ class CompanyController extends Controller
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_POSTFIELDS => array(
-                        'deviceId' => '4d2ec47930a1fe0706836fdd1157a8c320dfc962aa6d0b0df2f4dda40a27b2ba',
-                        'email' => 'sales@bn-plus.ly',
-                        'password' => '149e7a5dcc2b1946ebf09f6c7684ab2c',
-                        'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
-                        'langId' => '1'
+                      'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
+                    'email' => 'info@bn-plus.ly',
+                    'password' => 'db7d8028631f3351731cf7ca0302651d',
+                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                    'langId' => '1'
                     ),
 
                 ));
@@ -125,11 +127,11 @@ class CompanyController extends Controller
                             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                             CURLOPT_CUSTOMREQUEST => "POST",
                             CURLOPT_POSTFIELDS => array(
-                                'deviceId' => '4d2ec47930a1fe0706836fdd1157a8c320dfc962aa6d0b0df2f4dda40a27b2ba',
-                                'email' => 'sales@bn-plus.ly',
-                                'password' => '149e7a5dcc2b1946ebf09f6c7684ab2c',
-                                'securityCode' => '4d2ec47930a1fe0706836fdd1157a8c36bd079faa0810ff7562c924a23c3f415',
-                                'langId' => '1',
+                              'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
+                    'email' => 'info@bn-plus.ly',
+                    'password' => 'db7d8028631f3351731cf7ca0302651d',
+                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                    'langId' => '1',
                                 'categoryId' => $company['id']
                                 // 'ids[]' => $company['id']
                             ),
