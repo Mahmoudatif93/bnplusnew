@@ -51,8 +51,12 @@ class DubaiOrdersController extends Controller
         curl_close($curl);
         $dubiordersjson = json_decode($dubiorder, true);
 
-        dd($dubiordersjson );
-      $dubiorders=  $dubiordersjson['data'] ;
+
+     //   dd($dubiordersjson );
+if($dubiordersjson[0]->errorCode !="loginUnsuccessful"){
+    $dubiorders=  $dubiordersjson['data'] ;
+}
+     
       
       
 
