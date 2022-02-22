@@ -64,6 +64,7 @@ $process_id=$response['result']["process_id"];
                 $request_data['client_number'] = $request->client_number;
                 $request_data['process_id'] = "$process_id";
                 $request_data['invoice_no'] = rand();
+                $request_data['paymenttype'] = "سداد";
                // $order->invoice_no = rand();
 
                

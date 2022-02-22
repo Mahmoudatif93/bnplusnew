@@ -41,6 +41,8 @@ class OrderController extends Controller
             $request_data['card_price'] = $request->card_price;
             $request_data['client_name'] = $request->client_name;
             $request_data['client_number'] = $request->client_number;
+            $request_data['paymenttype'] = "معاملات";
+       
             $order = Order::create($request_data);
 
             if ($order) {

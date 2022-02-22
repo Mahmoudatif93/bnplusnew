@@ -38,8 +38,6 @@ class CardController extends Controller
 
 
         /////////////dubi national api
-    
-
 
         
             if (isset($request->company_id)) {
