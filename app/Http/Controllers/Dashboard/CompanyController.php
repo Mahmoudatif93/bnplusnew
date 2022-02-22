@@ -29,7 +29,8 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-/*
+
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -42,13 +43,11 @@ class CompanyController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => array(
-
-        'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
+                'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
                     'email' => 'info@bn-plus.ly',
                     'password' => 'db7d8028631f3351731cf7ca0302651d',
                     'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
                     'langId' => '1'
-
             ),
 
         ));
@@ -59,7 +58,7 @@ class CompanyController extends Controller
 
 
             $json = json_decode($balancenational, true);
-            // return $json;
+            //  return $json['balance'];
 
 
             if ($json['balance'] > 0) {
@@ -76,11 +75,11 @@ class CompanyController extends Controller
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_POSTFIELDS => array(
-                      'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
-                    'email' => 'info@bn-plus.ly',
-                    'password' => 'db7d8028631f3351731cf7ca0302651d',
-                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
-                    'langId' => '1'
+                        'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
+                        'email' => 'info@bn-plus.ly',
+                        'password' => 'db7d8028631f3351731cf7ca0302651d',
+                        'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                        'langId' => '1'
                     ),
 
                 ));
@@ -127,11 +126,11 @@ class CompanyController extends Controller
                             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                             CURLOPT_CUSTOMREQUEST => "POST",
                             CURLOPT_POSTFIELDS => array(
-                              'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
-                    'email' => 'info@bn-plus.ly',
-                    'password' => 'db7d8028631f3351731cf7ca0302651d',
-                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
-                    'langId' => '1',
+                                'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
+                                'email' => 'info@bn-plus.ly',
+                                'password' => 'db7d8028631f3351731cf7ca0302651d',
+                                'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                                'langId' => '1',
                                 'categoryId' => $company['id']
                                 // 'ids[]' => $company['id']
                             ),
@@ -141,7 +140,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-
+return $allcards;
 
 
                         $cardsave = new Cards;
@@ -194,7 +193,7 @@ class CompanyController extends Controller
                 }
             }
         }
-*/
+
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
