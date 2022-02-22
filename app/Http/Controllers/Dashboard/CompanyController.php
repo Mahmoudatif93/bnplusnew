@@ -29,7 +29,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-
+/*
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -59,7 +59,7 @@ class CompanyController extends Controller
 
 
             $json = json_decode($balancenational, true);
-            return $json;
+            // return $json;
 
 
             if ($json['balance'] > 0) {
@@ -194,7 +194,7 @@ class CompanyController extends Controller
                 }
             }
         }
-
+*/
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
