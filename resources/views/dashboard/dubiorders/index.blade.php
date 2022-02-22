@@ -20,9 +20,9 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiorders') <strong style="color: red;"> {{count(  $dubiorders)}}</strong> 
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiorders') (<small style="color: red;"> {{count(  $dubiorders)}}</small> 
                 
-                    @lang('site.orders')
+                    @lang('site.orders')  )
                 </h3>
 
                  
