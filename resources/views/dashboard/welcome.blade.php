@@ -32,6 +32,25 @@
                     </div>
                 </div>
 
+
+                {{--users--}}
+                <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <h3>{{ $clients }}</h3>
+
+                            <p>@lang('site.clients')</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                
+
+
                 {{--products--}}
                 <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-green">
@@ -79,20 +98,7 @@
                     </div>
                 </div>
 
-                {{--users--}}
-                <div class="col-lg-4 col-xs-6">
-                    <div class="small-box bg-blue">
-                        <div class="inner">
-                            <h3>{{ $clients }}</h3>
-
-                            <p>@lang('site.clients')</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
+             
 
             </div><!-- end of row -->
 
