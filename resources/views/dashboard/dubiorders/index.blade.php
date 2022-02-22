@@ -52,7 +52,7 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     
-                                    <td>{{ $category->orderNumber }}</td>
+                                    <td>{{ $category['orderNumber'] }}</td>
                                     <td>{{ $category->orderFinalTotal }}</td>
                                     <td>{{ $category->currencySymbol }}</td>
                                     <td>{{ $category->orderCreateDate }}</td>
