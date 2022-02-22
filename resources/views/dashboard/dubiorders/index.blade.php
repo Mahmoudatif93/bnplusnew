@@ -95,7 +95,9 @@
 
 function printDocument() {
     var doc = document.getElementById(documentId);
-    doc.print();
+  ]
+    doc.contentWindow.focus();
+    doc.contentWindow.print();
    
 }
 
