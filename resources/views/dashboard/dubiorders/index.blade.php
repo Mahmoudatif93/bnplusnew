@@ -94,7 +94,7 @@
 <script>
 
 function printDocument() {
-    var doc = document.getElementById(example);
+    var doc = document.getElementById('example');
 
     doc.contentWindow.focus();
     doc.contentWindow.print();
