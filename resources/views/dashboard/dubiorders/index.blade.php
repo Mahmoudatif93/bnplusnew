@@ -26,12 +26,12 @@
                 </h3>
 
                  
-
+<button class="btn btn-success" onclick="printDocument()">Print Report</button>
                
                    
                 </div><!-- end of box header -->
 
-                <div class="box-body">
+                <div class="box-body" id="documentId">
 
                     @if (!empty($dubiorders))
 
@@ -91,6 +91,19 @@
     </div><!-- end of content wrapper -->
 
 
+<script>
 
+function printDocument() {
+    var doc = document.getElementById(documentId);
+
+    //Wait until PDF is ready to print    
+    if (typeof doc.print === 'undefined') {    
+        setTimeout(function(){printDocument(documentId);}, 1000);
+    } else {
+        doc.print();
+    }
+}
+
+</script>
 
 @endsection
