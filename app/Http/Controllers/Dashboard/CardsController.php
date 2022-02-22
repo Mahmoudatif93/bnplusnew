@@ -260,9 +260,10 @@ class CardsController extends Controller
 
     }//end of update
 
-    public function destroy($id)
+    public function destroy(Request $request) 
     {
-        $category=Cards::where('id',$id)->first();
+       
+        $category=Cards::where('id',$request->id)->first();
         dd($category);
         if ($category->card_image != '') {
 
