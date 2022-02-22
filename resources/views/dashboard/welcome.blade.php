@@ -69,7 +69,7 @@
 
 
                 {{--products--}}
-                <div class="col-lg-6 col-xs-6">
+                <div class="col-lg-6 col-xs-6 mt-5">
                     <div class="small-box bg-green">
                         <div class="inner">
                             <h3>{{ $orders }}</h3>
@@ -84,7 +84,7 @@
                 </div>
 
 
-                <div class="col-lg-6 col-xs-6">
+                <div class="col-lg-6 col-xs-6 mt-5">
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>{{ $dubiorders }}</h3>
