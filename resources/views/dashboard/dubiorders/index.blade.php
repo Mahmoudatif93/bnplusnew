@@ -26,12 +26,12 @@
                 </h3>
 
                  
-<button class="btn btn-success" onclick="printDocument()">Print Report</button>
+<button class="btn btn-success btn-xs" onclick="printDocument()" >Print Report</button>
                
                    
                 </div><!-- end of box header -->
 
-                <div class="box-body" id="documentId">
+                <div class="box-body" id="frame">
 
                     @if (!empty($dubiorders))
 
@@ -94,10 +94,10 @@
 <script>
 
 function printDocument() {
-    var doc = document.getElementById('example');
 
-    doc.contentWindow.focus();
-    doc.contentWindow.print();
+    var frame = document.getElementById('frame');
+    frame.contentWindow.focus();
+        frame.contentWindow.print();
    
 }
 
