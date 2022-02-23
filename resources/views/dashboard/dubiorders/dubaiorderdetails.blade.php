@@ -10,7 +10,7 @@
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
-                <li class="active">@lang('site.dubiordersdetails') {{count(  $serials)}}</li>
+                <li class="active">@lang('site.dubiordersdetails')</li>
             </ol>
         </section>
 
@@ -20,7 +20,7 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiordersdetails') (<small style="color: red;font-weight:bold"> {{count(  $serials)}}</small> 
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiordersdetails') (<small style="color: red;font-weight:bold"> </small> 
                 
                     @lang('site.orders')  )
                 </h3>
