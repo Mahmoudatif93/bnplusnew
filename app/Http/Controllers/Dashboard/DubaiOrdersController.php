@@ -180,7 +180,7 @@ dd($code);
 
 
     function decryptSerial($encrypted_txt){    
-        $secret_key = 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014';    
+        $secret_key = 't-3zafRa';    
         $secret_iv = 'St@cE4eZ';
         $encrypt_method = 'AES-256-CBC';                
         $key = hash('sha256', $secret_key);        
