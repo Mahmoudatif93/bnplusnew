@@ -48,7 +48,7 @@
                                 <th>@lang('site.orderCreateDate')</th>
                                 <th>@lang('site.orderCurrentStatus')</th>
                                 <th>@lang('site.orderPaymentMethod')</th>
-                                <th>@lang('site.actions')</th>
+                                <th>@lang('site.action')</th>
                             </tr>
                             </thead>
 
