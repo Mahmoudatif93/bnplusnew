@@ -41,7 +41,8 @@ class CardsController extends Controller
 
             return $q->where('card_code', '%' . $request->search . '%')
             ->orWhere('card_name', 'like', '%' . $request->search . '%')
-            ->orWhere('card_price', 'like', '%' . $request->search . '%');
+            ->orWhere('card_price', 'like', '%' . $request->search . '%')
+            ->orWhere('nationalcompany', 'like', '%' . $request->search . '%');
 
         })->latest()->paginate(5);
         $Companies = Company::all();
