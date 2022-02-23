@@ -140,7 +140,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-return $cardsnational ;
+//return $cardsnational ;
 
                         $cardsave = new Cards;
                        
@@ -159,7 +159,10 @@ return $cardsnational ;
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
-
+                                            foreach( $card['productOptionalFields']  as $Cardid){
+                                                $cardsave->id=$Cardid['id'];
+                                            }
+                                            
                                             $cardsave->productId =  $card['productId'];
                                             $cardsave->company_id = $card['categoryId'];
                                             $cardsave->card_name = $card['productName'];
