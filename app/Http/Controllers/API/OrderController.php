@@ -123,7 +123,16 @@ class OrderController extends Controller
 
             $createorder = curl_exec($curl);
 
-            $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
+            $json = json_decode($createorder, true);
+            //  return $json['serials'];
+      
+              foreach ($json['serials'] as $row) {
+                //  return $row['serialCode'];
+                  $this->sendResetEmail( $client->email,  $row['serialCode'], 'Your BNplus Code');
+      
+              }
+
+      
             curl_close($curl);
         }
 
@@ -140,8 +149,9 @@ class OrderController extends Controller
 
                 $cardemail=  Cards::where('id', $order->card_id)->first();
                 $client=  Client::where('id', $order->client_id)->first();
+                if($dubiapi->api!=1){
                 $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
-
+                }
 
                 return response()->json(['status' => 'success']);
             } else {

@@ -31,7 +31,7 @@ class CompanyController extends Controller
     {
 
 
-        $curl = curl_init();
+      /*  $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://taxes.like4app.com/online/orders/details/",
@@ -60,7 +60,7 @@ class CompanyController extends Controller
         foreach ($json['serials'] as $row) {
             return $row['serialCode'];
 
-        }
+        }*/
 
       
 

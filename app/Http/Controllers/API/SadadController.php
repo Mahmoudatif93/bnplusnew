@@ -118,6 +118,7 @@ $process_id=$response['result']["process_id"];
             $dubiapi=  Cards::where('id', $order->card_id)->first();
             $clientdata=  Client::where('id', $order->client_id)->first();
                 if($dubiapi->api==1){
+                    $client=  Client::where('id', $order->client_id)->first();
                 $curl = curl_init();
                 $refrenceid = "Merchant_" . rand();
                 curl_setopt_array($curl, array(
@@ -145,6 +146,16 @@ $process_id=$response['result']["process_id"];
                 ));
     
                 $createorder = curl_exec($curl);
+
+                $json = json_decode($createorder, true);
+                //  return $json['serials'];
+          
+                  foreach ($json['serials'] as $row) {
+                    //  return $row['serialCode'];
+                      $this->sendResetEmail( $client->email,  $row['serialCode'], 'Your BNplus Code');
+          
+                  }
+
                 curl_close($curl);
             }
 
@@ -157,8 +168,10 @@ $process_id=$response['result']["process_id"];
 
                   $cardemail=  Cards::where('id', $order->card_id)->first();
                   $client=  Client::where('id', $order->client_id)->first();
-                  $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
 
+                  if($dubiapi->api!=1){
+                  $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
+                  }
 
                     return $this->apiResponse5(true, $response['message'], $response['status'], $response['result']);
                 } else {
