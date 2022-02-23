@@ -168,7 +168,7 @@ $serials=$json['serials'];
 $code=$this->decryptSerial( $row['serialCode']); 
 $product=$row['productName'];
 $validTo=$row['validTo'];
-dd($validTo);
+dd($code);
         return view('dashboard.dubiorders.dubaiorderdetails', compact('code','product','validTo'));
 
     }
