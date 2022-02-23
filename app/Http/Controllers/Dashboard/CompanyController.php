@@ -159,7 +159,7 @@ class CompanyController extends Controller
 
                                             
                                         }
-                                        array_push($allcardsid, $card['sellPrice']);
+                                        array_push($allcardsid, $card['productName']);
 
                                         //  print_r( $oldprice);
                                     } else {
