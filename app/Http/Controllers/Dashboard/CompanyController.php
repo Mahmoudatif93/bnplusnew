@@ -140,8 +140,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-
-return $allcards ;
+//return $allcards ;
 
                         $cardsave = new Cards;
                         $allcardsid = array();
@@ -160,7 +159,7 @@ return $allcards ;
 
                                             
                                         }
-                                        //array_push($allcardsid, $card['productId']);
+                                        array_push($allcardsid, $card['sellPrice']);
 
                                         //  print_r( $oldprice);
                                     } else {
@@ -188,7 +187,7 @@ return $allcards ;
                                 }
                             }
                         }
-                        //  return $allcardsid ;
+                         return $allcardsid ;
                     }
                 }
             }
