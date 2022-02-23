@@ -134,9 +134,9 @@ if($dubiordersjson['response'] ==1){
         //
     }
 
-    public function dubiorders(Request $request)
+    public function dubiorders($order)
     {
-     dd($request);
+     dd($order);
         
   
 
