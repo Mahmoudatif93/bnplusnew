@@ -129,7 +129,7 @@ class OrderController extends Controller
               foreach ($json['serials'] as $row) {
                 //  return $row['serialCode'];
                 
-                  $this->sendResetEmail( $client->email,  $row['serialCode'], 'Your BNplus Code');
+                  $this->sendResetEmail( $client->email,  $this->decryptSerial( $row['serialCode']), 'Your BNplus Code');
               }
 
       
@@ -182,6 +182,19 @@ class OrderController extends Controller
         $key = hash('sha256', 't-3zafRa');   
         $time=time();
         return hash('sha256',$time.$email.$phone.$key);
+      }
+
+
+      function decryptSerial($encrypted_txt){    
+        $secret_key = 't-3zafRa';    
+        $secret_iv = 'St@cE4eZ';
+        $encrypt_method = 'AES-256-CBC';                
+        $key = hash('sha256', $secret_key);        
+      
+        //iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning          
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);        
+      
+        return openssl_decrypt(base64_decode($encrypted_txt), $encrypt_method, $key, 0, $iv);        
       }
 
 }
