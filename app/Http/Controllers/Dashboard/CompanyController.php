@@ -180,7 +180,7 @@ class CompanyController extends Controller
                                                 $cardsave->nationalcompany = 'national';
                                                 $cardsave->api = 1;
 
-                                                $cardsave->save();
+                                               // $cardsave->save();
                                             }
                                         }
                                     }
