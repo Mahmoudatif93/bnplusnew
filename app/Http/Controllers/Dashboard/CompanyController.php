@@ -164,9 +164,9 @@ class CompanyController extends Controller
                                         //  print_r( $oldprice);
                                     } else {
                                         if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) == 0) {
-                                            array_push($allcardsid, $card['productName']);
+                                            array_push($allcardsid, $card['productId']);
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
-                                                array_push($allcardsid, $card['productName']);
+                                                array_push($allcardsid, $card['productId']);
                                                 $cardsave->id =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
@@ -181,7 +181,7 @@ class CompanyController extends Controller
                                                 $cardsave->nationalcompany = 'national';
                                                 $cardsave->api = 1;
 
-                                             $cardsave->save();
+                                            // $cardsave->save();
                                             }
                                         }
                                     }
