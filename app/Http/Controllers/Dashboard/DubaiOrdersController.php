@@ -133,4 +133,17 @@ if($dubiordersjson['response'] ==1){
     {
         //
     }
+
+    public function dubiorders(Request $request)
+    {
+     dd($request);
+        
+  
+
+     //   return view('dashboard.orders._products', compact('order', 'products'));
+
+    }//end of products
+
+
+
 }

@@ -48,6 +48,7 @@
                                 <th>@lang('site.orderCreateDate')</th>
                                 <th>@lang('site.orderCurrentStatus')</th>
                                 <th>@lang('site.orderPaymentMethod')</th>
+                                <th>@lang('site.actions')</th>
                             </tr>
                             </thead>
 
@@ -56,12 +57,27 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     
-                                    <td>{{ $category['orderNumber'] }}</td>
+                                    <td>
+                                        
+                                 
+                                    {{ $category['orderNumber'] }}</td>
                                     <td>{{ $category['orderFinalTotal'] }}</td>
                                     <td>{{ $category['currencySymbol'] }}</td>
                                     <td>{{ $category['orderCreateDate'] }}</td>
                                     <td>{{ $category['orderCurrentStatus'] }}</td>
                                     <td>{{ $category['orderPaymentMethod'] }}</td>
+
+                                    <td>
+                                    <button class="btn btn-primary btn-sm order-products"
+                                                        data-url="{{ route('dashboard.dubiorders.products', $category['orderNumber']) }}"
+                                                        data-method="get"
+                                                >
+                                                    <i class="fa fa-list"></i>
+                                                    @lang('site.show')
+                                                </button>
+
+
+                                    </td>
                                  
 
 
