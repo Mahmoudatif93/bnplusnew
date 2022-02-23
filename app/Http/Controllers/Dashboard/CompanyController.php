@@ -149,6 +149,9 @@ class CompanyController extends Controller
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
+
+
+                                    
                                     if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) > 0) {
                                        
                                         foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
@@ -159,7 +162,7 @@ class CompanyController extends Controller
 
                                             
                                         }
-                                        array_push($allcardsid, $card['productId']);
+                                      //  array_push($allcardsid, $card['productId']);
 
                                         //  print_r( $oldprice);
                                     } else {
