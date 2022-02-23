@@ -34,7 +34,7 @@
                 <div id="print-area">
                 <div class="box-body" id="frame">
 
-                    @if (!empty($serials))
+             
 
                         <table id="example" class="table table-hover">
 
@@ -76,11 +76,7 @@
 
                        
 
-                    @else
-
-                        <h2>@lang('site.no_data_found')</h2>
-
-                    @endif
+        
 
                 </div><!-- end of box body -->
 </div>
