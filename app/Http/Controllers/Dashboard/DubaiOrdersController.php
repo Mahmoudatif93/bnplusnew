@@ -161,16 +161,15 @@ if($dubiordersjson['response'] ==1){
         $balancenational = curl_exec($curl);
         $json = json_decode($balancenational, true);
       //  return $json['serials'];
+$serials=$json['serials'];
+      return view('dashboard.dubiorders.dubaiorderdetails', compact('serials'));
 
-        foreach ($json['serials'] as $row) {
+       /* foreach ($json['serials'] as $row) {
             return $row['serialCode'];
 
-        }
+        }*/
 
-        
-  
-
-     //   return view('dashboard.orders._products', compact('order', 'products'));
+    
 
     }//end of products
 
