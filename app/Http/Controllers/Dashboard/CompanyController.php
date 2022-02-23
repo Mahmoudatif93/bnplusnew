@@ -93,8 +93,10 @@ class CompanyController extends Controller
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
+
+                        dd(count(Company::where('id', $company['id'])->get()) );
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
-                            dd($companiesnational);
+                           // dd($companiesnational);
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
