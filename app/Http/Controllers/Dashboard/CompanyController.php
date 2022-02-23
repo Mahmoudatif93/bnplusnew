@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-
+        $allcardsid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -143,7 +143,7 @@ class CompanyController extends Controller
 //return $allcards ;
 
                         $cardsave = new Cards;
-                        $allcardsid = array();
+                       
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
