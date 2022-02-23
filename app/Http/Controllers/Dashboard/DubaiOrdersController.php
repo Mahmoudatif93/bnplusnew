@@ -162,16 +162,36 @@ if($dubiordersjson['response'] ==1){
         $json = json_decode($balancenational, true);
       // return $json;
 $serials=$json['serials'];
-      return view('dashboard.dubiorders.dubaiorderdetails', compact('serials'));
+    
+      foreach ($serials as $row){
 
-       /* foreach ($json['serials'] as $row) {
-            return $row['serialCode'];
+$code=$this->decryptSerial( $row['serialCode']); 
+$product=$row['productName'];
+$validTo=$row['validTo'];
 
-        }*/
+        return view('dashboard.dubiorders.dubaiorderdetails', compact('code','product','validTo'));
+
+    }
 
     
 
     }//end of products
+
+
+
+    function decryptSerial($encrypted_txt){    
+        $secret_key = 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014';    
+        $secret_iv = 'St@cE4eZ';
+        $encrypt_method = 'AES-256-CBC';                
+        $key = hash('sha256', $secret_key);        
+      
+        //iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning          
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);        
+      
+        return openssl_decrypt(base64_decode($encrypted_txt), $encrypt_method, $key, 0, $iv);        
+      }
+      
+    //  echo decryptSerial('bnY0UEc2NFcySHgwRTIyNFU1NU5pUT09'); 
 
 
 

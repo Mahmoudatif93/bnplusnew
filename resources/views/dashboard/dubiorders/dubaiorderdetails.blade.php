@@ -50,16 +50,17 @@
                             </thead>
 
                             <tbody>
-                            @foreach ($serials as $row)
+
+                         
                                 <tr>
                                     
                                     
                                     <td>
                                         
                                  
-                                    {{ $row['productName'] }}</td>
-                                    <td>{{ $row['serialCode'] }}</td>
-                                    <td>{{ $row['validTo'] }}</td>
+                                    {{  $code}}</td>
+                                    <td>{{ $product }}</td>
+                                    <td>{{ $validTo}}</td>
                                   
                                  
 
@@ -68,7 +69,7 @@
                                       
                                 </tr>
 
-                            @endforeach
+                       
                             </tbody>
 
                         </table><!-- end of table -->
