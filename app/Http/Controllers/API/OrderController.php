@@ -128,8 +128,8 @@ class OrderController extends Controller
       
               foreach ($json['serials'] as $row) {
                 //  return $row['serialCode'];
+                
                   $this->sendResetEmail( $client->email,  $row['serialCode'], 'Your BNplus Code');
-      
               }
 
       
