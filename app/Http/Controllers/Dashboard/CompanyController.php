@@ -160,7 +160,7 @@ class CompanyController extends Controller
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
 
-                                            return $card['productOptionalFields'] ;
+                                           // return $card['productOptionalFields'] ;
                                           /*  foreach( $card['productOptionalFields']  as $Cardid){
                                                 $cardsave->id=$Cardid['id'];
                                             }*/
