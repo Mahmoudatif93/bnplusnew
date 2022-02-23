@@ -94,6 +94,7 @@ class OrderController extends Controller
           $dubiapi=  Cards::where('id', $order->card_id)->first();
           $clientdata=  Client::where('id', $order->client_id)->first();
             if($dubiapi->api==1){
+                $client=  Client::where('id', $order->client_id)->first();
             $curl = curl_init();
             $refrenceid = "Merchant_" . rand();
             curl_setopt_array($curl, array(
@@ -121,6 +122,8 @@ class OrderController extends Controller
             ));
 
             $createorder = curl_exec($curl);
+
+            $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
             curl_close($curl);
         }
 
