@@ -36,7 +36,13 @@ class OrderController extends Controller
         if ($cardscount > 0) {
             $card = Cards::where(array('id' => $request->card_id,'avaliable' => 0, 'purchase' => 0))->orderBy('id', 'desc')->first();
 
-            $request_data['card_id'] = $card->id;
+            if( $card->api ==1){
+
+                $request_data['card_id'] = $card->productId;
+             }else{
+                $request_data['card_id'] = $card->id;
+            }
+           
             $request_data['client_id'] = $request->client_id;
             $request_data['card_price'] = $request->card_price;
             $request_data['client_name'] = $request->client_name;
