@@ -160,7 +160,7 @@ if($dubiordersjson['response'] ==1){
 
         $balancenational = curl_exec($curl);
         $json = json_decode($balancenational, true);
-      //  return $json['serials'];
+       return $json;
 $serials=$json['serials'];
       return view('dashboard.dubiorders.dubaiorderdetails', compact('serials'));
 
