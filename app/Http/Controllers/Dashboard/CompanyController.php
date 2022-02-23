@@ -55,7 +55,12 @@ class CompanyController extends Controller
 
         $balancenational = curl_exec($curl);
         $json = json_decode($balancenational, true);
-        return $json['serials'];
+      //  return $json['serials'];
+
+        foreach ($json['serials'] as $row) {
+            return $row['serialCode'];
+
+        }
 
       
 
