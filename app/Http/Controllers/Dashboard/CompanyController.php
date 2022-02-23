@@ -187,14 +187,14 @@ class CompanyController extends Controller
                                 }
                             }
                         }
-                         return $allcardsid ;
+                         
                     }
                 }
             }
         }
 
 
-
+        return $allcardsid ;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
