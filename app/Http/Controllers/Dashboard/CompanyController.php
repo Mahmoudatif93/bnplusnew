@@ -159,9 +159,11 @@ class CompanyController extends Controller
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
-                                            foreach( $card['productOptionalFields']  as $Cardid){
+
+                                            return $card['productOptionalFields'] ;
+                                          /*  foreach( $card['productOptionalFields']  as $Cardid){
                                                 $cardsave->id=$Cardid['id'];
-                                            }
+                                            }*/
                                             
                                             $cardsave->productId =  $card['productId'];
                                             $cardsave->company_id = $card['categoryId'];
