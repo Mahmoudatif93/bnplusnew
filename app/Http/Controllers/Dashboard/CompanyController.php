@@ -103,7 +103,7 @@ class CompanyController extends Controller
                             $compsave->kind = 'national';
                             $compsave->api = 1;
 
-                            $compsave->save();
+                           // $compsave->save();
 
 
                             array_push($allcompanyid, $company['id']);
