@@ -68,13 +68,13 @@
                                     <td>{{ $category['orderPaymentMethod'] }}</td>
 
                                     <td>
-                                    <button class="btn btn-primary btn-sm order-products"
-                                                        data-url="{{ route('dashboard.dubiorders.products', $category['orderNumber']) }}"
-                                                        data-method="get"
+                                    <a class="btn btn-primary btn-sm order-products"
+                                                        href="{{ route('dashboard.dubiorders.products', $category['orderNumber']) }}"
+                                                        
                                                 >
                                                     <i class="fa fa-list"></i>
                                                     @lang('site.show')
-                                                </button>
+</a>
 
 
                                     </td>
