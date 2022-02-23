@@ -47,6 +47,7 @@ class NationalCampany extends Command
 
 
         /////////////dubi national api
+        $allcardsid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -156,34 +157,53 @@ class NationalCampany extends Command
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-
-
+//return $allcards ;
 
                         $cardsave = new Cards;
-                        $allcardsid = array();
+                       
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
-                                    if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) > 0) {
+
+
+                                    
+                                    if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) > 0) {
                                        
-                                        foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
+                                        foreach (Cards::where('productId', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
 
-                                            
+                                            $cardsave->productId =  $card['productId'];
+                                            $cardsave->company_id = $card['categoryId'];
+                                            $cardsave->card_name = $card['productName'];
+                                            if ($card['productCurrency'] == "SAR") {
+                                                $cardsave->card_price = $card['sellPrice'] * $curr->amount;
+                                            } else {
+                                                $cardsave->card_price = $card['sellPrice'];
+                                            }
+
+                                            $cardsave->card_code = $card['productName'];
+                                            $cardsave->card_image = $card['productImage'];
+                                            $cardsave->nationalcompany = 'national';
+                                            $cardsave->api = 1;
+
+                                        $cardsave->save();
+
+
                                         }
-                                        //array_push($allcardsid, $card['productId']);
+                                      //  array_push($allcardsid, $card['productId']);
 
                                         //  print_r( $oldprice);
                                     } else {
-                                        if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) == 0) {
+                                        if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) == 0) {
+                                          //  array_push($allcardsid, $card['productId']);
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
-
-                                                $cardsave->id =  $card['productId'];
+                                               // array_push($allcardsid, $card['productId']);
+                                                $cardsave->productId =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
                                                 if ($card['productCurrency'] == "SAR") {
@@ -197,14 +217,14 @@ class NationalCampany extends Command
                                                 $cardsave->nationalcompany = 'national';
                                                 $cardsave->api = 1;
 
-                                                $cardsave->save();
+                                            $cardsave->save();
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        //  return $allcardsid ;
+                         
                     }
                 }
             }
