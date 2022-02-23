@@ -34,7 +34,7 @@ class CompanyController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://taxes.like4app.com/online/check_balance/",
+            CURLOPT_URL => "https://taxes.like4app.com/online/orders/details/",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -47,12 +47,15 @@ class CompanyController extends Controller
                     'email' => 'info@bn-plus.ly',
                     'password' => 'db7d8028631f3351731cf7ca0302651d',
                     'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
-                    'langId' => '1'
+                    'langId' => '1',
+                    'orderId=54291772'
             ),
 
         ));
 
         $balancenational = curl_exec($curl);
+        $json = json_decode($balancenational, true);
+        return $json;
 
         if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
 
