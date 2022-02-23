@@ -68,7 +68,7 @@
                                     <td>{{ $category['orderPaymentMethod'] }}</td>
 
                                     <td>
-                                    <a class="btn btn-primary btn-sm order-products" target="_blank"
+                                    <a class="btn btn-primary btn-sm" target="_blank"
                                                         href="{{ route('dashboard.dubiorders.products', $category['orderNumber']) }}">
                                                         
                                                 
