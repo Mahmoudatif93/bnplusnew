@@ -48,7 +48,7 @@ class CompanyController extends Controller
                     'password' => 'db7d8028631f3351731cf7ca0302651d',
                     'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
                     'langId' => '1',
-                    'orderId=54291772'
+                    'orderId'=>'54291772'
             ),
 
         ));
