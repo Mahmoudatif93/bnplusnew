@@ -100,7 +100,7 @@ class CompanyController extends Controller
                     foreach ($companys['childs'] as $company) {
                         if (!empty(Company::where('id', '!=', $company['id'])->get())) {
 
-
+print_r(Company::where('id', '!=', $company['id'])->get());
                             echo $company['id'];
                             echo "<br>";
 
