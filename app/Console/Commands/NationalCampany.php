@@ -105,6 +105,8 @@ class NationalCampany extends Command
                 //  return $national['data'];
                 $compsave = new Company;
              
+               $allcompanies=Company::pluck('id');
+
                // $request_data=array();
                 $cardsave1=array();
                 foreach ($national['data'] as $companys) {
@@ -112,7 +114,7 @@ class NationalCampany extends Command
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
-                         //   dd($company['id']);
+                           dd($company['id']);
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
@@ -122,8 +124,19 @@ class NationalCampany extends Command
                             $compsave->save();
                     
                             
+                        }else{
+                            if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
+                          
+                                dd($company['id']);
+                                 $compsave->id = $company['id'];
+                                 $compsave->company_image = $company['amazonImage'];
+                                 $compsave->name = $company['categoryName'];
+                                 $compsave->kind = 'national';
+                                 $compsave->api = 1;
+     
+                                 $compsave->save(); 
                         }
-                        
+                    }
                         // return($companiesnational);
                         //  return count($allcompanyid);
 
@@ -227,6 +240,7 @@ class NationalCampany extends Command
                 }
             }
         }
+
         $this->info('National Cummand Run successfully!.');
     }
 }
