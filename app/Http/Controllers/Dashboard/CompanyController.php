@@ -216,6 +216,8 @@ class CompanyController extends Controller
                                                 $cardsave->api = 1;
                                                     //  Cards::create($cardsave1);
                                             $cardsave->save();
+
+                                            array_push($allcompanyid, $card['productId']);
                                             }
                                         
                                         
