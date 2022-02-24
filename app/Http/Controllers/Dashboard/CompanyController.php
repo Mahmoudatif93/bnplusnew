@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
       /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
-
+/*
         ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
         $allcompanyid = array();
         $curl = curl_init();
@@ -187,7 +187,7 @@ class CompanyController extends Controller
             }
         }
 
-return $allcompanyid;
+return $allcompanyid;*/
 
         $Companies = Company::when($request->search, function ($q) use ($request) {
 
