@@ -101,7 +101,7 @@ class CompanyController extends Controller
                         if (Company::where('id', '!=',$company['id'])->get()) {
                       
                            
-                          return 0;
+                          return Company::where('id', '!=',$company['id'])->get();
                               
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
