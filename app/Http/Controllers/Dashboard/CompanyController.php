@@ -107,21 +107,16 @@ class CompanyController extends Controller
                             $compsave->api = 1;
 
                             $compsave->save();
-                       //     array_push($allcompanyid,  $compsave);
-                         /*   $companydata['id'] = $company['id'];
-                           
-                            $companydata['company_image'] = $company['amazonImage'];
-                            $companydata['name'] = $company['categoryName'];
-                            $companydata['kind'] = 'national';
-                            $companydata['api'] = 1;
-                            array_push($allcompanyid,$companydata);
-
-                            Company::create($companydata);*/
+                    
                             
+                        }else{
+                            $compsave->id = $company['id'];
+                            $compsave->company_image = $company['amazonImage'];
+                            $compsave->name = $company['categoryName'];
+                            $compsave->kind = 'national';
+                            $compsave->api = 1;
 
-
-                          //  
-                            
+                            $compsave->save();
                         }
                         
                         // return($companiesnational);
@@ -214,10 +209,7 @@ class CompanyController extends Controller
                                                 $cardsave->card_image = $card['productImage'];
                                                 $cardsave->nationalcompany= 'national';
                                                 $cardsave->api = 1;
-                                                    //  Cards::create($cardsave1);
-                                            $cardsave->save();
-
-                                           // array_push($allcompanyid, $card['productId']);
+                                                $cardsave->save();
                                             }
                                         
                                         
@@ -230,7 +222,7 @@ class CompanyController extends Controller
                 }
             }
         }
-//return $allcompanyid;
+return $allcompanyid;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
