@@ -44,10 +44,10 @@ class CompanyController extends Controller
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => array(
                 'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
-                'email' => 'info@bn-plus.ly',
-                'password' => 'db7d8028631f3351731cf7ca0302651d',
-                'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
-                'langId' => '1'
+                    'email' => 'info@bn-plus.ly',
+                    'password' => 'db7d8028631f3351731cf7ca0302651d',
+                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                    'langId' => '1'
             ),
 
         ));
@@ -87,28 +87,24 @@ class CompanyController extends Controller
                 $companiesnational = curl_exec($curl2);
 
                 $national = json_decode($companiesnational, true);
-                // return $national['data'];
+                //  return $national['data'];
                 $compsave = new Company;
                 $allcompanyid = array();
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
-
-
-                        if (count(Company::where('id', $company['id'])->get()) < 1) {
+                        if (count(Company::where('id', $company['id'])->get()) == 0) {
                             // dd($companiesnational);
-                            $request_data['id'] = $company['id'];
-                            $request_data['company_image'] = $company['amazonImage'];
-                            $request_data['name'] = $company['categoryName'];
-                            $request_data['kind'] = 'national';
-                            $request_data['api'] = 1;
+                            $compsave->id = $company['id'];
+                            $compsave->company_image = $company['amazonImage'];
+                            $compsave->name = $company['categoryName'];
+                            $compsave->kind = 'national';
+                            $compsave->api = 1;
+
+                            $compsave->save();
 
 
-                            Company::create($request_data);
-                            //   $compsave->save();
-
-
-                            //  array_push($allcompanyid, $company['id']);
+                            array_push($allcompanyid, $company['id']);
                         }
 
                         // return($companiesnational);
@@ -144,86 +140,63 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-                        return $cardsnational ;
+
+
 
                         $cardsave = new Cards;
-
+                        $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
-
-
-
-                                    if (count(Cards::where(array('productId' => $card['productId'], 'purchase' => 0))->get()) > 0) {
-
-                                        foreach (Cards::where('productId', $card['productId'])->get() as $cardprice) {
+                                    if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) > 0) {
+                                       
+                                        foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
                                                 Cards::where('id', $card['productId'])->update($oldprice);
                                             }
 
-                                            // return $card['productOptionalFields'] ;
-                                            /*  foreach( $card['productOptionalFields']  as $Cardid){
-                                                $cardsave->id=$Cardid['id'];
-                                            }*/
-
-                                            $cardsave1['productId'] =  $card['productId'];
-                                            $cardsave1['company_id'] = $card['categoryId'];
-                                            $cardsave1['card_name'] = $card['productName'];
-                                            if ($card['productCurrency'] == "SAR") {
-                                                $cardsave1['card_price'] = $card['sellPrice'] * $curr->amount;
-                                            } else {
-                                                $cardsave1['card_price'] = $card['sellPrice'];
-                                            }
-
-                                            $cardsave1['card_code'] = $card['productName'];
-                                            $cardsave1['card_image'] = $card['productImage'];
-                                            $cardsave1['nationalcompany'] = 'national';
-                                            $cardsave1['api'] = 1;
-
-
-
-                                            Cards::create($cardsave1);
+                                            
                                         }
                                         array_push($allcardsid, $card['productId']);
 
                                         //  print_r( $oldprice);
                                     } else {
-                                      //  dd($company['id']);
+                                        if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) == 0) {
+                                            if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
+                                                $cardsave->id =  $card['productId'];
+                                                $cardsave->company_id = $card['categoryId'];
+                                                $cardsave->card_name = $card['productName'];
+                                                if ($card['productCurrency'] == "SAR") {
+                                                    $cardsave->card_price = $card['sellPrice'] * $curr->amount;
+                                                } else {
+                                                    $cardsave->card_price = $card['sellPrice'];
+                                                }
 
-                                      if (count(Company::where('id',$company['id'])->get()) > 0) {
-                                        $cardsave2['productId'] =  $card['productId'];
-                                        $cardsave2['company_id'] = $company['id'];
-                                        $cardsave2['card_name'] = $card['productName'];
-                                        if ($card['productCurrency'] == "SAR") {
-                                            $cardsave2['card_code'] = $card['sellPrice'] * $curr->amount;
-                                        } else {
-                                            $cardsave2['card_code']  = $card['sellPrice'];
+                                                $cardsave->card_code = $card['productName'];
+                                                $cardsave->card_image = $card['productImage'];
+                                                $cardsave->nationalcompany = 'national';
+                                                $cardsave->api = 1;
+
+                                                $cardsave->save();
+                                            }
                                         }
-
-                                        $cardsave2['card_code'] = $card['productName'];
-                                        $cardsave2['card_image'] = $card['productImage'];
-                                        $cardsave2['nationalcompany'] = 'national';
-                                        $cardsave2['api'] = 1;
-
-                                        Cards::create($cardsave2);
-                                    }
                                     }
                                 }
                             }
                         }
+                        //  return $allcardsid ;
                     }
                 }
             }
         }
-
-
-
         return $allcardsid ;
 
+
+        
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
         $Companies = Company::when($request->search, function ($q) use ($request) {
