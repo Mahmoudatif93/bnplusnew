@@ -170,7 +170,7 @@ class NationalCampany extends Command
 
 
                                     
-                                    if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) == 0) {
+                                    if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) >0) {
                                        
                                         foreach (Cards::where('productId', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
