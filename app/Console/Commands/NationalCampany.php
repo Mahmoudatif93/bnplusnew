@@ -42,7 +42,7 @@ class NationalCampany extends Command
      */
     public function handle()
     {
-       
+     /*  
 ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
         
         $curl = curl_init();
@@ -111,15 +111,7 @@ ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
-                            //dd($compsave->id);
-                           /* $compsave->id = $company['id'];
-                            $compsave->company_image = $company['amazonImage'];
-                            $compsave->name = $company['categoryName'];
-                            $compsave->kind = 'national';
-                            $compsave->api = 1;
-
-                            $compsave->save();*/
-
+                       
                             $request_data['id'] = $company['id'];
                             $request_data['company_image'] = $company['amazonImage'];
                             $request_data['name'] = $company['categoryName'];
@@ -238,7 +230,7 @@ ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000
             }
         }
 
-
+*/
 
         $this->info('National Cummand Run successfully!.');
     }
