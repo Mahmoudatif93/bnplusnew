@@ -29,6 +29,8 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
+        ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+
 
 
         $curl = curl_init();
@@ -177,7 +179,7 @@ class CompanyController extends Controller
 
 
                                         if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
-return 1;
+
                                             $cardsave1['productId'] =  $card['productId'];
                                             $cardsave1['company_id'] = $card['categoryId'];
                                             $cardsave1['card_name'] = $card['productName'];
@@ -196,7 +198,7 @@ return 1;
                                     } else {
                                       
                                             if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
-                                                return 2;
+                                                
                                                 $cardsave1['productId'] =  $card['productId'];
                                                 $cardsave1['company_id'] = $card['categoryId'];
                                                 $cardsave1['card_name'] = $card['productName'];
