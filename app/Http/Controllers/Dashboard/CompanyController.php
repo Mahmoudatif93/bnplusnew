@@ -91,7 +91,7 @@ class CompanyController extends Controller
                 //  return $national['data'];
                 $compsave = new Company;
              
-               $allcompanies=Company::Companypluck('id');
+               $allcompanies=Company::pluck('id');
 dd($allcompanies);
                // $request_data=array();
                 $cardsave1=array();
