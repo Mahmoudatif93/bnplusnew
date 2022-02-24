@@ -98,12 +98,11 @@ class CompanyController extends Controller
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
-                        if (count(Company::where('id', $company['id'])->get()) == 0) {
+                        if (Company::where('id', '!=',$company['id'])->get()) {
                       
                            
-                            if (count(Company::whereNotIn('id', $allcompanies)->get()) < 0) {
-                          return 0;
-                                //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
+                          
+                              
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
                                  $compsave->name = $company['categoryName'];
@@ -111,13 +110,12 @@ class CompanyController extends Controller
                                  $compsave->api = 1;
      
                                  $compsave->save(); 
-                        }
+                      
                     
                             
                         }else{
-                            
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
-                                return 00;
+                          
                                 //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
