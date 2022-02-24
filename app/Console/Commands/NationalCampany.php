@@ -42,7 +42,7 @@ class NationalCampany extends Command
      */
     public function handle()
     {
-        $allcardsid = array();
+      /*  $allcardsid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -230,7 +230,7 @@ class NationalCampany extends Command
                     }
                 }
             }
-        }
+        }*/
 
         $this->info('National Cummand Run successfully!.');
     }
