@@ -114,6 +114,7 @@ class CompanyController extends Controller
                     
                             
                         }else{
+                            return 0;
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
                           
                                 //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
