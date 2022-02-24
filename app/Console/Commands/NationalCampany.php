@@ -181,7 +181,7 @@ class NationalCampany extends Command
 
                                         if (count(Company::where('id', $company['id'])->get()) > 0) {
 
-                                            $cardsave->productId =  $card['productId'];
+                                            $cardsave->id =  $card['productId'];
                                             $cardsave->company_id = $card['categoryId'];
                                             $cardsave->card_name = $card['productName'];
 
@@ -201,7 +201,7 @@ class NationalCampany extends Command
                                       
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
                                                 
-                                                $cardsave->productId =  $card['productId'];
+                                                $cardsave->id =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
 

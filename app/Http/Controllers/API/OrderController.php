@@ -38,7 +38,7 @@ class OrderController extends Controller
 
             if( $card->api ==1){
 
-                $request_data['card_id'] = $card->productId;
+                $request_data['card_id'] = $card->id;
              }else{
                 $request_data['card_id'] = $card->id;
             }
