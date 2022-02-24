@@ -193,7 +193,7 @@ class CompanyController extends Controller
                                     } else {
                                     
                                       
-                                            if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                            if (count(Company::where('id',$company['id'])->get()) == 0) {
                                                
                                                 $cardsave->productId =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
@@ -223,7 +223,7 @@ class CompanyController extends Controller
         }
 
 
-        return $allcardsid ;
+       // return $allcardsid ;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');

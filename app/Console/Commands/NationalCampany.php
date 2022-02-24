@@ -170,7 +170,7 @@ class NationalCampany extends Command
 
 
                                     
-                                    if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) != 0) {
+                                    if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) == 0) {
                                        
                                         foreach (Cards::where('productId', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
@@ -201,13 +201,13 @@ class NationalCampany extends Command
 
 
                                         }
-                                      //  array_push($allcardsid, $card['productId']);
+                                        array_push($allcardsid, $card['productId']);
 
                                         //  print_r( $oldprice);
                                     } else {
                                     
                                       
-                                            if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                            if (count(Company::where('id',$company['id'])->get()) == 0) {
                                                
                                                 $cardsave->productId =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
@@ -236,7 +236,7 @@ class NationalCampany extends Command
             }
         }
 
-        
+
         ///////////////////currancy 
 
 
