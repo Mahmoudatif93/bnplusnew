@@ -29,7 +29,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-      
+
 
         $allcompanyid = array();
         $curl = curl_init();
@@ -45,10 +45,10 @@ class CompanyController extends Controller
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => array(
                 'deviceId' => 'cd63173e952e3076462733a26c71bbd0b236291db71656ec65ee1552478402ef',
-                    'email' => 'info@bn-plus.ly',
-                    'password' => 'db7d8028631f3351731cf7ca0302651d',
-                    'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
-                    'langId' => '1'
+                'email' => 'info@bn-plus.ly',
+                'password' => 'db7d8028631f3351731cf7ca0302651d',
+                'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
+                'langId' => '1'
             ),
 
         ));
@@ -90,40 +90,41 @@ class CompanyController extends Controller
                 $national = json_decode($companiesnational, true);
                 //  return $national['data'];
                 $compsave = new Company;
-             
-               $allcompanies=Company::pluck('id');
 
-               // $request_data=array();
-                $cardsave1=array();
+                $allcompanies = Company::pluck('id');
+
+                // $request_data=array();
+                $cardsave1 = array();
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
-                        if (!empty(Company::where('id',$company['id'])->get())) {
-                      
-                           
-                      echo $company['id'];echo "<br>";
-                              
-                                 $compsave->id = $company['id'];
-                                 $compsave->company_image = $company['amazonImage'];
-                                 $compsave->name = $company['categoryName'];
-                                 $compsave->kind = 'national';
-                                 $compsave->api = 1;
-     
-                           //      $compsave->save(); 
-                      
-                    
-                            
-                        }else{
-                            return( Company::where('id',$company['id'])->get() );
+                        if (!empty(Company::where('id', '!=', $company['id'])->get())) {
+
+
+                            echo $company['id'];
+                            echo "<br>";
+
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
                             $compsave->kind = 'national';
                             $compsave->api = 1;
 
-                            $compsave->save(); 
+                            //      $compsave->save(); 
 
-                           // 
+
+
+                        } else {
+                            //  return( Company::where('id',$company['id'])->get() );
+                            $compsave->id = $company['id'];
+                            $compsave->company_image = $company['amazonImage'];
+                            $compsave->name = $company['categoryName'];
+                            $compsave->kind = 'national';
+                            $compsave->api = 1;
+
+                            $compsave->save();
+
+                            // 
                         }
                         // return($companiesnational);
                         //  return count($allcompanyid);
@@ -158,7 +159,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-//return $allcards['data'];
+                        //return $allcards['data'];
 
 
                         $cardsave = new Cards;
@@ -168,52 +169,29 @@ class CompanyController extends Controller
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
-                                    if (count(Cards::where(array('id'=>$card['productId']))->get()) > 0) {
-                                     
-                                        
+                                    if (count(Cards::where(array('id' => $card['productId']))->get()) > 0) {
 
-                                        $allcards=Cards::pluck('id');
+
+
+                                        $allcards = Cards::pluck('id');
 
                                         if (count(Cards::where('id',  $card['productId'])->get()) > 0) {
                                             if ($card['productCurrency'] == "SAR") {
 
                                                 $cardpriceup['card_price']  = $card['sellPrice'] * $curr->amount;
-                                                Cards::where('id',  $card['productId'])->update( $cardpriceup);
+                                                Cards::where('id',  $card['productId'])->update($cardpriceup);
                                             } else {
-                                                $cardpriceup['card_price']= $card['sellPrice'];
-                                                Cards::where('id',  $card['productId'])->update( $cardpriceup);
+                                                $cardpriceup['card_price'] = $card['sellPrice'];
+                                                Cards::where('id',  $card['productId'])->update($cardpriceup);
                                             }
 
-                                           
-
-                                            if (empty(Cards::where('id',$card['productId'])->get())) {
 
 
-                                           // if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
-                                               
-                                            $cardsave->id =  $card['productId'];
-                                            $cardsave->company_id = $card['categoryId'];
-                                            $cardsave->card_name = $card['productName'];
+                                            if (empty(Cards::where('id', $card['productId'])->get())) {
 
-                                            if ($card['productCurrency'] == "SAR") {
-                                                $cardsave->card_price  = $card['sellPrice'] * $curr->amount;
-                                            } else {
-                                                $cardsave->card_price = $card['sellPrice'];
-                                            }
-                                            $cardsave->card_code = $card['productName'];
-                                            $cardsave->card_image = $card['productImage'];
-                                            $cardsave->nationalcompany= 'national';
-                                            $cardsave->api = 1;
-                                            $cardsave->save();
-                                      //  }
-                                        }
-                                        }
-                                       
-                                    } else {
-                                      //  $allcards=Cards::pluck('id');
-                                            if (count(Company::where('id',  $company['id'])->get()) > 0) {
-                                                
-                                                if (empty(Cards::where('id',$card['productId'])->get())) {
+
+                                                // if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
+
                                                 $cardsave->id =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
@@ -225,12 +203,33 @@ class CompanyController extends Controller
                                                 }
                                                 $cardsave->card_code = $card['productName'];
                                                 $cardsave->card_image = $card['productImage'];
-                                                $cardsave->nationalcompany= 'national';
+                                                $cardsave->nationalcompany = 'national';
+                                                $cardsave->api = 1;
+                                                $cardsave->save();
+                                                //  }
+                                            }
+                                        }
+                                    } else {
+                                        //  $allcards=Cards::pluck('id');
+                                        if (count(Company::where('id',  $company['id'])->get()) > 0) {
+
+                                            if (empty(Cards::where('id', $card['productId'])->get())) {
+                                                $cardsave->id =  $card['productId'];
+                                                $cardsave->company_id = $card['categoryId'];
+                                                $cardsave->card_name = $card['productName'];
+
+                                                if ($card['productCurrency'] == "SAR") {
+                                                    $cardsave->card_price  = $card['sellPrice'] * $curr->amount;
+                                                } else {
+                                                    $cardsave->card_price = $card['sellPrice'];
+                                                }
+                                                $cardsave->card_code = $card['productName'];
+                                                $cardsave->card_image = $card['productImage'];
+                                                $cardsave->nationalcompany = 'national';
                                                 $cardsave->api = 1;
                                                 $cardsave->save();
                                             }
-                                        
-                                            }
+                                        }
                                     }
                                 }
                             }
@@ -242,8 +241,8 @@ class CompanyController extends Controller
         }
 
 
-dd();
-//return $allcompanyid;
+        dd();
+        //return $allcompanyid;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
