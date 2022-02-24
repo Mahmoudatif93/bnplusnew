@@ -115,8 +115,9 @@ class CompanyController extends Controller
                     
                             
                         }else{
+                            
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
-                          
+                                return 00;
                                 //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
