@@ -208,10 +208,10 @@ class NationalCampany extends Command
                                     } else {
                                     
                                       
-                                            if (count(Company::where('id',$company['id'])->get()) == 0) {
+                                            
                                                
                                                 $cardsave2['productId'] =  $card['productId'];
-                                                $cardsave2['company_id'] = $card['categoryId'];
+                                                $cardsave2['company_id'] = $company['categoryId'];
                                                 $cardsave2['card_name'] = $card['productName'];
                                                 if ($card['productCurrency'] == "SAR") {
                                                     $cardsave2['card_code'] = $card['sellPrice'] * $curr->amount;
@@ -227,7 +227,7 @@ class NationalCampany extends Command
                                                 Cards::create($cardsave2);
 
                                             
-                                            }
+                                            
                                         
                                     }
                                 }
