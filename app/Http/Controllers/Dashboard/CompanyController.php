@@ -107,7 +107,7 @@ class CompanyController extends Controller
                             $compsave->api = 1;
 
                             $compsave->save();
-
+                            array_push($allcompanyid,  $compsave);
                          /*   $companydata['id'] = $company['id'];
                            
                             $companydata['company_image'] = $company['amazonImage'];
@@ -120,7 +120,7 @@ class CompanyController extends Controller
                             
 
 
-                          //  array_push($allcompanyid, $company['id']);
+                          //  
                             
                         }
                         
