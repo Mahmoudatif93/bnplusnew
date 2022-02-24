@@ -175,7 +175,7 @@ class CompanyController extends Controller
 
                                            
 
-                                            if (Cards::where('id', '!=',$card['productId'])->get()) {
+                                            if (empty(Cards::where('id',$card['productId'])->get())) {
 
 
                                            // if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
