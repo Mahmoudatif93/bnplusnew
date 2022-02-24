@@ -29,7 +29,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-/*
+
         $allcardsid = array();
         $curl = curl_init();
 
@@ -96,7 +96,7 @@ class CompanyController extends Controller
 
 
                         if (count(Company::where('id', $company['id'])->get()) < 1) {
-                             dd($company['id']);
+                            // dd($companiesnational);
                             $request_data['id'] = $company['id'];
                             $request_data['company_image'] = $company['amazonImage'];
                             $request_data['name'] = $company['categoryName'];
@@ -219,9 +219,10 @@ class CompanyController extends Controller
                 }
             }
         }
-*/
 
-        // return $allcardsid ;
+
+
+        return $allcardsid ;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
