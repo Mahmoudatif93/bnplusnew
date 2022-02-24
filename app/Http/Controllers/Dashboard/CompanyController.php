@@ -150,7 +150,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-return $allcards['data'];
+//return $allcards['data'];
 
 
                         $cardsave = new Cards;
@@ -161,7 +161,7 @@ return $allcards['data'];
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
                                     if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) > 0) {
-                                       
+                                       return count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) ;
                                         foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
@@ -174,7 +174,7 @@ return $allcards['data'];
 
                                         //  print_r( $oldprice);
                                     } else {
-                                        if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) == 0) {
+                                       
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
                                                 $cardsave->id =  $card['productId'];
@@ -193,7 +193,7 @@ return $allcards['data'];
 
                                                 $cardsave->save();
                                             }
-                                        }
+                                        
                                     }
                                 }
                             }
