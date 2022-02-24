@@ -114,7 +114,7 @@ class NationalCampany extends Command
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
-                           dd($company['id']);
+                          
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
@@ -127,7 +127,7 @@ class NationalCampany extends Command
                         }else{
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
                           
-                                dd($company['id']);
+                               
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
                                  $compsave->name = $company['categoryName'];
