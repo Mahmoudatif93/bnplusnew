@@ -100,7 +100,7 @@ class CompanyController extends Controller
                     foreach ($companys['childs'] as $company) {
                         if (!empty(Company::where('id', '!=', $company['id'])->get())) {
 
-print_r(Company::where('id', '!=', $company['id'])->get());
+
                             echo $company['id'];
                             echo "<br>";
 
@@ -110,7 +110,7 @@ print_r(Company::where('id', '!=', $company['id'])->get());
                             $compsave->kind = 'national';
                             $compsave->api = 1;
 
-                            //      $compsave->save(); 
+                                $compsave->save(); 
 
 
 
