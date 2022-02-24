@@ -29,7 +29,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-
+/*
         $allcardsid = array();
         $curl = curl_init();
 
@@ -219,7 +219,7 @@ class CompanyController extends Controller
                 }
             }
         }
-
+*/
 
         // return $allcardsid ;
 
