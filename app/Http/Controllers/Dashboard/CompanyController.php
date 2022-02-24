@@ -94,7 +94,7 @@ class CompanyController extends Controller
 
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
-                            if (count(Company::where('api', 1)->get()) == 0) {
+                          
                             // dd($companiesnational);
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
@@ -116,7 +116,7 @@ class CompanyController extends Controller
 
 
                             array_push($allcompanyid, $company['id']);
-                            }
+                            
                         }
 
                         // return($companiesnational);
