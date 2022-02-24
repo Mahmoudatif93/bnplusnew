@@ -114,13 +114,17 @@ class NationalCampany extends Command
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
                            
-                            $compsave->id = $company['id'];
-                            $compsave->company_image = $company['amazonImage'];
-                            $compsave->name = $company['categoryName'];
-                            $compsave->kind = 'national';
-                            $compsave->api = 1;
-
-                            $compsave->save();
+                            if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
+                          
+                                //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
+                                 $compsave->id = $company['id'];
+                                 $compsave->company_image = $company['amazonImage'];
+                                 $compsave->name = $company['categoryName'];
+                                 $compsave->kind = 'national';
+                                 $compsave->api = 1;
+     
+                                 $compsave->save(); 
+                        };
                     
                             
                         }else{
@@ -243,6 +247,8 @@ class NationalCampany extends Command
                 }
             }
         }
+
+
 
         $this->info('National Cummand Run successfully!.');
     }
