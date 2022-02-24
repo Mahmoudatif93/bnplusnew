@@ -90,6 +90,8 @@ class CompanyController extends Controller
                 //  return $national['data'];
                 $compsave = new Company;
                 $allcompanyid = array();
+                $request_data=array();
+                $cardsave1=array();
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
