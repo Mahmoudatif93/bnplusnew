@@ -107,7 +107,7 @@ class CompanyController extends Controller
                             $compsave->api = 1;
 
                             $compsave->save();
-                            array_push($allcompanyid,  $compsave);
+                       //     array_push($allcompanyid,  $compsave);
                          /*   $companydata['id'] = $company['id'];
                            
                             $companydata['company_image'] = $company['amazonImage'];
@@ -179,7 +179,7 @@ class CompanyController extends Controller
                                         }
 
 
-                                        if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
+                                        if (count(Company::where('id', $company['id'])->get()) > 0) {
 
                                             $cardsave1['productId'] =  $card['productId'];
                                             $cardsave1['company_id'] = $card['categoryId'];
@@ -198,7 +198,7 @@ class CompanyController extends Controller
                                         }
                                     } else {
                                       
-                                            if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
+                                            if (count(Company::where('id',  $company['id'])->get()) > 0) {
                                                 
                                                 $cardsave1['productId'] =  $card['productId'];
                                                 $cardsave1['company_id'] = $card['categoryId'];
