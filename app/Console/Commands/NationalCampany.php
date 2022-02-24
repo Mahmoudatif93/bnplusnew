@@ -43,7 +43,7 @@ class NationalCampany extends Command
     public function handle()
     {
         ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-      
+      /*
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -248,7 +248,7 @@ class NationalCampany extends Command
         }
 
 
-
+*/
 
 
         $this->info('National Cummand Run successfully!.');
