@@ -177,15 +177,16 @@ class CompanyController extends Controller
                                             
                                         }
 
-
-                                        if (count(Company::where('id', $company['id'])->get()) > 0) {
-                                            return $card;
+                                        $allcards=Cards::pluck('id');
+                                        if (count(Company::where('id',  $company['id'])->get()) > 0) {
+                                            if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
+                                               
                                             $cardsave->id =  $card['productId'];
                                             $cardsave->company_id = $card['categoryId'];
                                             $cardsave->card_name = $card['productName'];
 
                                             if ($card['productCurrency'] == "SAR") {
-                                                $cardsave->card_price = $card['sellPrice'] * $curr->amount;
+                                                $cardsave->card_price  = $card['sellPrice'] * $curr->amount;
                                             } else {
                                                 $cardsave->card_price = $card['sellPrice'];
                                             }
@@ -193,9 +194,11 @@ class CompanyController extends Controller
                                             $cardsave->card_image = $card['productImage'];
                                             $cardsave->nationalcompany= 'national';
                                             $cardsave->api = 1;
-                                          //  Cards::create($cardsave1);
                                             $cardsave->save();
                                         }
+                                    
+                                        }
+                                       
                                     } else {
                                         $allcards=Cards::pluck('id');
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
