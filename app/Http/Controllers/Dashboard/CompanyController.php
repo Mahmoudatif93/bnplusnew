@@ -176,7 +176,7 @@ class CompanyController extends Controller
                                         }
 
 
-                                       // if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                        if (count(Company::where('id',  $company['id'])->get()) != 0) {
 
                                             $cardsave1['productId'] =  $card['productId'];
                                             $cardsave1['company_id'] = $card['categoryId'];
@@ -192,10 +192,10 @@ class CompanyController extends Controller
                                             $cardsave1['nationalcompany'] = 'national';
                                             $cardsave1['api'] = 1;
                                             Cards::create($cardsave1);
-                                        //}
+                                        }
                                     } else {
                                        
-                                          //  if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                            if (count(Company::where('id',  $company['id'])->get()) != 0) {
 
                                                 $cardsave1['productId'] =  $card['productId'];
                                                 $cardsave1['company_id'] = $card['categoryId'];
@@ -211,7 +211,7 @@ class CompanyController extends Controller
                                                 $cardsave1['nationalcompany'] = 'national';
                                                 $cardsave1['api'] = 1;
                                                 Cards::create($cardsave1);
-                                           // }
+                                            }
                                         
                                     }
                                 }
