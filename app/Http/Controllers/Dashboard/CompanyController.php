@@ -179,7 +179,7 @@ class CompanyController extends Controller
 
 
                                         if (count(Company::where('id', $company['id'])->get()) > 0) {
-
+                                            return $card;
                                             $cardsave->id =  $card['productId'];
                                             $cardsave->company_id = $card['categoryId'];
                                             $cardsave->card_name = $card['productName'];
@@ -200,7 +200,7 @@ class CompanyController extends Controller
                                         $allcards=Cards::pluck('id');
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
                                                 if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
-                                                    return $card;
+                                                   
                                                 $cardsave->id =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
