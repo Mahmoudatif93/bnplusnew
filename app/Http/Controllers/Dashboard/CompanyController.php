@@ -197,9 +197,9 @@ class CompanyController extends Controller
                                             $cardsave->save();
                                         }
                                     } else {
-                                      
+                                        $allcards=Cards::pluck('id');
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
-                                                
+                                                if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
                                                 $cardsave->id =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
@@ -216,7 +216,7 @@ class CompanyController extends Controller
                                                 $cardsave->save();
                                             }
                                         
-                                        
+                                            }
                                     }
                                 }
                             }
