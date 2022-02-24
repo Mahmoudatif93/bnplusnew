@@ -117,7 +117,7 @@ class CompanyController extends Controller
                             
 
 
-                            array_push($allcompanyid, $company['id']);
+                          //  array_push($allcompanyid, $company['id']);
                             
                         }
 
@@ -157,7 +157,7 @@ class CompanyController extends Controller
 //return $allcards['data'];
 
 
-                        $cardsave = new Cards;
+                        //$cardsave = new Cards;
                         $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
@@ -176,7 +176,7 @@ class CompanyController extends Controller
                                         }
 
 
-                                        if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                       // if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
                                             $cardsave1['productId'] =  $card['productId'];
                                             $cardsave1['company_id'] = $card['categoryId'];
@@ -192,10 +192,10 @@ class CompanyController extends Controller
                                             $cardsave1['nationalcompany'] = 'national';
                                             $cardsave1['api'] = 1;
                                             Cards::create($cardsave1);
-                                        }
+                                        //}
                                     } else {
                                        
-                                            if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+                                          //  if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
                                                 $cardsave1['productId'] =  $card['productId'];
                                                 $cardsave1['company_id'] = $card['categoryId'];
@@ -211,7 +211,7 @@ class CompanyController extends Controller
                                                 $cardsave1['nationalcompany'] = 'national';
                                                 $cardsave1['api'] = 1;
                                                 Cards::create($cardsave1);
-                                            }
+                                           // }
                                         
                                     }
                                 }
