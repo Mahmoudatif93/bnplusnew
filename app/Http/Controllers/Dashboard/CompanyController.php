@@ -176,7 +176,7 @@ class CompanyController extends Controller
                                         }
 
 
-                                        if (count(Company::where('id',  $company['id'])->get()) != 0) {
+                                        if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
                                             $cardsave1['productId'] =  $card['productId'];
                                             $cardsave1['company_id'] = $card['categoryId'];
@@ -195,7 +195,7 @@ class CompanyController extends Controller
                                         }
                                     } else {
                                        
-                                            if (count(Company::where('id',  $company['id'])->get()) != 0) {
+                                            if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
                                                 $cardsave1['productId'] =  $card['productId'];
                                                 $cardsave1['company_id'] = $card['categoryId'];
