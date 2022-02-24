@@ -32,7 +32,7 @@ class CompanyController extends Controller
         ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
 
-
+        $allcompanyid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -91,7 +91,7 @@ class CompanyController extends Controller
                 $national = json_decode($companiesnational, true);
                 //  return $national['data'];
                 $compsave = new Company;
-                $allcompanyid = array();
+             
                 $request_data=array();
                 $cardsave1=array();
                 foreach ($national['data'] as $companys) {
@@ -122,7 +122,7 @@ class CompanyController extends Controller
                           //  array_push($allcompanyid, $company['id']);
                             
                         }
-
+                        array_push($allcompanyid, $company['id']);
                         // return($companiesnational);
                         //  return count($allcompanyid);
 
@@ -147,7 +147,7 @@ class CompanyController extends Controller
                                 'password' => 'db7d8028631f3351731cf7ca0302651d',
                                 'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
                                 'langId' => '1',
-                                'categoryId' => 52502
+                                'categoryId' => $company['id']
                                 // 'ids[]' => $company['id']
                             ),
 
@@ -156,7 +156,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-return $allcards['data'];
+//return $allcards['data'];
 
 
                         //$cardsave = new Cards;
@@ -225,7 +225,7 @@ return $allcards['data'];
                 }
             }
         }
-
+return $allcompanyid;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
