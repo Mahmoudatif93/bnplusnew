@@ -101,7 +101,7 @@ class CompanyController extends Controller
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                       
                            
-                            if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
+                            if (count(Company::whereNotIn('id', $allcompanies)->get()) < 0) {
                           return 0;
                                 //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
                                  $compsave->id = $company['id'];
