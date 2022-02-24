@@ -101,7 +101,7 @@ class CompanyController extends Controller
                         if (!empty(Company::where('id',$company['id'])->get())) {
                       
                            
-                      
+                      echo $company['id'];echo "<pr>";
                               
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
@@ -109,7 +109,7 @@ class CompanyController extends Controller
                                  $compsave->kind = 'national';
                                  $compsave->api = 1;
      
-                                 $compsave->save(); 
+                           //      $compsave->save(); 
                       
                     
                             
@@ -242,7 +242,7 @@ class CompanyController extends Controller
         }
 
 
-
+dd();
 //return $allcompanyid;
 
 
