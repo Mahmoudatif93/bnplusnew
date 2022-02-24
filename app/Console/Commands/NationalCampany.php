@@ -44,7 +44,6 @@ class NationalCampany extends Command
     {
         ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
-
         $allcompanyid = array();
         $curl = curl_init();
 
@@ -114,7 +113,7 @@ class NationalCampany extends Command
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
-                          
+                           
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
@@ -127,7 +126,7 @@ class NationalCampany extends Command
                         }else{
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
                           
-                               
+                                //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
                                  $compsave->name = $company['categoryName'];
@@ -180,7 +179,7 @@ class NationalCampany extends Command
                             if (isset($allcards['data'])) {
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
-                                    if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) > 0) {
+                                    if (count(Cards::where(array('id'=>$card['productId']))->get()) > 0) {
                                      
                                         foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
@@ -191,15 +190,16 @@ class NationalCampany extends Command
                                             
                                         }
 
-
-                                        if (count(Company::where('id', $company['id'])->get()) > 0) {
-
-                                            $cardsave->productId =  $card['productId'];
+                                        $allcards=Cards::pluck('id');
+                                        if (count(Company::where('id',  $company['id'])->get()) > 0) {
+                                            if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
+                                               
+                                            $cardsave->id =  $card['productId'];
                                             $cardsave->company_id = $card['categoryId'];
                                             $cardsave->card_name = $card['productName'];
 
                                             if ($card['productCurrency'] == "SAR") {
-                                                $cardsave->card_price = $card['sellPrice'] * $curr->amount;
+                                                $cardsave->card_price  = $card['sellPrice'] * $curr->amount;
                                             } else {
                                                 $cardsave->card_price = $card['sellPrice'];
                                             }
@@ -207,14 +207,17 @@ class NationalCampany extends Command
                                             $cardsave->card_image = $card['productImage'];
                                             $cardsave->nationalcompany= 'national';
                                             $cardsave->api = 1;
-                                          //  Cards::create($cardsave1);
                                             $cardsave->save();
                                         }
+                                    
+                                        }
+                                       
                                     } else {
-                                      
+                                        $allcards=Cards::pluck('id');
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
-                                                
-                                                $cardsave->productId =  $card['productId'];
+                                                if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
+                                                   
+                                                $cardsave->id =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
 
@@ -230,7 +233,7 @@ class NationalCampany extends Command
                                                 $cardsave->save();
                                             }
                                         
-                                        
+                                            }
                                     }
                                 }
                             }
