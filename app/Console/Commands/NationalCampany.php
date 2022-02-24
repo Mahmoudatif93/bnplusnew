@@ -112,16 +112,6 @@ class NationalCampany extends Command
 
                     foreach ($companys['childs'] as $company) {
 
-
-                   /*   Company::Create(
-                            ['id' =>$company['id']],
-                            ['company_image' =>$company['amazonImage']],
-                            ['name' =>$company['categoryName']],
-                            ['kind' =>'national'],
-                            ['api' =>1]
-                       );*/
-
-
                        $itemcomp = Company::firstOrNew(array('id' => $company['id']));
 
                        $itemcomp->id = $company['id'];
@@ -180,10 +170,6 @@ class NationalCampany extends Command
 
                                  if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
-
-
-
-
                                     $itemcard = Cards::firstOrNew(array('id' =>  $card['productId']));
 
                                     $itemcard->id = $card['productId'];
@@ -195,19 +181,6 @@ class NationalCampany extends Command
                                     $itemcard->nationalcompany= 'national';
                                     $itemcard->api = 1;
                                      $itemcard ->save();
-
-
-
-                                  /*  Cards::updateOrCreate(
-                                        ['id' =>$card['productId']],
-                                      ['company_id' =>$card['categoryId']],
-                                      ['card_name' =>$card['productName']],
-                                        ['card_price' =>$cardpricesss],
-                                        ['card_code' =>$card['productName']],
-                                        ['card_image' =>$card['productImage']],
-                                        ['nationalcompany' =>'national'],
-                                        ['api' =>1]
-                                   );*/
                                 
                                 
                                 }

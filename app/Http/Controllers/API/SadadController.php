@@ -119,6 +119,7 @@ $process_id=$response['result']["process_id"];
             ////////////dubai api///////////////
             $dubiapi=  Cards::where('id', $order->card_id)->first();
             $clientdata=  Client::where('id', $order->client_id)->first();
+            
                 if($dubiapi->api==1){
                     $client=  Client::where('id', $order->client_id)->first();
                 $curl = curl_init();
@@ -174,7 +175,7 @@ $process_id=$response['result']["process_id"];
                   $cardemail=  Cards::where('id', $order->card_id)->first();
                   $client=  Client::where('id', $order->client_id)->first();
 
-                  if($dubiapi->api!=1){
+                  if($dubiapi->api==0){
                   $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
                   }
 

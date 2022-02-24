@@ -135,7 +135,7 @@ class OrderController extends Controller
               foreach ($json['serials'] as $row) {
                 //  return $row['serialCode'];
                 
-                  $this->sendResetEmail( $client->email,  $this->decryptSerial( $row['serialCode']), 'Your BNplus Code');
+                  $this->sendResetEmail( $client->email,$this->decryptSerial( $row['serialCode']), 'Your BNplus Code');
               }
 
       
@@ -155,7 +155,7 @@ class OrderController extends Controller
 
                 $cardemail=  Cards::where('id', $order->card_id)->first();
                 $client=  Client::where('id', $order->client_id)->first();
-                if($dubiapi->api!=1){
+                if($dubiapi->api==0){
                 $this->sendResetEmail( $client->email,  $cardemail->card_code, 'Your BNplus Code');
                 }
 
