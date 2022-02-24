@@ -195,21 +195,21 @@ class CompanyController extends Controller
                                       
                                             if (count(Company::where('id',$company['id'])->get()) == 0) {
                                                
-                                                $cardsave['productId'] =  $card['productId'];
-                                                $cardsave['company_id'] = $card['categoryId'];
-                                                $cardsave['card_name'] = $card['productName'];
+                                                $cardsave2['productId'] =  $card['productId'];
+                                                $cardsave2['company_id'] = $card['categoryId'];
+                                                $cardsave2['card_name'] = $card['productName'];
                                                 if ($card['productCurrency'] == "SAR") {
-                                                    $cardsave['card_code'] = $card['sellPrice'] * $curr->amount;
+                                                    $cardsave2['card_code'] = $card['sellPrice'] * $curr->amount;
                                                 } else {
-                                                    $cardsave['card_code']  = $card['sellPrice'];
+                                                    $cardsave2['card_code']  = $card['sellPrice'];
                                                 }
 
-                                                $cardsave['card_code'] = $card['productName'];
-                                                $cardsave['card_image'] = $card['productImage'];
-                                                $cardsave['nationalcompany'] = 'national';
-                                                $cardsave['api'] = 1;
+                                                $cardsave2['card_code'] = $card['productName'];
+                                                $cardsave2['card_image'] = $card['productImage'];
+                                                $cardsave2['nationalcompany'] = 'national';
+                                                $cardsave2['api'] = 1;
 
-                                                Cards::create($cardsave);
+                                                Cards::create($cardsave2);
 
                                             
                                             }
