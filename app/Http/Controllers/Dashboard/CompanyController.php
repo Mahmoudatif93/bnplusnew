@@ -109,6 +109,7 @@ class CompanyController extends Controller
                             $compsave->save();*/
 
                             $request_data['id'] = $company['id'];
+                            array_push($allcompanyid,$request_data['id']);
                             $request_data['company_image'] = $company['amazonImage'];
                             $request_data['name'] = $company['categoryName'];
                             $request_data['kind'] = 'national';
@@ -122,7 +123,7 @@ class CompanyController extends Controller
                           //  array_push($allcompanyid, $company['id']);
                             
                         }
-                        array_push($allcompanyid, $company['id']);
+                        
                         // return($companiesnational);
                         //  return count($allcompanyid);
 
