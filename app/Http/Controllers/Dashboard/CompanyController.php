@@ -98,7 +98,7 @@ class CompanyController extends Controller
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
-                        if (empty(Company::where('id', '!=', $company['id'])->get())) {
+                        if (empty(Company::where('id', '!=', 96)->get())) {
 
 
                         
