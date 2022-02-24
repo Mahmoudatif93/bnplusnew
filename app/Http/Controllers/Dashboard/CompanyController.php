@@ -113,20 +113,7 @@ class CompanyController extends Controller
                       
                     
                             
-                        }else{
-                           return 0;
-                            if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
-                          
-                                //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
-                                 $compsave->id = $company['id'];
-                                 $compsave->company_image = $company['amazonImage'];
-                                 $compsave->name = $company['categoryName'];
-                                 $compsave->kind = 'national';
-                                 $compsave->api = 1;
-     
-                                 $compsave->save(); 
                         }
-                    }
                         // return($companiesnational);
                         //  return count($allcompanyid);
 
