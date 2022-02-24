@@ -95,23 +95,23 @@ class CompanyController extends Controller
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
-                            dd($compsave->id);
-                            $compsave->id = $company['id'];
+                            //dd($compsave->id);
+                           /* $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
                             $compsave->kind = 'national';
                             $compsave->api = 1;
 
-                            $compsave->save();
+                            $compsave->save();*/
 
-                         /*   $request_data['id'] = $company['id'];
+                            $request_data['id'] = $company['id'];
                             $request_data['company_image'] = $company['amazonImage'];
                             $request_data['name'] = $company['categoryName'];
                             $request_data['kind'] = 'national';
                             $request_data['api'] = 1;
 
 
-                            Company::create($request_data);*/
+                            Company::create($request_data);
                             
 
 
@@ -163,7 +163,7 @@ class CompanyController extends Controller
                                 foreach ($allcards['data'] as $card) {
                                     //    Cards::where('id', $card['productId'])->delete();
                                     if (count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) > 0) {
-                                       return count(Cards::where(array('id'=>$card['productId'],'purchase'=>0))->get()) ;
+                                     
                                         foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
                                             if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
                                                 $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
@@ -172,28 +172,43 @@ class CompanyController extends Controller
 
                                             
                                         }
-                                        //array_push($allcardsid, $card['productId']);
 
-                                        //  print_r( $oldprice);
+
+                                        if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
+
+                                            $cardsave1['productId'] =  $card['productId'];
+                                            $cardsave1['company_id'] = $card['categoryId'];
+                                            $cardsave1['card_name'] = $card['productName'];
+
+                                            if ($card['productCurrency'] == "SAR") {
+                                                $cardsave1['card_price']  = $card['sellPrice'] * $curr->amount;
+                                            } else {
+                                                $cardsave1['card_price'] = $card['sellPrice'];
+                                            }
+                                            $cardsave1['card_code'] = $card['productName'];
+                                            $cardsave1['card_image'] = $card['productImage'];
+                                            $cardsave1['nationalcompany'] = 'national';
+                                            $cardsave1['api'] = 1;
+                                            Cards::create($cardsave1);
+                                        }
                                     } else {
                                        
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
 
-                                                $cardsave->id =  $card['productId'];
-                                                $cardsave->company_id = $card['categoryId'];
-                                                $cardsave->card_name = $card['productName'];
+                                                $cardsave1['productId'] =  $card['productId'];
+                                                $cardsave1['company_id'] = $card['categoryId'];
+                                                $cardsave1['card_name'] = $card['productName'];
+
                                                 if ($card['productCurrency'] == "SAR") {
-                                                    $cardsave->card_price = $card['sellPrice'] * $curr->amount;
+                                                    $cardsave1['card_price']  = $card['sellPrice'] * $curr->amount;
                                                 } else {
-                                                    $cardsave->card_price = $card['sellPrice'];
+                                                    $cardsave1['card_price'] = $card['sellPrice'];
                                                 }
-
-                                                $cardsave->card_code = $card['productName'];
-                                                $cardsave->card_image = $card['productImage'];
-                                                $cardsave->nationalcompany = 'national';
-                                                $cardsave->api = 1;
-
-                                                $cardsave->save();
+                                                $cardsave1['card_code'] = $card['productName'];
+                                                $cardsave1['card_image'] = $card['productImage'];
+                                                $cardsave1['nationalcompany'] = 'national';
+                                                $cardsave1['api'] = 1;
+                                                Cards::create($cardsave1);
                                             }
                                         
                                     }
