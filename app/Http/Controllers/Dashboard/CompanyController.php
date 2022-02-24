@@ -109,12 +109,12 @@ class CompanyController extends Controller
                             $compsave->save();*/
 
                             $request_data['id'] = $company['id'];
-                            array_push($allcompanyid,$request_data['id']);
+                           
                             $request_data['company_image'] = $company['amazonImage'];
                             $request_data['name'] = $company['categoryName'];
                             $request_data['kind'] = 'national';
                             $request_data['api'] = 1;
-
+                            array_push($allcompanyid,$request_data);
 
                             Company::create($request_data);
                             
