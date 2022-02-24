@@ -95,7 +95,7 @@ class CompanyController extends Controller
 
                 // $request_data=array();
                 $cardsave1 = array();
-                dd($national['data']);
+                dd($national['data'][0]);
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
