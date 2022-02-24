@@ -208,7 +208,7 @@ class NationalCampany extends Command
                                     } else {
                                     
                                       
-                                            
+                                            dd($company['id']);
                                                
                                                 $cardsave2['productId'] =  $card['productId'];
                                                 $cardsave2['company_id'] = $company['id'];
