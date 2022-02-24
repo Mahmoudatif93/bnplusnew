@@ -187,7 +187,7 @@ class CompanyController extends Controller
 
 
                                         }
-                                      //  array_push($allcardsid, $card['productId']);
+                                        array_push($allcardsid, $card['productId']);
 
                                         //  print_r( $oldprice);
                                     } else {
@@ -223,7 +223,7 @@ class CompanyController extends Controller
         }
 
 
-       // return $allcardsid ;
+        return $allcardsid ;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
