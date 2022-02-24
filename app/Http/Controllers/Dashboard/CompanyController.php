@@ -101,7 +101,7 @@ class CompanyController extends Controller
                         if (!empty(Company::where('id',$company['id'])->get())) {
                       
                            
-                      echo $company['id'];echo "<pr>";
+                      echo $company['id'];echo "<br>";
                               
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
