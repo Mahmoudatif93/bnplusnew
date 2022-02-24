@@ -114,7 +114,7 @@ class CompanyController extends Controller
                     
                             
                         }else{
-
+                            return( Company::where('id',$company['id'])->get() );
                             $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
@@ -123,7 +123,7 @@ class CompanyController extends Controller
 
                             $compsave->save(); 
 
-                           // return( Company::where('id',$company['id'])->get() );
+                           // 
                         }
                         // return($companiesnational);
                         //  return count($allcompanyid);
