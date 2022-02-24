@@ -95,7 +95,7 @@ class CompanyController extends Controller
 
                 // $request_data=array();
                 $cardsave1 = array();
-                dd($national['data']->childs);
+              
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
@@ -166,22 +166,22 @@ class CompanyController extends Controller
                                         ['card_image' =>$card['productImage']],
                                         ['nationalcompany' =>'national'],
                                         ['api' =>1]
-                                   );
+                                   ); }
 
-                             }
+                            
                                     
                                 }
                             }
                         }
-                        //  return $allcardsid ;
+                      
                     }
                 }
             }
         }
 
 
-        dd();
-        //return $allcompanyid;
+      
+      
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
