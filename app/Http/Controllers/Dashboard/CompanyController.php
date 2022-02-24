@@ -191,7 +191,7 @@ class CompanyController extends Controller
 
                                         //  print_r( $oldprice);
                                     } else {
-                                        if (count(Cards::where(array('productId'=>$card['productId'],'purchase'=>0))->get()) == 0) {
+                                        if (empty($card['productId'])) {
                                           //  array_push($allcardsid, $card['productId']);
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
                                                // array_push($allcardsid, $card['productId']);
