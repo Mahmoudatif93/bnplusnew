@@ -217,7 +217,7 @@ class CompanyController extends Controller
                                                     //  Cards::create($cardsave1);
                                             $cardsave->save();
 
-                                            array_push($allcompanyid, $card['productId']);
+                                           // array_push($allcompanyid, $card['productId']);
                                             }
                                         
                                         
@@ -230,7 +230,7 @@ class CompanyController extends Controller
                 }
             }
         }
-return $allcompanyid;
+//return $allcompanyid;
 
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
