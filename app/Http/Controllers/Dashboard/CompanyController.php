@@ -114,7 +114,7 @@ class CompanyController extends Controller
                     
                             
                         }else{
-                            return( $national );
+                            return( Company::where('id',$company['id'])->get() );
                         }
                         // return($companiesnational);
                         //  return count($allcompanyid);
