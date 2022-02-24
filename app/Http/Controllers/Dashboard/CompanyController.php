@@ -158,7 +158,7 @@ class CompanyController extends Controller
                                         $cardpricesss = $card['sellPrice'];
                                     }
 
-                               //     if (count(Company::where('id',  $company['id'])->get()) > 0) {
+                                 if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
                                     Cards::updateOrCreate(
                                         ['id' =>$card['productId']],
@@ -171,7 +171,7 @@ class CompanyController extends Controller
                                         ['api' =>1]
                                    );
 
-                               // }
+                             }
                                     
                                 }
                             }
