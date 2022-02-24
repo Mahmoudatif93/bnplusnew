@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-        $allcardsid = array();
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -101,7 +101,7 @@ class CompanyController extends Controller
                             $compsave->kind = 'national';
                             $compsave->api = 1;
 
-                          //  $compsave->save();
+                            $compsave->save();
 
 
                             array_push($allcompanyid, $company['id']);
@@ -140,7 +140,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-
+return $allcards;
 
 
                         $cardsave = new Cards;
@@ -160,7 +160,7 @@ class CompanyController extends Controller
 
                                             
                                         }
-                                        array_push($allcardsid, $card['productId']);
+                                        //array_push($allcardsid, $card['productId']);
 
                                         //  print_r( $oldprice);
                                     } else {
@@ -181,7 +181,7 @@ class CompanyController extends Controller
                                                 $cardsave->nationalcompany = 'national';
                                                 $cardsave->api = 1;
 
-                                             //   $cardsave->save();
+                                                $cardsave->save();
                                             }
                                         }
                                     }
@@ -193,10 +193,8 @@ class CompanyController extends Controller
                 }
             }
         }
-        return $allcardsid ;
 
 
-        
 
         //$this->sendResetEmail('mahmoudatif22@gmail.com', 'mm', 'test');
         $Companies = Company::when($request->search, function ($q) use ($request) {
