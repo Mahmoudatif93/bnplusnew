@@ -95,16 +95,23 @@ class CompanyController extends Controller
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                             // dd($companiesnational);
-                          
-                            $request_data['id'] = $company['id'];
+                            $compsave->id = $company['id'];
+                            $compsave->company_image = $company['amazonImage'];
+                            $compsave->name = $company['categoryName'];
+                            $compsave->kind = 'national';
+                            $compsave->api = 1;
+
+                            $compsave->save();
+
+                         /*   $request_data['id'] = $company['id'];
                             $request_data['company_image'] = $company['amazonImage'];
                             $request_data['name'] = $company['categoryName'];
                             $request_data['kind'] = 'national';
                             $request_data['api'] = 1;
 
 
-                            Company::create($request_data);
-
+                            Company::create($request_data);*/
+                            
 
 
                             array_push($allcompanyid, $company['id']);
