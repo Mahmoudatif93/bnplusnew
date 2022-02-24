@@ -43,7 +43,6 @@ class NationalCampany extends Command
     public function handle()
     {
         ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-
         $allcompanyid = array();
         $curl = curl_init();
 
@@ -247,6 +246,8 @@ class NationalCampany extends Command
                 }
             }
         }
+
+
 
 
 
