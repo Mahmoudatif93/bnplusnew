@@ -101,13 +101,24 @@ class CompanyController extends Controller
                     foreach ($companys['childs'] as $company) {
 
 
-                      Company::Create(
+                   /*   Company::Create(
                             ['id' =>$company['id']],
                             ['company_image' =>$company['amazonImage']],
                             ['name' =>$company['categoryName']],
                             ['kind' =>'national'],
                             ['api' =>1]
-                       );
+                       );*/
+
+
+                       $itemcomp = Company::firstOrNew(array('id' => $company['id']));
+
+                       $itemcomp->id = $company['id'];
+                       $itemcomp->company_image = $company['amazonImage'];
+                       $itemcomp->name = $company['categoryName'];
+                       $itemcomp->kind = 'national';
+                       $itemcomp->api = 1;
+                        $itemcomp ->save();
+
 
                         /////////////////cards 
 
@@ -157,7 +168,25 @@ class CompanyController extends Controller
 
                                  if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
-                                    Cards::updateOrCreate(
+
+
+
+
+                                    $itemcard = Cards::firstOrNew(array('id' =>  $card['productId']));
+
+                                    $itemcard->id = $card['productId'];
+                                    $itemcard->company_id = $card['categoryId'];
+                                    $itemcard->card_name = $card['productName'];
+                                    $itemcard->card_price =$cardpricesss;
+                                    $itemcard->card_code = $card['productName'];
+                                    $itemcard->card_image = $card['productImage'];
+                                    $itemcard->nationalcompany= 'national';
+                                    $itemcard->api = 1;
+                                     $itemcard ->save();
+
+
+
+                                  /*  Cards::updateOrCreate(
                                         ['id' =>$card['productId']],
                                       ['company_id' =>$card['categoryId']],
                                       ['card_name' =>$card['productName']],
@@ -166,7 +195,10 @@ class CompanyController extends Controller
                                         ['card_image' =>$card['productImage']],
                                         ['nationalcompany' =>'national'],
                                         ['api' =>1]
-                                   ); }
+                                   );*/
+                                
+                                
+                                }
 
                             
                                     
