@@ -100,15 +100,15 @@ class CompanyController extends Controller
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
                             //dd($compsave->id);
-                           /* $compsave->id = $company['id'];
+                            $compsave->id = $company['id'];
                             $compsave->company_image = $company['amazonImage'];
                             $compsave->name = $company['categoryName'];
                             $compsave->kind = 'national';
                             $compsave->api = 1;
 
-                            $compsave->save();*/
+                            $compsave->save();
 
-                            $companydata['id'] = $company['id'];
+                         /*   $companydata['id'] = $company['id'];
                            
                             $companydata['company_image'] = $company['amazonImage'];
                             $companydata['name'] = $company['categoryName'];
@@ -116,7 +116,7 @@ class CompanyController extends Controller
                             $companydata['api'] = 1;
                             array_push($allcompanyid,$companydata);
 
-                            Company::create($companydata);
+                            Company::create($companydata);*/
                             
 
 
