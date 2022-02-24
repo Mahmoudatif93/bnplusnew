@@ -160,7 +160,7 @@ class CompanyController extends Controller
 //return $allcards['data'];
 
 
-                        //$cardsave = new Cards;
+                        $cardsave = new Cards;
                         $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
@@ -181,39 +181,41 @@ class CompanyController extends Controller
 
                                         if (count(Company::where('id', $company['id'])->get()) > 0) {
 
-                                            $cardsave1['productId'] =  $card['productId'];
-                                            $cardsave1['company_id'] = $card['categoryId'];
-                                            $cardsave1['card_name'] = $card['productName'];
+                                            $cardsave->productId =  $card['productId'];
+                                            $cardsave->company_id = $card['categoryId'];
+                                            $cardsave->card_name = $card['productName'];
 
                                             if ($card['productCurrency'] == "SAR") {
-                                                $cardsave1['card_price']  = $card['sellPrice'] * $curr->amount;
+                                                $cardsave->card_price = $card['sellPrice'] * $curr->amount;
                                             } else {
-                                                $cardsave1['card_price'] = $card['sellPrice'];
+                                                $cardsave->card_price = $card['sellPrice'];
                                             }
-                                            $cardsave1['card_code'] = $card['productName'];
-                                            $cardsave1['card_image'] = $card['productImage'];
-                                            $cardsave1['nationalcompany'] = 'national';
-                                            $cardsave1['api'] = 1;
-                                            Cards::create($cardsave1);
+                                            $cardsave->card_code = $card['productName'];
+                                            $cardsave->card_image = $card['productImage'];
+                                            $cardsave->nationalcompany= 'national';
+                                            $cardsave->api = 1;
+                                          //  Cards::create($cardsave1);
+                                            $cardsave->save();
                                         }
                                     } else {
                                       
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
                                                 
-                                                $cardsave1['productId'] =  $card['productId'];
-                                                $cardsave1['company_id'] = $card['categoryId'];
-                                                $cardsave1['card_name'] = $card['productName'];
+                                                $cardsave->productId =  $card['productId'];
+                                                $cardsave->company_id = $card['categoryId'];
+                                                $cardsave->card_name = $card['productName'];
 
                                                 if ($card['productCurrency'] == "SAR") {
-                                                    $cardsave1['card_price']  = $card['sellPrice'] * $curr->amount;
+                                                    $cardsave->card_price  = $card['sellPrice'] * $curr->amount;
                                                 } else {
-                                                    $cardsave1['card_price'] = $card['sellPrice'];
+                                                    $cardsave->card_price = $card['sellPrice'];
                                                 }
-                                                $cardsave1['card_code'] = $card['productName'];
-                                                $cardsave1['card_image'] = $card['productImage'];
-                                                $cardsave1['nationalcompany'] = 'national';
-                                                $cardsave1['api'] = 1;
-                                                Cards::create($cardsave1);
+                                                $cardsave->card_code = $card['productName'];
+                                                $cardsave->card_image = $card['productImage'];
+                                                $cardsave->nationalcompany= 'national';
+                                                $cardsave->api = 1;
+                                                    //  Cards::create($cardsave1);
+                                            $cardsave->save();
                                             }
                                         
                                         
