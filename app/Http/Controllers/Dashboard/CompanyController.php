@@ -150,7 +150,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-return count($allcards) ;
+return $allcards['data'];
 
 
                         $cardsave = new Cards;
