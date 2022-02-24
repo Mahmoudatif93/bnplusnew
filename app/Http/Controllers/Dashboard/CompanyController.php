@@ -182,7 +182,22 @@ class CompanyController extends Controller
                                         }
 
                                         $allcards=Cards::pluck('id');
-                                        if (count(Company::where('id',  $company['id'])->get()) > 0) {
+
+                                        if (count(Cards::where('id',  $card['productId'])->get()) > 0) {
+                                            if ($card['productCurrency'] == "SAR") {
+
+                                                $cardpriceup['card_price']  = $card['sellPrice'] * $curr->amount;
+                                                Cards::where('id',  $card['productId'])->update( $cardpriceup);
+                                            } else {
+                                                $cardpriceup['card_price']= $card['sellPrice'];
+                                                Cards::where('id',  $card['productId'])->update( $cardpriceup);
+                                            }
+
+                                            Cards::where()->update();
+
+                                            if (Cards::where('id', '!=',$card['productId'])->get()) {
+
+
                                            // if (count(Cards::whereNotIn('id', $allcards)->get()) > 0) {
                                                
                                             $cardsave->id =  $card['productId'];
@@ -200,7 +215,7 @@ class CompanyController extends Controller
                                             $cardsave->api = 1;
                                             $cardsave->save();
                                       //  }
-                                    
+                                        }
                                         }
                                        
                                     } else {
