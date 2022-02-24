@@ -113,6 +113,8 @@ class CompanyController extends Controller
                       
                     
                             
+                        }else{
+                            return( $national );
                         }
                         // return($companiesnational);
                         //  return count($allcompanyid);
