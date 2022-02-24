@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-
+        ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
         $allcompanyid = array();
         $curl = curl_init();
 
@@ -107,10 +107,6 @@ class CompanyController extends Controller
                             ['kind' =>'national'],
                             ['api' =>1]
                        );
-
-
-                       
-
 
                         /////////////////cards 
 
