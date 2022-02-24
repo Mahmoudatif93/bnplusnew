@@ -98,10 +98,10 @@ class CompanyController extends Controller
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
-                        if (Company::where('id','!=',$company['id'])->get()) {
+                        if (empty(Company::where('id',$company['id'])->get())) {
                       
                            
-                          return Company::where('id', '!=',$company['id'])->get();
+                      
                               
                                  $compsave->id = $company['id'];
                                  $compsave->company_image = $company['amazonImage'];
@@ -114,7 +114,7 @@ class CompanyController extends Controller
                     
                             
                         }else{
-                            return 0;
+                           return 0;
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
                           
                                 //return count(Company::whereNotIn('id', $allcompanies)->get()) ;
