@@ -92,7 +92,7 @@ class CompanyController extends Controller
                 $compsave = new Company;
              
                $allcompanies=Company::pluck('id');
-dd($allcompanies);
+
                // $request_data=array();
                 $cardsave1=array();
                 foreach ($national['data'] as $companys) {
@@ -111,7 +111,7 @@ dd($allcompanies);
                     
                             
                         }else{
-                            if (count(Company::whereNotIn('id', $company['id'])->get()) == 0) {
+                            if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
                           
                                 dd($company['id']);
                                  $compsave->id = $company['id'];
