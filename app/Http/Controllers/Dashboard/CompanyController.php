@@ -194,7 +194,7 @@ return 1;
                                             Cards::create($cardsave1);
                                         }
                                     } else {
-                                        return 0;
+                                        
                                             if (count(Company::where('id',  $company['id'])->get()) > 0) {
                                                 return 2;
                                                 $cardsave1['productId'] =  $card['productId'];
