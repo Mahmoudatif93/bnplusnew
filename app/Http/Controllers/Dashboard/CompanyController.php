@@ -92,7 +92,7 @@ class CompanyController extends Controller
                 //  return $national['data'];
                 $compsave = new Company;
              
-                $request_data=array();
+               // $request_data=array();
                 $cardsave1=array();
                 foreach ($national['data'] as $companys) {
 
@@ -108,15 +108,15 @@ class CompanyController extends Controller
 
                             $compsave->save();*/
 
-                            $request_data['id'] = $company['id'];
+                            $companydata['id'] = $company['id'];
                            
-                            $request_data['company_image'] = $company['amazonImage'];
-                            $request_data['name'] = $company['categoryName'];
-                            $request_data['kind'] = 'national';
-                            $request_data['api'] = 1;
-                            array_push($allcompanyid,$request_data);
+                            $companydata['company_image'] = $company['amazonImage'];
+                            $companydata['name'] = $company['categoryName'];
+                            $companydata['kind'] = 'national';
+                            $companydata['api'] = 1;
+                            array_push($allcompanyid,$companydata);
 
-                            Company::create($request_data);
+                            Company::create($companydata);
                             
 
 
