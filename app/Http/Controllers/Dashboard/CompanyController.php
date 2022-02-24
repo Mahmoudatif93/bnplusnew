@@ -147,7 +147,7 @@ class CompanyController extends Controller
                                 'password' => 'db7d8028631f3351731cf7ca0302651d',
                                 'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
                                 'langId' => '1',
-                                'categoryId' => $company['id']
+                                'categoryId' => 52502
                                 // 'ids[]' => $company['id']
                             ),
 
@@ -156,7 +156,7 @@ class CompanyController extends Controller
                         $cardsnational = curl_exec($curl3);
 
                         $allcards = json_decode($cardsnational, true);
-//return $allcards['data'];
+return $allcards['data'];
 
 
                         //$cardsave = new Cards;
