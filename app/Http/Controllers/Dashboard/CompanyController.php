@@ -159,14 +159,7 @@ class CompanyController extends Controller
                                     //    Cards::where('id', $card['productId'])->delete();
                                     if (count(Cards::where(array('id'=>$card['productId']))->get()) > 0) {
                                      
-                                        foreach (Cards::where('id', $card['productId'])->get() as $cardprice) {
-                                            if ($cardprice->card_price != $card['sellPrice'] * $curr->amount) {
-                                                $oldprice['card_price'] = $card['sellPrice'] * $curr->amount;
-                                                Cards::where('id', $card['productId'])->update($oldprice);
-                                            }
-
-                                            
-                                        }
+                                        
 
                                         $allcards=Cards::pluck('id');
 
@@ -180,7 +173,7 @@ class CompanyController extends Controller
                                                 Cards::where('id',  $card['productId'])->update( $cardpriceup);
                                             }
 
-                                            Cards::where()->update();
+                                           
 
                                             if (Cards::where('id', '!=',$card['productId'])->get()) {
 
