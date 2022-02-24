@@ -176,7 +176,7 @@ class CompanyController extends Controller
                                         }
 
 
-                                        if (count(Company::where('id',  $company['id'])->get()) > 0) {
+                                        if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
 return 1;
                                             $cardsave1['productId'] =  $card['productId'];
                                             $cardsave1['company_id'] = $card['categoryId'];
@@ -194,8 +194,8 @@ return 1;
                                             Cards::create($cardsave1);
                                         }
                                     } else {
-                                        
-                                            if (count(Company::where('id',  $company['id'])->get()) > 0) {
+                                      
+                                            if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
                                                 return 2;
                                                 $cardsave1['productId'] =  $card['productId'];
                                                 $cardsave1['company_id'] = $card['categoryId'];
@@ -212,6 +212,7 @@ return 1;
                                                 $cardsave1['api'] = 1;
                                                 Cards::create($cardsave1);
                                             }
+                                        
                                         
                                     }
                                 }
