@@ -99,7 +99,7 @@ class CompanyController extends Controller
 
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
-                            return 1;
+                      
                            
                             if (count(Company::whereNotIn('id', $allcompanies)->get()) > 0) {
                           return 0;
@@ -111,7 +111,7 @@ class CompanyController extends Controller
                                  $compsave->api = 1;
      
                                  $compsave->save(); 
-                        };
+                        }
                     
                             
                         }else{
