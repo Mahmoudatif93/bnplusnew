@@ -91,6 +91,8 @@ class CompanyController extends Controller
                 //  return $national['data'];
                 $compsave = new Company;
              
+               $allcompanies=Company::Companypluck('id');
+dd($allcompanies);
                // $request_data=array();
                 $cardsave1=array();
                 foreach ($national['data'] as $companys) {
@@ -108,9 +110,20 @@ class CompanyController extends Controller
                             $compsave->save();
                     
                             
+                        }else{
+                            if (count(Company::whereNotIn('id', $company['id'])->get()) == 0) {
+                          
+                                dd($company['id']);
+                                 $compsave->id = $company['id'];
+                                 $compsave->company_image = $company['amazonImage'];
+                                 $compsave->name = $company['categoryName'];
+                                 $compsave->kind = 'national';
+                                 $compsave->api = 1;
+     
+                                 $compsave->save(); 
                         }
-                        
-                         return($companiesnational);
+                    }
+                        // return($companiesnational);
                         //  return count($allcompanyid);
 
 
