@@ -165,7 +165,7 @@ class CompanyController extends Controller
                                       ['company_id' =>$card['categoryId']],
                                       ['card_name' =>$card['productName']],
                                         ['card_price' =>$cardpricesss],
-                                        ['card_code' =>$card['card_code']],
+                                        ['card_code' =>$card['productName']],
                                         ['card_image' =>$card['card_image']],
                                         ['nationalcompany' =>'national'],
                                         ['api' =>1]
