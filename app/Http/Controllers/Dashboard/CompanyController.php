@@ -101,7 +101,7 @@ class CompanyController extends Controller
                     foreach ($companys['childs'] as $company) {
 
 
-                      Company::updateOrCreate(
+                      Company::Create(
                             ['id' =>$company['id']],
                             ['company_image' =>$company['amazonImage']],
                             ['name' =>$company['categoryName']],
