@@ -87,7 +87,7 @@ class CompanyController extends Controller
                 $companiesnational = curl_exec($curl2);
 
                 $national = json_decode($companiesnational, true);
-                //  return $national['data'];
+                 return $national['data'];
                 $compsave = new Company;
                 $allcompanyid = array();
                 foreach ($national['data'] as $companys) {
