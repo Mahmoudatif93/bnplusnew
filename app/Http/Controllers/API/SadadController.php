@@ -58,12 +58,7 @@ class SadadController extends Controller
 $process_id=$response['result']["process_id"];
 
                 $request_data['card_id'] = $card->id;
-                if( $card->api ==1){
-
-                    $request_data['card_id'] = $card->productId;
-                 }else{
-                    $request_data['card_id'] = $card->id;
-                }
+               
                 
                 $request_data['client_id'] = $request->client_id;
                 $request_data['card_price'] = $request->amount;
