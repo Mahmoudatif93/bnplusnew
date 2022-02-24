@@ -191,7 +191,7 @@ class CompanyController extends Controller
 
                                         //  print_r( $oldprice);
                                     } else {
-                                    
+                                        dd($company['id']);
                                       
                                        
                                                
