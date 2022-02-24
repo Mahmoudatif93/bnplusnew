@@ -42,9 +42,10 @@ class NationalCampany extends Command
      */
     public function handle()
     {
-     /*  
-ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-        
+        ini_set("prce.backtrack_limit","10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+
+
+        $allcompanyid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -103,30 +104,26 @@ ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000
                 $national = json_decode($companiesnational, true);
                 //  return $national['data'];
                 $compsave = new Company;
-                $allcompanyid = array();
-                $request_data=array();
+             
+               // $request_data=array();
                 $cardsave1=array();
                 foreach ($national['data'] as $companys) {
 
                     foreach ($companys['childs'] as $company) {
                         if (count(Company::where('id', $company['id'])->get()) == 0) {
                           
-                       
-                            $request_data['id'] = $company['id'];
-                            $request_data['company_image'] = $company['amazonImage'];
-                            $request_data['name'] = $company['categoryName'];
-                            $request_data['kind'] = 'national';
-                            $request_data['api'] = 1;
+                         //   dd($company['id']);
+                            $compsave->id = $company['id'];
+                            $compsave->company_image = $company['amazonImage'];
+                            $compsave->name = $company['categoryName'];
+                            $compsave->kind = 'national';
+                            $compsave->api = 1;
 
-
-                            Company::create($request_data);
-                            
-
-
-                          //  array_push($allcompanyid, $company['id']);
+                            $compsave->save();
+                    
                             
                         }
-
+                        
                         // return($companiesnational);
                         //  return count($allcompanyid);
 
@@ -163,7 +160,7 @@ ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000
 //return $allcards['data'];
 
 
-                        //$cardsave = new Cards;
+                        $cardsave = new Cards;
                         $allcardsid = array();
                         if (count($allcards) > 0) {
                             $curr =  Currency::first();
@@ -182,41 +179,42 @@ ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000
                                         }
 
 
-                                        if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
+                                        if (count(Company::where('id', $company['id'])->get()) > 0) {
 
-                                            $cardsave1['productId'] =  $card['productId'];
-                                            $cardsave1['company_id'] = $card['categoryId'];
-                                            $cardsave1['card_name'] = $card['productName'];
+                                            $cardsave->productId =  $card['productId'];
+                                            $cardsave->company_id = $card['categoryId'];
+                                            $cardsave->card_name = $card['productName'];
 
                                             if ($card['productCurrency'] == "SAR") {
-                                                $cardsave1['card_price']  = $card['sellPrice'] * $curr->amount;
+                                                $cardsave->card_price = $card['sellPrice'] * $curr->amount;
                                             } else {
-                                                $cardsave1['card_price'] = $card['sellPrice'];
+                                                $cardsave->card_price = $card['sellPrice'];
                                             }
-                                            $cardsave1['card_code'] = $card['productName'];
-                                            $cardsave1['card_image'] = $card['productImage'];
-                                            $cardsave1['nationalcompany'] = 'national';
-                                            $cardsave1['api'] = 1;
-                                            Cards::create($cardsave1);
+                                            $cardsave->card_code = $card['productName'];
+                                            $cardsave->card_image = $card['productImage'];
+                                            $cardsave->nationalcompany= 'national';
+                                            $cardsave->api = 1;
+                                          //  Cards::create($cardsave1);
+                                            $cardsave->save();
                                         }
                                     } else {
                                       
-                                            if (count(Company::where('id',  $card['categoryId'])->get()) > 0) {
+                                            if (count(Company::where('id',  $company['id'])->get()) > 0) {
                                                 
-                                                $cardsave1['productId'] =  $card['productId'];
-                                                $cardsave1['company_id'] = $card['categoryId'];
-                                                $cardsave1['card_name'] = $card['productName'];
+                                                $cardsave->productId =  $card['productId'];
+                                                $cardsave->company_id = $card['categoryId'];
+                                                $cardsave->card_name = $card['productName'];
 
                                                 if ($card['productCurrency'] == "SAR") {
-                                                    $cardsave1['card_price']  = $card['sellPrice'] * $curr->amount;
+                                                    $cardsave->card_price  = $card['sellPrice'] * $curr->amount;
                                                 } else {
-                                                    $cardsave1['card_price'] = $card['sellPrice'];
+                                                    $cardsave->card_price = $card['sellPrice'];
                                                 }
-                                                $cardsave1['card_code'] = $card['productName'];
-                                                $cardsave1['card_image'] = $card['productImage'];
-                                                $cardsave1['nationalcompany'] = 'national';
-                                                $cardsave1['api'] = 1;
-                                                Cards::create($cardsave1);
+                                                $cardsave->card_code = $card['productName'];
+                                                $cardsave->card_image = $card['productImage'];
+                                                $cardsave->nationalcompany= 'national';
+                                                $cardsave->api = 1;
+                                                $cardsave->save();
                                             }
                                         
                                         
@@ -229,9 +227,6 @@ ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000
                 }
             }
         }
-
-*/
-
         $this->info('National Cummand Run successfully!.');
     }
 }
