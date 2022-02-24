@@ -43,8 +43,6 @@ class NationalCampany extends Command
     public function handle()
     {
 
-        ///////////////////currancy 
-
 
         $allcardsid = array();
         $curl = curl_init();
@@ -207,10 +205,10 @@ class NationalCampany extends Command
 
                                         //  print_r( $oldprice);
                                     } else {
-                                        if (empty($card['productId'])) {
-                                          //  array_push($allcardsid, $card['productId']);
+                                    
+                                      
                                             if (count(Company::where('id', $card['categoryId'])->get()) != 0) {
-                                               // array_push($allcardsid, $card['productId']);
+                                               
                                                 $cardsave->productId =  $card['productId'];
                                                 $cardsave->company_id = $card['categoryId'];
                                                 $cardsave->card_name = $card['productName'];
@@ -227,7 +225,7 @@ class NationalCampany extends Command
 
                                             $cardsave->save();
                                             }
-                                        }
+                                        
                                     }
                                 }
                             }
@@ -237,6 +235,11 @@ class NationalCampany extends Command
                 }
             }
         }
+
+        
+        ///////////////////currancy 
+
+
 
 
         /////////////dubi national api
