@@ -33,7 +33,7 @@
                     <div class="col-12">
                   
 
-                        <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
+                        <a class="btn btn-primary btn-block" target="_blank" href="{{ route('dashboard.enableapi') }}">
                             Dubai Api National Cards
                         </a>
 
@@ -41,7 +41,7 @@
                     <div class="col-12">
 
 
-                        <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
+                        <a class="btn btn-success btn-block" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
                             Dashboard National Cards
                         </a>
                     </div>
