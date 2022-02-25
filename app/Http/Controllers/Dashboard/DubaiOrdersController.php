@@ -210,6 +210,11 @@ if($card->enable ==0){
 
     Cards::where(array('nationalcompany'=>'national','api'=>1))->update($updatenational);
     
+
+    session()->flash('success', __('site.updated_successfully'));
+    return redirect()->route('dashboard.dubiorders.index');
+
+
 }
 
 
@@ -225,6 +230,10 @@ if($card->enable ==0){
 
 
     Cards::where(array('nationalcompany'=>'national','api'=>0))->update($updatenotnational);
+
+
+    session()->flash('success', __('site.updated_successfully'));
+    return redirect()->route('dashboard.dubiorders.index');
 
 }
 

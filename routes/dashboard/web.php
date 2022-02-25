@@ -27,8 +27,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::resource('orders', 'OrderController');
             Route::get('/orders/{order}/products', 'OrderController@products')->name('orders.products');
             Route::get('/dubiorders/{order}', 'DubaiOrdersController@dubiorders')->name('dubiorders.products');
-            Route::get('enableapi', 'OrderController@enableapi')->name('enableapi');
-            Route::get('enablenotapi', 'OrderController@enablenotapi')->name('enablenotapi');
+            Route::get('enableapi', 'DubaiOrdersController@enableapi')->name('enableapi');
+            Route::get('enablenotapi', 'DubaiOrdersController@enablenotapi')->name('enablenotapi');
              //dubiorders routes
              Route::resource('dubiorders', 'DubaiOrdersController');
            //  Route::get('/dubiorders/{order}/products', 'DubaiOrdersController@products')->name('dubiorders.products');
