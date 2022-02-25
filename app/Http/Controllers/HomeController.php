@@ -32,6 +32,6 @@ class HomeController extends Controller
         $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->count();
         $clients = Client::count();
         
-        return view('home', compact('Companies','orders','cards','clients'));
+        return view('home', compact('companies','orders','cards','clients'));
     }
 }
