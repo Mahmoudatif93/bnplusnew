@@ -50,6 +50,8 @@ class WelcomeController extends Controller
         curl_close($curl);
         $dubiordersjson = json_decode($dubiorder, true);
 
+if(isset($dubiordersjson['response'] )){
+
 
       
 if($dubiordersjson['response'] ==1){
@@ -57,6 +59,9 @@ if($dubiordersjson['response'] ==1){
   //  dd($dubiorders );
 }else{
     $dubiorders= '';
+}
+}else{
+    $dubiorders= ''; 
 }
 
 
