@@ -67,10 +67,11 @@ if($dubiordersjson['response'] ==1){
         }
      
       
-      
+        $cardapi=Cards::where(array('nationalcompany'=>'national','api'=>1))->orderBy('id','desc')->first();
+        $cardnot=Cards::where(array('nationalcompany'=>'national','api'=>0))->orderBy('id','desc')->first();
 
        
-        return view('dashboard.dubiorders.index', compact('dubiorders'));
+        return view('dashboard.dubiorders.index', compact('dubiorders','cardapi','cardnot'));
 
     }
 

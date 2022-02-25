@@ -31,18 +31,37 @@
 
             
                   
+@if($cardapi->enable==0)
+                        <a class="btn btn-primary btn-block"  href="{{ route('dashboard.enableapi') }}">
+                          Disable  Dubai Api National Cards
+                        </a>
+@else
 
-                        <a class="btn btn-primary btn-block" target="_blank" href="{{ route('dashboard.enableapi') }}">
-                            Dubai Api National Cards
+<a class="btn btn-danger btn-block" href="{{ route('dashboard.enableapi') }}">
+                           Enable Dubai Api National Cards
                         </a>
 
+
+
+@endif
               
+@if($cardnot->enable==0)
 
-
-                        <a class="btn btn-success btn-block" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
-                            Dashboard National Cards
+                        <a class="btn btn-success btn-block" href="{{ route('dashboard.enablenotapi') }}">
+                        Disable Dashboard National Cards
                         </a>
   
+
+                        @else
+
+                        <a class="btn btn-warning btn-block"  href="{{ route('dashboard.enablenotapi') }}">
+                        Enable Dashboard National Cards
+                        </a>
+
+
+
+
+                        @endif
                 @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
                 
