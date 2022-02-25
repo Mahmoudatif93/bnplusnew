@@ -30,6 +30,7 @@
 
 
                 <div class="row">
+                    <div class="col-12">
                     <div class="col-6">
 
                         <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
@@ -46,6 +47,7 @@
                     </div>
 
                 </div>
+</div>
                 @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
                 
