@@ -48,8 +48,7 @@
                 </div>
                 @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
-                @else
-                <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
+                
                 @endif
 
             </div><!-- end of box header -->
