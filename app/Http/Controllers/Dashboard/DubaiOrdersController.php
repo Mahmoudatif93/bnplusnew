@@ -52,6 +52,7 @@ class DubaiOrdersController extends Controller
         $dubiordersjson = json_decode($dubiorder, true);
 
 
+        if(isset($dubiordersjson['response'] )){
       
 if($dubiordersjson['response'] ==1){
     $dubiorders=  $dubiordersjson['data'] ;
@@ -59,6 +60,11 @@ if($dubiordersjson['response'] ==1){
 }else{
     $dubiorders= '';
 }
+
+        }else{
+
+            $dubiorders= '';
+        }
      
       
       
