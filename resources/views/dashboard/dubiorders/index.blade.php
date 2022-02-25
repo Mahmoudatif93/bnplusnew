@@ -149,15 +149,16 @@
                 <div class="col-6">
 
 <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
-
-
+Dubai Api National Cards
+</a>
 
 </div>
 <div class="col-6">
 
 
 <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
-
+Dashboard National Cards
+</a>
 </div>
 
 
