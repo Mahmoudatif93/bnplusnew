@@ -63,7 +63,7 @@ if($dubiordersjson['response'] ==1){
 
         }else{
 
-            $dubiorders= 'error';
+            $dubiorders= '';
         }
      
       
