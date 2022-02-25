@@ -29,7 +29,7 @@
                 </h3>
 
 
-
+<div class="row">
                 <div class="col-6">
 
                     <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
@@ -45,7 +45,7 @@
                     </a>
                 </div>
 
-
+                </div>
 
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
 
