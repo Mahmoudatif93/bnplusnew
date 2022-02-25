@@ -2,7 +2,6 @@
 
 @section('content')
 
-@if($dubiorders !='error')
 
 
 
@@ -14,7 +13,7 @@
 
         <ol class="breadcrumb">
             <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
-            <li class="active">@lang('site.dubiorders') {{count( $dubiorders)}}</li>
+            <li class="active">@lang('site.dubiorders') {{--count( $dubiorders)--}}</li>
         </ol>
     </section>
 
@@ -24,10 +23,27 @@
 
             <div class="box-header with-border">
 
-                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiorders') (<small style="color: red;font-weight:bold"> {{count( $dubiorders)}}</small>
+                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiorders') (<small style="color: red;font-weight:bold"> {{--count( $dubiorders)--}}</small>
 
                     @lang('site.orders') )
                 </h3>
+
+
+
+                <div class="col-6">
+
+                    <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
+                        Dubai Api National Cards
+                    </a>
+
+                </div>
+                <div class="col-6">
+
+
+                    <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
+                        Dashboard National Cards
+                    </a>
+                </div>
 
 
 
@@ -110,71 +126,6 @@
     </section><!-- end of content -->
 
 </div><!-- end of content wrapper -->
-@else
 
-
-<div class="content-wrapper">
-
-    <section class="content-header">
-
-        <h1>@lang('site.dubiorders')</h1>
-
-        <ol class="breadcrumb">
-            <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
-            <li class="active">@lang('site.dubiorders')</li>
-        </ol>
-    </section>
-
-    <section class="content">
-
-        <div class="box box-primary">
-
-            <div class="box-header with-border">
-
-                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubiorders') (<small style="color: red;font-weight:bold"> </small>
-
-                    @lang('site.orders') )
-                </h3>
-
-
-
-              
-
-
-            </div><!-- end of box header -->
-            <div id="print-area">
-                <div class="box-body" id="frame">
-
-
-                <div class="col-6">
-
-<a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
-Dubai Api National Cards
-</a>
-
-</div>
-<div class="col-6">
-
-
-<a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
-Dashboard National Cards
-</a>
-</div>
-
-
-                   
-
-                </div><!-- end of box body -->
-            </div>
-
-        </div><!-- end of box -->
-
-    </section><!-- end of content -->
-
-</div><!-- end of content wrapper -->
-
-
-
-@endif
 
 @endsection
