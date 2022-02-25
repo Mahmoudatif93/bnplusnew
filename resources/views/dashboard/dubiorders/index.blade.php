@@ -29,26 +29,28 @@
                 </h3>
 
 
-<div class="row">
-                <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
 
-                    <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
-                        Dubai Api National Cards
-                    </a>
+                        <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
+                            Dubai Api National Cards
+                        </a>
+
+                    </div>
+                    <div class="col-6">
+
+
+                        <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
+                            Dashboard National Cards
+                        </a>
+                    </div>
 
                 </div>
-                <div class="col-6">
-
-
-                    <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
-                        Dashboard National Cards
-                    </a>
-                </div>
-
-                </div>
-
+                @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
-
+                @else
+                <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
+                @endif
 
             </div><!-- end of box header -->
             <div id="print-area">
