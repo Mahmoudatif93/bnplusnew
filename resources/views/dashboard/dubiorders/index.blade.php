@@ -32,12 +32,12 @@
             
                   
 @if($cardapi->enable==0)
-                        <a class="btn btn-primary btn-block"  href="{{ route('dashboard.enableapi') }}">
+                        <a class="btn btn-danger  btn-block"  href="{{ route('dashboard.enableapi') }}">
                           Disable  Dubai Api National Cards
                         </a>
 @else
 
-<a class="btn btn-danger btn-block" href="{{ route('dashboard.enableapi') }}">
+<a class="btn btn-primary btn-block" href="{{ route('dashboard.enableapi') }}">
                            Enable Dubai Api National Cards
                         </a>
 
