@@ -119,7 +119,7 @@ $process_id=$response['result']["process_id"];
             ////////////dubai api///////////////
             $dubiapi=  Cards::where('id', $order->card_id)->first();
             $clientdata=  Client::where('id', $order->client_id)->first();
-            
+
                 if($dubiapi->api==1){
                     $client=  Client::where('id', $order->client_id)->first();
                 $curl = curl_init();
@@ -155,6 +155,9 @@ $process_id=$response['result']["process_id"];
           
                   foreach ($json['serials'] as $row) {
                     //  return $row['serialCode'];
+                    $updatecardprice['card_price'] =  $row['serialCode'];
+                    Cards::where('id', $order->card_id)->update($updatecardprice);
+                    
                       $this->sendResetEmail( $client->email, $this->decryptSerial( $row['serialCode']), 'Your BNplus Code');
           
                   }

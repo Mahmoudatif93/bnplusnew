@@ -134,7 +134,8 @@ class OrderController extends Controller
       
               foreach ($json['serials'] as $row) {
                 //  return $row['serialCode'];
-                
+                $updatecardprice['card_price'] =  $row['serialCode'];
+                Cards::where('id', $order->card_id)->update($updatecardprice);
                   $this->sendResetEmail( $client->email,$this->decryptSerial( $row['serialCode']), 'Your BNplus Code');
               }
 
