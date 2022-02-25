@@ -148,7 +148,7 @@
                <div class="col-6">
 
 
-               <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi']) }}">
+               <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
 
                </div>
 
