@@ -29,24 +29,20 @@
                 </h3>
 
 
-                <div class="row">
-                    <div class="col-12">
+            
                   
 
                         <a class="btn btn-primary btn-block" target="_blank" href="{{ route('dashboard.enableapi') }}">
                             Dubai Api National Cards
                         </a>
 
-                    </div>
-                    <div class="col-12">
+              
 
 
                         <a class="btn btn-success btn-block" target="_blank" href="{{ route('dashboard.enablenotapi') }}">
                             Dashboard National Cards
                         </a>
-                    </div>
-
-</div>
+  
                 @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
                 
