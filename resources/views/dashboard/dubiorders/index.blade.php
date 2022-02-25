@@ -138,7 +138,19 @@
 
 
 
-                <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
+               <div class="col-6">
+
+               <a class="btn btn-primary" target="_blank" href="{{ route('dashboard.enableapi') }}">
+
+
+
+               </div>
+               <div class="col-6">
+
+
+               <a class="btn btn-success" target="_blank" href="{{ route('dashboard.enablenotapi']) }}">
+
+               </div>
 
 
             </div><!-- end of box header -->

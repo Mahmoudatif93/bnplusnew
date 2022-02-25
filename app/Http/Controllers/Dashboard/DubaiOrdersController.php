@@ -198,6 +198,35 @@ $validTo=$row['validTo'];
       
     //  echo decryptSerial('bnY0UEc2NFcySHgwRTIyNFU1NU5pUT09'); 
 
+public function enableapi(Request $request){
+
+
+$card=Cards::where(array('nationalcompany'=>'national','api'=>1))->orderBy('id','desc')->first();
+if($card->enable ==0){
+    $updatenational['enable']=1;
+}else{
+    $updatenational['enable']=0;
+}
+
+    Cards::where(array('nationalcompany'=>'national','api'=>1))->update($updatenational);
+    
+}
+
+
+
+public function enablenotapi(Request $request){
+    
+    $card=Cards::where(array('nationalcompany'=>'national','api'=>0))->orderBy('id','desc')->first();
+if($card->enable ==0){
+    $updatenotnational['enable']=1;
+}else{
+    $updatenotnational['enable']=0;
+}
+
+
+    Cards::where(array('nationalcompany'=>'national','api'=>0))->update($updatenotnational);
+
+}
 
 
 }
