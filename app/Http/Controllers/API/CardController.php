@@ -18,16 +18,16 @@ class CardController extends Controller
      */
     public function index()
     {
-        $cards = Cards::where(array('avaliable' => 0))->with('company')->distinct('card_price')->distinct('card_price')->groupBy('card_price')->get();
+        $cards = Cards::where(array('avaliable' => 0,'enable'=>0))->with('company')->distinct('card_price')->distinct('card_price')->groupBy('card_price')->get();
         return $this->apiResponse($cards, 200);
     }
 
     public function localcards(Request $request)
     {
         if (isset($request->company_id)) {
-            $cards = Cards::where(array('nationalcompany' => 'local', 'avaliable' => 0, 'purchase'=>0,'company_id' => $request->company_id))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+            $cards = Cards::where(array('nationalcompany' => 'local', 'avaliable' => 0, 'purchase'=>0,'enable'=>0,'company_id' => $request->company_id))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         } else {
-            $cards = Cards::where(array('nationalcompany' => 'local', 'avaliable' => 0,'purchase'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+            $cards = Cards::where(array('nationalcompany' => 'local', 'avaliable' => 0,'purchase'=>0,'enable'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         }
         return $this->apiResponse($cards, 200);
     }
@@ -41,10 +41,10 @@ class CardController extends Controller
 
         
             if (isset($request->company_id)) {
-                $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0,'purchase'=>0, 'company_id' => $request->company_id))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+                $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0,'purchase'=>0,'enable'=>0, 'company_id' => $request->company_id))->with('company')->distinct('card_price')->groupBy('card_price')->get();
                 return $this->apiResponse($cards, 200);
             } else {
-                $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0, 'purchase'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+                $cards = Cards::where(array('nationalcompany' => 'national', 'avaliable' => 0, 'purchase'=>0,'enable'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
                 return $this->apiResponse($cards, 200);
             }
         
@@ -54,17 +54,17 @@ class CardController extends Controller
     public function cardsbycompany(Request $request)
     {
         if (isset($request->company_id)) {
-            $cards = Cards::where(array('company_id' => $request->company_id, 'avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+            $cards = Cards::where(array('company_id' => $request->company_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         } else if (isset($request->kind)) {
-            $cards = Cards::where(array('nationalcompany' => $request->kind, 'avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+            $cards = Cards::where(array('nationalcompany' => $request->kind, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         } else if (isset($request->name)) {
             $companies = Company::where('name', $request->name)->get();
             foreach ($companies as $row) {
-                $cards = Cards::where(array('company_id' => $row->id, 'avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+                $cards = Cards::where(array('company_id' => $row->id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
             }
         } else {
 
-            $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
+            $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->with('company')->distinct('card_price')->groupBy('card_price')->get();
         }
 
 
@@ -77,7 +77,7 @@ class CardController extends Controller
     public function cardscount(Request $request)
     {
 
-        $cards = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0))->count();
+        $cards = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
 
         if ($cards > 0) {
             $message = "Cards Avaliable ";

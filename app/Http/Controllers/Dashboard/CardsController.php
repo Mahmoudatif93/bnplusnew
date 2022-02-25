@@ -37,7 +37,7 @@ class CardsController extends Controller
          }
         }*/
         //dd($cards);
-        $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->when($request->search, function ($q) use ($request) {
+        $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->when($request->search, function ($q) use ($request) {
 
             return $q->where('card_code', '%' . $request->search . '%')
             ->orWhere('card_name', 'like', '%' . $request->search . '%')

@@ -36,10 +36,10 @@ class OrderController extends Controller
     {
 
 
-        $cardscount = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0))->count();
+        $cardscount = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
 
         if ($cardscount > 0) {
-            $card = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0))->orderBy('id', 'desc')->first();
+            $card = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->orderBy('id', 'desc')->first();
 
             if ($card->api == 1) {
 
