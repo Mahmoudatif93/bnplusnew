@@ -50,6 +50,8 @@ class WelcomeController extends Controller
         curl_close($curl);
         $dubiordersjson = json_decode($dubiorder, true);
 
+
+        dd($dubiordersjson );
 if(isset($dubiordersjson['response'] )){
 
 
