@@ -58,6 +58,8 @@ class CompanyController extends Controller
 
         $balancenational = curl_exec($curl);
 
+        return $balancenational ;
+
         if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
 
 
