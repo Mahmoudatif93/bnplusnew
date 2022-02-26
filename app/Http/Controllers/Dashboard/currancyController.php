@@ -60,7 +60,7 @@ class currancyController extends Controller
     public function update(Request $request, $id)
     {
 
-        $allcompanyid = array();
+        $oldallcardprices = array();
         $category = Currency::where('id', $id)->first();
 
         
@@ -72,14 +72,16 @@ class currancyController extends Controller
        foreach(Cards::where('api',1)->get() as $cards ){
             $newprice['card_price']=$cards->card_price /$category->amount;
         //  echo $newprice['card_price']; echo "<br>";
-           //Cards::where('api',1)->update($newprice);
-           array_push($allcompanyid, $newprice['card_price']);
+           Cards::where('api',1)->update($newprice);
+           array_push($oldallcardprices, $newprice['card_price']);
             $newprice2['card_price']=$cards->card_price * $request->amount;
            // echo $newprice2['card_price'];echo "<br>";
            // Cards::where('api',1)->update($newprice2);
         }
      
-        return $allcompanyid;
+        return $oldallcardprices;
+
+
         $request_data = $request->except(['_token', '_method']);
       //  Currency::where('id', $id)->update($request_data);
       
