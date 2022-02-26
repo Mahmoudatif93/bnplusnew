@@ -165,7 +165,7 @@ class NationalCampany extends Command
                                     if ($card['productCurrency'] == "USD") {
                                         $cardpricesss  = $card['sellPrice'] * $curr->amount;
                                     } else {
-                                        $cardpricesss = $card['sellPrice'];
+                                        $cardpricesss = $card['sellPrice']* $curr->amount;
                                     }
 
                                  if (count(Company::where('id',  $company['id'])->get()) > 0) {
