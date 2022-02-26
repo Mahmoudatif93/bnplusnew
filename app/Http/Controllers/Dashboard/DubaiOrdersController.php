@@ -251,7 +251,7 @@ if($company->enable ==0){
 
 
 
-   // Cards::where(array('nationalcompany'=>'national','api'=>0))->update($updatenotnational);
+    Cards::where(array('nationalcompany'=>'national','api'=>0))->update($updatenotnational);
     Company::where(array('kind'=>'national','api'=>0))->update($updatenationalcompany);
 
     session()->flash('success', __('site.updated_successfully'));

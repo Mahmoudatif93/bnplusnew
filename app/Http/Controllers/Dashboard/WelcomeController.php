@@ -19,8 +19,8 @@ class WelcomeController extends Controller
     public function index()
     {
         $orders = Order::count();
-        $companies = Company::count();
-        $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0))->count();
+        $companies = Company::where('enable',0)->count();
+        $cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
         $clients = Client::count();
        
 
