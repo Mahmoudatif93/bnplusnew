@@ -203,6 +203,16 @@ public function enableapi(Request $request){
 
 
 $card=Cards::where(array('nationalcompany'=>'national','api'=>1))->orderBy('id','desc')->first();
+
+$company=Company::where(array('	kind'=>'national','api'=>1))->orderBy('id','desc')->first();
+
+
+if($company->enable ==0){
+    $updatenationalcompany['enable']=1;
+}else{
+    $updatenationalcompany['enable']=0;
+}
+
 if($card->enable ==0){
     $updatenational['enable']=1;
 }else{
@@ -210,6 +220,7 @@ if($card->enable ==0){
 }
 
     Cards::where(array('nationalcompany'=>'national','api'=>1))->update($updatenational);
+    Company::where(array('nationalcompany'=>'national','api'=>1))->update($updatenationalcompany);
     
 
     session()->flash('success', __('site.updated_successfully'));
@@ -229,9 +240,19 @@ if($card->enable ==0){
     $updatenotnational['enable']=0;
 }
 
+$company=Company::where(array('	kind'=>'national','api'=>0))->orderBy('id','desc')->first();
+
+
+if($company->enable ==0){
+    $updatenationalcompany['enable']=1;
+}else{
+    $updatenationalcompany['enable']=0;
+}
+
+
 
     Cards::where(array('nationalcompany'=>'national','api'=>0))->update($updatenotnational);
-
+    Company::where(array('nationalcompany'=>'national','api'=>1))->update($updatenationalcompany);
 
     session()->flash('success', __('site.updated_successfully'));
     return redirect()->route('dashboard.dubiorders.index');

@@ -53,11 +53,12 @@ class CompanyController extends Controller
 
                         ////////////////end//////////////
                     } else {
-                        $companies = Company::where('kind', 'national')->get();
+                        
+                        $companies = Company::where(array('kind'=>'national','enable'=>0))->get();
                         return $this->apiResponse($companies, 200);
                     }
                 } else {
-                    $companies = Company::where('kind', 'national')->get();
+                    $companies = Company::where(array('kind'=>'national','enable'=>0))->get();
                     return $this->apiResponse($companies, 200);
                 }
             } else {
