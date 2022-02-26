@@ -204,7 +204,7 @@ public function enableapi(Request $request){
 
 $card=Cards::where(array('nationalcompany'=>'national','api'=>1))->orderBy('id','desc')->first();
 
-$company=Company::where(array('	kind'=>'national','api'=>1))->orderBy('id','desc')->first();
+$company=Company::where(array('kind'=>'national','api'=>1))->orderBy('id','desc')->first();
 
 
 if($company->enable ==0){
@@ -240,7 +240,7 @@ if($card->enable ==0){
     $updatenotnational['enable']=0;
 }
 
-$company=Company::where(array('	kind'=>'national','api'=>0))->orderBy('id','desc')->first();
+$company=Company::where(array('kind'=>'national','api'=>0))->orderBy('id','desc')->first();
 
 
 if($company->enable ==0){
