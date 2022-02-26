@@ -162,7 +162,7 @@ class NationalCampany extends Command
 
                                  
 
-                                    if ($card['productCurrency'] == "SAR") {
+                                    if ($card['productCurrency'] == "USD") {
                                         $cardpricesss  = $card['sellPrice'] * $curr->amount;
                                     } else {
                                         $cardpricesss = $card['sellPrice'];
