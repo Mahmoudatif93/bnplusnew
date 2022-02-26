@@ -42,9 +42,8 @@
                             <tr>
                           
                                
-                                
-                                <th>@lang('site.serialCode')</th>
                                 <th>@lang('site.productName')</th>
+                                <th>@lang('site.serialCode')</th>
                                 <th>@lang('site.validTo')</th>
                              
                             </tr>
@@ -58,9 +57,8 @@
                                     
                                     <td>
                                         
-                                 
-                                    {{  $code}}</td>
                                     <td>{{ $product }}</td>
+                                    {{  $code}}</td>
                                     <td>{{ $validTo}}</td>
                                   
                                  

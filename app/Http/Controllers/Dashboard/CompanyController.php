@@ -155,7 +155,7 @@ class CompanyController extends Controller
 
                                     array_push($allcompanyid,  $card);
 
-                                    if ($card['productCurrency'] == "SAR") {
+                                    if ($card['productCurrency'] == "USD") {
                                         $cardpricesss  = $card['sellPrice'] * $curr->amount;
                                     } else {
                                         $cardpricesss = $card['sellPrice'];
