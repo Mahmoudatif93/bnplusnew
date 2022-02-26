@@ -66,7 +66,7 @@ class CompanyController extends Controller
                 return $this->apiResponse($companies, 200);
             }
         } else if ($request->name) {
-            $companies = Company::where('name', $request->name)->get();
+            $companies = Company::where(array('name'=>$request->name,'enable'=>0))->get();
             return $this->apiResponse($companies, 200);
         } else {
             $companies = Company::all();
