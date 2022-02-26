@@ -191,7 +191,7 @@ class CompanyController extends Controller
 
 return $allcompanyid;
 */
-        $Companies = Company::when($request->search, function ($q) use ($request) {
+        $Companies = Company::where('enable',0)->when($request->search, function ($q) use ($request) {
 
             return $q->where('name','like', '%' .  $request->search . '%')
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
