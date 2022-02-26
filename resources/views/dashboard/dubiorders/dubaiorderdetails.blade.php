@@ -42,8 +42,9 @@
                             <tr>
                           
                                
-                                <th>@lang('site.productName')</th>
+                                
                                 <th>@lang('site.serialCode')</th>
+                                <th>@lang('site.productName')</th>
                                 <th>@lang('site.validTo')</th>
                              
                             </tr>

@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
       /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
-/*
+
         ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
         $allcompanyid = array();
         $curl = curl_init();
@@ -190,7 +190,7 @@ class CompanyController extends Controller
         }
 
 return $allcompanyid;
-*/
+
         $Companies = Company::where('enable',0)->when($request->search, function ($q) use ($request) {
 
             return $q->where('name','like', '%' .  $request->search . '%')
