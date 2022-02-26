@@ -79,11 +79,11 @@ class currancyController extends Controller
            // Cards::where('api',1)->update($newprice2);
         }
      
-        return $oldallcardprices;
+       // return $oldallcardprices;
 
 
         $request_data = $request->except(['_token', '_method']);
-      //  Currency::where('id', $id)->update($request_data);
+       Currency::where('id', $id)->update($request_data);
       
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('dashboard.currancy.index');
