@@ -220,7 +220,7 @@ if($card->enable ==0){
 }
 
     Cards::where(array('nationalcompany'=>'national','api'=>1))->update($updatenational);
-    Company::where(array('nationalcompany'=>'national','api'=>1))->update($updatenationalcompany);
+   // Company::where(array('nationalcompany'=>'national','api'=>1))->update($updatenationalcompany);
     
 
     session()->flash('success', __('site.updated_successfully'));
