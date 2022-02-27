@@ -205,7 +205,7 @@ class OrderController extends Controller
             return response()->json(['status' => 'error']);
         }
     }
-
+/*
     public function finalordernotdubai($request)
     {
 
@@ -241,7 +241,7 @@ class OrderController extends Controller
     }
 
 
-/*
+
 
 
     public function finalorder(Request $request)
