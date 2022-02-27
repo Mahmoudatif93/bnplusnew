@@ -86,7 +86,7 @@ class SadadController extends Controller
 
 
 
-    public function confirmapi($request)
+    public function confirm(Request $request)
     {
 
 
@@ -242,7 +242,7 @@ class SadadController extends Controller
         }
     }
 
-
+/*
     public function confirmnot($request)
     {
 
@@ -331,7 +331,7 @@ class SadadController extends Controller
     }
 
 
-
+*/
     public function sendResetEmail($user, $content, $subject)
     {
 
