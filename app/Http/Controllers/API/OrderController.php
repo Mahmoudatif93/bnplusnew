@@ -236,6 +236,7 @@ class OrderController extends Controller
         $id = $request->order_id;
         $order = Order::find($id);
         if (!empty($order)) {
+            
             $order->transaction_id = $request->transaction_id;
             $order->paid = 'true';
             $order->paymenttype = "معاملات";
@@ -251,7 +252,7 @@ class OrderController extends Controller
 
                 $this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
 
-
+dd('success');
                 return response()->json(['status' => 'success']);
             } else {
                 return response()->json(['status' => 'error']);
@@ -278,7 +279,7 @@ class OrderController extends Controller
 
                 $this->finalorderdubai($request);
             } else {
-                dd($request);
+                
                 $this->finalordernotdubai($request);
             }
         } else {
