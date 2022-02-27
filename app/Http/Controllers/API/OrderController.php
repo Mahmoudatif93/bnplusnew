@@ -278,6 +278,7 @@ class OrderController extends Controller
 
                 $this->finalorderdubai($request);
             } else {
+                dd($request);
                 $this->finalordernotdubai($request);
             }
         } else {
