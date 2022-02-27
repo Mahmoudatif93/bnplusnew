@@ -64,19 +64,15 @@ class currancyController extends Controller
         $category = Currency::where('id', $id)->first();
 
         
-    
-
-
-        
+  
         
        foreach(Cards::where('api',1)->get() as $cards ){
-            $newprice['card_price']= (float)$cards->card_price /(float)$category->amount;
-        //  echo $newprice['card_price']; echo "<br>";
-           Cards::where('api',1)->update($newprice);
-           array_push($oldallcardprices, $newprice['card_price']);
-            $newprice2['card_price']=$cards->card_price * $request->amount;
+        
+        
+         
+            $newprice2['card_price']=$cards->old_price * $request->amount;
            // echo $newprice2['card_price'];echo "<br>";
-           // Cards::where('api',1)->update($newprice2);
+            Cards::where('api',1)->update($newprice2);
         }
      
        // return $oldallcardprices;

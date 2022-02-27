@@ -164,6 +164,8 @@ class NationalCampany extends Command
 
                                     if ($card['productCurrency'] == "USD") {
                                         $cardpricesss  = $card['sellPrice'] * $curr->amount;
+
+                                      
                                     } else {
                                         $cardpricesss = $card['sellPrice']* $curr->amount;
                                     }
@@ -173,6 +175,7 @@ class NationalCampany extends Command
                                     $itemcard = Cards::firstOrNew(array('id' =>  $card['productId']));
 
                                     $itemcard->id = $card['productId'];
+                                    $itemcard->old_price=$card['sellPrice'];
                                     $itemcard->company_id = $card['categoryId'];
                                     $itemcard->card_name = $card['productName'];
                                     $itemcard->card_price =$cardpricesss;
