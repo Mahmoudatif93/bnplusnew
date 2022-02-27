@@ -252,7 +252,7 @@ class OrderController extends Controller
 
                 $this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
 
-dd('success');
+
                 return response()->json(['status' => 'success']);
             } else {
                 return response()->json(['status' => 'error']);
