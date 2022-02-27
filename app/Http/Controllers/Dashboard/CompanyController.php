@@ -33,8 +33,9 @@ class CompanyController extends Controller
       /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
 
+       
         ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-     /*   $allcompanyid = array();
+        $allcompanyid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -57,8 +58,6 @@ class CompanyController extends Controller
         ));
 
         $balancenational = curl_exec($curl);
-
-        //return $balancenational ;
 
         if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
 
@@ -157,15 +156,18 @@ class CompanyController extends Controller
 
                                     if ($card['productCurrency'] == "USD") {
                                         $cardpricesss  = $card['sellPrice'] * $curr->amount;
+
+                                      
                                     } else {
-                                        $cardpricesss = $card['sellPrice'];
+                                        $cardpricesss = $card['sellPrice']* $curr->amount;
                                     }
 
                                  if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
-                                    $itemcard = Cards::firstOrNew(array('id' =>  $card['productId']));
+                                    $itemcard = Cards::firstOrNew(array('productId' =>  $card['productId']));
 
-                                    $itemcard->id = $card['productId'];
+                                    $itemcard->productId = $card['productId'];
+                                    $itemcard->old_price=$card['sellPrice'];
                                     $itemcard->company_id = $card['categoryId'];
                                     $itemcard->card_name = $card['productName'];
                                     $itemcard->card_price =$cardpricesss;
@@ -189,8 +191,9 @@ class CompanyController extends Controller
             }
         }
 
+
 return $allcompanyid;
-*/
+
         $Companies = Company::where('enable',0)->when($request->search, function ($q) use ($request) {
 
             return $q->where('name','like', '%' .  $request->search . '%')
