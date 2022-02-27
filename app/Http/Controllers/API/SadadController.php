@@ -191,7 +191,7 @@ class SadadController extends Controller
 
                         foreach ($json['serials'] as $row) {
                             //  return $row['serialCode'];
-                            $updatecardprice['card_code'] =  $row['serialCode'];
+                            $updatecardprice['card_code'] =  $this->decryptSerial($row['serialCode']);
                             Cards::where('id', $order->card_id)->update($updatecardprice);
 
                             $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
