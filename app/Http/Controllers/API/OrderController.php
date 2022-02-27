@@ -88,7 +88,7 @@ class OrderController extends Controller
 
 
 
-    public function finalorderdubai($request)
+    public function finalorder(Request $request)
     {
 
 
@@ -124,28 +124,6 @@ class OrderController extends Controller
             $balancenational = curl_exec($curl);
 
             if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 ////////////dubai api///////////////
 
@@ -263,7 +241,7 @@ class OrderController extends Controller
     }
 
 
-
+/*
 
 
     public function finalorder(Request $request)
@@ -285,7 +263,7 @@ class OrderController extends Controller
         } else {
             return response()->json(['status' => 'error']);
         }
-    }
+    }*/
 
 
 
