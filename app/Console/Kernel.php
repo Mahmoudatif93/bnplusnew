@@ -30,10 +30,10 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
       
 
-        $schedule->command('order:daily')
+      /*  $schedule->command('order:daily')
         ->everyFiveMinutes();
        $schedule->command('campany:national')
-        ->daily();	
+        ->daily();*/	
     }
 
     /**
