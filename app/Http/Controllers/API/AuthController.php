@@ -32,7 +32,7 @@ class AuthController extends Controller
     public function login()
     {
 
-dd( request('id'));
+
         $client = Client::where('id', request('id'))->first();
 
         if (empty($client)) {
