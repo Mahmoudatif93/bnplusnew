@@ -36,16 +36,16 @@ class OrderController extends Controller
     {
 
 
-        $cardscount = Cards::where(array('productId' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
+        $cardscount = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
 
         if ($cardscount > 0) {
-            $card = Cards::where(array('productId' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->orderBy('id', 'desc')->first();
+            $card = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->orderBy('id', 'desc')->first();
 
             if ($card->api == 1) {
 
-                $request_data['card_id'] = $card->productId;
+                $request_data['card_id'] = $card->id;
             } else {
-                $request_data['card_id'] = $card->productId;
+                $request_data['card_id'] = $card->id;
             }
 
             $request_data['client_id'] = $request->client_id;
@@ -58,7 +58,7 @@ class OrderController extends Controller
 
             if ($order) {
                 $dataa['avaliable'] = 1;
-                Cards::where('productId', $order->card_id)->update($dataa);
+                Cards::where('id', $order->card_id)->update($dataa);
 
                 $message = "card reserved ";
                 return $this->apiResponse6($cardscount - 1, $order->id, $message, 200);
@@ -129,7 +129,7 @@ class OrderController extends Controller
 
 
 
-                $dubiapi =  Cards::where('productId', $order->card_id)->first();
+                $dubiapi =  Cards::where('id', $order->card_id)->first();
                 $clientdata =  Client::where('id', $order->client_id)->first();
                 if ($dubiapi->api == 1) {
                     $client =  Client::where('id', $order->client_id)->first();
@@ -167,7 +167,7 @@ class OrderController extends Controller
                     foreach ($json['serials'] as $row) {
                         //  return $row['serialCode'];
                         $updatecardprice['card_code'] =  $this->decryptSerial($row['serialCode']);
-                        Cards::where('productId', $order->card_id)->update($updatecardprice);
+                        Cards::where('id', $order->card_id)->update($updatecardprice);
                         $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
                     }
 
@@ -184,9 +184,9 @@ class OrderController extends Controller
                 if ($order->update()) {
                     $updatecard['purchase'] = 1;
                     $updatecard['avaliable'] = 1;
-                    Cards::where('productId', $order->card_id)->update($updatecard);
+                    Cards::where('id', $order->card_id)->update($updatecard);
 
-                    $cardemail =  Cards::where('productId', $order->card_id)->first();
+                    $cardemail =  Cards::where('id', $order->card_id)->first();
                     $client =  Client::where('id', $order->client_id)->first();
                     if ($dubiapi->api == 0) {
                         $this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');

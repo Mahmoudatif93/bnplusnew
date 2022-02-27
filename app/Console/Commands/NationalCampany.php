@@ -172,9 +172,9 @@ class NationalCampany extends Command
 
                                  if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
-                                    $itemcard = Cards::firstOrNew(array('productId' =>  $card['productId']));
+                                    $itemcard = Cards::firstOrNew(array('id' =>  $card['productId']));
 
-                                    $itemcard->productId = $card['productId'];
+                                    $itemcard->id = $card['productId'];
                                     $itemcard->old_price=$card['sellPrice'];
                                     $itemcard->company_id = $card['categoryId'];
                                     $itemcard->card_name = $card['productName'];

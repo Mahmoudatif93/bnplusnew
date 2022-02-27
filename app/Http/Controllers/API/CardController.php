@@ -77,7 +77,7 @@ class CardController extends Controller
     public function cardscount(Request $request)
     {
 
-        $cards = Cards::where(array('productId' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
+        $cards = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->count();
 
         if ($cards > 0) {
             $message = "Cards Avaliable ";
