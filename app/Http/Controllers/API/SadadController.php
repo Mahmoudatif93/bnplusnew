@@ -47,7 +47,7 @@ class SadadController extends Controller
         ]);
 
         //return $response;
-        $card = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->orderBy('id', 'desc')->first();
+        $card = Cards::where(array('productId' => $request->card_id, 'avaliable' => 0, 'purchase' => 0,'enable'=>0))->orderBy('id', 'desc')->first();
         if (!empty($card)) {
 
 
@@ -57,7 +57,7 @@ class SadadController extends Controller
             } else {
                 $process_id = $response['result']["process_id"];
 
-                $request_data['card_id'] = $card->id;
+                $request_data['card_id'] = $card->productId;
 
 
                 $request_data['client_id'] = $request->client_id;
@@ -73,7 +73,7 @@ class SadadController extends Controller
                 $order = Order::create($request_data);
 
                 $dataa['avaliable'] = 1;
-                Cards::where('id', $order->card_id)->update($dataa);
+                Cards::where('productId', $order->card_id)->update($dataa);
 
                 return $this->apiResponse5(true, $response['message'], $response['status'], $response['result'], $order->id);
             }
@@ -94,7 +94,7 @@ class SadadController extends Controller
         $orderfirst = Order::find($idfirst);
         if (!empty($orderfirst)) {
 
-            $cards =   Cards::where('id', $orderfirst->card_id)->first();
+            $cards =   Cards::where('productId', $orderfirst->card_id)->first();
 
             $allcompanyid = array();
             $curl = curl_init();
@@ -153,7 +153,7 @@ class SadadController extends Controller
                     $order->paymenttype = "سداد";
 
                     ////////////dubai api///////////////
-                    $dubiapi =  Cards::where('id', $order->card_id)->first();
+                    $dubiapi =  Cards::where('productId', $order->card_id)->first();
                     $clientdata =  Client::where('id', $order->client_id)->first();
 
                     if ($dubiapi->api == 1) {
@@ -192,7 +192,7 @@ class SadadController extends Controller
                         foreach ($json['serials'] as $row) {
                             //  return $row['serialCode'];
                             $updatecardprice['card_code'] =  $this->decryptSerial($row['serialCode']);
-                            Cards::where('id', $order->card_id)->update($updatecardprice);
+                            Cards::where('productId', $order->card_id)->update($updatecardprice);
 
                             $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
                         }
@@ -208,9 +208,9 @@ class SadadController extends Controller
                     if ($order->update()) {
                         $updatecard['purchase'] = 1;
                         $updatecard['avaliable'] = 1;
-                        Cards::where('id', $order->card_id)->update($updatecard);
+                        Cards::where('productId', $order->card_id)->update($updatecard);
 
-                        $cardemail =  Cards::where('id', $order->card_id)->first();
+                        $cardemail =  Cards::where('productId', $order->card_id)->first();
                         $client =  Client::where('id', $order->client_id)->first();
 
                         if ($dubiapi->api == 0) {
