@@ -31,9 +31,9 @@ class Kernel extends ConsoleKernel
       
 
         $schedule->command('order:daily')
-        ->everyFiveMinutes();
+        ->everyMinute();
        $schedule->command('campany:national')
-        ->daily();
+        ->daily();	
     }
 
     /**
