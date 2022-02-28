@@ -142,7 +142,7 @@ class NationalCampany extends Command
                                 'securityCode' => 'cd63173e952e3076462733a26c71bbd077d972e07e1d416cb9ab7f87bfc0c014',
                                 'langId' => '1',
                                 'categoryId' => $company['id']
-                                // 'ids[]' => $company['id']
+                                
                             ),
 
                         ));
