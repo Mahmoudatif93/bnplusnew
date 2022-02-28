@@ -35,7 +35,7 @@ class CompanyController extends Controller
 
        
         ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-        $allcompanyid = array();
+      /*  $allcompanyid = array();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -192,7 +192,7 @@ class CompanyController extends Controller
         }
 
 
-return $allcompanyid;
+return $allcompanyid;*/
 
         $Companies = Company::where('enable',0)->when($request->search, function ($q) use ($request) {
 
