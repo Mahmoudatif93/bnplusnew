@@ -105,7 +105,7 @@
 
                     </table><!-- end of table -->
 
-
+                    {{ $Companies->appends(request()->query())->links() }}
 
                     @else
 
