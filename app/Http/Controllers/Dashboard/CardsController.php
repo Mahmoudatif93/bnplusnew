@@ -37,7 +37,7 @@ class CardsController extends Controller
          }
         }*/
         //dd($cards);
-        $allorders=Order::where(array('card_id'=>3751))->orderBy('id','desc')->get()->unique('card_id');
+        $allorders=Order::orderBy('id','desc')->get()->unique('card_id');
       //  $allorders=Order::where(array('card_id'=>3751))->orderBy('id','desc')->distinct('card_id')->groupBy('card_id')->get();
 dd($allorders);
 

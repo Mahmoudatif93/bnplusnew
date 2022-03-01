@@ -40,12 +40,13 @@ class DailyOrder extends Command
     public function handle()
     {
 
-     
+        $allorders=Order::orderBy('id','desc')->get()->unique('card_id');
 
         $allorders=Order::orderBy('card_id','desc')->distinct('card_id')->groupBy('card_id')->get();
         if(!empty($allorders)){
             foreach($allorders as $row){
-                if( $row->paid=="false"){
+                ///last order
+                if($row->paid=="false"){
                 $is_expired = $row->created_at->addMinutes(5);
                 if($is_expired < \Carbon\Carbon::now()){
    
@@ -53,8 +54,7 @@ class DailyOrder extends Command
             Cards::where('id',$row->card_id)->update(array('avaliable'=>0));
                   
              
-                }
-            }
+                }}
             }
            }
            $this->info('Order Cummand Run successfully!.');
