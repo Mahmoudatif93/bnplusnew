@@ -29,12 +29,12 @@
                 </h3>
 
 
-            
-                  
 
-              
 
-           
+
+
+
+
 
             </div><!-- end of box header -->
             <div id="print-area">
@@ -45,43 +45,43 @@
                     <table id="example" class="table table-hover">
 
                         <thead>
-                        <tr>
+                            <tr>
                                 <th>#</th>
                                 <th>@lang('site.name')</th>
                                 <th>@lang('site.kind')</th>
                                 <th>@lang('site.enable')</th>
-                            
+
                                 <th>@lang('site.action')</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                          
+
                             @foreach ($Companies as $index=>$category)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>
                                     @if($category->kind=="local")
                                     @lang('site.local')
                                     @elseif($category->kind=="national")
                                     @lang('site.national')
                                     @endif
 
-                                    </td>
+                                </td>
 
-                                    <td>
+                                <td>
 
                                     @if($category->enable==0)
-                                    <a class="btn btn-danger  btn-block" target="_blank"  href="{{ route('dashboard.dubienable',$category->id) }}">
+                                    <a class="btn btn-danger  btn-block" target="_blank" href="{{ route('dashboard.dubienable',$category->id) }}">
                                         Enable
-                                         </a>
-                        @else
-                        <a class="btn btn-danger  btn-block" target="_blank"  href="{{ route('dashboard.dubidisable',$category->id) }}">
+                                    </a>
+                                    @else
+                                    <a class="btn btn-danger  btn-block" target="_blank" href="{{ route('dashboard.dubidisable',$category->id) }}">
                                         Disable
-                                        </a>
-                        @endif
-                        </td>
+                                    </a>
+                                    @endif
+                                </td>
 
                                 <td>
                                     <a class="btn btn-primary btn-sm" target="_blank" href="{{ route('dashboard.dubioff.products',$category->id) }}">
