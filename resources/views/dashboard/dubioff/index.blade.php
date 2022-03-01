@@ -51,7 +51,7 @@
                                 <th>@lang('site.kind')</th>
                                 <th>@lang('site.controle')</th>
 
-                                <th>@lang('site.cards')</th>
+                                <th>@lang('site.Cards')</th>
                             </tr>
                         </thead>
 
