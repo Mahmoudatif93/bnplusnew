@@ -31,6 +31,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('enablenotapi', 'DubaiOrdersController@enablenotapi')->name('enablenotapi');
              //dubiorders routes
              Route::resource('dubiorders', 'DubaiOrdersController');
+             Route::resource('dubioff', 'DubaiOffController');
            //  Route::get('/dubiorders/{order}/products', 'DubaiOrdersController@products')->name('dubiorders.products');
             //currancy routes
             Route::resource('currancy', 'currancyController');

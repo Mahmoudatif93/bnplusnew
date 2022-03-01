@@ -36,6 +36,9 @@
         @if (auth()->user()->hasPermission('read_orders'))
             <li><a href="{{ route('dashboard.dubiorders.index') }}"><i class="fa fa-th"></i><span>@lang('site.dubiorders')</span></a></li>
         @endif
+        @if (auth()->user()->hasPermission('read_orders'))
+            <li><a href="{{ route('dashboard.dubioff.index') }}"><i class="fa fa-th"></i><span>@lang('site.dubioff')</span></a></li>
+        @endif
 
         
         @if (auth()->user()->hasPermission('read_orders'))
