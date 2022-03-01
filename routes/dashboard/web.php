@@ -32,6 +32,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
              //dubiorders routes
              Route::resource('dubiorders', 'DubaiOrdersController');
              Route::resource('dubioff', 'DubaiOffController');
+             Route::get('/dubioff/{id}', 'DubaiOffController@dubioff')->name('dubioff.products');
+
            //  Route::get('/dubiorders/{order}/products', 'DubaiOrdersController@products')->name('dubiorders.products');
             //currancy routes
             Route::resource('currancy', 'currancyController');

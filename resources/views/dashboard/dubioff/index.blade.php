@@ -71,7 +71,7 @@
                                     </td>
 
                                 <td>
-                                    <a class="btn btn-primary btn-sm" target="_blank" href="{{ route('dashboard.dubioff.products', $category['orderNumber']) }}">
+                                    <a class="btn btn-primary btn-sm" target="_blank" href="{{ route('dashboard.dubioff.products',$category->id) }}">
 
 
                                         <i class="fa fa-list"></i>
