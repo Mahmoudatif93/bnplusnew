@@ -98,7 +98,7 @@
 
                     </table><!-- end of table -->
 
-                    {{ $cards->appends(request()->query())->links() }}
+                  
 
                     @else
 
