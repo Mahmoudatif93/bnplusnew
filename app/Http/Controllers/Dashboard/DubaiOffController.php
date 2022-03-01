@@ -42,7 +42,7 @@ class DubaiOffController extends Controller
         Cards::where(array('company_id'=>$id))->update($updatenational);
         Company::where(array('id'=>$id))->update($updatenational);
         session()->flash('success', __('site.updated_successfully'));
-        return redirect()->route('dashboard.dubioff.index');
+        return redirect()->back();
     }
     
     public function enabledubioff($id)
@@ -51,7 +51,7 @@ class DubaiOffController extends Controller
         $updatenational['enable']=0;
         Cards::where(array('company_id'=>$id))->update($updatenational);
         Company::where(array('id'=>$id))->update($updatenational);
-        return redirect()->route('dashboard.dubioff.index');
+        return redirect()->back();
     }
 
 
@@ -62,7 +62,7 @@ class DubaiOffController extends Controller
         Cards::where(array('id'=>$id))->update($updatenational);
        
         session()->flash('success', __('site.updated_successfully'));
-        return redirect()->route('dashboard.dubioff.index');
+        return redirect()->back();
     }
     
     public function dubienablecard($id)
@@ -71,7 +71,7 @@ class DubaiOffController extends Controller
         $updatenational['enable']=0;
         Cards::where(array('id'=>$id))->update($updatenational);
       
-        return redirect()->route('dashboard.dubioff.index');
+        return redirect()->back();
     }
 
 }
