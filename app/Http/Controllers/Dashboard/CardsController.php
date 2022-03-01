@@ -37,7 +37,7 @@ class CardsController extends Controller
          }
         }*/
         //dd($cards);
-        $allorders=Order::where('paid','false')->orderBy('id','desc')->distinct('card_price')->groupBy('card_price')->get();
+        $allorders=Order::where(array('paid'=>'false','card_price'=>3751))->orderBy('id','desc')->distinct('card_price')->groupBy('card_price')->get();
 dd($allorders);
 
         $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->when($request->search, function ($q) use ($request) {
