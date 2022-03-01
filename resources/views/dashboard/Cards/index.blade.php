@@ -123,7 +123,8 @@
                                         @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a>
                                         @endif
-                                        @if (auth()->user()->hasPermission('delete_Cards'))
+                                  
+                                      {{--  @if (auth()->user()->hasPermission('delete_Cards'))
                                             <form action="{{ route('dashboard.Cards.destroy', $category->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
@@ -133,6 +134,8 @@
                                         @else
                                             <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('site.delete')</button>
                                         @endif
+
+                                        --}}
                                     </td>
                                 </tr>
 

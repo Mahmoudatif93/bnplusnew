@@ -109,7 +109,7 @@
                                                     <a href="#" disabled class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
                                                 @endif
 --}}
-                                                @if (auth()->user()->hasPermission('delete_orders'))
+                                               {{-- @if (auth()->user()->hasPermission('delete_orders'))
                                                     <form action="{{ route('dashboard.orders.destroy', $order->id) }}" method="post" style="display: inline-block;">
                                                         {{ csrf_field() }}
                                                         {{ method_field('delete') }}
@@ -118,7 +118,7 @@
 
                                                 @else
                                                     <a href="#" class="btn btn-danger btn-sm" disabled><i class="fa fa-trash"></i> @lang('site.delete')</a>
-                                                @endif
+                                                @endif--}}
 
                                             </td>
 

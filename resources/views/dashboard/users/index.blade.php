@@ -75,7 +75,8 @@
                                         @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a>
                                         @endif
-                                        @if (auth()->user()->hasPermission('delete_users'))
+                                      
+                                      {{--  @if (auth()->user()->hasPermission('delete_users'))
                                             <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
@@ -83,7 +84,7 @@
                                             </form><!-- end of form -->
                                         @else
                                             <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('site.delete')</button>
-                                        @endif
+                                        @endif  --}}
                                     </td>
                                 </tr>
 
