@@ -40,7 +40,7 @@ class DailyOrder extends Command
     public function handle()
     {
 
-        $allorders=Order::where('paid','false')->get()->unique('card_id');
+        $allorders=Order::where('paid','false')->orderBy('id','desc')->get()->unique('card_id');
         if(!empty($allorders)){
             foreach($allorders as $row){
                 ///last order
