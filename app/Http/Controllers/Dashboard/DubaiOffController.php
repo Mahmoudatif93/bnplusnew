@@ -27,7 +27,12 @@ class DubaiOffController extends Controller
 
     public function show($id)
     {
-        dd($id);
+       
+     $cards=   Cards::where(array('company_id'=>$id))->get();
+     return view('dashboard.dubioff.dubaiorderdetails', compact('cards'));
+
+
+
     }
 
     public function disabledubioff($id)
