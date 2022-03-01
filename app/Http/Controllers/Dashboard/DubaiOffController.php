@@ -37,6 +37,7 @@ class DubaiOffController extends Controller
 
     public function disabledubioff($id)
     {
+        dd($id);
         $updatenational['enable']=1;
         Cards::where(array('company_id'=>$id))->update($updatenational);
         Company::where(array('id'=>$id))->update($updatenational);
@@ -46,6 +47,7 @@ class DubaiOffController extends Controller
     
     public function enabledubioff($id)
     {
+        dd($id);
         $updatenational['enable']=0;
         Cards::where(array('company_id'=>$id))->update($updatenational);
         Company::where(array('id'=>$id))->update($updatenational);
@@ -55,6 +57,7 @@ class DubaiOffController extends Controller
 
     public function dubidisablecard($id)
     {
+        dd($id);
         $updatenational['enable']=1;
         Cards::where(array('company_id'=>$id))->update($updatenational);
        
@@ -64,6 +67,7 @@ class DubaiOffController extends Controller
     
     public function dubienablecard($id)
     {
+        dd($id);
         $updatenational['enable']=0;
         Cards::where(array('company_id'=>$id))->update($updatenational);
       
