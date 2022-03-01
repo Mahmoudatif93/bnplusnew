@@ -70,6 +70,19 @@
 
                                     </td>
 
+                                    <td>
+
+                                    @if($category->enable==0)
+                                    <a class="btn btn-danger  btn-block" target="_blank"  href="{{ route('dashboard.dubienable',$category->id) }}">
+                                        Enable
+                                         </a>
+                        @else
+                        <a class="btn btn-danger  btn-block" target="_blank"  href="{{ route('dashboard.dubidisable',$category->id) }}">
+                                        Disable
+                                        </a>
+                        @endif
+                        </td>
+
                                 <td>
                                     <a class="btn btn-primary btn-sm" target="_blank" href="{{ route('dashboard.dubioff.products',$category->id) }}">
 

@@ -29,4 +29,22 @@ class DubaiOffController extends Controller
     {
         dd($id);
     }
+
+    public function disabledubioff($id)
+    {
+        $updatenational['enable']=1;
+        Cards::where(array('company_id'=>$id))->update($updatenational);
+        Company::where(array('id'=>$id))->update($updatenational);
+        session()->flash('success', __('site.updated_successfully'));
+        return redirect()->route('dashboard.dubiorders.index');
+    }
+    
+    public function enabledubioff($id)
+    {
+        $updatenational['enable']=0;
+        Cards::where(array('company_id'=>$id))->update($updatenational);
+        Company::where(array('id'=>$id))->update($updatenational);
+        return redirect()->route('dashboard.dubioff.index');
+    }
+
 }
