@@ -59,7 +59,7 @@ class DubaiOffController extends Controller
     {
         
         $updatenational['enable']=1;
-        Cards::where(array('company_id'=>$id))->update($updatenational);
+        Cards::where(array('id'=>$id))->update($updatenational);
        
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->route('dashboard.dubioff.index');
@@ -69,7 +69,7 @@ class DubaiOffController extends Controller
     {
         
         $updatenational['enable']=0;
-        Cards::where(array('company_id'=>$id))->update($updatenational);
+        Cards::where(array('id'=>$id))->update($updatenational);
       
         return redirect()->route('dashboard.dubioff.index');
     }
