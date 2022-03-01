@@ -75,12 +75,12 @@
                                 <td>
 
                                     @if($category->enable==0)
-                                    <a class="btn btn-danger  btn-block" target="_blank" href="{{ route('dashboard.dubienablecard',$category->id) }}">
-                                        Enable
+                                    <a class="btn btn-primary  btn-block" target="_blank" href="{{ route('dashboard.dubidisablecard',$category->id) }}">
+                                       Disable
                                     </a>
                                     @else
-                                    <a class="btn btn-danger  btn-block" target="_blank" href="{{ route('dashboard.dubidisablecard',$category->id) }}">
-                                        Disable
+                                    <a class="btn btn-danger  btn-block" target="_blank" href="{{ route('dashboard.dubienablecard',$category->id) }}">
+                                    Enable  
                                     </a>
                                     @endif
                                 </td>
