@@ -40,7 +40,7 @@
             <div id="print-area">
                 <div class="box-body" id="frame">
 
-                    @if (isset($Companies))
+                    @if (!empty($Companies))
 
                     <table id="example" class="table table-hover">
 
