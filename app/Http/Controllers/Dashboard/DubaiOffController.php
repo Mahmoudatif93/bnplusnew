@@ -25,7 +25,7 @@ class DubaiOffController extends Controller
         
     }
 
-    public function dubioff($id)
+    public function show($id)
     {
         dd($id);
     }
