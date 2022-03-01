@@ -75,6 +75,7 @@ return [
     'serialCode'=>'serial Code',
     'validTo'=>'valid To',
     'dubioff'=>'Dubai Company Controle',
+    'controle'=>'Controle',
     'productName'=>'product Name',
     'dubiordersdetails'=>'Dubai Orders Details',
     'description' => 'Description',

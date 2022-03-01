@@ -49,7 +49,7 @@
                                 <th>#</th>
                                 <th>@lang('site.name')</th>
                                 <th>@lang('site.kind')</th>
-                                <th>@lang('site.enable')</th>
+                                <th>@lang('site.controle')</th>
 
                                 <th>@lang('site.action')</th>
                             </tr>
