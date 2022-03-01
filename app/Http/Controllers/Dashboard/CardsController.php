@@ -37,7 +37,8 @@ class CardsController extends Controller
          }
         }*/
         //dd($cards);
-
+        $allorders=Order::orderBy('card_id','desc')->distinct('card_id')->groupBy('card_id')->get();
+dd($allorders);
 
         $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->when($request->search, function ($q) use ($request) {
 
