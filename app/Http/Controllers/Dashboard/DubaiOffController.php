@@ -20,7 +20,7 @@ class DubaiOffController extends Controller
             return $q->where('name','like', '%' .  $request->search . '%')
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
         })->latest()->paginate(5);
-
+dd( $Companies );
         return view('dashboard.dubioff.index', compact('Companies'));
         
     }
