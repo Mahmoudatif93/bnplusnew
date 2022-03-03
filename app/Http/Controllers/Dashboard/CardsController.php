@@ -41,7 +41,7 @@ class CardsController extends Controller
       //  $allorders=Order::where(array('card_id'=>3751))->orderBy('id','desc')->distinct('card_id')->groupBy('card_id')->get();
 return($allorders);*/
 
-        $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->when($request->search, function ($q) use ($request) {
+        $Cards = Cards::where(array('enable'=>0))->when($request->search, function ($q) use ($request) {
 
             return $q->where('card_code',  'like', '%' . $request->search . '%')
             ->orWhere('card_name', 'like', '%' . $request->search . '%')
