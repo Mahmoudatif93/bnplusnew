@@ -240,7 +240,7 @@ if($card->enable ==0){
     $updatenotnational['enable']=0;
 }
 
-$company=Company::where(array('kind'=>'national','api'=>0,'purchase'=>0))->orderBy('id','desc')->first();
+$company=Company::where(array('kind'=>'national','api'=>0))->orderBy('id','desc')->first();
 
 
 if($company->enable ==0){
@@ -251,7 +251,7 @@ if($company->enable ==0){
 
 
 
-   // Cards::where(array('nationalcompany'=>'national','api'=>0))->update($updatenotnational);
+   // Cards::where(array('nationalcompany'=>'national','api'=>0,'purchase'=>0))->update($updatenotnational);
     Company::where(array('kind'=>'national','api'=>0))->update($updatenationalcompany);
 
     session()->flash('success', __('site.updated_successfully'));
