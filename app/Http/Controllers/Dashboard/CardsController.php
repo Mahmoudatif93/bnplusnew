@@ -43,7 +43,7 @@ return($allorders);*/
 
         $Cards = Cards::where(array('avaliable' => 0, 'purchase' => 0,'enable'=>0))->when($request->search, function ($q) use ($request) {
 
-            return $q->where('card_code', '%' . $request->search . '%')
+            return $q->where('card_code',  'like', '%' . $request->search . '%')
             ->orWhere('card_name', 'like', '%' . $request->search . '%')
             ->orWhere('card_price', 'like', '%' . $request->search . '%')
             ->orWhere('nationalcompany', 'like', '%' . $request->search . '%');
