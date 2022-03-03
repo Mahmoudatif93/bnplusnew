@@ -39,7 +39,7 @@ class DubaiOffController extends Controller
     {
       
         $updatenational['enable']=1;
-        Cards::where(array('company_id'=>$id))->update($updatenational);
+        Cards::where(array('company_id'=>$id,'purchase'=>0))->update($updatenational);
         Company::where(array('id'=>$id))->update($updatenational);
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->back();
@@ -49,7 +49,7 @@ class DubaiOffController extends Controller
     {
   
         $updatenational['enable']=0;
-        Cards::where(array('company_id'=>$id))->update($updatenational);
+        Cards::where(array('company_id'=>$id,'purchase'=>0))->update($updatenational);
         Company::where(array('id'=>$id))->update($updatenational);
         return redirect()->back();
     }
@@ -59,7 +59,7 @@ class DubaiOffController extends Controller
     {
         
         $updatenational['enable']=1;
-        Cards::where(array('id'=>$id))->update($updatenational);
+        Cards::where(array('id'=>$id,'purchase'=>0))->update($updatenational);
        
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->back();
@@ -69,7 +69,7 @@ class DubaiOffController extends Controller
     {
         
         $updatenational['enable']=0;
-        Cards::where(array('id'=>$id))->update($updatenational);
+        Cards::where(array('id'=>$id,'purchase'=>0))->update($updatenational);
       
         return redirect()->back();
     }
