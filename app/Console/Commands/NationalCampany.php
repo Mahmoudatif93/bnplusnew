@@ -172,6 +172,10 @@ class NationalCampany extends Command
 
                                  if (count(Company::where('id',  $company['id'])->get()) > 0) {
 
+
+                                    if(count(Cards::where(array('id' =>  $card['productId']))) ==0 ){
+
+                                    
                                     $itemcard = Cards::firstOrNew(array('id' =>  $card['productId']));
 
                                     $itemcard->id = $card['productId'];
@@ -184,7 +188,7 @@ class NationalCampany extends Command
                                     $itemcard->nationalcompany= 'national';
                                     $itemcard->api = 1;
                                      $itemcard ->save();
-                                
+                                    }
                                 
                                 }
 
