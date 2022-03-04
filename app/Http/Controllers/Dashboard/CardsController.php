@@ -67,7 +67,7 @@ return($allorders);*/
 
 
 
-       if(count( Cards::where(array('card_code'=>$request->card_code)))==0){
+       if(count( Cards::where(array('card_code'=>$request->card_code))->get())==0){
 
       
 
