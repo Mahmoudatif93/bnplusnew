@@ -66,6 +66,11 @@ return($allorders);*/
     {
 
 
+
+       if(count( Cards::where(array('card_code'=>$request->card_code)))==0){
+
+      
+
         if($request->nationalcompany=="InternationalAPI"){
             
       
@@ -125,13 +130,8 @@ return($allorders);*/
                     $request_data['card_image'] = 'https://bn-plus.ly/BNplus/public/uploads/cards/'.$request->card_image->hashName();
         
                 }//end of if
-               // print_r($request_data);
               Cards::create($request_data);
-             /* echo $i;
-              echo "<br>";
-              echo $j;
-              echo "<br>";
-              print_r($request_data);*/
+          
 
             }}
 
@@ -165,12 +165,6 @@ return($allorders);*/
        
             for($i=0;$i<count($request->card_code);$i++){
                 $request_data['card_code'] = $request->card_code[$i];
-        /*    if($request->offer=="on"){
-                $request_data['offer']=1;
-            }else{
-                $request_data['offer']=0;
-            }
-    */
             if ($request->card_image) {
     
                 Image::make($request->card_image)
@@ -193,6 +187,11 @@ return($allorders);*/
      
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('dashboard.Cards.index');
+
+         }else{
+            session()->flash('success', __('Card code exist before'));
+            return redirect()->route('dashboard.Cards.index');
+         }
 
     }//end of store
 
