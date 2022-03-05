@@ -86,7 +86,7 @@
                                     </td>
 
                                     <td>{{ $category->card_price }}</td>
-                                    <td>{{ $category->card_code }}</td>
+                                    <td>{{  encrypt($category->card_code)}}</td>
                                     
                                     <td>
 
