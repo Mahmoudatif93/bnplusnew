@@ -87,7 +87,7 @@
 
                                     <td>{{ $category->card_price }}</td>
                                     <td >
-                                    <div class="box"style="inline-size: 5px;
+                                    <div class="box"style="inline-size: 150px;
                                     
                                     overflow-wrap: break-word;hyphens: manual;">
                                     
