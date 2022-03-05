@@ -92,7 +92,7 @@
                                     overflow-wrap: break-word;hyphens: manual;">
                                     
                                     {!! encrypt($category->card_code) !!}</td>
-</div>
+                                    </div>
                                     <td>
 
                                         @if($category->avaliable ==1)

@@ -76,7 +76,20 @@
                                                 
                                             @endif</td>
 
-                                            <td>@if(!empty($order->cards)) {{ $order->cards->card_code }}  @endif</td>
+                                            <td>@if(!empty($order->cards)) 
+                                                
+                                            <div class="box"style="inline-size: 150px;
+                                    
+                                    overflow-wrap: break-word;hyphens: manual;">
+                                    
+
+                                    {{ encrypt($order->cards->card_code) }}
+
+
+                                    </div>
+
+
+                                            @endif</td>
                                             <td>
                                                 @if($order->paid=="false")
                                                 {{'Not Complete'}}
