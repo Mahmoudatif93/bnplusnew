@@ -131,7 +131,7 @@ class UserController extends Controller
         ]);
 
         $request_data = $request->except(['permissions', 'image']);
-
+        $request_data['password'] = bcrypt($request->password);
 
         $user->update($request_data);
 
