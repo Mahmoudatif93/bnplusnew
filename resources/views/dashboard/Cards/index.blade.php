@@ -86,7 +86,7 @@
                                     </td>
 
                                     <td>{{ $category->card_price }}</td>
-                                    <td>{!! encrypt($category->card_code) !!}</td>
+                                    <td style=" inline-size: 150px; overflow-wrap: break-word">{!! encrypt($category->card_code) !!}</td>
                                     
                                     <td>
 
