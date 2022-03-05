@@ -56,8 +56,9 @@ class DailyOrder extends Command
                         if($is_expired < \Carbon\Carbon::now()){
            
            
+                   // Cards::where(array('id'=>$row->card_id))->update(array('avaliable'=>0));
                     Cards::where(array('id'=>$row->card_id,'purchase'=>0))->update(array('avaliable'=>0));
-                          
+ 
                      
                         }}
                 }
