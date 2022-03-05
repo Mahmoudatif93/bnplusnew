@@ -86,13 +86,8 @@
                                     </td>
 
                                     <td>{{ $category->card_price }}</td>
-                                    <td >
-                                    <div class="box"style="inline-size: 150px;
+                                    <td>{{ $category->card_code }}</td>
                                     
-                                    overflow-wrap: break-word;hyphens: manual;">
-                                    
-                                    {!! encrypt($category->card_code) !!}</td>
-                                    </div>
                                     <td>
 
                                         @if($category->avaliable ==1)
