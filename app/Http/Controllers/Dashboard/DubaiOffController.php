@@ -15,7 +15,7 @@ class DubaiOffController extends Controller
     public function index(Request $request)
     {
         
-        $Companies = Company::where(array('api'=>1,'purchase'=>0))->when($request->search, function ($q) use ($request) {
+        $Companies = Company::where(array('api'=>1))->when($request->search, function ($q) use ($request) {
 
             return $q->where('name','like', '%' .  $request->search . '%')
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
