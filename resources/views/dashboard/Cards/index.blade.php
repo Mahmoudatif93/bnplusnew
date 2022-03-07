@@ -93,13 +93,13 @@
                                         @if($category->avaliable ==1)
                                       
 
-                                        <button class="btn btn-danger  btn-block" disabled>
+                                        <button class="btn btn-danger" disabled>
                                         {{"Not Avaliable"}}
                                     </button>
                                         @else
                                    
 
-                                        <button class="btn btn-success  btn-block" disabled>
+                                        <button class="btn btn-success" disabled>
                                         {{"Avaliable"}}
                                     </button>
                                         @endif
