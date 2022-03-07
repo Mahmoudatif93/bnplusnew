@@ -25,7 +25,7 @@
 
                 <h3 class="box-title" style="margin-bottom: 15px">@lang('site.dubioff') (<small style="color: red;font-weight:bold"> {{--count( $dubioff)--}}</small>
 
-                    @lang('site.orders') )
+                
                 </h3>
 
 
