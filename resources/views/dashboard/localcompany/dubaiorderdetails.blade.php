@@ -73,7 +73,7 @@
                                     <td>{{ $category->card_code }}</td>
 
                                 <td>
-@if(category->purchase==0)
+@if($category->purchase==0)
                                     @if($category->enable==0)
                                     <a class="btn btn-primary  btn-block" target="_blank" href="{{ route('dashboard.localdisablecard',$category->id) }}">
                                        Disable
