@@ -24,6 +24,7 @@ return [
     'paymenttype'=>'شركه الدفع',
     'dubiordersdetails'=>'تفاصيل طلبات شركه دبي',
     'no' => 'لا',
+    'localcompany'=>'الشركات المحليه',
     'controle'=>'التحكم',
     'dubioff'=>'التحكم في شركات دبي',
     'productName'=>'أسم المنتج',
