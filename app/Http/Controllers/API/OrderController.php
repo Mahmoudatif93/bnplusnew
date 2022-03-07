@@ -177,7 +177,7 @@ class OrderController extends Controller
                             //  return $row['serialCode'];
                             $updatecardprice['card_code'] =  $this->decryptSerial($row['serialCode']);
                             Cards::where('id', $order->card_id)->update($updatecardprice);
-                            $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
+                          //  $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
                         }
 
 
@@ -198,7 +198,7 @@ class OrderController extends Controller
                         $cardemail =  Cards::where('id', $order->card_id)->first();
                         $client =  Client::where('id', $order->client_id)->first();
                         if ($dubiapi->api == 0) {
-                            $this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
+                            //$this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
                         }
 
                         return response()->json(['status' => 'success']);
