@@ -23,7 +23,7 @@
 
             <div class="box-header with-border">
 
-                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.nationalcompany') (<small style="color: red;font-weight:bold"> {{--count( $dubioff)--}}</small>
+                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.nationalcompany') <small style="color: red;font-weight:bold"> {{--count( $dubioff)--}}</small>
 
                 
                 </h3>
