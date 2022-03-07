@@ -91,9 +91,17 @@
                                     <td>
 
                                         @if($category->avaliable ==1)
+                                      
+
+                                        <button class="btn btn-danger  btn-block" disabled>
                                         {{"Not Avaliable"}}
+                                    </button>
                                         @else
+                                   
+
+                                        <button class="btn btn-success  btn-block" disabled>
                                         {{"Avaliable"}}
+                                    </button>
                                         @endif
                                         </td>
 
@@ -119,8 +127,14 @@
 
                                                                    <td>
                                         @if (auth()->user()->hasPermission('update_Cards'))
+                                        @if($category->purchase==0)
                                             <a href="{{ route('dashboard.Cards.edit', $category->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
-                                        @else
+                                            @else
+                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+
+                                    
+                                            @endif
+                                            @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('site.edit')</a>
                                         @endif
                                   
