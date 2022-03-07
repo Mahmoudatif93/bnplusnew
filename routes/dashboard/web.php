@@ -43,16 +43,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
              Route::get('/dubidisablecard/{id}', 'DubaiOffController@dubidisablecard')->name('dubidisablecard');
              Route::get('/dubienablecard/{id}', 'DubaiOffController@dubienablecard')->name('dubienablecard');
 
-
+///////////////////////////////////////////localcompany controle
              Route::resource('localcompany', 'localcompanyController');
              Route::get('/localoff/{id}', 'localcompanyController@show')->name('localoff.products');
-
              Route::get('/localdisable/{id}', 'localcompanyController@disabledubioff')->name('localdisable');
              Route::get('/localenable/{id}', 'localcompanyController@enabledubioff')->name('localenable');
-
              Route::get('/localdisablecard/{id}', 'localcompanyController@dubidisablecard')->name('localdisablecard');
              Route::get('/localenablecard/{id}', 'localcompanyController@dubienablecard')->name('localenablecard');
 
+///////////////////////////////////////////nationalcompany controle
+Route::resource('nationalcompany', 'nationalcompanyController');
+Route::get('/nationaloff/{id}', 'nationalcompanyController@show')->name('nationaloff.products');
+Route::get('/nationaldisable/{id}', 'nationalcompanyController@disabledubioff')->name('nationaldisable');
+Route::get('/nationalenable/{id}', 'nationalcompanyController@enabledubioff')->name('nationalenable');
+Route::get('/nationaldisablecard/{id}', 'nationalcompanyController@dubidisablecard')->name('nationaldisablecard');
+Route::get('/nationalenablecard/{id}', 'nationalcompanyController@dubienablecard')->name('nationalenablecard');
 
 
 

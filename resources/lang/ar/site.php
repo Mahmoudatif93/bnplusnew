@@ -25,6 +25,7 @@ return [
     'dubiordersdetails'=>'تفاصيل طلبات شركه دبي',
     'no' => 'لا',
     'localcompany'=>'التحكم في الشركات المحليه',
+    'nationalcompany'=>'التحكم في الشركات الدوليه',
     'controle'=>'التحكم',
     'dubioff'=>'التحكم في شركات دبي',
     'productName'=>'أسم المنتج',

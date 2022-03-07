@@ -43,6 +43,9 @@
         @if (auth()->user()->hasPermission('read_orders'))
             <li><a href="{{ route('dashboard.localcompany.index') }}"><i class="fa fa-th"></i><span>@lang('site.localcompany')</span></a></li>
         @endif
+        @if (auth()->user()->hasPermission('read_orders'))
+            <li><a href="{{ route('dashboard.nationalcompany.index') }}"><i class="fa fa-th"></i><span>@lang('site.nationalcompany')</span></a></li>
+        @endif
 
         
         @if (auth()->user()->hasPermission('read_orders'))

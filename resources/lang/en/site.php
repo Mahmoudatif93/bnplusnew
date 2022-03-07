@@ -77,6 +77,8 @@ return [
     'dubioff'=>'Dubai Company Control',
     'controle'=>'Control',
     'localcompany'=>'local companies Control',
+    'nationalcompany'=>'national companies Control',
+    
     'productName'=>'product Name',
     'dubiordersdetails'=>'Dubai Orders Details',
     'description' => 'Description',
