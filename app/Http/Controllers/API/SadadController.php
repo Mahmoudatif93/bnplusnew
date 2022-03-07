@@ -194,7 +194,7 @@ class SadadController extends Controller
                             $updatecardprice['card_code'] =  $this->decryptSerial($row['serialCode']);
                             Cards::where('id', $order->card_id)->update($updatecardprice);
 
-                            $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
+                         //   $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
                         }
 
                         curl_close($curl);
@@ -214,7 +214,7 @@ class SadadController extends Controller
                         $client =  Client::where('id', $order->client_id)->first();
 
                         if ($dubiapi->api == 0) {
-                            $this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
+                        //    $this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
                         }
 
                         return $this->apiResponse5(true, $response['message'], $response['status'], $response['result']);
