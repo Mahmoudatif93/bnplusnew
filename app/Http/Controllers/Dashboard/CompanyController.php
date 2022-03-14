@@ -39,7 +39,7 @@ class CompanyController extends Controller
         'X-API-KEY' => '984adf4c-44e1-418f-829b'
     ])->post('https://identity-staging.anis.ly/connect/token', [
 
-        'grant_type' => 'info@bn-plus.ly',
+        'grant_type' => 'bn-plus',
         'client_id'=>'bn-plus',
         'client_secret'=>'3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
         'password' => 'P@ssw0rd1988',
