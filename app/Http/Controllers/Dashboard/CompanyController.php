@@ -35,7 +35,7 @@ class CompanyController extends Controller
 
        
       $response = Http::withHeaders([
-        'Accept' => 'aapplication/x-www-form-urlencoded',
+        'Accept' => 'application/json',
         'X-API-KEY' => '984adf4c-44e1-418f-829b'
     ])->post('https://identity-staging.anis.ly/connect/token', [
 
@@ -50,9 +50,9 @@ class CompanyController extends Controller
 
     ]);
 
-
-
 dd($response);
+
+
 
 
 
