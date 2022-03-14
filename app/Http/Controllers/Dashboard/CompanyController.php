@@ -35,8 +35,7 @@ class CompanyController extends Controller
 
        
       $response = Http::withHeaders([
-        'Accept' => 'application/json',
-        'X-API-KEY' => '984adf4c-44e1-418f-829b'
+        'Content-Type' => 'application/x-www-form-urlencoded'
     ])->post('https://identity-staging.anis.ly/connect/token', [
 
         'grant_type' => 'bn-plus',
