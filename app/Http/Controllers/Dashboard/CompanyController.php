@@ -38,7 +38,7 @@ class CompanyController extends Controller
         'Content-Type' => 'application/x-www-form-urlencoded'
     ])->post('https://identity-staging.anis.ly/connect/token', [
 
-        'grant_type' => 'bn-plus',
+        'grant_type' => '0910001138',
         'client_id'=>'bn-plus',
         'client_secret'=>'3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
         'password' => 'P@ssw0rd1988',
