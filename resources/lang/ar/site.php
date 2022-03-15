@@ -27,6 +27,8 @@ return [
     'localcompany'=>'التحكم في الشركات المحليه',
     'nationalcompany'=>' التحكم في الشركات الدوليه',
     'swagger'=>'Swagger التحكم في شركات',
+    'enableswaggerapi'=>'Enable Swagger Api',
+    'disablewaggerapi'=>'Disable Swagger Api',
     'controle'=>'التحكم',
     'dubioff'=>'التحكم في شركات دبي',
     'productName'=>'أسم المنتج',

@@ -79,6 +79,8 @@ return [
     'localcompany'=>'local companies Control',
     'nationalcompany'=>'national companies Control',
     'swagger'=>'Swagger Company Control',
+    'enableswaggerapi'=>'Enable Swagger Api',
+    'disablewaggerapi'=>'Disable Swagger Api',
     'productName'=>'product Name',
     'dubiordersdetails'=>'Dubai Orders Details',
     'description' => 'Description',
