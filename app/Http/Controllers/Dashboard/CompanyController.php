@@ -57,18 +57,17 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
 
 
 
- $balancenational = Http::withHeaders([
+ $swaggercompanies = Http::withHeaders([
     'Content-Type' => 'application/x-www-form-urlencoded'
 ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', [
   
 ]);
+dd($swaggercompanies->json()['data']);
+
+if (!empty($swaggercompanies->json())) {
 
 
-
-
-
-dd($balancenational->json());
-
+}
 
 
 
