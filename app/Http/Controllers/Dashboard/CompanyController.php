@@ -113,8 +113,8 @@ class CompanyController extends Controller
         );
         $response = Http::asForm()->withHeaders([])->post($uri, $params);
 
-        dd($response->json());
-
+        dd($response->json()['access_token']);
+        $response->json()['token_type'];
 
         $cards = Http::withHeaders([
             'Accept' => 'application/json',
