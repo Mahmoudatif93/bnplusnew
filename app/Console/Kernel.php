@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\DailyOrder::class,
         Commands\NationalCampany::class,
+        Commands\swaggercards::class,
     ];
 
     /**
@@ -34,6 +35,9 @@ class Kernel extends ConsoleKernel
         ->everyMinute();
        $schedule->command('campany:national')
         ->daily();	
+
+        $schedule->command('swagger:cards')
+        ->everyMinute();
     }
 
     /**
