@@ -15,7 +15,7 @@ class swaggerOffController extends Controller
     public function index(Request $request)
     {
         
-        $Companies = Company::where(array('api2'=>1))->when($request->search, function ($q) use ($request) {
+        $Companies = Company::where('api2',1)->when($request->search, function ($q) use ($request) {
 
             return $q->where('name','like', '%' .  $request->search . '%')
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
