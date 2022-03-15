@@ -62,12 +62,17 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
 ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', [
   
 ]);
-dd($swaggercompanies->json()['data']);
+//dd($swaggercompanies->json()['data']);
 
 if (!empty($swaggercompanies->json()['data'])) {
 
 foreach($swaggercompanies->json()['data'] as $rowcomp){
-    if($rowcomp['type']=='Local'){
+
+
+    dd($rowcomp);
+
+
+    if($rowcomp->type=='Local'){
     if(!empty($rowcomp->subCategories)){
         foreach($rowcomp->subCategories as $rowsubcomp){
             if($rowsubcomp->inStock==true){
