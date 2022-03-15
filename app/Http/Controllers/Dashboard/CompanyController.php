@@ -111,14 +111,11 @@ class CompanyController extends Controller
             'password' => 'P@ssw0rd1988',
             'email' => 'info@bn-plus.ly',
         );
-        $response = Http::asForm()->withHeaders([])->post($uri, $params);
-
-      
-      
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
 $token=$response->json()['access_token'];
 $token_type=$response->json()['token_type'];
 $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
-dd($alltoken);
+//dd($alltoken);
         $cards = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => $alltoken,
