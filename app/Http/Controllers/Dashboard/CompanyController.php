@@ -53,7 +53,23 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
         
      ])->post($uri, $params);
 
- dd($response->json()['access_token']);
+ //dd($response->json()['access_token']);
+
+
+
+ $balancenational = Http::withHeaders([
+    'Content-Type' => 'application/x-www-form-urlencoded'
+])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', [
+  
+]);
+
+
+
+
+
+dd($balancenational->json());
+
+
 
 
 
