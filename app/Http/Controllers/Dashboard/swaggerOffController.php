@@ -21,7 +21,7 @@ class swaggerOffController extends Controller
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
         })->latest()->paginate(5);
         
-        return view('dashboard.dubioff.index', compact('Companies'));
+        return view('dashboard.dubioffswagger.index', compact('Companies'));
         
     }
 
@@ -29,7 +29,7 @@ class swaggerOffController extends Controller
     {
        
      $cards=   Cards::where(array('company_id'=>$id))->get();
-     return view('dashboard.dubioff.dubaiorderdetails', compact('cards'));
+     return view('dashboard.dubioffswagger.dubaiorderdetails', compact('cards'));
 
 
 
