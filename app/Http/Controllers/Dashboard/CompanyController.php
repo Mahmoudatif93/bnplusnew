@@ -67,10 +67,10 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
 if (!empty($swaggercompanies->json()['data'])) {
 
 foreach($swaggercompanies->json()['data'] as $rowcomp){
-    if($rowcomp->type=='Local'){
+    if($rowcomp['type']=='Local'){
     if(!empty($rowcomp->subCategories)){
         foreach($rowcomp->subCategories as $rowsubcomp){
-            if($rowcomp->inStock==true){
+            if($rowsubcomp->inStock==true){
             $itemcomp = Company::firstOrNew(array('idapi2' =>$rowsubcomp->id));
 
             $itemcomp->idapi2 = $rowsubcomp->id;
