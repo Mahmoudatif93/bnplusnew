@@ -71,7 +71,7 @@ if($dubiordersjson['response'] ==1){
         $cardnot=Company::where(array('kind'=>'national','api'=>0))->orderBy('id','desc')->first();
         $cardswagger=Company::where(array('api2'=>1))->orderBy('id','desc')->first();
        
-        return view('dashboard.dubiorders.index', compact('dubiorders','cardapi','cardnot'));
+        return view('dashboard.dubiorders.index', compact('dubiorders','cardapi','cardnot','cardswagger'));
 
     }
 
