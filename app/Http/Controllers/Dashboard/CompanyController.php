@@ -125,8 +125,9 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
         ]);
 
         if(!empty($cards->json()['data'])){
-foreach($cards->json()['data'] as $cardsapi ){
-    dd($cardsapi);
+foreach($cards->json()['data'] as $allcardsapi ){
+  
+    foreach($allcardsapi as $cardsapi){
     $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'name'=>$cardsapi['categoryName']))->first();
 
     $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
@@ -141,7 +142,7 @@ foreach($cards->json()['data'] as $cardsapi ){
                                     $itemcard->nationalcompany=  $dbCompanies->kind;
                                     $itemcard->api2 = 1;
                                      $itemcard ->save();
-
+                                    }
 
 }
 }
