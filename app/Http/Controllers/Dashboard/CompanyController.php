@@ -127,8 +127,8 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
         if(!empty($cards->json()['data'])){
 foreach($cards->json()['data'] as $allcardsapi ){
   
-    if(!empty( $allcardsapi)){
-    foreach($allcardsapi as $cardsapi){
+    if($allcardsapi){
+    foreach(array($allcardsapi) as $cardsapi){
         //dd($cardsapi);
     $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'name'=>$cardsapi['categoryName']))->first();
     print_r($cardsapi);echo"<br>";
