@@ -53,7 +53,7 @@ dd($response);
 */
 
 $response = Http::withHeaders([
-    'Content-Type' => 'application/x-www-form-urlencoded'
+ 
 ])->post('https://identity-staging.anis.ly/connect/token', [
     'form_params' => [
         'grant_type' => 'user_credentials',
