@@ -132,7 +132,7 @@ foreach($cards->json()['data'] as $allcardsapi ){
     $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'name'=>$cardsapi['categoryName']))->first();
 
     $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
-    dd($itemcard);
+  
                                     $itemcard->api2id = $cardsapi['id'];
                                     $itemcard->old_price=$cardsapi['price'];
                                     $itemcard->company_id = $dbCompanies->categoryId;
@@ -142,6 +142,7 @@ foreach($cards->json()['data'] as $allcardsapi ){
                                     $itemcard->card_image = $cardsapi['logo'];
                                     $itemcard->nationalcompany=  $dbCompanies->kind;
                                     $itemcard->api2 = 1;
+                                    dd($itemcard);
                                      $itemcard ->save();
                                     }
 
