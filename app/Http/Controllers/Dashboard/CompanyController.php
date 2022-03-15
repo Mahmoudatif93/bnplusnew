@@ -51,14 +51,14 @@ class CompanyController extends Controller
         );
         $response = Http::asForm()->withHeaders([])->post($uri, $params);
 
-        //dd($response->json()['access_token']);
+        dd($response->json());
 
 
 
         $swaggercompanies = Http::withHeaders([
             'Content-Type' => 'application/x-www-form-urlencoded'
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', []);
-    dd($swaggercompanies->json()['data']);
+    //dd($swaggercompanies->json()['data']);
 
         if (!empty($swaggercompanies->json()['data'])) {
 
