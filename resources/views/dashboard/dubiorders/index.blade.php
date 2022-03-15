@@ -68,17 +68,11 @@
                         <a class="btn btn-dark btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
                         Disable Swagger Cards
                         </a>
-  
-
                         @else
 
                         <a class="btn btn-info btn-block"  href="{{ route('dashboard.enableswaggerapi') }}">
                         Enable Swagger Cards
                         </a>
-
-
-
-
                         @endif
 
 

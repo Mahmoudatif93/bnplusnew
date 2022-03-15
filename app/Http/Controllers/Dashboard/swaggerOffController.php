@@ -22,7 +22,9 @@ class swaggerOffController extends Controller
         })->latest()->paginate(5);
         
         //dd($Companies);
-        return view('dashboard.dubioffswagger.index', compact('Companies'));
+        $cardswagger=Company::where(array('api2'=>1))->orderBy('id','desc')->first();
+
+        return view('dashboard.dubioffswagger.index', compact('Companies','cardswagger'));
         
     }
 
