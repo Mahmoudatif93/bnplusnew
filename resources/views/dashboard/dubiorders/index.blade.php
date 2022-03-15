@@ -65,7 +65,7 @@
 
                         @if($cardswagger->enable==0)
 
-                        <a class="btn btn-dark btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
+                        <a class="btn btn-danger btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
                         Disable Swagger Cards
                         </a>
                         @else
