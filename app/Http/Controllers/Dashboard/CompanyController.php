@@ -62,11 +62,30 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
 ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', [
   
 ]);
-dd($swaggercompanies->json()['data']);
+//dd($swaggercompanies->json()['data']);
 
-if (!empty($swaggercompanies->json())) {
+if (!empty($swaggercompanies->json()['data'])) {
+
+foreach($swaggercompanies->json()['data'] as $rowcomp){
+    if($rowcomp->type=='Local'){
+    if(!empty($rowcomp->subCategories)){
+        foreach($rowcomp->subCategories as $rowsubcomp){
+            if($rowcomp->inStock==true){
+            $itemcomp = Company::firstOrNew(array('idapi2' =>$rowsubcomp->id));
+
+            $itemcomp->idapi2 = $rowsubcomp->id;
+            $itemcomp->company_image = $rowsubcomp->logo;
+            $itemcomp->name = $rowsubcomp->name;
+            $itemcomp->kind = 'local';
+            $itemcomp->api2 = 1;
+             $itemcomp ->save();}
+        }
+    }
+    }
 
 
+
+}
 }
 
 
