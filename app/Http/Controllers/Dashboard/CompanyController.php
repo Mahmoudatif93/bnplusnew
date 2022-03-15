@@ -58,7 +58,7 @@ class CompanyController extends Controller
         $swaggercompanies = Http::withHeaders([
             'Content-Type' => 'application/x-www-form-urlencoded'
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', []);
-        //dd($swaggercompanies->json()['data']);
+    dd($swaggercompanies->json()['data']);
 
         if (!empty($swaggercompanies->json()['data'])) {
 
@@ -128,7 +128,7 @@ class CompanyController extends Controller
 
 
 
-        dd('i');
+        //dd('i');
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
