@@ -32,40 +32,28 @@ class CompanyController extends Controller
 
       /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
-/*
-    
-      $response = Http::withHeaders([
-        'Content-Type' => 'application/x-www-form-urlencoded'
-    ])->post('https://identity-staging.anis.ly/connect/token', [
 
-        'grant_type' => 'user_credentials',
-        'client_id'=>'bn-plus',
-        'client_secret'=>'3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-        'password' => 'P@ssw0rd1988',
-        'email' => 'info@bn-plus.ly',
 
+
+
+
+
+
+$uri = 'https://identity-staging.anis.ly/connect/token';
+
+
+ $params = array(
+    'grant_type' => 'user_credentials',
+    'client_id'=>'bn-plus',
+    'client_secret'=>'3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+    'password' => 'P@ssw0rd1988',
+    'email' => 'info@bn-plus.ly',
+ );
+ $response = Http::asForm()->withHeaders([
         
+     ])->post($uri, $params);
 
-
-    ]);
-dd($response);
-
-*/
-
-$response = Http::withHeaders([
- 
-])->post('https://identity-staging.anis.ly/connect/token', [
-    'form_params' => [
-        'grant_type' => 'user_credentials',
-        'client_id'=>'bn-plus',
-        'client_secret'=>'3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-        'password' => 'P@ssw0rd1988',
-        'email' => 'info@bn-plus.ly',
-    ]
-]);
-
-dd($response);
-
+ dd($response->json());
 
 
 
