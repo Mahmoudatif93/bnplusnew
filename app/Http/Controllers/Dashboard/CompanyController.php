@@ -113,12 +113,15 @@ class CompanyController extends Controller
         );
         $response = Http::asForm()->withHeaders([])->post($uri, $params);
 
-        dd($response->json()['access_token']);
-        $response->json()['token_type'];
-
+      
+      
+$token=$response->json()['access_token'];
+$token_type=$response->json()['token_type'];
+$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+dd($alltoken);
         $cards = Http::withHeaders([
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer eyJhbGciOiJQUzI1NiIsImtpZCI6ImI1MzBiY2Y4YzI3ODQ4MTNhZGVlZWI1M2NkOWI0YmM5IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NDczNjM3MjksImV4cCI6MTY0ODU3MzMyOSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1zdGFnaW5nLmFuaXMubHkiLCJhdWQiOlsiZWNvbV9jYXJkcyIsImh0dHBzOi8vaWRlbnRpdHktc3RhZ2luZy5hbmlzLmx5L3Jlc291cmNlcyJdLCJjbGllbnRfaWQiOiJibi1wbHVzIiwic3ViIjoiYjgxZWJkYzgtZDljOS00OTRiLWIwMGItZWZkMGU4YTRmYmJmIiwiYXV0aF90aW1lIjoxNjQ3MzYzNzI5LCJpZHAiOiJsb2NhbCIsIm5hbWUiOiIwOTEwMDAxMTM4IiwiZW1haWwiOiJpbmZvQGJuLXBsdXMubHkiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGhvbmVfbnVtYmVyIjoiMDkxMDAwMTEzOCIsImp0aSI6IjZEQzA0OEFCN0E2QjZCQUYzRUI4MzgxMEU4RDE0M0NFIiwiaWF0IjoxNjQ3MzYzNzI5LCJzY29wZSI6WyJlY29tX2NhcmRzIiwiZW1haWwiLCJvcGVuaWQiLCJwaG9uZSIsInByb2ZpbGUiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsidXNlcl9jcmVkZW50aWFscyJdfQ.CvHwS3KbVnWmBD-C8Cz3HbhQQM4sydFpXHCKSxdIAmSgzbIu90cXQb9VjeOE_TQKJvTeesEvHIMvrcwKWL1yJyoTr24qjICiyyFlsZLUu-qCanhMGyYTvtm_TMLV3WpIXpxp6DxoeMGMsTxSqltMTuAgoKk9DpVpjLP9rJY5zCpikRhdmKhx8Bcow7YOz3gQ9MIJwShfSgnAIAR-9VwvFRkrOgwm6C0mea28lhkYboIEpQhYMZ_pTxY_VPS-2hDdlqlEEakp0QBfHltqfLsvs3dWowdjjNi-_VUNKzRSMYkxuPFem0NX8IjAoioKnYulXzz6JOeruIGJgLlhx2MLPQ',
+            'Authorization' => $alltoken,
            
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/my-cards', [
 
