@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-      /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
+        /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
 
 
@@ -39,66 +39,103 @@ class CompanyController extends Controller
 
 
 
-$uri = 'https://identity-staging.anis.ly/connect/token';
+        $uri = 'https://identity-staging.anis.ly/connect/token';
 
 
- $params = array(
-    'grant_type' => 'user_credentials',
-    'client_id'=>'bn-plus',
-    'client_secret'=>'3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-    'password' => 'P@ssw0rd1988',
-    'email' => 'info@bn-plus.ly',
- );
- $response = Http::asForm()->withHeaders([
-        
-     ])->post($uri, $params);
+        $params = array(
+            'grant_type' => 'user_credentials',
+            'client_id' => 'bn-plus',
+            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+            'password' => 'P@ssw0rd1988',
+            'email' => 'info@bn-plus.ly',
+        );
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);
 
- //dd($response->json()['access_token']);
+        //dd($response->json()['access_token']);
 
 
 
- $swaggercompanies = Http::withHeaders([
-    'Content-Type' => 'application/x-www-form-urlencoded'
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', [
-  
-]);
-//dd($swaggercompanies->json()['data']);
+        $swaggercompanies = Http::withHeaders([
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', []);
+        //dd($swaggercompanies->json()['data']);
 
-if (!empty($swaggercompanies->json()['data'])) {
+        if (!empty($swaggercompanies->json()['data'])) {
 
-foreach($swaggercompanies->json()['data'] as $rowcomp){
-    if($rowcomp['type']=='Local'){
-    if(!empty($rowcomp['subCategories'])){
-        foreach($rowcomp['subCategories'] as $rowsubcomp){
-            if($rowsubcomp['inStock']==true){
-            $itemcomp = Company::firstOrNew(array('idapi2' =>$rowsubcomp['id']));
+            foreach ($swaggercompanies->json()['data'] as $rowcomp) {
+                if ($rowcomp['type'] == 'Local') {
+                    if (!empty($rowcomp['subCategories'])) {
+                        foreach ($rowcomp['subCategories'] as $rowsubcomp) {
+                            if ($rowsubcomp['inStock'] == true) {
+                                $itemcomp = Company::firstOrNew(array('idapi2' => $rowsubcomp['id']));
 
-            $itemcomp->idapi2 = $rowsubcomp['id'];
-            $itemcomp->company_image =  $rowsubcomp['logo'];
-            $itemcomp->name = $rowsubcomp['name'];
-            $itemcomp->kind = 'local';
-            $itemcomp->api2 = 1;
-             $itemcomp ->save();}
+                                $itemcomp->idapi2 = $rowsubcomp['id'];
+                                $itemcomp->company_image =  $rowsubcomp['logo'];
+                                $itemcomp->name = $rowsubcomp['name'];
+                                $itemcomp->kind = 'local';
+                                $itemcomp->api2 = 1;
+                                $itemcomp->save();
+                            }
+                        }
+                    } else {
+                        if ($rowcomp['inStock'] == true) {
+                            $itemcomp = Company::firstOrNew(array('idapi2' => $rowcomp['id']));
+
+                            $itemcomp->idapi2 = $rowcomp['id'];
+                            $itemcomp->company_image =  $rowcomp['logo'];
+                            $itemcomp->name = $rowcomp['name'];
+                            $itemcomp->kind = 'local';
+                            $itemcomp->api2 = 1;
+                            $itemcomp->save();
+                        }
+                    }
+                }else{
+
+
+
+                    if (!empty($rowcomp['subCategories'])) {
+                        foreach ($rowcomp['subCategories'] as $rowsubcomp) {
+                            if ($rowsubcomp['inStock'] == true) {
+                                $itemcomp = Company::firstOrNew(array('idapi2' => $rowsubcomp['id']));
+
+                                $itemcomp->idapi2 = $rowsubcomp['id'];
+                                $itemcomp->company_image =  $rowsubcomp['logo'];
+                                $itemcomp->name = $rowsubcomp['name'];
+                                $itemcomp->kind = 'local';
+                                $itemcomp->api2 = 1;
+                                $itemcomp->save();
+                            }
+                        }
+                    } else {
+                        if ($rowcomp['inStock'] == true) {
+                            $itemcomp = Company::firstOrNew(array('idapi2' => $rowcomp['id']));
+
+                            $itemcomp->idapi2 = $rowcomp['id'];
+                            $itemcomp->company_image =  $rowcomp['logo'];
+                            $itemcomp->name = $rowcomp['name'];
+                            $itemcomp->kind = 'national';
+                            $itemcomp->api2 = 1;
+                            $itemcomp->save();
+                        }
+                    }
+
+
+
+                }
+            }
         }
-    }
-    }
-
-
-
-}
-}
 
 
 
 
-dd('i');
+        dd('i');
 
-        ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-  
+        ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
-        $Companies = Company::where('enable',0)->when($request->search, function ($q) use ($request) {
 
-            return $q->where('name','like', '%' .  $request->search . '%')
+        $Companies = Company::where('enable', 0)->when($request->search, function ($q) use ($request) {
+
+            return $q->where('name', 'like', '%' .  $request->search . '%')
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
         })->latest()->paginate(5);
 
