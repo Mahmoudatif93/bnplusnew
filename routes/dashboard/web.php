@@ -61,7 +61,13 @@ Route::get('/nationalenablecard/{id}', 'nationalcompanyController@dubienablecard
 
 
 
+/////////////////////////////swagger//////////////////////////////////////
+Route::resource('swaggeroff', 'swaggerOffController');
+Route::get('/swaggeroff/{id}', 'swaggerOffController@show')->name('swaggeroff.products');
+Route::get('/disableswaggeroff/{id}', 'swaggerOffController@disabledubioff')->name('swaggerdisable');
+Route::get('/enabledswaggeroff/{id}', 'swaggerOffController@enabledubioff')->name('swaggerenable');
 
+/////////////////////////
 
 
 

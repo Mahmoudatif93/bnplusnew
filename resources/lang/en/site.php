@@ -78,7 +78,7 @@ return [
     'controle'=>'Control',
     'localcompany'=>'local companies Control',
     'nationalcompany'=>'national companies Control',
-    
+    'swagger'=>'Swagger Company Control',
     'productName'=>'product Name',
     'dubiordersdetails'=>'Dubai Orders Details',
     'description' => 'Description',
