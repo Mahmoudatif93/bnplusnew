@@ -67,20 +67,15 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
 if (!empty($swaggercompanies->json()['data'])) {
 
 foreach($swaggercompanies->json()['data'] as $rowcomp){
+    if($rowcomp['type']=='Local'){
+    if(!empty($rowcomp['subCategories'])){
+        foreach($rowcomp['subCategories'] as $rowsubcomp){
+            if($rowsubcomp['inStock']==true){
+            $itemcomp = Company::firstOrNew(array('idapi2' =>$rowsubcomp['id']));
 
-
-    dd($rowcomp['type']);
-
-
-    if($rowcomp->type=='Local'){
-    if(!empty($rowcomp->subCategories)){
-        foreach($rowcomp->subCategories as $rowsubcomp){
-            if($rowsubcomp->inStock==true){
-            $itemcomp = Company::firstOrNew(array('idapi2' =>$rowsubcomp->id));
-
-            $itemcomp->idapi2 = $rowsubcomp->id;
-            $itemcomp->company_image = $rowsubcomp->logo;
-            $itemcomp->name = $rowsubcomp->name;
+            $itemcomp->idapi2 = $rowsubcomp['id'];
+            $itemcomp->company_image =  $rowsubcomp['logo'];
+            $itemcomp->name = $rowsubcomp['name'];
             $itemcomp->kind = 'local';
             $itemcomp->api2 = 1;
              $itemcomp ->save();}
@@ -96,7 +91,7 @@ foreach($swaggercompanies->json()['data'] as $rowcomp){
 
 
 
-dd();
+dd('i');
 
         ini_set("prce.backtrack_limit","100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
   
