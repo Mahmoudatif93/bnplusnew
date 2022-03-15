@@ -29,7 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/dubiorders/{order}', 'DubaiOrdersController@dubiorders')->name('dubiorders.products');
             Route::get('enableapi', 'DubaiOrdersController@enableapi')->name('enableapi');
             Route::get('enablenotapi', 'DubaiOrdersController@enablenotapi')->name('enablenotapi');
-
+            Route::get('enablenotlocalapi', 'DubaiOrdersController@enablenotlocalapi')->name('enablenotlocalapi');
 
 
            

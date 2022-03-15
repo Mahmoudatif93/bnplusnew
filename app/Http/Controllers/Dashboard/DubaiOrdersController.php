@@ -264,6 +264,36 @@ if($company->enable ==0){
 
 
 
+public function enablenotlocalapi(Request $request){
+    
+    $card=Cards::where(array('nationalcompany'=>'local','api'=>0))->orderBy('id','desc')->first();
+if($card->enable ==0){
+    $updatenotnational['enable']=1;
+}else{
+    $updatenotnational['enable']=0;
+}
+
+$company=Company::where(array('kind'=>'local','api'=>0))->orderBy('id','desc')->first();
+
+
+if($company->enable ==0){
+    $updatenationalcompany['enable']=1;
+}else{
+    $updatenationalcompany['enable']=0;
+}
+
+
+
+    Cards::where(array('nationalcompany'=>'local','api'=>0,'purchase'=>0))->update($updatenotnational);
+    Company::where(array('kind'=>'local','api'=>0))->update($updatenationalcompany);
+
+    session()->flash('success', __('site.updated_successfully'));
+    return redirect()->route('dashboard.dubiorders.index');
+
+}
+
+
+
 
 
 public function enableswaggerapi(Request $request){

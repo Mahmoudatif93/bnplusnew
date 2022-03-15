@@ -63,9 +63,34 @@
 
                         @endif
 
+
+
+
+
+                        @if($cardnotlocal->enable==0)
+
+                        <a class="btn btn-danger btn-block" href="{{ route('dashboard.enablenotlocalapi') }}">
+                        Disable Dashboard Local Cards
+                        </a>
+  
+
+                        @else
+
+                        <a class="btn btn-primary btn-block"  href="{{ route('dashboard.enablenotlocalapi') }}">
+                        Enable Dashboard Local Cards
+                        </a>
+
+
+
+
+                        @endif
+
+
+
+
                         @if($cardswagger->enable==0)
 
-                        <a class="btn btn-danger btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
+                        <a class="btn btn-success btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
                         Disable Swagger Cards
                         </a>
                         @else
