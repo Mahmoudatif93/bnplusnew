@@ -31,30 +31,6 @@ class CompanyController extends Controller
     {
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-
-
-
-
-
-
-
-
-        $uri = 'https://identity-staging.anis.ly/connect/token';
-
-
-        $params = array(
-            'grant_type' => 'user_credentials',
-            'client_id' => 'bn-plus',
-            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-            'password' => 'P@ssw0rd1988',
-            'email' => 'info@bn-plus.ly',
-        );
-        $response = Http::asForm()->withHeaders([])->post($uri, $params);
-
-        dd($response->json());
-
-
-
         $swaggercompanies = Http::withHeaders([
             'Content-Type' => 'application/x-www-form-urlencoded'
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', []);
@@ -126,6 +102,29 @@ class CompanyController extends Controller
         }
 
 
+
+        $uri = 'https://identity-staging.anis.ly/connect/token';
+        $params = array(
+            'grant_type' => 'user_credentials',
+            'client_id' => 'bn-plus',
+            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+            'password' => 'P@ssw0rd1988',
+            'email' => 'info@bn-plus.ly',
+        );
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);
+
+      
+
+
+        $cards = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer eyJhbGciOiJQUzI1NiIsImtpZCI6ImI1MzBiY2Y4YzI3ODQ4MTNhZGVlZWI1M2NkOWI0YmM5IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NDczNjM3MjksImV4cCI6MTY0ODU3MzMyOSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1zdGFnaW5nLmFuaXMubHkiLCJhdWQiOlsiZWNvbV9jYXJkcyIsImh0dHBzOi8vaWRlbnRpdHktc3RhZ2luZy5hbmlzLmx5L3Jlc291cmNlcyJdLCJjbGllbnRfaWQiOiJibi1wbHVzIiwic3ViIjoiYjgxZWJkYzgtZDljOS00OTRiLWIwMGItZWZkMGU4YTRmYmJmIiwiYXV0aF90aW1lIjoxNjQ3MzYzNzI5LCJpZHAiOiJsb2NhbCIsIm5hbWUiOiIwOTEwMDAxMTM4IiwiZW1haWwiOiJpbmZvQGJuLXBsdXMubHkiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGhvbmVfbnVtYmVyIjoiMDkxMDAwMTEzOCIsImp0aSI6IjZEQzA0OEFCN0E2QjZCQUYzRUI4MzgxMEU4RDE0M0NFIiwiaWF0IjoxNjQ3MzYzNzI5LCJzY29wZSI6WyJlY29tX2NhcmRzIiwiZW1haWwiLCJvcGVuaWQiLCJwaG9uZSIsInByb2ZpbGUiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsidXNlcl9jcmVkZW50aWFscyJdfQ.CvHwS3KbVnWmBD-C8Cz3HbhQQM4sydFpXHCKSxdIAmSgzbIu90cXQb9VjeOE_TQKJvTeesEvHIMvrcwKWL1yJyoTr24qjICiyyFlsZLUu-qCanhMGyYTvtm_TMLV3WpIXpxp6DxoeMGMsTxSqltMTuAgoKk9DpVpjLP9rJY5zCpikRhdmKhx8Bcow7YOz3gQ9MIJwShfSgnAIAR-9VwvFRkrOgwm6C0mea28lhkYboIEpQhYMZ_pTxY_VPS-2hDdlqlEEakp0QBfHltqfLsvs3dWowdjjNi-_VUNKzRSMYkxuPFem0NX8IjAoioKnYulXzz6JOeruIGJgLlhx2MLPQ',
+           
+        ])->get('https://gateway-staging.anis.ly/api/consumers/v1/my-cards', [
+
+        ]);
+
+        dd($cards->json());
 
 
         //dd('i');
