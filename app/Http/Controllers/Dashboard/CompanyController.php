@@ -113,7 +113,7 @@ class CompanyController extends Controller
         );
         $response = Http::asForm()->withHeaders([])->post($uri, $params);
 
-      
+        dd($response->json());
 
 
         $cards = Http::withHeaders([
