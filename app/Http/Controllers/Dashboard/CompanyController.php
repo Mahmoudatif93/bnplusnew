@@ -62,7 +62,7 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
 ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', [
   
 ]);
-//dd($swaggercompanies->json()['data']);
+dd($swaggercompanies->json()['data']);
 
 if (!empty($swaggercompanies->json()['data'])) {
 
