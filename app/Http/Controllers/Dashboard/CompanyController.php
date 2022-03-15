@@ -69,7 +69,7 @@ if (!empty($swaggercompanies->json()['data'])) {
 foreach($swaggercompanies->json()['data'] as $rowcomp){
 
 
-    dd($rowcomp->type);
+    dd($rowcomp['type']);
 
 
     if($rowcomp->type=='Local'){
