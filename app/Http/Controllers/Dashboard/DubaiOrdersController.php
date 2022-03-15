@@ -70,8 +70,8 @@ if($dubiordersjson['response'] ==1){
         $cardapi=Company::where(array('kind'=>'national','api'=>1))->orderBy('id','desc')->first();
         $cardnot=Company::where(array('kind'=>'national','api'=>0))->orderBy('id','desc')->first();
         $cardswagger=Company::where(array('api2'=>1))->orderBy('id','desc')->first();
-       
-        return view('dashboard.dubiorders.index', compact('dubiorders','cardapi','cardnot','cardswagger'));
+        $cardnotlocal=Company::where(array('kind'=>'local','api'=>0))->orderBy('id','desc')->first();
+        return view('dashboard.dubiorders.index', compact('dubiorders','cardapi','cardnot','cardswagger','cardnotlocal '));
 
     }
 
