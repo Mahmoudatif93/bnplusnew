@@ -124,10 +124,32 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
 
         ]);
 
-        dd($cards->json());
+        if(!empty($cards->json()['data'])){
+foreach($cards->json()['data'] as $cardsapi ){
+    $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'name'=>$cardsapi->categoryName))->first();
+
+    $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
+
+                                    $itemcard->api2id = $cardsapi['id'];
+                                    $itemcard->old_price=$cardsapi['price'];
+                                    $itemcard->company_id = $dbCompanies->categoryId;
+                                    $itemcard->card_name = $cardsapi['cardName'];
+                                    $itemcard->card_price =$cardsapi;
+                                    $itemcard->card_code = $cardsapi['number'];
+                                    $itemcard->card_image = $cardsapi['logo'];
+                                    $itemcard->nationalcompany=  $dbCompanies->kind;
+                                    $itemcard->api2 = 1;
+                                     $itemcard ->save();
 
 
-        //dd('i');
+}
+}
+      //  dd($cards->json()['data']);
+
+
+        dd('i');
+
+
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
