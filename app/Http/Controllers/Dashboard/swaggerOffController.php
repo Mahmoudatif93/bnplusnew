@@ -21,6 +21,7 @@ class swaggerOffController extends Controller
                 ->orWhere('kind', 'like', '%' . $request->search . '%');
         })->latest()->paginate(5);
         
+        dd($Companies);
         return view('dashboard.dubioffswagger.index', compact('Companies'));
         
     }
