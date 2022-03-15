@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
       /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
-
+/*
     
       $response = Http::withHeaders([
         'Content-Type' => 'application/x-www-form-urlencoded'
@@ -50,7 +50,7 @@ class CompanyController extends Controller
     ]);
 dd($response);
 
-
+*/
 
 
 
