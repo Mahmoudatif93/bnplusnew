@@ -62,6 +62,27 @@
 
 
                         @endif
+
+                        @if($cardswagger->enable==0)
+
+                        <a class="btn btn-success btn-block" href="{{ route('dashboard.enablenotapi') }}">
+                        Disable Dashboard National Cards
+                        </a>
+  
+
+                        @else
+
+                        <a class="btn btn-warning btn-block"  href="{{ route('dashboard.enablenotapi') }}">
+                        Enable Dashboard National Cards
+                        </a>
+
+
+
+
+                        @endif
+
+
+
                 @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
                 

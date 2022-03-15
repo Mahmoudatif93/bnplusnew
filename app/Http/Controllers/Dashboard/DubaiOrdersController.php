@@ -69,7 +69,7 @@ if($dubiordersjson['response'] ==1){
       
         $cardapi=Company::where(array('kind'=>'national','api'=>1))->orderBy('id','desc')->first();
         $cardnot=Company::where(array('kind'=>'national','api'=>0))->orderBy('id','desc')->first();
-
+        $cardswagger=Company::where(array('api2'=>1))->orderBy('id','desc')->first();
        
         return view('dashboard.dubiorders.index', compact('dubiorders','cardapi','cardnot'));
 
@@ -253,6 +253,41 @@ if($company->enable ==0){
 
     Cards::where(array('nationalcompany'=>'national','api'=>0,'purchase'=>0))->update($updatenotnational);
     Company::where(array('kind'=>'national','api'=>0))->update($updatenationalcompany);
+
+    session()->flash('success', __('site.updated_successfully'));
+    return redirect()->route('dashboard.dubiorders.index');
+
+}
+
+
+
+
+
+
+
+
+public function enableswaggerapi(Request $request){
+    
+    $card=Cards::where(array('api2'=>1))->orderBy('id','desc')->first();
+if($card->enable ==0){
+    $updatenotnational['enable']=1;
+}else{
+    $updatenotnational['enable']=0;
+}
+
+$company=Company::where(array('api2'=>1))->orderBy('id','desc')->first();
+
+
+if($company->enable ==0){
+    $updatenationalcompany['enable']=1;
+}else{
+    $updatenationalcompany['enable']=0;
+}
+
+
+
+    Cards::where(array('api2'=>1,'purchase'=>0))->update($updatenotnational);
+    Company::where(array('api2'=>1))->update($updatenationalcompany);
 
     session()->flash('success', __('site.updated_successfully'));
     return redirect()->route('dashboard.dubiorders.index');

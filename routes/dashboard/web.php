@@ -66,6 +66,8 @@ Route::resource('swaggeroff', 'swaggerOffController');
 Route::get('/swaggeroff/{id}', 'swaggerOffController@show')->name('swaggeroff.products');
 Route::get('/disableswaggeroff/{id}', 'swaggerOffController@disabledubioff')->name('swaggerdisable');
 Route::get('/enabledswaggeroff/{id}', 'swaggerOffController@enabledubioff')->name('swaggerenable');
+Route::get('enableswaggerapi', 'DubaiOrdersController@enableswaggerapi')->name('enableswaggerapi');
+
 
 /////////////////////////
 
