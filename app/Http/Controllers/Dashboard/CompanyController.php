@@ -53,7 +53,7 @@ $uri = 'https://identity-staging.anis.ly/connect/token';
         
      ])->post($uri, $params);
 
- dd($response->json());
+ dd($response->json()['access_token']);
 
 
 
