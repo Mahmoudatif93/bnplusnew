@@ -32,10 +32,88 @@ class CompanyController extends Controller
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
       
-      //  dd($cards->json()['data']);
+    
+        $swaggercompanies = Http::withHeaders([
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories', []);
+    dd($swaggercompanies->json()['data']);
+
+        if (!empty($swaggercompanies->json()['data'])) {
+
+            foreach ($swaggercompanies->json()['data'] as $rowcomp) {
+                if ($rowcomp['type'] == 'Local') {
+                    if (!empty($rowcomp['subCategories'])) {
+                        foreach ($rowcomp['subCategories'] as $rowsubcomp) {
+                            if ($rowsubcomp['inStock'] == true) {
+                                $itemcomp = Company::firstOrNew(array('idapi2' => $rowsubcomp['id']));
+
+                                $itemcomp->idapi2 = $rowsubcomp['id'];
+                                $itemcomp->company_image =  $rowsubcomp['logo'];
+                                $itemcomp->name = $rowsubcomp['name'];
+                                $itemcomp->kind = 'local';
+                                $itemcomp->api2 = 1;
+                                $itemcomp->save();
+                            }
+                        }
+                    } else {
+                        if ($rowcomp['inStock'] == true) {
+                            $itemcomp = Company::firstOrNew(array('idapi2' => $rowcomp['id']));
+
+                            $itemcomp->idapi2 = $rowcomp['id'];
+                            $itemcomp->company_image =  $rowcomp['logo'];
+                            $itemcomp->name = $rowcomp['name'];
+                            $itemcomp->kind = 'local';
+                            $itemcomp->api2 = 1;
+                            $itemcomp->save();
+                        }
+                    }
+                }else{
 
 
-       // dd('i');
+
+                    if (!empty($rowcomp['subCategories'])) {
+                        foreach ($rowcomp['subCategories'] as $rowsubcomp) {
+                            if ($rowsubcomp['inStock'] == true) {
+                                $itemcomp = Company::firstOrNew(array('idapi2' => $rowsubcomp['id']));
+
+                                $itemcomp->idapi2 = $rowsubcomp['id'];
+                                $itemcomp->company_image =  $rowsubcomp['logo'];
+                                $itemcomp->name = $rowsubcomp['name'];
+                                $itemcomp->kind = 'local';
+                                $itemcomp->api2 = 1;
+                                $itemcomp->save();
+                            }
+                        }
+                    } else {
+                        if ($rowcomp['inStock'] == true) {
+                            $itemcomp = Company::firstOrNew(array('idapi2' => $rowcomp['id']));
+
+                            $itemcomp->idapi2 = $rowcomp['id'];
+                            $itemcomp->company_image =  $rowcomp['logo'];
+                            $itemcomp->name = $rowcomp['name'];
+                            $itemcomp->kind = 'national';
+                            $itemcomp->api2 = 1;
+                            $itemcomp->save();
+                        }
+                    }
+
+
+
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
