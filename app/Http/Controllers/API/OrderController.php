@@ -184,7 +184,46 @@ class OrderController extends Controller
                         curl_close($curl);
                     }
 
+                    if ($dubiapi->api2 == 1) {
+                        $client =  Client::where('id', $order->client_id)->first();
+                     //   rand();
 
+
+                     $uri = 'https://identity-staging.anis.ly/connect/token';
+                     $params = array(
+                         'grant_type' => 'user_credentials',
+                         'client_id' => 'bn-plus',
+                         'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+                         'password' => 'P@ssw0rd1988',
+                         'email' => 'info@bn-plus.ly',
+                     );
+                     $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+             $token=$response->json()['access_token'];
+             $token_type=$response->json()['token_type'];
+             $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+
+             $orders = Http::withHeaders([
+                'Accept' => 'application/json',
+                'Authorization' => $alltoken,
+               
+            ])->post('https://gateway-staging.anis.ly/api/consumers/v1/my-cards'
+        
+            , [
+
+                'walletId' =>'D2102B9C-FF76-46DC-2DC6-08D9FFB46E9F',
+                'cardId' => $dubiapi->api2id,
+                'pinNumber' => '1988',
+                'orderId' => $id,
+                'quantity' =>1,
+
+            ]
+        
+        );
+
+
+
+
+                    }
 
 
 

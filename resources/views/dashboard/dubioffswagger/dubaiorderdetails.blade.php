@@ -73,6 +73,8 @@
                                     <td>{{ $category->card_code }}</td>
 
                                 <td>
+                                <a href="{{ route('dashboard.Cards.edit', $category->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+
                                 @if($category->purchase==0)
                                     @if($category->enable==0)
                                     <a class="btn btn-primary  btn-block" target="_blank" href="{{ route('dashboard.dubidisablecard',$category->id) }}">
