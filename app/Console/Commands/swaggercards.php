@@ -91,7 +91,7 @@ class swaggercards extends Command
                                 $itemcomp->idapi2 = $rowsubcomp['id'];
                                 $itemcomp->company_image =  $rowsubcomp['logo'];
                                 $itemcomp->name = $rowsubcomp['name'];
-                                $itemcomp->kind = 'local';
+                                $itemcomp->kind = 'national';
                                 $itemcomp->api2 = 1;
                                 $itemcomp->save();
                             }
