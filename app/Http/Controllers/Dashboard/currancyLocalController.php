@@ -71,11 +71,11 @@ class currancyLocalController extends Controller
         
          
             $newprice2['card_price']=$cards->old_price * $request->amount;
-           // echo $newprice2['card_price'];echo "<br>";
-            Cards::where(array('api2'=>1,'id'=>$cards->id))->update($newprice2);
+         
+          //  Cards::where(array('api2'=>1,'id'=>$cards->id))->update($newprice2);
         }
      
-       // return $oldallcardprices;
+
 
 
         $request_data = $request->except(['_token', '_method']);
