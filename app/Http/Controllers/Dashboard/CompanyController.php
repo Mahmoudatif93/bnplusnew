@@ -34,6 +34,55 @@ class CompanyController extends Controller
       
     
         
+        $uri = 'https://identity-staging.anis.ly/connect/token';
+        $params = array(
+            'grant_type' => 'user_credentials',
+            'client_id' => 'bn-plus',
+            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+            'password' => 'P@ssw0rd1988',
+            'email' => 'info@bn-plus.ly',
+        );
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+$token=$response->json()['access_token'];
+$token_type=$response->json()['token_type'];
+$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+//dd($alltoken);
+        $cards = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => $alltoken,
+           
+        ])->get('https://gateway-staging.anis.ly/api/consumers/v1/my-cards', [
+
+        ]);
+
+        dd($cards->json()['data']);
+        if(!empty($cards->json()['data'])){
+foreach($cards->json()['data'] as $allcardsapi ){
+  
+    if(is_array($allcardsapi)){
+    foreach($allcardsapi as $cardsapi){
+     //   dd($cardsapi);
+    $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'name'=>$cardsapi['categoryName']))->first();
+    //print_r($allcardsapi);echo"<br>";
+    $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
+  
+                                    $itemcard->api2id = $cardsapi['id'];
+                                    $itemcard->old_price=$cardsapi['price'];
+                                    $itemcard->company_id = $dbCompanies->id;
+                                    $itemcard->card_name = $cardsapi['cardName'];
+                                    $itemcard->card_price =$cardsapi['price'];
+                                    $itemcard->card_code = $cardsapi['number'];
+                                    $itemcard->card_image = $cardsapi['logo'];
+                                    $itemcard->nationalcompany=  $dbCompanies->kind;
+                                    $itemcard->api2 = 1;
+                                 //   dd($itemcard);
+                                  $itemcard ->save();
+                                    }}
+
+}
+}
+
+
 
 
 
