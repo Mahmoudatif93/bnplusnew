@@ -53,6 +53,12 @@
             <li><a href="{{ route('dashboard.currancy.index') }}"><i class="fa fa-th"></i><span>@lang('site.currancy')</span></a></li>
         @endif
 
+        
+        @if (auth()->user()->hasPermission('read_orders'))
+            <li><a href="{{ route('dashboard.currancylocal.index') }}"><i class="fa fa-th"></i><span>@lang('site.currancyswagger')</span></a></li>
+        @endif
+
+        
 
         @if (auth()->user()->hasPermission('read_orders'))
             <li><a href="{{ route('dashboard.swaggeroff.index') }}"><i class="fa fa-th"></i><span>@lang('site.swagger')</span></a></li>

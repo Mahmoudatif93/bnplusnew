@@ -49,6 +49,8 @@ return [
     'no_data_found' => 'للاسف لا يوجد اي سجلات',
     'no_records' => 'للاسف لا يوجد اي سجلات',
     'currancy'=>'العمله',
+    'currancyswagger'=>'العمله شركه swagger',
+    
     'clients' => 'العملاء',
     'client_name' => 'اسم العميل',
     'phone' => 'التلفون',

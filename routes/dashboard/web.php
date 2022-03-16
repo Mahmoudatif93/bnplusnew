@@ -77,7 +77,13 @@ Route::get('enableswaggerapi', 'DubaiOrdersController@enableswaggerapi')->name('
            //  Route::get('/dubiorders/{order}/products', 'DubaiOrdersController@products')->name('dubiorders.products');
             //currancy routes
             Route::resource('currancy', 'currancyController');
-          
+
+             //currancy routes
+             Route::resource('currancylocal', 'currancyLocalController');
+
+              //currancy routes
+            Route::resource('currancyswaggernational', 'currancyNationalController');
+            
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
 
