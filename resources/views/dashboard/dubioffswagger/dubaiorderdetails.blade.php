@@ -73,7 +73,7 @@
                                     <td>{{ $category->card_code }}</td>
 
                                 <td>
-                                <a href="{{ route('dashboard.Cards.edit', $category->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+                                <a href="{{ route('dashboard.Cards.edit', $category->id) }}"target="_blank"  class="btn btn-info btn-block"><i class="fa fa-edit"></i> @lang('site.edit')</a>
 
                                 @if($category->purchase==0)
                                     @if($category->enable==0)
