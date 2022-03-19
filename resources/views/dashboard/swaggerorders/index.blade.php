@@ -43,7 +43,7 @@
 
                     @if (!empty($alldata))
 
-                    <table id="example" class="table table-hover">
+                    <table id="example" class="table table-hover  table-bordered">
 
                         <thead>
                             <tr>
