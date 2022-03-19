@@ -27,9 +27,24 @@ class SwaggerOrdersController extends Controller
        
    
 
+        $uri = 'https://identity-staging.anis.ly/connect/token';
+        $params = array(
+            'grant_type' => 'user_credentials',
+            'client_id' => 'bn-plus',
+            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+            'password' => 'P@ssw0rd1988',
+            'email' => 'info@bn-plus.ly',
+        );
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+$token=$response->json()['access_token'];
+$token_type=$response->json()['token_type'];
+$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+
+
 
         $swaggercompanies = Http::withHeaders([
-            'Content-Type' => 'application/x-www-form-urlencoded'
+            'Accept' => 'application/json',
+            'Authorization' => $alltoken,
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988');
   
 dd( $swaggercompanies );
