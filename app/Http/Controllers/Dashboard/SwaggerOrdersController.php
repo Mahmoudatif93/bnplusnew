@@ -25,7 +25,7 @@ class SwaggerOrdersController extends Controller
     public function index()
     {
        
-      /*  $curl = curl_init();
+       $curl = curl_init();
         $refrenceid = "Merchant_" . rand();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988",
@@ -43,12 +43,12 @@ class SwaggerOrdersController extends Controller
         $dubiorder = curl_exec($curl);
         curl_close($curl);
         $dubiordersjson = json_decode($dubiorder, true);
-*/
+
 
 
         $uri = 'https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988';
         $response = Http::asForm()->withHeaders([])->get($uri);   
-dd($response->json());
+dd( $dubiordersjson );
 
 
 
