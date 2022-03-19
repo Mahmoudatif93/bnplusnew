@@ -46,11 +46,8 @@ class SwaggerOrdersController extends Controller
 */
 
 
-        $uri = 'https://gateway-staging.anis.ly/api/consumers/v1/transactions';
-        $params = array(
-            'pinNumber' => '1988'
-        );
-        $response = Http::asForm()->withHeaders([])->get($uri, $params);   
+        $uri = 'https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988';
+        $response = Http::asForm()->withHeaders([])->get($uri);   
 dd($response->json());
 
 
