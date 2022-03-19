@@ -84,6 +84,9 @@ Route::get('enableswaggerapi', 'DubaiOrdersController@enableswaggerapi')->name('
               //currancy routes
             Route::resource('currancyswaggernational', 'currancyNationalController');
             
+            Route::resource('swaggerorders', 'swaggerOrdersController');
+
+            
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
 

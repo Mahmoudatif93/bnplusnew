@@ -50,7 +50,7 @@ return [
     'no_records' => 'للاسف لا يوجد اي سجلات',
     'currancy'=>'العمله',
     'currancyswagger'=>'العمله شركه swagger',
-    
+    'swaggerorders'=>'Swagger طلبات',
     'clients' => 'العملاء',
     'client_name' => 'اسم العميل',
     'phone' => 'التلفون',

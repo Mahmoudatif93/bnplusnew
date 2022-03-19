@@ -206,7 +206,7 @@ class OrderController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => $alltoken,
                
-            ])->post('https://gateway-staging.anis.ly/api/consumers/v1/my-cards'
+            ])->post('https://gateway-staging.anis.ly/api/consumers/v1/order'
         
             , [
 
@@ -219,10 +219,6 @@ class OrderController extends Controller
             ]
         
         );
-
-
-
-
                     }
 
 

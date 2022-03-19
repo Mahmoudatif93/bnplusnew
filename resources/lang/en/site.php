@@ -75,6 +75,7 @@ return [
     'serialCode'=>'serial Code',
     'validTo'=>'valid To',
     'currancyswagger'=>'Currancy Swagger',
+    'swaggerorders'=>'Swagger Orders',
     'dubioff'=>'Dubai Company Control',
     'controle'=>'Control',
     'localcompany'=>'local companies Control',
