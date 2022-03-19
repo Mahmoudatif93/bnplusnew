@@ -51,14 +51,14 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
 $alldata=$swaggercompanies->json()['data'];
        
       
-dd($alldata);
+
      
       
         $cardapi=Company::where(array('kind'=>'national','api'=>1))->orderBy('id','desc')->first();
         $cardnot=Company::where(array('kind'=>'national','api'=>0,'api2'=>0))->orderBy('id','desc')->first();
         $cardswagger=Company::where(array('api2'=>1))->orderBy('id','desc')->first();
         $cardnotlocal=Company::where(array('kind'=>'local','api'=>0,'api2'=>0))->orderBy('id','desc')->first();
-        return view('dashboard.swaggerorders.index', compact('dubiorders','cardapi','cardnot','cardswagger','cardnotlocal'));
+        return view('dashboard.swaggerorders.index', compact('alldata','cardapi','cardnot','cardswagger','cardnotlocal'));
 
     }
 

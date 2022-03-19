@@ -47,50 +47,45 @@
             <div id="print-area">
                 <div class="box-body" id="frame">
 
-                    @if (!empty($dubiorders))
+                    @if (!empty($alldata))
 
                     <table id="example" class="table table-hover">
 
                         <thead>
                             <tr>
-                                <th>#</th>
+                              
 
-                                <th>@lang('site.orderNumber')</th>
-                                <th>@lang('site.orderFinalTotal')</th>
-                                <th>@lang('site.currencySymbol')</th>
-                                <th>@lang('site.orderCreateDate')</th>
-                                <th>@lang('site.orderCurrentStatus')</th>
-                                <th>@lang('site.orderPaymentMethod')</th>
-                                <th>@lang('site.action')</th>
+                                <th>id</th>
+                                <th>number</th>
+                                <th>dateTime</th>
+                                <th>statement</th>
+                                <th>credit</th>
+                                <th>creditorName</th>
+                                <th>debitorName</th>
+
+
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($dubiorders as $index=>$category)
+                            @foreach ($alldata['results'] as $index=>$category)
                             <tr>
-                                <td>{{ $index + 1 }}</td>
+                         
 
                                 <td>
 
 
-                                    {{ $category['orderNumber'] }}
+                                    {{ $category['id'] }}
                                 </td>
-                                <td>{{ $category['orderFinalTotal'] }}</td>
-                                <td>{{ $category['currencySymbol'] }}</td>
-                                <td>{{ $category['orderCreateDate'] }}</td>
-                                <td>{{ $category['orderCurrentStatus'] }}</td>
-                                <td>{{ $category['orderPaymentMethod'] }}</td>
+                                <td>{{ $category['number'] }}</td>
+                                <td>{{ $category['dateTime'] }}</td>
+                                <td>{{ $category['statement'] }}</td>
+                                <td>{{ $category['credit'] }}</td>
+                                <td>{{ $category['creditorName'] }}</td>
+                                <td>{{ $category['debitorName'] }}</td>
+                                
 
-                                <td>
-                                    <a class="btn btn-primary btn-sm" target="_blank" href="{{ route('dashboard.dubiorders.products', $category['orderNumber']) }}">
-
-
-                                        <i class="fa fa-list"></i>
-                                        @lang('site.show')
-                                    </a>
-
-
-                                </td>
+                             
 
 
 
