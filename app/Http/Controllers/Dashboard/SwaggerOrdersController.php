@@ -50,7 +50,7 @@ class SwaggerOrdersController extends Controller
         $params = array(
             'pinNumber' => '1988'
         );
-        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+        $response = Http::asForm()->withHeaders([])->get($uri, $params);   
 dd($response->json());
 
 
