@@ -67,7 +67,8 @@ Route::get('/swaggeroff/{id}', 'swaggerOffController@show')->name('swaggeroff.pr
 Route::get('/disableswaggeroff/{id}', 'swaggerOffController@disabledubioff')->name('swaggerdisable');
 Route::get('/enabledswaggeroff/{id}', 'swaggerOffController@enabledubioff')->name('swaggerenable');
 Route::get('enableswaggerapi', 'DubaiOrdersController@enableswaggerapi')->name('enableswaggerapi');
-
+//////////////////swaggerorders
+Route::resource('swaggerorders', 'SwaggerOrdersController');
 
 /////////////////////////
 
@@ -84,7 +85,7 @@ Route::get('enableswaggerapi', 'DubaiOrdersController@enableswaggerapi')->name('
               //currancy routes
             Route::resource('currancyswaggernational', 'currancyNationalController');
             
-            Route::resource('swaggerorders', 'swaggerOrdersController');
+         
 
             
             //user routes

@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-class swaggerOrdersController extends Controller
+class SwaggerOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
