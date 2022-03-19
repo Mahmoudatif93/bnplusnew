@@ -65,14 +65,14 @@
         @endif
 
 
-        @if (auth()->user()->hasPermission('read_orders'))
-            <li><a href="{{ route('dashboard.swaggeroff.index') }}"><i class="fa fa-th"></i><span>@lang('site.swagger')</span></a></li>
-        @endif
-
-
+        
+        @if (auth()->user()->hasPermission('read_users'))
+            <li><a href="{{ route('dashboard.swaggerorders.index') }}"><i class="fa fa-th"></i><span>@lang('site.swaggerorders')</span></a></li>
+            @endif
+            
 
             @if (auth()->user()->hasPermission('read_users'))
-            <li><a href="{{ route('dashboard.swaggerorders.index') }}"><i class="fa fa-th"></i><span>@lang('site.swaggerorders')</span></a></li>
+            <li><a href="{{ route('dashboard.users.index') }}"><i class="fa fa-th"></i><span>@lang('site.users')</span></a></li>
             @endif
 
 
