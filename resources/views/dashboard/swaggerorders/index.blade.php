@@ -27,17 +27,11 @@
 
                     @lang('site.swaggerorders') )
                 </h3>
-                        @if($cardswagger->enable==0)
+                   
 
-                        <a class="btn btn-info btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
-                        Disable Swagger Cards
-                        </a>
-                        @else
 
-                        <a class="btn btn-success btn-block"  href="{{ route('dashboard.enableswaggerapi') }}">
-                        Enable Swagger Cards
-                        </a>
-                        @endif
+                <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
+
 
 
 
