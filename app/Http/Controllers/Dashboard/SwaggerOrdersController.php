@@ -47,7 +47,7 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
             'Authorization' => $alltoken,
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988');
   
-dd( $swaggercompanies );
+dd(  $swaggercompanies->json());
 
 
 
