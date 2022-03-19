@@ -69,7 +69,7 @@
 
 <br>
                 {{--products--}}
-                <div class="col-lg-6 col-xs-6 mt-5">
+                <div class="col-lg-4 col-xs-6 mt-5">
                     <div class="small-box bg-green">
                         <div class="inner">
                             <h3>{{ $orders }}</h3>
@@ -84,7 +84,7 @@
                 </div>
 
 
-                <div class="col-lg-6 col-xs-6 mt-5">
+                <div class="col-lg-4 col-xs-6 mt-5">
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>{{ $dubiorders }}</h3>
@@ -99,10 +99,25 @@
                 </div>
 
 
+                <div class="col-lg-4 col-xs-6 mt-5">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>{{ count($alldata['results']) }}</h3>
+
+                            <p>@lang('site.swaggerorders')</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a href="{{ route('dashboard.swaggerorders.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+
 
             
 
-             
+                
 
             </div><!-- end of row -->
 
