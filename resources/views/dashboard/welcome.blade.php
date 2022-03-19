@@ -100,7 +100,7 @@
 
 
                 <div class="col-lg-4 col-xs-6 mt-5">
-                    <div class="small-box bg-yellow">
+                    <div class="small-box bg-blue">
                         <div class="inner">
                             <h3>{{ count($alldata['results']) }}</h3>
 
