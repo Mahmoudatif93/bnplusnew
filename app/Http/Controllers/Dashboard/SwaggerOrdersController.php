@@ -47,39 +47,11 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
             'Authorization' => $alltoken,
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988');
   
-dd(  $swaggercompanies->json());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        if(isset($dubiordersjson['response'] )){
+$alldata=$swaggercompanies->json()['data'];
+       
       
-if($dubiordersjson['response'] ==1){
-    $dubiorders=  $dubiordersjson['data'] ;
-  //  dd($dubiorders );
-}else{
-    $dubiorders= '';
-}
-
-        }else{
-
-            $dubiorders= '';
-        }
+dd($alldata);
      
       
         $cardapi=Company::where(array('kind'=>'national','api'=>1))->orderBy('id','desc')->first();
