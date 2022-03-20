@@ -246,15 +246,15 @@ class SadadController extends Controller
 
 
 
-        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/2dd320ff-edc3-4fc9-e7f2-08d8be573a60';
 
 $cardschek = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get( $compurlcheck);
+])->get($compurlcheck);
 
-
+dd($cardschek->json()['data']);
 if (!empty($cardschek->json()['data'])) {
     foreach ($cardschek->json()['data'] as $cardsapicheck) {
         if($cardsapicheck['inStock']==false){
