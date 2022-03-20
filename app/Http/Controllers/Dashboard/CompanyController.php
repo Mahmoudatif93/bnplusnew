@@ -59,7 +59,7 @@ class CompanyController extends Controller
 
 
 
-dd($orders->json());
+dd($orders->json()['data'] );
 
 
 
