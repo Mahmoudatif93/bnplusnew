@@ -132,7 +132,7 @@ $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
+])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/"'.$compid.'"
 ', []);
 
 if (!empty($cards->json()['data']['cards'])) {
@@ -222,7 +222,7 @@ $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
+])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/"'.$compid.'"
 ', []);
 
 if (!empty($cards->json()['data']['cards'])) {
@@ -325,7 +325,7 @@ $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
+])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/"'.$compid.'"
 ', []);
 
 if (!empty($cards->json()['data']['cards'])) {
@@ -402,7 +402,7 @@ if (!empty($cards->json()['data']['cards'])) {
                                     'Accept' => 'application/json',
                                     'Authorization' => $alltoken,
                                 
-                                ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
+                                ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/"'.$compid.'"
                                 ', []);
                                 
                                 if (!empty($cards->json()['data']['cards'])) {
