@@ -127,7 +127,7 @@ $token_type = $response->json()['token_type'];
 $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
 
 $compid=$rowsubcomp['id'];
-
+dd($compid);
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
@@ -217,7 +217,7 @@ $token_type = $response->json()['token_type'];
 $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
 
 $compid= $rowcomp['id'];
-
+dd($compid);
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
@@ -320,7 +320,7 @@ $token_type = $response->json()['token_type'];
 $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
 
 $compid= $rowsubcomp['id'];
-
+dd($compid);
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
