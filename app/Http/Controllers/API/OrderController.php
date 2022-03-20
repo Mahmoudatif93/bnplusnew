@@ -215,7 +215,7 @@ class OrderController extends Controller
                 'pinNumber' => '1988',
                 'orderId' => $id,
                 'quantity' =>1,
-                'TotalValue' =>null,
+                'TotalValue' =>$dubiapi->card_price,
 
             ]
         
