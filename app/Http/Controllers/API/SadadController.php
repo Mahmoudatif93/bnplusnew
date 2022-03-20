@@ -241,6 +241,13 @@ class SadadController extends Controller
             ]
         
         );
+
+        
+        foreach($orders['data'] as $dd){
+            $updatecardprssice['card_code'] = $dd['number'];
+            Cards::where('id',  $order->card_id)->update($updatecardprssice);
+        } 
+
                     }
 
                     ////////////////////////////////////////////////////////

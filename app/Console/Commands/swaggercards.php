@@ -76,8 +76,7 @@ if($orderswal->json()['data'] >0){
 
 
 
-
-    $uri = 'https://identity-staging.anis.ly/connect/token';
+    $uri = 'https://identity-staging.anis.ly/connect/token ';
     $params = array(
         'grant_type' => 'user_credentials',
         'client_id' => 'bn-plus',
