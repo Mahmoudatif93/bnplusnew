@@ -231,11 +231,12 @@ class SadadController extends Controller
         
             , [
 
-                'walletId' =>'D2102B9C-FF76-46DC-2DC6-08D9FFB46E9F',
+                'walletId' =>'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
                 'cardId' => $dubiapi->api2id,
                 'pinNumber' => '1988',
                 'orderId' => $id,
                 'quantity' =>1,
+                'TotalValue' =>null,
 
             ]
         
