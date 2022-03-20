@@ -148,7 +148,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
             $itemcard->api2id = $cardsapi['id'];
             $itemcard->old_price = $cardsapi['businessPrice'];
-            $itemcard->company_id = $compid;
+            $itemcard->company_id = $dbCompanies->id;
             $itemcard->card_name = $cardsapi['name'];
             $itemcard->card_price = $cardsapi['businessPrice'];
             $itemcard->card_code = $cardsapi['name'];
@@ -240,7 +240,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
             $itemcard->api2id = $cardsapi['id'];
             $itemcard->old_price = $cardsapi['businessPrice'];
-            $itemcard->company_id = $compid;
+            $itemcard->company_id =$dbCompanies->id;
             $itemcard->card_name = $cardsapi['name'];
             $itemcard->card_price = $cardsapi['businessPrice'];
             $itemcard->card_code = $cardsapi['name'];
@@ -344,7 +344,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
             $itemcard->api2id = $cardsapi['id'];
             $itemcard->old_price = $cardsapi['businessPrice'];
-            $itemcard->company_id = $compid;
+            $itemcard->company_id = $dbCompanies->id;
             $itemcard->card_name = $cardsapi['name'];
             $itemcard->card_price = $cardsapi['businessPrice'];
             $itemcard->card_code = $cardsapi['name'];
@@ -423,7 +423,7 @@ if (!empty($cards->json()['data']['cards'])) {
                                 
                                             $itemcard->api2id = $cardsapi['id'];
                                             $itemcard->old_price = $cardsapi['businessPrice'];
-                                            $itemcard->company_id = $compid;
+                                            $itemcard->company_id = $dbCompanies->id;
                                             $itemcard->card_name = $cardsapi['name'];
                                             $itemcard->card_price = $cardsapi['businessPrice'];
                                             $itemcard->card_code = $cardsapi['name'];
