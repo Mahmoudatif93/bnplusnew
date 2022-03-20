@@ -31,7 +31,7 @@ class CompanyController extends Controller
     {
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-      
+
         $uri = 'https://identity-staging.anis.ly/connect/token';
         $params = array(
             'grant_type' => 'user_credentials',
@@ -40,53 +40,53 @@ class CompanyController extends Controller
             'password' => 'P@ssw0rd1988',
             'email' => 'info@bn-plus.ly',
         );
-        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-        $token=$response->json()['access_token'];
-        $token_type=$response->json()['token_type'];
-        $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);
+        $token = $response->json()['access_token'];
+        $token_type = $response->json()['token_type'];
+        $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
 
 
 
         $cards = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => $alltoken,
-           
+
         ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/776598f2-3299-4a60-fa8d-08d8be536219
-        ', [
+        ', []);
 
-        ]);
+        dd($cards->json()['data']['cards']);
+        if (!empty($cards->json()['data']['cards'])) {
 
-        if(!empty($cards->json()['data']['cards'])){
-            
-foreach($cards->json()['data']['cards'] as $cardsapi ){
-  
- 
-     //   dd($cardsapi);
-    $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'idapi2'=>'776598f2-3299-4a60-fa8d-08d8be536219'))->first();
-    //print_r($allcardsapi);echo"<br>";
-    $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
-  
-                                    $itemcard->api2id = $cardsapi['id'];
-                                    $itemcard->old_price=$cardsapi['businessPrice'];
-                                    $itemcard->company_id = '776598f2-3299-4a60-fa8d-08d8be536219';
-                                    $itemcard->card_name = $cardsapi['name'];
-                                    $itemcard->card_price =$cardsapi['businessPrice'];
-                                    $itemcard->card_code = $cardsapi['name'];
-                                    $itemcard->card_image = $cardsapi['logo'];
-                                    $itemcard->nationalcompany=  'local';
-                                    $itemcard->api2 = 1;
-                                 //   dd($itemcard);
-                                  $itemcard ->save();
-                                    }
-
-}
+            foreach ($cards->json()['data']['cards'] as $cardsapi) {
 
 
 
-        
+                $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => '776598f2-3299-4a60-fa8d-08d8be536219'))->first();
+                //print_r($allcardsapi);echo"<br>";
+                if (empty($dbCompanies)) {
+                    $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
-     
-        
+                    $itemcard->api2id = $cardsapi['id'];
+                    $itemcard->old_price = $cardsapi['businessPrice'];
+                    $itemcard->company_id = '776598f2-3299-4a60-fa8d-08d8be536219';
+                    $itemcard->card_name = $cardsapi['name'];
+                    $itemcard->card_price = $cardsapi['businessPrice'];
+                    $itemcard->card_code = $cardsapi['name'];
+                    $itemcard->card_image = $cardsapi['logo'];
+                    $itemcard->nationalcompany =  'local';
+                    $itemcard->api2 = 1;
+                    //   dd($itemcard);
+                    $itemcard->save();
+                }
+            }
+        }
+
+
+
+
+
+
+
 
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
