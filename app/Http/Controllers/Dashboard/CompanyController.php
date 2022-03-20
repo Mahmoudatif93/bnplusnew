@@ -461,7 +461,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
 
 
-        
+    }
 
 
 
