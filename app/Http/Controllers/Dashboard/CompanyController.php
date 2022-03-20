@@ -51,8 +51,7 @@ class CompanyController extends Controller
             'Accept' => 'application/json',
             'Authorization' => $alltoken,
            
-        ])->get('
-        https://gateway-staging.anis.ly/api/consumers/v1/categories/776598f2-3299-4a60-fa8d-08d8be536219
+        ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/776598f2-3299-4a60-fa8d-08d8be536219
         ', [
 
         ]);
