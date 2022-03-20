@@ -80,7 +80,7 @@ foreach($cards->json()['data']['cards'] as $cardsapi ){
                                     }
 
 }
-}
+
 
 
         
