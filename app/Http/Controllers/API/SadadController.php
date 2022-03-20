@@ -200,10 +200,6 @@ class SadadController extends Controller
                         curl_close($curl);
                     }
 
-
-
-
-
                     
                     if ($dubiapi->api2 == 1) {
                         $client =  Client::where('id', $order->client_id)->first();
@@ -248,10 +244,34 @@ class SadadController extends Controller
             Cards::where('id',  $order->card_id)->update($updatecardprssice);
         } 
 
+
+
+        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+
+$cardschek = Http::withHeaders([
+    'Accept' => 'application/json',
+    'Authorization' => $alltoken,
+
+])->get( $compurlcheck);
+
+
+if (!empty($cardschek->json()['data'])) {
+    foreach ($cardschek->json()['data'] as $cardsapicheck) {
+        if($cardsapicheck['inStock']==false){
+            $updatecard['purchase'] = 1;
+            $updatecard['avaliable'] = 1;
+            Cards::where('id', $order->card_id)->update($updatecard); 
+        }
+    }
+}
+
+
+
+
                     }
 
                     ////////////////////////////////////////////////////////
-
+                    if ($dubiapi->api2 != 1) {
                     if ($order->update()) {
                         $updatecard['purchase'] = 1;
                         $updatecard['avaliable'] = 1;
@@ -268,6 +288,9 @@ class SadadController extends Controller
                     } else {
                         return response()->json(['status' => 'error']);
                     }
+
+                }
+
                 } else {
                     return response()->json(['status' => 'error']);
                 }

@@ -225,13 +225,39 @@ class OrderController extends Controller
             $updatecardprssice['card_code'] = $dd['number'];
             Cards::where('id',  $order->card_id)->update($updatecardprssice);
         } 
+
         
+
+        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+
+        $cardschek = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => $alltoken,
+        
+        ])->get( $compurlcheck);
+        
+        
+        if (!empty($cardschek->json()['data'])) {
+            foreach ($cardschek->json()['data'] as $cardsapicheck) {
+                if($cardsapicheck['inStock']==false){
+                    $updatecard['purchase'] = 1;
+                    $updatecard['avaliable'] = 1;
+                    Cards::where('id', $order->card_id)->update($updatecard); 
+                }
+            }
+        }
+
+
+
                     }
 
 
 
 
+
                     /////////////
+
+                    if ($dubiapi->api2 != 1) {
                     if ($order->update()) {
                         $updatecard['purchase'] = 1;
                         $updatecard['avaliable'] = 1;
@@ -247,6 +273,8 @@ class OrderController extends Controller
                     } else {
                         return response()->json(['status' => 'error']);
                     }
+                }
+                    
                 } else {
 
 
