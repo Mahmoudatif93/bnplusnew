@@ -124,7 +124,7 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
 
 
                                 
-/////////////////////cards
+/////////////////////cards1
 $uri = 'https://identity-staging.anis.ly/connect/token';
 $params = array(
     'grant_type' => 'user_credentials',
@@ -214,7 +214,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
 
 
-/////////////////////cards
+/////////////////////cards2
 $uri = 'https://identity-staging.anis.ly/connect/token';
 $params = array(
     'grant_type' => 'user_credentials',
@@ -305,6 +305,77 @@ if (!empty($cards->json()['data']['cards'])) {
                                 $itemcomp->kind = 'national';
                                 $itemcomp->api2 = 1;
                                 $itemcomp->save();
+
+
+
+
+
+
+
+
+
+
+
+
+                                /////////////////////cards3
+$uri = 'https://identity-staging.anis.ly/connect/token';
+$params = array(
+    'grant_type' => 'user_credentials',
+    'client_id' => 'bn-plus',
+    'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+    'password' => 'P@ssw0rd1988',
+    'email' => 'info@bn-plus.ly',
+);
+$response = Http::asForm()->withHeaders([])->post($uri, $params);
+$token = $response->json()['access_token'];
+$token_type = $response->json()['token_type'];
+$alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
+
+$compid= $rowsubcomp['id'];
+
+$cards = Http::withHeaders([
+    'Accept' => 'application/json',
+    'Authorization' => $alltoken,
+
+])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
+', []);
+
+if (!empty($cards->json()['data']['cards'])) {
+
+    foreach ($cards->json()['data']['cards'] as $cardsapi) {
+
+
+
+        $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
+        //print_r($allcardsapi);echo"<br>";
+        if (empty($dbCompanies)) {
+            $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
+
+            $itemcard->api2id = $cardsapi['id'];
+            $itemcard->old_price = $cardsapi['businessPrice'];
+            $itemcard->company_id = $compid;
+            $itemcard->card_name = $cardsapi['name'];
+            $itemcard->card_price = $cardsapi['businessPrice'];
+            $itemcard->card_code = $cardsapi['name'];
+            $itemcard->card_image = $cardsapi['logo'];
+            $itemcard->nationalcompany =  'local';
+            $itemcard->api2 = 1;
+            //   dd($itemcard);
+            $itemcard->save();
+        }
+    }
+}
+
+/////////////////////////////
+
+
+
+
+
+
+
+
+
                             }
                         }
                     } else {
@@ -317,6 +388,80 @@ if (!empty($cards->json()['data']['cards'])) {
                             $itemcomp->kind = 'national';
                             $itemcomp->api2 = 1;
                             $itemcomp->save();
+
+
+
+
+
+
+                                /////////////////////cards4
+                                $uri = 'https://identity-staging.anis.ly/connect/token';
+                                $params = array(
+                                    'grant_type' => 'user_credentials',
+                                    'client_id' => 'bn-plus',
+                                    'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+                                    'password' => 'P@ssw0rd1988',
+                                    'email' => 'info@bn-plus.ly',
+                                );
+                                $response = Http::asForm()->withHeaders([])->post($uri, $params);
+                                $token = $response->json()['access_token'];
+                                $token_type = $response->json()['token_type'];
+                                $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
+                                
+                                $compid= $rowcomp['id'];
+                                
+                                $cards = Http::withHeaders([
+                                    'Accept' => 'application/json',
+                                    'Authorization' => $alltoken,
+                                
+                                ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
+                                ', []);
+                                
+                                if (!empty($cards->json()['data']['cards'])) {
+                                
+                                    foreach ($cards->json()['data']['cards'] as $cardsapi) {
+                                
+                                
+                                
+                                        $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
+                                        //print_r($allcardsapi);echo"<br>";
+                                        if (empty($dbCompanies)) {
+                                            $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
+                                
+                                            $itemcard->api2id = $cardsapi['id'];
+                                            $itemcard->old_price = $cardsapi['businessPrice'];
+                                            $itemcard->company_id = $compid;
+                                            $itemcard->card_name = $cardsapi['name'];
+                                            $itemcard->card_price = $cardsapi['businessPrice'];
+                                            $itemcard->card_code = $cardsapi['name'];
+                                            $itemcard->card_image = $cardsapi['logo'];
+                                            $itemcard->nationalcompany =  'local';
+                                            $itemcard->api2 = 1;
+                                            //   dd($itemcard);
+                                            $itemcard->save();
+                                        }
+                                    }
+                                }
+                                
+                                /////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         }
                     }
 
