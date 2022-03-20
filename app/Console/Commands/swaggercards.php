@@ -46,6 +46,7 @@ class swaggercards extends Command
     
 
 
+        
         $uri = 'https://identity-staging.anis.ly/connect/token';
         $params = array(
             'grant_type' => 'user_credentials',
@@ -139,13 +140,13 @@ $token_type = $response->json()['token_type'];
 $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
 
 $compid=$rowsubcomp['id'];
+$compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
 
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
-', []);
+])->get( $compurl);
 
 if (!empty($cards->json()['data']['cards'])) {
 
@@ -155,12 +156,12 @@ if (!empty($cards->json()['data']['cards'])) {
 
         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
         //print_r($allcardsapi);echo"<br>";
-        if (empty($dbCompanies)) {
+        if (!empty($dbCompanies)) {
             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
             $itemcard->api2id = $cardsapi['id'];
             $itemcard->old_price = $cardsapi['businessPrice'];
-            $itemcard->company_id = $compid;
+            $itemcard->company_id = $dbCompanies->id;
             $itemcard->card_name = $cardsapi['name'];
             $itemcard->card_price = $cardsapi['businessPrice'];
             $itemcard->card_code = $cardsapi['name'];
@@ -230,12 +231,14 @@ $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_to
 
 $compid= $rowcomp['id'];
 
+$compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
+
+
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
-', []);
+])->get( $compurl);
 
 if (!empty($cards->json()['data']['cards'])) {
 
@@ -245,12 +248,12 @@ if (!empty($cards->json()['data']['cards'])) {
 
         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
         //print_r($allcardsapi);echo"<br>";
-        if (empty($dbCompanies)) {
+        if (!empty($dbCompanies)) {
             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
             $itemcard->api2id = $cardsapi['id'];
             $itemcard->old_price = $cardsapi['businessPrice'];
-            $itemcard->company_id = $compid;
+            $itemcard->company_id =$dbCompanies->id;
             $itemcard->card_name = $cardsapi['name'];
             $itemcard->card_price = $cardsapi['businessPrice'];
             $itemcard->card_code = $cardsapi['name'];
@@ -333,12 +336,13 @@ $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_to
 
 $compid= $rowsubcomp['id'];
 
+$compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
+
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
 
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
-', []);
+])->get( $compurl);
 
 if (!empty($cards->json()['data']['cards'])) {
 
@@ -348,12 +352,12 @@ if (!empty($cards->json()['data']['cards'])) {
 
         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
         //print_r($allcardsapi);echo"<br>";
-        if (empty($dbCompanies)) {
+        if (!empty($dbCompanies)) {
             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
             $itemcard->api2id = $cardsapi['id'];
             $itemcard->old_price = $cardsapi['businessPrice'];
-            $itemcard->company_id = $compid;
+            $itemcard->company_id = $dbCompanies->id;
             $itemcard->card_name = $cardsapi['name'];
             $itemcard->card_price = $cardsapi['businessPrice'];
             $itemcard->card_code = $cardsapi['name'];
@@ -410,12 +414,14 @@ if (!empty($cards->json()['data']['cards'])) {
                                 
                                 $compid= $rowcomp['id'];
                                 
+                                $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
+                           
                                 $cards = Http::withHeaders([
                                     'Accept' => 'application/json',
                                     'Authorization' => $alltoken,
                                 
-                                ])->get('https://gateway-staging.anis.ly/api/consumers/v1/categories/$compid
-                                ', []);
+                                ])->get( $compurl);
+                                
                                 
                                 if (!empty($cards->json()['data']['cards'])) {
                                 
@@ -425,12 +431,12 @@ if (!empty($cards->json()['data']['cards'])) {
                                 
                                         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
                                         //print_r($allcardsapi);echo"<br>";
-                                        if (empty($dbCompanies)) {
+                                        if (!empty($dbCompanies)) {
                                             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
                                 
                                             $itemcard->api2id = $cardsapi['id'];
                                             $itemcard->old_price = $cardsapi['businessPrice'];
-                                            $itemcard->company_id = $compid;
+                                            $itemcard->company_id = $dbCompanies->id;
                                             $itemcard->card_name = $cardsapi['name'];
                                             $itemcard->card_price = $cardsapi['businessPrice'];
                                             $itemcard->card_code = $cardsapi['name'];
@@ -473,10 +479,9 @@ if (!empty($cards->json()['data']['cards'])) {
 
 
 
-  
-//dd($alltoken);
-       
-}
+    }
+
+
         $this->info('swagger Cummand Run successfully!.');
     }
 }
