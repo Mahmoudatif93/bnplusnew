@@ -31,7 +31,7 @@
 
 
 
-
+@if(!empty($cardswagger))
                 @if($cardswagger->enable==0)
 
 <a class="btn btn-danger btn-block" href="{{ route('dashboard.enableswaggerapi') }}">
@@ -42,6 +42,7 @@ Disable Swagger Cards
 <a class="btn btn-info btn-block"  href="{{ route('dashboard.enableswaggerapi') }}">
 Enable Swagger Cards
 </a>
+@endif
 @endif
 
 
