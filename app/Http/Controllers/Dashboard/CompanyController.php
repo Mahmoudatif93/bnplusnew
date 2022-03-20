@@ -72,6 +72,8 @@ if($orderswal->json()['data'] >0){
         'email' => 'info@bn-plus.ly',
     );
     $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+
+    dd($response->json());
 $token=$response->json()['access_token'];
 $token_type=$response->json()['token_type'];
 $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
