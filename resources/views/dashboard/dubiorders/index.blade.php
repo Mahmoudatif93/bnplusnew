@@ -85,7 +85,7 @@
 
                         @endif
 
-
+@if(!empty($cardswagger->enable))
 
 
                         @if($cardswagger->enable==0)
@@ -100,7 +100,7 @@
                         </a>
                         @endif
 
-
+                        @endif
 
                 @if (!empty($dubiorders))
                 <button class="btn btn-block btn-primary print-btn"><i class="fa fa-print"></i> @lang('site.print')</button>
