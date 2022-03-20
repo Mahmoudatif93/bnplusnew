@@ -35,6 +35,40 @@ class CompanyController extends Controller
     
 
 
+        $uri = 'https://identity-staging.anis.ly/connect/token';
+        $params = array(
+            'grant_type' => 'user_credentials',
+            'client_id' => 'bn-plus',
+            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+            'password' => 'P@ssw0rd1988',
+            'email' => 'info@bn-plus.ly',
+        );
+        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+$token=$response->json()['access_token'];
+$token_type=$response->json()['token_type'];
+$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+
+$orders = Http::withHeaders([
+   'Accept' => 'application/json',
+   'Authorization' => $alltoken,
+  
+])->post('https://gateway-staging.anis.ly/api/consumers/v1/order'
+
+, [
+
+   'walletId' =>'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
+   'cardId' => 's4444',
+   'pinNumber' => '1988',
+   'orderId' =>'44',
+   'quantity' =>1,
+   'TotalValue' =>null,
+
+]
+
+);
+dd($orders);
+
+
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
