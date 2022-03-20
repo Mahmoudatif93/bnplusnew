@@ -77,7 +77,7 @@ if($orderswal->json()['data'] >0){
 
 
 
-    dd($response->json());
+   
 
 
     
@@ -120,10 +120,10 @@ $params = array(
     'password' => 'P@ssw0rd1988',
     'email' => 'info@bn-plus.ly',
 );
-$response = Http::asForm()->withHeaders([])->post($uri, $params);
-$token = $response->json()['access_token'];
-$token_type = $response->json()['token_type'];
-$alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
+$response = Http::asForm()->withHeaders([])->post($uri, $params);   
+$token=$response->json()['access_token'];
+$token_type=$response->json()['token_type'];
+$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
 $compid=$rowsubcomp['id'];
 $compurl='https://gateway.anis.ly/api/consumers/v1/categories/'.$compid.'';
@@ -210,10 +210,10 @@ $params = array(
     'password' => 'P@ssw0rd1988',
     'email' => 'info@bn-plus.ly',
 );
-$response = Http::asForm()->withHeaders([])->post($uri, $params);
-$token = $response->json()['access_token'];
-$token_type = $response->json()['token_type'];
-$alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
+$response = Http::asForm()->withHeaders([])->post($uri, $params);   
+$token=$response->json()['access_token'];
+$token_type=$response->json()['token_type'];
+$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
 $compid= $rowcomp['id'];
 
@@ -307,18 +307,18 @@ if (!empty($cards->json()['data']['cards'])) {
 
 
                                 /////////////////////cards3
-$uri = 'https://identity.anis.ly/connect/token';
-$params = array(
-    'grant_type' => 'user_credentials',
-    'client_id' => 'bn-plus',
-    'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-    'password' => 'P@ssw0rd1988',
-    'email' => 'info@bn-plus.ly',
-);
-$response = Http::asForm()->withHeaders([])->post($uri, $params);
-$token = $response->json()['access_token'];
-$token_type = $response->json()['token_type'];
-$alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
+                                $uri = 'https://identity.anis.ly/connect/token';
+                                $params = array(
+                                    'grant_type' => 'user_credentials',
+                                    'client_id' => 'bn-plus',
+                                    'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+                                    'password' => 'P@ssw0rd1988',
+                                    'email' => 'info@bn-plus.ly',
+                                );
+                                $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+                                $token=$response->json()['access_token'];
+                                $token_type=$response->json()['token_type'];
+                                $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
 $compid= $rowsubcomp['id'];
 
@@ -393,10 +393,10 @@ if (!empty($cards->json()['data']['cards'])) {
                                     'password' => 'P@ssw0rd1988',
                                     'email' => 'info@bn-plus.ly',
                                 );
-                                $response = Http::asForm()->withHeaders([])->post($uri, $params);
-                                $token = $response->json()['access_token'];
-                                $token_type = $response->json()['token_type'];
-                                $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
+                                $response = Http::asForm()->withHeaders([])->post($uri, $params);   
+                                $token=$response->json()['access_token'];
+                                $token_type=$response->json()['token_type'];
+                                $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
                                 
                                 $compid= $rowcomp['id'];
                                 

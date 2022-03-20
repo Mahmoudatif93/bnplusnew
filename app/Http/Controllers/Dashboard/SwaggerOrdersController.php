@@ -26,7 +26,6 @@ class SwaggerOrdersController extends Controller
     {
        
    
-
         $uri = 'https://identity.anis.ly/connect/token';
         $params = array(
             'grant_type' => 'user_credentials',
@@ -36,10 +35,9 @@ class SwaggerOrdersController extends Controller
             'email' => 'info@bn-plus.ly',
         );
         $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-$token=$response->json()['access_token'];
-$token_type=$response->json()['token_type'];
-$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
-
+        $token=$response->json()['access_token'];
+        $token_type=$response->json()['token_type'];
+        $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
 
         $swaggercompanies = Http::withHeaders([
