@@ -48,7 +48,7 @@ class CompanyController extends Controller
         $token_type=$response->json()['token_type'];
         $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
-        $orders = Http::withHeaders([
+        $orderswal = Http::withHeaders([
            'Accept' => 'application/json',
            'Authorization' => $alltoken,
           
@@ -59,9 +59,11 @@ class CompanyController extends Controller
 
 
 
-dd($orders->json()['data'] );
 
-
+if($orderswal->json()['data'] >0){
+    echo "more";
+}
+dd();
 
         
 
