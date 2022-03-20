@@ -66,7 +66,7 @@ $orders = Http::withHeaders([
 ]
 
 );
-dd($orders);
+dd($orders->json());
 
 
 
