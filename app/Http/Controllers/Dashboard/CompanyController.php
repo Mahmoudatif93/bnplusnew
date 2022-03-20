@@ -34,28 +34,6 @@ class CompanyController extends Controller
 
     
 
-        $uri = 'https://identity-staging.anis.ly/connect/token';
-        $params = array(
-            'grant_type' => 'user_credentials',
-            'client_id' => 'bn-plus',
-            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-            'password' => 'P@ssw0rd1988',
-            'email' => 'info@bn-plus.ly',
-        );
-        $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-$token=$response->json()['access_token'];
-$token_type=$response->json()['token_type'];
-$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
-
-        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/2dd320ff-edc3-4fc9-e7f2-08d8be573a60';
-
-        $cardschek = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => $alltoken,
-        
-        ])->get($compurlcheck);
-        
-        dd($cardschek->json()['data']);
   
         
 
