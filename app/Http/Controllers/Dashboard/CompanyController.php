@@ -44,30 +44,27 @@ class CompanyController extends Controller
             'email' => 'info@bn-plus.ly',
         );
         $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-$token=$response->json()['access_token'];
-$token_type=$response->json()['token_type'];
-$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+        $token=$response->json()['access_token'];
+        $token_type=$response->json()['token_type'];
+        $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
-$orders = Http::withHeaders([
-   'Accept' => 'application/json',
-   'Authorization' => $alltoken,
-  
-])->post('https://gateway-staging.anis.ly/api/consumers/v1/order'
+        $orders = Http::withHeaders([
+           'Accept' => 'application/json',
+           'Authorization' => $alltoken,
+          
+       ])->get('https://gateway-staging.anis.ly/api/consumers/v1/transactions/E1521F1F-C592-42F3-7A1A-08D9F31F6661/current-balance'
+   
+   
+   );
 
-, [
 
-   'walletId' =>'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
-   'cardId' => '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-   'pinNumber' => '1988',
-   'orderId' =>'44',
-   'quantity' =>1,
-   'TotalValue' =>null,
 
-]
-
-);
 dd($orders->json());
 
+
+
+
+        
 
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
