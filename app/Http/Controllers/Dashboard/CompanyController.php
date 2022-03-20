@@ -47,7 +47,6 @@ class CompanyController extends Controller
         $token_type=$response->json()['token_type'];
         $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
-        dd($response->json());
         $orderswal = Http::withHeaders([
            'Accept' => 'application/json',
            'Authorization' => $alltoken,
@@ -63,8 +62,7 @@ class CompanyController extends Controller
 if($orderswal->json()['data'] >0){
 
 
-
-    $uri = 'https://identity.anis.ly/connect/token ';
+    $uri = 'https://identity.anis.ly/connect/token';
     $params = array(
         'grant_type' => 'user_credentials',
         'client_id' => 'bn-plus',
@@ -73,13 +71,13 @@ if($orderswal->json()['data'] >0){
         'email' => 'info@bn-plus.ly',
     );
     $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-    
-$token=$response->json()['access_token'];
-$token_type=$response->json()['token_type'];
-$alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+    $token=$response->json()['access_token'];
+    $token_type=$response->json()['token_type'];
+    $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
 
 
 
+    dd($response->json());
 
 
     
