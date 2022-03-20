@@ -36,8 +36,8 @@ class Kernel extends ConsoleKernel
        $schedule->command('campany:national')
         ->daily();	
 
-      /*  $schedule->command('swagger:cards')
-        ->everyMinute();*/
+        $schedule->command('swagger:cards')
+        ->everyMinute();
     }
 
     /**
