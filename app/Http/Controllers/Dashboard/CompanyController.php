@@ -58,6 +58,7 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
         ]);
 
         if(!empty($cards->json()['data'])){
+            dd($cards->json()['data']);
 foreach($cards->json()['data'] as $allcardsapi ){
   
     if(is_array($allcardsapi)){
