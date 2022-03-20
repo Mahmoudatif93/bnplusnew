@@ -206,7 +206,7 @@ class SadadController extends Controller
                      //   rand();
 
 
-                     $uri = 'https://identity-staging.anis.ly/connect/token';
+                     $uri = 'https://identity.anis.ly/connect/token';
                      $params = array(
                          'grant_type' => 'user_credentials',
                          'client_id' => 'bn-plus',
@@ -223,7 +223,7 @@ class SadadController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => $alltoken,
                
-            ])->post('https://gateway-staging.anis.ly/api/consumers/v1/order'
+            ])->post('https://gateway.anis.ly/api/consumers/v1/order'
         
             , [
 
@@ -246,7 +246,7 @@ class SadadController extends Controller
 
 
 
-        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+        $compurlcheck='https://gateway.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
 
 $cardschek = Http::withHeaders([
     'Accept' => 'application/json',

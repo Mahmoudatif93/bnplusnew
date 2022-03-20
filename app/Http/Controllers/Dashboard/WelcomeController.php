@@ -67,7 +67,7 @@ if($dubiordersjson['response'] ==1){
 }
 
 
-$uri = 'https://identity-staging.anis.ly/connect/token';
+$uri = 'https://identity.anis.ly/connect/token';
 $params = array(
     'grant_type' => 'user_credentials',
     'client_id' => 'bn-plus',
@@ -85,7 +85,7 @@ $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token']
 $swaggercompanies = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
-])->get('https://gateway-staging.anis.ly/api/consumers/v1/transactions?pinNumber=1988');
+])->get('https://gateway.anis.ly/api/consumers/v1/transactions?pinNumber=1988');
 
 
 $alldata=$swaggercompanies->json()['data'];
