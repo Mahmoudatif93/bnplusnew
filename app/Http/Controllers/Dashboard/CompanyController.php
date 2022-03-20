@@ -57,7 +57,7 @@ class CompanyController extends Controller
         ]);
 
         if(!empty($cards->json()['data'])){
-            dd($cards->json()['data']);
+            dd($cards->json()['data']['cards']);
 foreach($cards->json()['data'] as $allcardsapi ){
   
     if(is_array($allcardsapi)){
