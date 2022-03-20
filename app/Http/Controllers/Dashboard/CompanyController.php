@@ -68,12 +68,12 @@ foreach($cards->json()['data']['cards'] as $cardsapi ){
   
                                     $itemcard->api2id = $cardsapi['id'];
                                     $itemcard->old_price=$cardsapi['businessPrice'];
-                                    $itemcard->company_id = $dbCompanies->id;
+                                    $itemcard->company_id = '776598f2-3299-4a60-fa8d-08d8be536219';
                                     $itemcard->card_name = $cardsapi['name'];
                                     $itemcard->card_price =$cardsapi['businessPrice'];
                                     $itemcard->card_code = $cardsapi['name'];
                                     $itemcard->card_image = $cardsapi['logo'];
-                                    $itemcard->nationalcompany=  $dbCompanies->kind;
+                                    $itemcard->nationalcompany=  'local';
                                     $itemcard->api2 = 1;
                                  //   dd($itemcard);
                                   $itemcard ->save();
