@@ -228,7 +228,7 @@ class OrderController extends Controller
 
         
 
-        $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+      /*  $compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
 
         $cardschek = Http::withHeaders([
             'Accept' => 'application/json',
@@ -246,7 +246,7 @@ class OrderController extends Controller
                 }
             }
         }
-
+*/
 
 
                     }
@@ -257,7 +257,7 @@ class OrderController extends Controller
 
                     /////////////
 
-                    if ($dubiapi->api2 != 1) {
+                 //   if ($dubiapi->api2 != 1) {
                     if ($order->update()) {
                         $updatecard['purchase'] = 1;
                         $updatecard['avaliable'] = 1;
@@ -273,7 +273,7 @@ class OrderController extends Controller
                     } else {
                         return response()->json(['status' => 'error']);
                     }
-                }
+               // }
                     
                 } else {
 
