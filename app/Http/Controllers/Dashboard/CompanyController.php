@@ -220,7 +220,7 @@ $compid= $rowcomp['id'];
 
 $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
 
-dd($compurl);
+dd('d');
 
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
@@ -325,7 +325,7 @@ $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_to
 $compid= $rowsubcomp['id'];
 
 $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
-dd($compurl);
+dd('s');
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
@@ -403,7 +403,7 @@ if (!empty($cards->json()['data']['cards'])) {
                                 $compid= $rowcomp['id'];
                                 
                                 $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
-                                dd($compurl);
+                                dd('cc');
                                 $cards = Http::withHeaders([
                                     'Accept' => 'application/json',
                                     'Authorization' => $alltoken,
