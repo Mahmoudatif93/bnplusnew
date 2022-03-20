@@ -56,29 +56,28 @@ class CompanyController extends Controller
 
         ]);
 
-        if(!empty($cards->json()['data'])){
-            dd($cards->json()['data']['cards']);
-foreach($cards->json()['data'] as $allcardsapi ){
+        if(!empty($cards->json()['data']['cards'])){
+            
+foreach($cards->json()['data']['cards'] as $cardsapi ){
   
-    if(is_array($allcardsapi)){
-    foreach($allcardsapi as $cardsapi){
+ 
      //   dd($cardsapi);
-    $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'name'=>$cardsapi['categoryName']))->first();
+    $dbCompanies = Company::where(array('enable'=>0,'api2'=>1,'idapi2'=>'776598f2-3299-4a60-fa8d-08d8be536219'))->first();
     //print_r($allcardsapi);echo"<br>";
     $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
   
                                     $itemcard->api2id = $cardsapi['id'];
-                                    $itemcard->old_price=$cardsapi['price'];
+                                    $itemcard->old_price=$cardsapi['businessPrice'];
                                     $itemcard->company_id = $dbCompanies->id;
-                                    $itemcard->card_name = $cardsapi['cardName'];
-                                    $itemcard->card_price =$cardsapi['price'];
-                                    $itemcard->card_code = $cardsapi['number'];
+                                    $itemcard->card_name = $cardsapi['name'];
+                                    $itemcard->card_price =$cardsapi['businessPrice'];
+                                    $itemcard->card_code = $cardsapi['name'];
                                     $itemcard->card_image = $cardsapi['logo'];
                                     $itemcard->nationalcompany=  $dbCompanies->kind;
                                     $itemcard->api2 = 1;
                                  //   dd($itemcard);
                                   $itemcard ->save();
-                                    }}
+                                    }
 
 }
 }
