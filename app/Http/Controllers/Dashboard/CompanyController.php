@@ -134,7 +134,7 @@ $cards = Http::withHeaders([
     'Authorization' => $alltoken,
 
 ])->get( $compurl);
-dd($cards->json()['data']['cards']);
+
 if (!empty($cards->json()['data']['cards'])) {
 
     foreach ($cards->json()['data']['cards'] as $cardsapi) {
@@ -143,7 +143,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
         //print_r($allcardsapi);echo"<br>";
-        if (empty($dbCompanies)) {
+        if (!empty($dbCompanies)) {
             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
             $itemcard->api2id = $cardsapi['id'];
@@ -220,7 +220,6 @@ $compid= $rowcomp['id'];
 
 $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
 
-dd('d');
 
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
@@ -236,7 +235,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
         //print_r($allcardsapi);echo"<br>";
-        if (empty($dbCompanies)) {
+        if (!empty($dbCompanies)) {
             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
             $itemcard->api2id = $cardsapi['id'];
@@ -325,7 +324,7 @@ $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_to
 $compid= $rowsubcomp['id'];
 
 $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
-dd('s');
+
 $cards = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
@@ -340,7 +339,7 @@ if (!empty($cards->json()['data']['cards'])) {
 
         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
         //print_r($allcardsapi);echo"<br>";
-        if (empty($dbCompanies)) {
+        if (!empty($dbCompanies)) {
             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
 
             $itemcard->api2id = $cardsapi['id'];
@@ -403,7 +402,7 @@ if (!empty($cards->json()['data']['cards'])) {
                                 $compid= $rowcomp['id'];
                                 
                                 $compurl='https://gateway-staging.anis.ly/api/consumers/v1/categories/'.$compid.'';
-                                dd('cc');
+                           
                                 $cards = Http::withHeaders([
                                     'Accept' => 'application/json',
                                     'Authorization' => $alltoken,
@@ -419,7 +418,7 @@ if (!empty($cards->json()['data']['cards'])) {
                                 
                                         $dbCompanies = Company::where(array('enable' => 0, 'api2' => 1, 'idapi2' => $compid))->first();
                                         //print_r($allcardsapi);echo"<br>";
-                                        if (empty($dbCompanies)) {
+                                        if (!empty($dbCompanies)) {
                                             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
                                 
                                             $itemcard->api2id = $cardsapi['id'];
