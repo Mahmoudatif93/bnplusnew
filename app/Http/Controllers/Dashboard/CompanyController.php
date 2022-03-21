@@ -73,7 +73,7 @@ if(isset($orders->json()['data'])){
   
     $updatecardprssice['card_code'] = $orders->json()['data']['number'];
     //dd($updatecardprssice['card_code']);
-    dd(Cards::where('id',  10498)->first());
+    dd(Cards::where('id',10498)->first());
    
     
     }
@@ -95,6 +95,7 @@ if (!empty($cardschek->json()['data'])) {
     }
 
 }
+dd(Cards::where('id',10498)->first());
 dd($cardschek->json()['data']);
 
 
