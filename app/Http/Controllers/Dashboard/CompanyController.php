@@ -98,7 +98,7 @@ foreach ($cardschek->json()['data'] as $cardsapicheck) {
        // Cards::where('id', $order->card_id)->update($updatecard); 
     }
 }
-
+}
 dd($cardschek->json()['data']);
 
     
