@@ -73,13 +73,14 @@ class CompanyController extends Controller
 ]
 
 );
-dd( $orders->json()['message']);
-foreach($orders->json()['data'] as $dd){
-$updatecardprssice['card_code'] = $dd['number'];
-Cards::where('id',  10496)->update($updatecardprssice);
-} 
-
-
+dd( $orders->json());
+if(isset($orders->json()['data'])){
+    foreach($orders->json()['data'] as $dd){
+    $updatecardprssice['card_code'] = $dd['number'];
+    Cards::where('id',  10496)->update($updatecardprssice);
+    } 
+    
+    }
 
 $compurlcheck='https://gateway.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
 

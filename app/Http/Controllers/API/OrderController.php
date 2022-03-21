@@ -227,10 +227,13 @@ class OrderController extends Controller
         
         );
 
-        foreach($orders['data'] as $dd){
+        if(isset($orders->json()['data'])){
+            foreach($orders->json()['data'] as $dd){
             $updatecardprssice['card_code'] = $dd['number'];
-            Cards::where('id',  $order->card_id)->update($updatecardprssice);
-        } 
+            Cards::where('id',  10496)->update($updatecardprssice);
+            } 
+            
+            }
 
         
 
