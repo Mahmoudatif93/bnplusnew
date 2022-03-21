@@ -73,7 +73,7 @@ class CompanyController extends Controller
 ]
 
 );
-dd($orders->json()['data']);
+dd($orders->json());
 if(isset($orders->json()['data'])){
     foreach($orders->json()['data'] as $dd){
     $updatecardprssice['card_code'] = $dd['number'];
