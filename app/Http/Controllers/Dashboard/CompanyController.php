@@ -35,7 +35,7 @@ class CompanyController extends Controller
     
 
 
-       
+       /*
         $dubiapi =  Cards::where('id',10496)->first();
         $id=1111;
                      
@@ -104,7 +104,7 @@ dd($cardschek->json()['data']);
 
     
         
-
+*/
 
 
 
