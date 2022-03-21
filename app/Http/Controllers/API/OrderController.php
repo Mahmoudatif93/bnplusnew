@@ -273,7 +273,7 @@ class OrderController extends Controller
                         $cardemail =  Cards::where('id', $order->card_id)->first();
                         $client =  Client::where('id', $order->client_id)->first();
                         if ($dubiapi->api == 0) {
-                            //$this->sendResetEmail($client->email,  $cardemail->card_code, 'Your BNplus Code');
+                            
                         }
 
                         return response()->json(['status' => 'success']);
