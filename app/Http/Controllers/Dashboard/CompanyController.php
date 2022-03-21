@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
         $dubiapi =  Cards::where('id',10498)->first();
-        $id=84111;
+        $id=86111;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
