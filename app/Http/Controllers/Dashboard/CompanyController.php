@@ -29,7 +29,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-/*
+
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
         $dubiapi =  Cards::where('id',10498)->first();
         $id=86101;
@@ -68,12 +68,12 @@ class CompanyController extends Controller
 ]
 
 );
-dd($orders->json()['data']['number']);
+
 if(isset($orders->json()['data'])){
-    foreach($orders->json()['data'] as $dd){
-    $updatecardprssice['card_code'] = $dd['number'];
+  
+    $updatecardprssice['card_code'] = $orders->json()['data']['number'];
     Cards::where('id',  10498)->update($updatecardprssice);
-    } 
+   
     
     }
 
@@ -88,6 +88,8 @@ $cardschek = Http::withHeaders([
 
 if (!empty($cardschek->json()['data'])) {
 foreach ($cardschek->json()['data'] as $cardsapicheck) {
+
+    
     if($cardsapicheck['inStock']==false){
         $updatecard['purchase'] = 1;
         $updatecard['avaliable'] = 1;
@@ -99,7 +101,7 @@ dd($cardschek->json()['data']);
 
 
         
-*/
+
 
 
 
