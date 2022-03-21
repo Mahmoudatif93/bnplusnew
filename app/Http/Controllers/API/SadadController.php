@@ -240,7 +240,7 @@ class SadadController extends Controller
         
         if(isset($orders->json()['data'])){
        
-            $updatecardprssice['card_code'] = $orders->json()['data']['number'];
+            $updatecardprssice['card_code'] = $orders->json()['data']['cards'][0]['secretNumber'];
             Cards::where('id',$order->card_id)->update($updatecardprssice);
          
             

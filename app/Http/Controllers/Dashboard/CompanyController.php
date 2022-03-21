@@ -33,7 +33,7 @@ class CompanyController extends Controller
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
   /*  $dubiapi =  Cards::where('id',10477)->first();
    
-        $id=80079;
+        $id=8023279;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
@@ -69,10 +69,10 @@ class CompanyController extends Controller
 ]
 
 );
-//dd($orders->json());
+dd($orders->json()['data']['cards'][0]['secretNumber']);
 if(isset($orders->json()['data'])){
   
-    $updatecardprssice['card_code'] = $orders->json()['data']['number'];
+    $updatecardprssice['card_code'] = $orders->json()['data']['cards']['secretNumber'];
   //  dd($updatecardprssice['card_code']);
     Cards::where('id',  10477)->update($updatecardprssice);
    
@@ -98,9 +98,9 @@ if (!empty($cardschek->json()['data'])) {
 }
 dd( Cards::where('id',  10477)->first());
 
-      */  
+      
 
-
+*/
 
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
