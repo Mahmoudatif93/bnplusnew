@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
         $dubiapi =  Cards::where('id',10498)->first();
-        $id=86101;
+        $id=8604;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
@@ -89,7 +89,7 @@ $cardschek = Http::withHeaders([
 if (!empty($cardschek->json()['data'])) {
 foreach ($cardschek->json()['data'] as $cardsapicheck) {
 
-    
+
     if($cardsapicheck['inStock']==false){
         $updatecard['purchase'] = 1;
         $updatecard['avaliable'] = 1;
