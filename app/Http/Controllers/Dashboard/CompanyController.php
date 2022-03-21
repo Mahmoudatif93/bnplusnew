@@ -35,7 +35,7 @@ class CompanyController extends Controller
     
 
 
-       /*
+       
         $dubiapi =  Cards::where('id',10496)->first();
         $id=1111;
                      
@@ -73,7 +73,7 @@ class CompanyController extends Controller
 ]
 
 );
-
+dd($orders->json());
 if(isset($orders->json()['data'])){
     foreach($orders->json()['data'] as $dd){
     $updatecardprssice['card_code'] = $dd['number'];
@@ -104,7 +104,7 @@ dd($cardschek->json()['data']);
 
     
         
-*/
+
 
 
 
