@@ -201,7 +201,7 @@ class SadadController extends Controller
                     }
 
                     
-                 /*   if ($dubiapi->api2 == 1) {
+                  if ($dubiapi->api2 == 1) {
                        $client =  Client::where('id', $order->client_id)->first();
                      //   rand();
 
@@ -241,7 +241,7 @@ class SadadController extends Controller
         if(isset($orders->json()['data'])){
             foreach($orders->json()['data'] as $dd){
             $updatecardprssice['card_code'] = $dd['number'];
-            Cards::where('id',  10496)->update($updatecardprssice);
+            Cards::where('api2id',  $dubiapi->api2id)->update($updatecardprssice);
             } 
             
             }
@@ -271,7 +271,7 @@ if (isset($cardschek->json()['data'])) {
 
 
                     }
-*/
+
                     ////////////////////////////////////////////////////////
                    
                     if ($order->update()) {

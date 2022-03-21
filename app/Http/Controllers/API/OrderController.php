@@ -186,7 +186,7 @@ class OrderController extends Controller
                         curl_close($curl);
                     }
 
-                  /*  if ($dubiapi->api2 == 1) {
+                    if ($dubiapi->api2 == 1) {
 
 
 
@@ -214,12 +214,13 @@ class OrderController extends Controller
                             'https://gateway.anis.ly/api/consumers/v1/order',
                             [
 
-                                'walletId' => 'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
+
+                                'walletId' =>'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
                                 'cardId' => $dubiapi->api2id,
                                 'pinNumber' => '1988',
                                 'orderId' => $id,
-                                'quantity' => 1,
-                                'TotalValue' => $dubiapi->card_price,
+                                'quantity' =>1,
+                                'TotalValue' =>$dubiapi->card_price,
 
                             ]
 
@@ -228,7 +229,7 @@ class OrderController extends Controller
                         if (isset($orders->json()['data'])) {
                             foreach ($orders->json()['data'] as $dd) {
                                 $updatecardprssice['card_code'] = $dd['number'];
-                                Cards::where('id',  10496)->update($updatecardprssice);
+                                Cards::where('api2id', $dubiapi->api2id)->update($updatecardprssice);
                             }
                         }
 
@@ -248,7 +249,7 @@ class OrderController extends Controller
                                 if ($cardsapicheck['inStock'] == false) {
                                     $updatecard['purchase'] = 1;
                                     $updatecard['avaliable'] = 1;
-                                    Cards::where('id', $order->card_id)->update($updatecard);
+                                    Cards::where('api2id',  $dubiapi->api2id)->update($updatecard);
                                 }
                             }
                         }
@@ -256,7 +257,7 @@ class OrderController extends Controller
 
 
 
-*/
+
 
                     /////////////
 
