@@ -64,7 +64,7 @@ class CompanyController extends Controller
     'pinNumber' => '1988',
     'orderId' => $id,
     'quantity' =>1,
-    'TotalValue' =>$dubiapi->card_price
+    'TotalValue' =>$dubiapi->old_price
 
 ]
 
