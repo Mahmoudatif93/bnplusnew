@@ -73,8 +73,8 @@ class CompanyController extends Controller
 ]
 
 );
-dd( $orders->json());
-foreach($orders['data'] as $dd){
+dd( $orders->json()['message']);
+foreach($orders->json()['data'] as $dd){
 $updatecardprssice['card_code'] = $dd['number'];
 Cards::where('id',  10496)->update($updatecardprssice);
 } 
