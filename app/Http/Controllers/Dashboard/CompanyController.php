@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
-    
+    /*
 
 
        
@@ -102,7 +102,7 @@ foreach ($cardschek->json()['data'] as $cardsapicheck) {
 }
 dd($cardschek->json()['data']);
 
-    
+    */
         
 
 
