@@ -31,7 +31,7 @@ class CompanyController extends Controller
     {
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-  /*  $dubiapi =  Cards::where('id',10477)->first();
+    $dubiapi =  Cards::where('id',10477)->first();
    
         $id=80079;
                      
@@ -69,7 +69,7 @@ class CompanyController extends Controller
 ]
 
 );
-//dd($orders->json());
+dd($orders->json()['data']['cards']);
 if(isset($orders->json()['data'])){
   
     $updatecardprssice['card_code'] = $orders->json()['data']['number'];
@@ -98,7 +98,7 @@ if (!empty($cardschek->json()['data'])) {
 }
 dd( Cards::where('id',  10477)->first());
 
-      */  
+      
 
 
 
