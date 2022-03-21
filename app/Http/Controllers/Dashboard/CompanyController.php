@@ -72,8 +72,8 @@ class CompanyController extends Controller
 if(isset($orders->json()['data'])){
   
     $updatecardprssice['card_code'] = $orders->json()['data']['number'];
-    dd($updatecardprssice['card_code']);
-    Cards::where('id',  10498)->update($updatecardprssice);
+    //dd($updatecardprssice['card_code']);
+    dd(Cards::where('id',  10498)->first());
    
     
     }
