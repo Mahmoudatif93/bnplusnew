@@ -62,12 +62,10 @@ class OrderController extends Controller
                 $dataa['avaliable'] = 1;
                 Cards::where('id', $order->card_id)->update($dataa);
 
+                }
+                
                 $message = "card reserved ";
                 return $this->apiResponse6($cardscount - 1, $order->id, $message, 200);
-                }else{
-                    $message = "card reserved ";
-                return $this->apiResponse6($cardscount - 1, $order->id, $message, 200); 
-                }
             } else {
 
                 return $this->apiResponse6(null, null, 'error to Reserve Order', 404);
