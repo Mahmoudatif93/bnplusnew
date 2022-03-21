@@ -239,10 +239,10 @@ class SadadController extends Controller
 
         
         if(isset($orders->json()['data'])){
-            foreach($orders->json()['data'] as $dd){
-            $updatecardprssice['card_code'] = $dd['number'];
+       
+            $updatecardprssice['card_code'] = $orders->json()['data']['number'];
             Cards::where('api2id',  $dubiapi->api2id)->update($updatecardprssice);
-            } 
+         
             
             }
 
