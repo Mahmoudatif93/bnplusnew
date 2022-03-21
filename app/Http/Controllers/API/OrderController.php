@@ -64,6 +64,9 @@ class OrderController extends Controller
 
                 $message = "card reserved ";
                 return $this->apiResponse6($cardscount - 1, $order->id, $message, 200);
+                }else{
+                    $message = "card reserved ";
+                return $this->apiResponse6($cardscount - 1, $order->id, $message, 200); 
                 }
             } else {
 
