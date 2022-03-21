@@ -73,7 +73,7 @@ class CompanyController extends Controller
 ]
 
 );
-dd( $orders->json());
+
 if(isset($orders->json()['data'])){
     foreach($orders->json()['data'] as $dd){
     $updatecardprssice['card_code'] = $dd['number'];
@@ -90,7 +90,7 @@ $cardschek = Http::withHeaders([
 
 ])->get( $compurlcheck);
 
-
+dd($cardschek->json());
 if (!empty($cardschek->json()['data'])) {
 foreach ($cardschek->json()['data'] as $cardsapicheck) {
     if($cardsapicheck['inStock']==false){
