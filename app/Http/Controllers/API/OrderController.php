@@ -246,7 +246,7 @@ class OrderController extends Controller
         ])->get( $compurlcheck);
         
         
-        if (!empty($cardschek->json()['data'])) {
+        if (isset($cardschek->json()['data'])) {
             foreach ($cardschek->json()['data'] as $cardsapicheck) {
                 if($cardsapicheck['inStock']==false){
                     $updatecard['purchase'] = 1;
