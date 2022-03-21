@@ -87,15 +87,12 @@ $cardschek = Http::withHeaders([
 
 
 if (!empty($cardschek->json()['data'])) {
-foreach ($cardschek->json()['data'] as $cardsapicheck) {
-
-
     if($cardschek->json()['data']['inStock']==false){
         $updatecard['purchase'] = 1;
         $updatecard['avaliable'] = 1;
         Cards::where('id', 10498)->update($updatecard); 
     }
-}
+
 }
 dd($cardschek->json()['data']);
 
