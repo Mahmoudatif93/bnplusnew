@@ -73,7 +73,7 @@ class CompanyController extends Controller
 ]
 
 );
-
+dd( $orders->json());
 foreach($orders['data'] as $dd){
 $updatecardprssice['card_code'] = $dd['number'];
 Cards::where('id',  10496)->update($updatecardprssice);
