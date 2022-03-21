@@ -33,11 +33,11 @@ class CompanyController extends Controller
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
     
-/*
+
 
        
         $dubiapi =  Cards::where('id',10496)->first();
-        $id=1111;
+        $id=8111;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
@@ -105,7 +105,7 @@ dd($cardschek->json()['data']);
     
         
 
-*/
+
 
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
