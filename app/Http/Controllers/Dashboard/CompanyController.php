@@ -32,8 +32,8 @@ class CompanyController extends Controller
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
     $dubiapi =  Cards::where('id',10477)->first();
-    dd($dubiapi);
-        $id=8559;
+   
+        $id=809;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
@@ -64,7 +64,7 @@ class CompanyController extends Controller
     'pinNumber' => '1988',
     'orderId' => $id,
     'quantity' =>1,
-    'TotalValue' =>$dubiapi->card_price,
+    'TotalValue' =>$dubiapi->card_price
 
 ]
 
