@@ -190,7 +190,7 @@ class OrderController extends Controller
 
                     if ($dubiapi->api2 == 1) {
                      
-                     /*
+                
                      
                         $client =  Client::where('id', $order->client_id)->first();
                      //   rand();
@@ -254,7 +254,7 @@ class OrderController extends Controller
         }
 
 
-*/
+
                     }
 
 
