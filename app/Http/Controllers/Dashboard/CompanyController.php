@@ -29,9 +29,9 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-
+/*
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-     /*   $dubiapi =  Cards::where('id',10498)->first();
+        $dubiapi =  Cards::where('id',10498)->first();
         $id=8604;
                      
             //$client =  Client::where('id', $order->client_id)->first();
@@ -87,7 +87,7 @@ $cardschek = Http::withHeaders([
 
 
 if (!empty($cardschek->json()['data'])) {
-
+foreach ($cardschek->json()['data'] as $cardsapicheck) {
 
 
     if($cardschek->json()['data']['inStock']==false){
@@ -95,13 +95,13 @@ if (!empty($cardschek->json()['data'])) {
         $updatecard['avaliable'] = 1;
         Cards::where('id', 10498)->update($updatecard); 
     }
-
+}
 }
 dd($cardschek->json()['data']);
-*/
+
 
         
-
+*/
 
 
 

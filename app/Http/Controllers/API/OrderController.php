@@ -229,7 +229,7 @@ class OrderController extends Controller
                         if (isset($orders->json()['data'])) {
                           
                                 $updatecardprssice['card_code'] = $orders->json()['data']['number'];
-                                Cards::where('api2id', $dubiapi->api2id)->update($updatecardprssice);
+                                Cards::where('id', $order->card_id)->update($updatecardprssice);
                             
                         }
 
@@ -249,7 +249,7 @@ class OrderController extends Controller
                                 if ($cardschek->json()['data']['inStock'] == false) {
                                     $updatecard['purchase'] = 1;
                                     $updatecard['avaliable'] = 1;
-                                    Cards::where('api2id',  $dubiapi->api2id)->update($updatecard);
+                                    Cards::where('id', $order->card_id)->update($updatecard);
                                 }
                             
                         }
