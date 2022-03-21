@@ -231,9 +231,6 @@ class OrderController extends Controller
                                 $updatecardprssice['card_code'] = $orders->json()['data']['number'];
                                 Cards::where('id',$order->card_id)->update($updatecardprssice);
                             
-                        }else{
-                            $updatecardprssice['card_code'] = $orders->json()['data']['number'];
-                            Cards::where('id',$order->card_id)->update($updatecardprssice);
                         }
 
 

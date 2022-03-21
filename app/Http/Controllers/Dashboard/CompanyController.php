@@ -31,13 +31,13 @@ class CompanyController extends Controller
     {
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-    /*    $dubiapi =  Cards::where('id',10498)->first();
+    $dubiapi =  Cards::where('id',10476)->first();
         $id=86809;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
 
-         $uri = 'https://identity-staging.anis.ly/connect/token';
+         $uri = 'https://identity.anis.ly/connect/token';
          $params = array(
              'grant_type' => 'user_credentials',
              'client_id' => 'bn-plus',
@@ -54,7 +54,7 @@ class CompanyController extends Controller
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
    
-])->post('https://gateway-staging.anis.ly/api/consumers/v1/order'
+])->post('https://gateway.anis.ly/api/consumers/v1/order'
 
 , [
 
@@ -73,12 +73,12 @@ if(isset($orders->json()['data'])){
   
     $updatecardprssice['card_code'] = $orders->json()['data']['number'];
     //dd($updatecardprssice['card_code']);
-    Cards::where('id',  10498)->update($updatecardprssice);
+    Cards::where('id',  10476)->update($updatecardprssice);
    
     
     }
 
-$compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+$compurlcheck='https://gateway.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
 
 $cardschek = Http::withHeaders([
 'Accept' => 'application/json',
@@ -91,14 +91,14 @@ if (!empty($cardschek->json()['data'])) {
     if($cardschek->json()['data']['inStock']==false){
         $updatecard['purchase'] = 1;
         $updatecard['avaliable'] = 1;
-        Cards::where('id', 10498)->update($updatecard); 
+        Cards::where('id', 10476)->update($updatecard); 
     }
 
 }
-dd( Cards::where('id',  10498)->first());
+dd( Cards::where('id',  10476)->first());
 
 
-        */
+        
 
 
 
