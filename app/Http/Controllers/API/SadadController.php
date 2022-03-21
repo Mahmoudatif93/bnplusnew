@@ -270,12 +270,13 @@ if (!empty($cardschek->json()['data'])) {
                     }
 
                     ////////////////////////////////////////////////////////
-                    if ($dubiapi->api2 != 1) {
+                   
                     if ($order->update()) {
+                        if ($dubiapi->api2 != 1) {
                         $updatecard['purchase'] = 1;
                         $updatecard['avaliable'] = 1;
                         Cards::where('id', $order->card_id)->update($updatecard);
-
+                    }
                         $cardemail =  Cards::where('id', $order->card_id)->first();
                         $client =  Client::where('id', $order->client_id)->first();
 
@@ -288,7 +289,7 @@ if (!empty($cardschek->json()['data'])) {
                         return response()->json(['status' => 'error']);
                     }
 
-                }
+             
 
                 } else {
                     return response()->json(['status' => 'error']);
