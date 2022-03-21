@@ -275,7 +275,7 @@ if (isset($cardschek->json()['data'])) {
                     ////////////////////////////////////////////////////////
                    
                     if ($order->update()) {
-                        if ($dubiapi->api2 != 1) {
+                        if ($dubiapi->api2 == 0) {
                         $updatecard['purchase'] = 1;
                         $updatecard['avaliable'] = 1;
                         Cards::where('id', $order->card_id)->update($updatecard);
