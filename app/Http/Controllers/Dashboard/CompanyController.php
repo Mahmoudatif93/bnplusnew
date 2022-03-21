@@ -29,7 +29,7 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
-/*
+
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
         $dubiapi =  Cards::where('id',10498)->first();
         $id=8604;
@@ -101,7 +101,7 @@ dd($cardschek->json()['data']);
 
 
         
-*/
+
 
 
 
