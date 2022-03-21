@@ -71,10 +71,10 @@ class SadadController extends Controller
 
 
                 $order = Order::create($request_data);
-
+                if ($card->api2 != 1) {
                 $dataa['avaliable'] = 1;
                 Cards::where('id', $order->card_id)->update($dataa);
-
+                }
                 return $this->apiResponse5(true, $response['message'], $response['status'], $response['result'], $order->id);
             }
         } else {

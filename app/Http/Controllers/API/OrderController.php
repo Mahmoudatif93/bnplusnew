@@ -35,6 +35,7 @@ class OrderController extends Controller
     public function reserveorder(Request $request)
     {
 
+         
 
         $cardscount = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0, 'enable' => 0))->count();
 
@@ -57,11 +58,13 @@ class OrderController extends Controller
             $order = Order::create($request_data);
 
             if ($order) {
+                if ($card->api2 != 1) {
                 $dataa['avaliable'] = 1;
                 Cards::where('id', $order->card_id)->update($dataa);
 
                 $message = "card reserved ";
                 return $this->apiResponse6($cardscount - 1, $order->id, $message, 200);
+                }
             } else {
 
                 return $this->apiResponse6(null, null, 'error to Reserve Order', 404);
