@@ -33,7 +33,7 @@ class CompanyController extends Controller
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
 
     
-
+dd('kk');
        
         $dubiapi =  Cards::where('id',10496)->first();
         $id=8111;
