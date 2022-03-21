@@ -35,7 +35,7 @@ class OrderController extends Controller
     public function reserveorder(Request $request)
     {
 
-         
+
 
         $cardscount = Cards::where(array('id' => $request->card_id, 'avaliable' => 0, 'purchase' => 0, 'enable' => 0))->count();
 
@@ -59,11 +59,10 @@ class OrderController extends Controller
 
             if ($order) {
                 if ($card->api2 != 1) {
-                $dataa['avaliable'] = 1;
-                Cards::where('id', $order->card_id)->update($dataa);
-
+                    $dataa['avaliable'] = 1;
+                    Cards::where('id', $order->card_id)->update($dataa);
                 }
-                
+
                 $message = "card reserved ";
                 return $this->apiResponse6($cardscount - 1, $order->id, $message, 200);
             } else {
@@ -106,7 +105,6 @@ class OrderController extends Controller
             if ($is_expired < \Carbon\Carbon::now()) {
 
                 return response()->json(['status' => 'error']);
-
             } else {
                 $order->transaction_id = $request->transaction_id;
                 $order->paid = 'true';
@@ -181,98 +179,94 @@ class OrderController extends Controller
                             //  return $row['serialCode'];
                             $updatecardprice['card_code'] =  $this->decryptSerial($row['serialCode']);
                             Cards::where('id', $order->card_id)->update($updatecardprice);
-                          //  $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
+                            //  $this->sendResetEmail($client->email, $this->decryptSerial($row['serialCode']), 'Your BNplus Code');
                         }
 
 
                         curl_close($curl);
                     }
 
-                    if ($dubiapi->api2 == 1) {
-                     
-                
-                     
+                  /*  if ($dubiapi->api2 == 1) {
+
+
+
                         $client =  Client::where('id', $order->client_id)->first();
-                     //   rand();
+                        //   rand();
 
-                     $uri = 'https://identity.anis.ly/connect/token';
-                     $params = array(
-                         'grant_type' => 'user_credentials',
-                         'client_id' => 'bn-plus',
-                         'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-                         'password' => 'P@ssw0rd1988',
-                         'email' => 'info@bn-plus.ly',
-                     );
-                     $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-                     $token=$response->json()['access_token'];
-                     $token_type=$response->json()['token_type'];
-                     $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
+                        $uri = 'https://identity.anis.ly/connect/token';
+                        $params = array(
+                            'grant_type' => 'user_credentials',
+                            'client_id' => 'bn-plus',
+                            'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
+                            'password' => 'P@ssw0rd1988',
+                            'email' => 'info@bn-plus.ly',
+                        );
+                        $response = Http::asForm()->withHeaders([])->post($uri, $params);
+                        $token = $response->json()['access_token'];
+                        $token_type = $response->json()['token_type'];
+                        $alltoken = $response->json()['token_type'] . ' ' . $response->json()['access_token'];
 
-             $orders = Http::withHeaders([
-                'Accept' => 'application/json',
-                'Authorization' => $alltoken,
-               
-            ])->post('https://gateway.anis.ly/api/consumers/v1/order'
-        
-            , [
-                
-                'walletId' =>'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
-                'cardId' => $dubiapi->api2id,
-                'pinNumber' => '1988',
-                'orderId' => $id,
-                'quantity' =>1,
-                'TotalValue' =>$dubiapi->card_price,
+                        $orders = Http::withHeaders([
+                            'Accept' => 'application/json',
+                            'Authorization' => $alltoken,
 
-            ]
-        
-        );
+                        ])->post(
+                            'https://gateway.anis.ly/api/consumers/v1/order',
+                            [
 
-        if(isset($orders->json()['data'])){
-            foreach($orders->json()['data'] as $dd){
-            $updatecardprssice['card_code'] = $dd['number'];
-            Cards::where('id',  10496)->update($updatecardprssice);
-            } 
-            
-            }
+                                'walletId' => 'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
+                                'cardId' => $dubiapi->api2id,
+                                'pinNumber' => '1988',
+                                'orderId' => $id,
+                                'quantity' => 1,
+                                'TotalValue' => $dubiapi->card_price,
 
-        
+                            ]
 
-        $compurlcheck='https://gateway.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+                        );
 
-        $cardschek = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => $alltoken,
-        
-        ])->get( $compurlcheck);
-        
-        
-        if (isset($cardschek->json()['data'])) {
-            foreach ($cardschek->json()['data'] as $cardsapicheck) {
-                if($cardsapicheck['inStock']==false){
-                    $updatecard['purchase'] = 1;
-                    $updatecard['avaliable'] = 1;
-                    Cards::where('id', $order->card_id)->update($updatecard); 
-                }
-            }
-        }
+                        if (isset($orders->json()['data'])) {
+                            foreach ($orders->json()['data'] as $dd) {
+                                $updatecardprssice['card_code'] = $dd['number'];
+                                Cards::where('id',  10496)->update($updatecardprssice);
+                            }
+                        }
 
 
 
+                        $compurlcheck = 'https://gateway.anis.ly/api/consumers/v1/categories/cards/' . $dubiapi->api2id . '';
+
+                        $cardschek = Http::withHeaders([
+                            'Accept' => 'application/json',
+                            'Authorization' => $alltoken,
+
+                        ])->get($compurlcheck);
+
+
+                        if (isset($cardschek->json()['data'])) {
+                            foreach ($cardschek->json()['data'] as $cardsapicheck) {
+                                if ($cardsapicheck['inStock'] == false) {
+                                    $updatecard['purchase'] = 1;
+                                    $updatecard['avaliable'] = 1;
+                                    Cards::where('id', $order->card_id)->update($updatecard);
+                                }
+                            }
+                        }
                     }
 
 
 
-
+*/
 
                     /////////////
 
-                   
+
                     if ($order->update()) {
-                        if ($dubiapi->api2 == 0 ) {
-                        $updatecard['purchase'] = 1;
-                        $updatecard['avaliable'] = 1;
-                        Cards::where('id', $order->card_id)->update($updatecard);
-                    }
+                        if ($dubiapi->api2 == 0) {
+                            $updatecard['purchase'] = 1;
+                            $updatecard['avaliable'] = 1;
+                            Cards::where('id', $order->card_id)->update($updatecard);
+                        }
                         $cardemail =  Cards::where('id', $order->card_id)->first();
                         $client =  Client::where('id', $order->client_id)->first();
                         if ($dubiapi->api == 0) {
@@ -283,8 +277,6 @@ class OrderController extends Controller
                     } else {
                         return response()->json(['status' => 'error']);
                     }
-               
-                    
                 } else {
 
 
