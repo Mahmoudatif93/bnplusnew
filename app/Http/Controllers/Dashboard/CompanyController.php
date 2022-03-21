@@ -31,17 +31,13 @@ class CompanyController extends Controller
     {
 
         /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-
-    
-dd('kk');
-       
-        $dubiapi =  Cards::where('id',10496)->first();
-        $id=8111;
+        $dubiapi =  Cards::where('id',10498)->first();
+        $id=84111;
                      
             //$client =  Client::where('id', $order->client_id)->first();
          //   rand();
 
-         $uri = 'https://identity.anis.ly/connect/token';
+         $uri = 'https://identity-staging.anis.ly/connect/token';
          $params = array(
              'grant_type' => 'user_credentials',
              'client_id' => 'bn-plus',
@@ -58,7 +54,7 @@ dd('kk');
     'Accept' => 'application/json',
     'Authorization' => $alltoken,
    
-])->post('https://gateway.anis.ly/api/consumers/v1/order'
+])->post('https://gateway-staging.anis.ly/api/consumers/v1/order'
 
 , [
 
@@ -72,16 +68,16 @@ dd('kk');
 ]
 
 );
-dd($orders->json());
+//dd($orders->json());
 if(isset($orders->json()['data'])){
     foreach($orders->json()['data'] as $dd){
     $updatecardprssice['card_code'] = $dd['number'];
-    Cards::where('id',  10496)->update($updatecardprssice);
+    Cards::where('id',  10498)->update($updatecardprssice);
     } 
     
     }
 
-$compurlcheck='https://gateway.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
+$compurlcheck='https://gateway-staging.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
 
 $cardschek = Http::withHeaders([
 'Accept' => 'application/json',
@@ -89,13 +85,13 @@ $cardschek = Http::withHeaders([
 
 ])->get( $compurlcheck);
 
-dd($cardschek->json());
+
 if (!empty($cardschek->json()['data'])) {
 foreach ($cardschek->json()['data'] as $cardsapicheck) {
     if($cardsapicheck['inStock']==false){
         $updatecard['purchase'] = 1;
         $updatecard['avaliable'] = 1;
-       // Cards::where('id', $order->card_id)->update($updatecard); 
+        Cards::where('id', 10498)->update($updatecard); 
     }
 }
 }
