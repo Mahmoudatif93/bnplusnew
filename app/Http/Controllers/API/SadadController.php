@@ -202,7 +202,7 @@ class SadadController extends Controller
 
                     
                     if ($dubiapi->api2 == 1) {
-                        $client =  Client::where('id', $order->client_id)->first();
+                    /*    $client =  Client::where('id', $order->client_id)->first();
                      //   rand();
 
                      $uri = 'https://identity.anis.ly/connect/token';
@@ -265,7 +265,7 @@ if (!empty($cardschek->json()['data'])) {
 }
 
 
-
+*/
 
                     }
 
