@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Company;
 use App\Cards;
+use App\Anaiscodes;
+use App\cards_anais;
+use App\Order;
+use App\Client;
+use App\Order_anais;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -30,80 +35,11 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-        /// $this->sendResetEmail('zayedmahdi@yahoo.com', 'SgiXggkL2L2080N8ab	', 'Your BNplus Code');
-  /*  $dubiapi =  Cards::where('id',10477)->first();
-   
-        $id=8023279;
-                     
-            //$client =  Client::where('id', $order->client_id)->first();
-         //   rand();
-
-         $uri = 'https://identity.anis.ly/connect/token';
-         $params = array(
-             'grant_type' => 'user_credentials',
-             'client_id' => 'bn-plus',
-             'client_secret' => '3U8F3U9C9IM39VJ39FUCLWLC872MMXOW8K2STWI28ZJD3ERF',
-             'password' => 'P@ssw0rd1988',
-             'email' => 'info@bn-plus.ly',
-         );
-         $response = Http::asForm()->withHeaders([])->post($uri, $params);   
-         $token=$response->json()['access_token'];
-         $token_type=$response->json()['token_type'];
-         $alltoken=$response->json()['token_type'] .' '.$response->json()['access_token'];
-
- $orders = Http::withHeaders([
-    'Accept' => 'application/json',
-    'Authorization' => $alltoken,
-   
-])->post('https://gateway.anis.ly/api/consumers/v1/order'
-
-, [
-
-    'walletId' =>'E1521F1F-C592-42F3-7A1A-08D9F31F6661',
-    'cardId' => $dubiapi->api2id,
-    'pinNumber' => '1988',
-    'orderId' => $id,
-    'quantity' =>1,
-    'TotalValue' =>$dubiapi->old_price
-
-]
-
-);
-dd($orders->json()['data']['cards'][0]['secretNumber']);
-if(isset($orders->json()['data'])){
-  
-    $updatecardprssice['card_code'] = $orders->json()['data']['cards']['secretNumber'];
-  //  dd($updatecardprssice['card_code']);
-    Cards::where('id',  10477)->update($updatecardprssice);
-   
-    
-    }
-
-$compurlcheck='https://gateway.anis.ly/api/consumers/v1/categories/cards/'.$dubiapi->api2id.'';
-
-$cardschek = Http::withHeaders([
-'Accept' => 'application/json',
-'Authorization' => $alltoken,
-
-])->get( $compurlcheck);
-
-
-if (!empty($cardschek->json()['data'])) {
-    if($cardschek->json()['data']['inStock']==false){
-        $updatecard['purchase'] = 1;
-        $updatecard['avaliable'] = 1;
-        Cards::where('id', 10477)->update($updatecard); 
-    }
-
-}
-dd( Cards::where('id',  10477)->first());
-
-      
-
-*/
-
+     
 
         ini_set("prce.backtrack_limit", "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+
+
 
 
         $Companies = Company::where('enable', 0)->when($request->search, function ($q) use ($request) {

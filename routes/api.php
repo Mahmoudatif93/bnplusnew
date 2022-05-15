@@ -46,7 +46,7 @@ Route::post('confirm','SadadController@confirm');
 
 Route::post('check_balance','CompanyController@check_balance');
 
-
+Route::post('clientordser','OrderController@clientorder');
 
 Route::post('login','AuthController@login');
 //Route::middleware('jwt.auth')->post('login', 'API/AuthController@login');

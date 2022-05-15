@@ -1,0 +1,8 @@
+[28-Mar-2022 17:19:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode' not found in /home/bnplusly/public_html/BNplus/app/Http/Middleware/CheckForMaintenanceMode.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bnplusly/public_html/BNplus/app/Http/Middleware/CheckForMaintenanceMode.php on line 7
+[28-Mar-2022 17:20:43 UTC] PHP Fatal error:  Uncaught Error: Class 'Fideloper\Proxy\TrustProxies' not found in /home/bnplusly/public_html/BNplus/app/Http/Middleware/TrustProxies.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bnplusly/public_html/BNplus/app/Http/Middleware/TrustProxies.php on line 8

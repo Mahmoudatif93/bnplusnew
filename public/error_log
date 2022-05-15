@@ -2,3 +2,7 @@
 [05-Jan-2022 13:26:54 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 7.2.34. in /home/bnplusly/public_html/BNplus/vendor/composer/platform_check.php on line 24
 [13-Feb-2022 21:34:24 Africa/Cairo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/bnplusly/public_html/BNplus/app/Http/Controllers/Dashboard/CompanyController.php on line 133
 [13-Feb-2022 21:34:28 Africa/Cairo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/bnplusly/public_html/BNplus/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php on line 656
+[22-Mar-2022 14:06:21 Africa/Tripoli] PHP Fatal error:  Trait 'App\Http\Controllers\Dashboard\ApiResourceTrait' not found in /home/bnplusly/public_html/BNplus/app/Http/Controllers/Dashboard/CompanyController.php on line 19
+[22-Mar-2022 14:08:23 Africa/Tripoli] PHP Fatal error:  Trait 'App\Http\Controllers\Dashboard\ApiResourceTrait' not found in /home/bnplusly/public_html/BNplus/app/Http/Controllers/Dashboard/CompanyController.php on line 19
+[22-Mar-2022 14:09:18 Africa/Tripoli] PHP Fatal error:  Trait 'App\Http\Controllers\Dashboard\app\Http\Controllers\API\ApiResourceTrait' not found in /home/bnplusly/public_html/BNplus/app/Http/Controllers/Dashboard/CompanyController.php on line 19
+[23-Mar-2022 14:14:22 Africa/Tripoli] PHP Fatal error:  Cannot redeclare App\Order::cards() in /home/bnplusly/public_html/BNplus/app/Order.php on line 23

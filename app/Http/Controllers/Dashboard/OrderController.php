@@ -6,6 +6,11 @@ use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Company;
+use App\Cards;
+use App\Anaiscodes;
+use App\cards_anais;
+use App\Order_anais;
+
 class OrderController extends Controller
 {
     public function index(Request $request)
@@ -23,8 +28,9 @@ class OrderController extends Controller
 
     public function products(Order $order)
     {
-        $products = $order->cards;
+       // $products = $order->cards;
      
+    $products =  Cards::where('id',$order->card_id)->first();
         /*foreach ($products as $product){
             $company=  \App\Company::where(['id' => $product->company_id])->first();
              }*/
