@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Company;
 use App\Cards;
+use App\cards_anais;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -20,7 +22,9 @@ class currancyLocalController extends Controller
 
 
     public function index(Request $request)
-    {           
+    {  
+        
+
         $curr=  currancylocal::first();
         $Companies = currancylocal::when($request->search, function ($q) use ($request) {
 
@@ -66,7 +70,7 @@ class currancyLocalController extends Controller
         
   
         
-       foreach(Cards::where('api2',1)->get() as $cards ){
+       foreach(Cards::where(array('api2'=>1,'nationalcompany'=>'national'))->get() as $cards ){
         
         
          

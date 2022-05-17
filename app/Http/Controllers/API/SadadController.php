@@ -324,7 +324,9 @@ class SadadController extends Controller
 
     $cardsanaia = Cards::where('id', $order->card_id)->first();
                             $Anaiscards['id'] = $cardsanaia->id;
-                           $itemcomp = cards_anais::firstOrNew(array('id' => $cardsanaia->id));
+                           //$itemcomp = cards_anais::firstOrNew(array('id' => $cardsanaia->id));
+                           $itemcomp = cards_anais::firstOrNew(array('order_id' => $order->id));
+
                            $itemcomp->id = $cardsanaia->id;
                            $itemcomp->order_id =  $order->id;
                            $itemcomp->card_name = $cardsanaia->card_name;
@@ -375,7 +377,9 @@ class SadadController extends Controller
                                   
                                         $cardsanaia = Cards::where('id', $order->card_id)->first();
                             $Anaiscards['id'] = $cardsanaia->id;
-                           $itemcomp = cards_anais::firstOrNew(array('id' => $cardsanaia->id));
+                          // $itemcomp = cards_anais::firstOrNew(array('id' => $cardsanaia->id));
+                           $itemcomp = cards_anais::firstOrNew(array('order_id' => $order->id));
+
                            $itemcomp->id = $cardsanaia->id;
                            $itemcomp->order_id =  $order->id;
                            $itemcomp->card_name = $cardsanaia->card_name;
@@ -483,7 +487,9 @@ class SadadController extends Controller
                                    
                                        $cardsanaia = Cards::where('id', $order->card_id)->first();
                             $Anaiscards['id'] = $cardsanaia->id;
-                           $itemcomp = cards_anais::firstOrNew(array('id' => $cardsanaia->id));
+                        //   $itemcomp = cards_anais::firstOrNew(array('id' => $cardsanaia->id));
+                           $itemcomp = cards_anais::firstOrNew(array('order_id' => $order->id));
+
                            $itemcomp->id = $cardsanaia->id;
                            $itemcomp->order_id =  $order->id;
                            $itemcomp->card_name = $cardsanaia->card_name;

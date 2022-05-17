@@ -7,7 +7,7 @@ use App\Carbon\Carbon;
 use App\Cards;
 use App\Company;
 use Illuminate\Support\Facades\Http;
-use App\Currency;
+use App\currancylocal;
 
 class swaggercards extends Command
 {
@@ -456,6 +456,7 @@ class swaggercards extends Command
 
                                             $dbCompanies = Company::where(array( 'api2' => 1, 'idapi2' => $compid))->first();
                                             //print_r($allcardsapi);echo"<br>";
+                                            $curr =  currancylocal::first();
                                             if (!empty($dbCompanies)) {
                                                 $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
                                                 if($itemcard->old_price !=$cardsapi['businessPrice']){
@@ -463,10 +464,10 @@ class swaggercards extends Command
                                                 $itemcard->old_price = $cardsapi['businessPrice'];
                                                 $itemcard->company_id = $dbCompanies->id;
                                                 $itemcard->card_name = $cardsapi['name'];
-                                                $itemcard->card_price = $cardsapi['businessPrice'];
+                                                $itemcard->card_price = $cardsapi['businessPrice']  * $curr->amount;
                                                 $itemcard->card_code = $cardsapi['name'];
                                                 $itemcard->card_image = $cardsapi['logo'];
-                                                $itemcard->nationalcompany =  'local';
+                                                $itemcard->nationalcompany =  'national';
                                                 $itemcard->api2 = 1;
                                                 //   dd($itemcard);
                                                 $itemcard->purchase=0;
@@ -481,7 +482,7 @@ class swaggercards extends Command
                                           
                                                 $itemcard->card_code = $cardsapi['name'];
                                                 $itemcard->card_image = $cardsapi['logo'];
-                                                $itemcard->nationalcompany =  'local';
+                                                $itemcard->nationalcompany =  'national';
                                                 $itemcard->api2 = 1;
                                                 $itemcard->purchase=0;
                                                 
@@ -586,6 +587,7 @@ class swaggercards extends Command
 
                                         $dbCompanies = Company::where(array( 'api2' => 1, 'idapi2' => $compid))->first();
                                         //print_r($allcardsapi);echo"<br>";
+                                        $curr =  currancylocal::first();
                                         if (!empty($dbCompanies)) {
                                             $itemcard = Cards::firstOrNew(array('api2id' =>  $cardsapi['id']));
                                             if($itemcard->old_price !=$cardsapi['businessPrice']){
@@ -595,10 +597,10 @@ class swaggercards extends Command
                                             $itemcard->old_price = $cardsapi['businessPrice'];
                                             $itemcard->company_id = $dbCompanies->id;
                                             $itemcard->card_name = $cardsapi['name'];
-                                            $itemcard->card_price = $cardsapi['businessPrice'];
+                                            $itemcard->card_price = $cardsapi['businessPrice'] * $curr->amount;
                                             $itemcard->card_code = $cardsapi['name'];
                                             $itemcard->card_image = $cardsapi['logo'];
-                                            $itemcard->nationalcompany =  'local';
+                                            $itemcard->nationalcompany =  'national';
                                             $itemcard->api2 = 1;
                                             //   dd($itemcard);
                                             $itemcard->purchase=0;
@@ -613,7 +615,7 @@ class swaggercards extends Command
                                           
                                                 $itemcard->card_code = $cardsapi['name'];
                                                 $itemcard->card_image = $cardsapi['logo'];
-                                                $itemcard->nationalcompany =  'local';
+                                                $itemcard->nationalcompany =  'national';
                                                 $itemcard->api2 = 1;
                                                 $itemcard->purchase=0;
                                                 
