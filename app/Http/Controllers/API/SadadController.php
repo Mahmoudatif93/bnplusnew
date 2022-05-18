@@ -224,13 +224,7 @@ class SadadController extends Controller
 
             $balancenational = curl_exec($curl);
 
-            if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
-
-
-
-
-
-
+       
 
 
                 $response = Http::withHeaders([
@@ -261,6 +255,14 @@ class SadadController extends Controller
                         $clientdata =  Client::where('id', $order->client_id)->first();
 
                         if ($dubiapi->api == 1) {
+
+
+                            if (isset($balancenational) && !empty($balancenational) && $balancenational != 'error code: 1020') {
+
+
+                         
+
+
                             $client =  Client::where('id', $order->client_id)->first();
                             $curl = curl_init();
                             $refrenceid = "Merchant_" . rand();
@@ -300,27 +302,6 @@ class SadadController extends Controller
                                 
                                 
                                       $cardsanaia= Cards::where('id',$order->card_id)->first();
-                                       /*  $Anaiscards['id'] = $order->card_id;
-                                   $Anaiscards['order_id'] = $order->id;
-                                  $Anaiscards['card_name'] = $cardsanaia->card_name;
-                                  $Anaiscards['company_id'] = $cardsanaia->company_id;
-                                  $Anaiscards['api'] = $cardsanaia->api;
-                                  $Anaiscards['card_price'] = $cardsanaia->card_price;
-                                  $Anaiscards['card_code'] = $this->decryptSerial($row['serialCode']);
-                                  $Anaiscards['amounts'] = $cardsanaia->amounts;
-                               
-                                  $Anaiscards['avaliable'] = $cardsanaia->avaliable;
-                                  $Anaiscards['purchase'] = $cardsanaia->purchase;
-                                  $Anaiscards['card_image'] = $cardsanaia->card_image;
-                                  $Anaiscards['nationalcompany'] = $cardsanaia->nationalcompany;
-                                  $Anaiscards['productId'] = $cardsanaia->productId;
-                                  $Anaiscards['enable'] = $cardsanaia->enable;
-                                  $Anaiscards['api2'] = $cardsanaia->api2;
-                                  $Anaiscards['api2id'] = $cardsanaia->api2id;
-                                  cards_anais::create($Anaiscards);*/
-                                  
-
-
 
     $cardsanaia = Cards::where('id', $order->card_id)->first();
                             $Anaiscards['id'] = $cardsanaia->id;
@@ -348,32 +329,18 @@ class SadadController extends Controller
                             }
 
                             curl_close($curl);
+
+
+                        } else {
+                            return $this->apiResponse4(false, 'error in connection ', 400);
+                        }
+
+
                         }
                         
                         if($dubiapi->api !=1 || $dubiapi->api2 !=1){
                         
                                $cardsanaia= Cards::where('id',$order->card_id)->first();
-                                /*  $Anaiscards['id'] = $order->card_id;
-                                   $Anaiscards['order_id'] = $order->id;
-                                  $Anaiscards['card_name'] = $cardsanaia->card_name;
-                                  $Anaiscards['company_id'] = $cardsanaia->company_id;
-                                  $Anaiscards['api'] = $cardsanaia->api;
-                                  $Anaiscards['card_price'] = $cardsanaia->card_price;
-                                  $Anaiscards['card_code'] =  $cardsanaia-> card_code;
-                                  $Anaiscards['amounts'] = $cardsanaia->amounts;
-                         
-                                  $Anaiscards['avaliable'] = $cardsanaia->avaliable;
-                                  $Anaiscards['purchase'] = $cardsanaia->purchase;
-                                  $Anaiscards['card_image'] = $cardsanaia->card_image;
-                                  $Anaiscards['nationalcompany'] = $cardsanaia->nationalcompany;
-                                  $Anaiscards['productId'] = $cardsanaia->productId;
-                                  $Anaiscards['enable'] = $cardsanaia->enable;
-                                  $Anaiscards['api2'] = $cardsanaia->api2;
-                                  $Anaiscards['api2id'] = $cardsanaia->api2id;
-                                  cards_anais::create($Anaiscards);*/
-                                  
-                                  
-                                  
                                   
                                         $cardsanaia = Cards::where('id', $order->card_id)->first();
                             $Anaiscards['id'] = $cardsanaia->id;
@@ -462,26 +429,6 @@ class SadadController extends Controller
 
                                    $cardsanaia= Cards::where('id',$order->card_id)->first();
 
-                                  
-                                 /*  $Anaiscards['card_name'] = $cardsanaia->card_name;
-                                   $Anaiscards['company_id'] = $cardsanaia->company_id;
-                                   $Anaiscards['api'] = $cardsanaia->api;
-                                   $Anaiscards['card_price'] = $cardsanaia->card_price;
-                                   $Anaiscards['card_code'] = $cardddds['secretNumber'];
-                                   $Anaiscards['amounts'] = $cardsanaia->amounts;
-                                
-                                   $Anaiscards['avaliable'] = $cardsanaia->avaliable;
-                                   $Anaiscards['purchase'] = $cardsanaia->purchase;
-                                   $Anaiscards['card_image'] = $cardsanaia->card_image;
-                                   $Anaiscards['nationalcompany'] = $cardsanaia->nationalcompany;
-                                   $Anaiscards['productId'] = $cardsanaia->productId;
-                                   $Anaiscards['enable'] = $cardsanaia->enable;
-                                   $Anaiscards['api2'] = $cardsanaia->api2;
-                                   $Anaiscards['api2id'] = $cardsanaia->api2id;
-                                      $Anaiscards['id'] = $order->card_id;
-                                   cards_anais::create($Anaiscards);
-                                   */
-                                   
                                    
                                    
                                    
@@ -558,9 +505,7 @@ class SadadController extends Controller
                         return response()->json(['status' => 'error']);
                     }
                 }
-            } else {
-                return $this->apiResponse4(false, 'error in connection ', 400);
-            }
+           
         } else {
             return $this->apiResponse4(false, 'no Order for this order id', 400);
         }
