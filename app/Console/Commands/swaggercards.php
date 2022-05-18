@@ -464,7 +464,7 @@ class swaggercards extends Command
                                                 $itemcard->old_price = $cardsapi['businessPrice'];
                                                 $itemcard->company_id = $dbCompanies->id;
                                                 $itemcard->card_name = $cardsapi['name'];
-                                                $itemcard->card_price = $cardsapi['businessPrice']  * $curr->amount;
+                                                $itemcard->card_price = (($cardsapi['businessPrice']  * $curr->amount) / 100 ) + $cardsapi['businessPrice'];
                                                 $itemcard->card_code = $cardsapi['name'];
                                                 $itemcard->card_image = $cardsapi['logo'];
                                                 $itemcard->nationalcompany =  'national';
@@ -597,7 +597,7 @@ class swaggercards extends Command
                                             $itemcard->old_price = $cardsapi['businessPrice'];
                                             $itemcard->company_id = $dbCompanies->id;
                                             $itemcard->card_name = $cardsapi['name'];
-                                            $itemcard->card_price = $cardsapi['businessPrice'] * $curr->amount;
+                                            $itemcard->card_price =  (($cardsapi['businessPrice']  * $curr->amount) / 100 ) + $cardsapi['businessPrice'];
                                             $itemcard->card_code = $cardsapi['name'];
                                             $itemcard->card_image = $cardsapi['logo'];
                                             $itemcard->nationalcompany =  'national';

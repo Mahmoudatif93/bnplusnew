@@ -69,12 +69,12 @@ class currancyLocalController extends Controller
 
         
   
-        
+      //  
        foreach(Cards::where(array('api2'=>1,'nationalcompany'=>'national'))->get() as $cards ){
         
         
          
-            $newprice2['card_price']=$cards->old_price * $request->amount;
+            $newprice2['card_price']=(($cards->old_price * $request->amount) / 100 ) + $cards->old_price ;
          
            Cards::where(array('api2'=>1,'id'=>$cards->id))->update($newprice2);
         }
