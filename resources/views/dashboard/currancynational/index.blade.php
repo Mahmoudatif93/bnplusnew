@@ -58,7 +58,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>نسبه مئويه</th>
+                                <th>سعر واحد دولار امريكي مقابل الدينار الليبي </th>
                                
                                 <th>@lang('site.action')</th>
                             </tr>
@@ -68,7 +68,7 @@
                             @foreach ($Companies as $index=>$category)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $category->amount }} % </td>
+                                    <td>{{ $category->amount }} دينار ليبي </td>
                                  
 
 
